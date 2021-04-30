@@ -1,0 +1,25 @@
+#!/usr/bin/expect
+
+log_file ./.ssh_raspi.log
+
+set RASPI_ADR 192.168.3.10
+set RASPI_USR nanami
+set RASPI_PASS myuulove11
+
+set timeout 10
+
+spawn ssh ${RASPI_USR}@${RASPI_ADR}
+
+expect {
+    -glob "password:" {
+        send "${RASPI_PASS}\n"
+    }
+}
+
+expect {
+    -glob "❯" {
+        interact
+        exit 0
+    }
+}
+
