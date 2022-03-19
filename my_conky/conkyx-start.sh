@@ -1,3 +1,7 @@
-#!/bin/bash
+#!/bin/sh
+sleep 5
 
-sleep 5 && conky -c ~/.config/conky/my_conky/conkyminimal.conf
+if ! pgrep -a "^conky$" ; then
+    echo "launching conky..."
+    conky -c ~/.config/conky/my_conky/conkyminimal.conf
+fi
