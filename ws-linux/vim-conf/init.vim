@@ -1,3 +1,7 @@
+syntax enable
+filetype plugin indent on
+set clipboard=unnamed
+
 if $compatible
   set nocompatible " Be iMproved
 endif
@@ -33,6 +37,3 @@ if dein#check_install()
   call dein#install()
 endif
 
-syntax on
-filetype plugin indent on
-set clipboard=unnamed

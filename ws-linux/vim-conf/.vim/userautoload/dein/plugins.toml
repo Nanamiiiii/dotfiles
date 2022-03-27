@@ -20,6 +20,7 @@ repo = 'ryanoasis/vim-devicons'
 [[plugins]]
 repo ="kristijanhusak/defx-git"
 hook_add = '''
+call defx#custom#column('git', 'column_length', 2)
 call defx#custom#column('git', 'indicators', {
     \ 'Modified'  : '✹',
     \ 'Staged'    : '✚',
@@ -39,6 +40,19 @@ repo ="kristijanhusak/defx-icons"
 repo = 'Shougo/defx.nvim'
 depends = ['defx-git', 'defx-icons']
 hook_add = '''
+let g:defx_icons_enable_syntax_highlight = 0
+let g:defx_icons_column_length = 2
+let g:defx_icons_directory_icon = ''
+let g:defx_icons_mark_icon = '*'
+let g:defx_icons_copy_icon = ''
+let g:defx_icons_move_icon = ''
+let g:defx_icons_parent_icon = ''
+let g:defx_icons_default_icon = ''
+let g:defx_icons_directory_symlink_icon = ''
+let g:defx_icons_root_opened_tree_icon = ''
+let g:defx_icons_nested_opened_tree_icon = ''
+let g:defx_icons_nested_closed_tree_icon = ''
+
 call defx#custom#column('icon', {
     \ 'directory_icon': '▸',
     \ 'opened_icon': '▾',
@@ -56,7 +70,7 @@ call defx#custom#column('mark', {
     \ })
 
 call defx#custom#option('_', {
-    \ 'columns': 'indent:git:icons:filename',
+    \ 'columns': 'indent:git:icons:filename:type:size:time',
     \ 'show_ignored_files': 1,
     \ })
 
