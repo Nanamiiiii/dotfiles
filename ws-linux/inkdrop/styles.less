@@ -1,0 +1,13 @@
+@udev: { font-family: 'UDEV Gothic NFLG'; }
+@noto-cjk: { font-family: 'Noto Sans CJK JP'; }
+
+.mde-preview {
+    @noto-cjk();
+    code {
+        @udev();
+    }
+    .code-title {
+        @udev();
+    }
+}
+
