@@ -1,8 +1,13 @@
 @udev: { font-family: 'UDEV Gothic NFLG'; }
 @noto-cjk: { font-family: 'Noto Sans CJK JP'; }
+@mplus-code: { font-family: 'Mplus Code 60'; }
+@migmix: { font-family: 'MigMix 2P'; }
 
 .mde-preview {
-    @noto-cjk();
+    @mplus-code();
+    h1, h2, h3, h4, h5 {
+        @mplus-code();
+    }
     code {
         @udev();
     }
