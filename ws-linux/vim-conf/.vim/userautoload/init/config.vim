@@ -46,5 +46,6 @@ autocmd BufRead,BufNewFile jquery.*.js set filetype=javascript syntax=jquery
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.pug.javascript.css
 autocmd BufRead,BufNewFile *.{yml,yaml} set filetype=yaml
 autocmd BufRead,BufNewFile *.{yml,yaml} setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.c set filetype=c
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\""
 
