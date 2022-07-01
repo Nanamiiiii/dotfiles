@@ -68,7 +68,6 @@ else
 fi
 echo "Setup prezto"
 zsh ./setup_prezto.zsh
-chsh -s /bin/zsh
 
 rm ~/.zpreztorc
 ln -s $PWD/zpreztorc ~/.zpreztorc
