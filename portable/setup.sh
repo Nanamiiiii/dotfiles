@@ -59,6 +59,14 @@ else
     pip install pynvim
 fi
 
+if ($(pip list 2>/dev/null | grep compiledb >/dev/null))
+then
+    echo "compiledb is installed."
+else
+    echo "Setup compiledb"
+    pip install compiledb
+fi
+
 if ($(which zsh > /dev/null))
 then
     echo "zsh is installed."
@@ -71,6 +79,8 @@ zsh ./setup_prezto.zsh
 
 rm ~/.zpreztorc
 ln -s $PWD/zpreztorc ~/.zpreztorc
+
+echo 'export PATH=$PATH:~/.local/bin' >> ~/.zshrc
 
 echo "Finished."
 
