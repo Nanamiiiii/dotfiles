@@ -1,0 +1,6 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = true
+
+[aws]
+disabled = true
+
