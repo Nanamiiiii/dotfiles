@@ -1,17 +1,19 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 
+# Vim Mode (The Most Important!!!!!)
+bindkey -v
+
 # Starship
 eval "$(starship init zsh)"
 
 # Customize to your needs...
 alias vim="nvim"
-
-export PATH="$PATH:/Users/saiki@pentio.com/scripts"
-export PATH="$PATH:/Users/saiki@pentio.com/.rbenv/bin"
+alias ls="ls -G"
+export PATH=$PATH:~/scripts:~/.rbenv/bin
 eval "$(rbenv init - zsh)"
 
-export SSH_AUTH_SOCK=/Users/saiki@pentio.com/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+export SSH_AUTH_SOCK=~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then

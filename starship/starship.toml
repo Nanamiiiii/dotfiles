@@ -1,0 +1,27 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = true
+command_timeout = 5000
+
+format = """$all"""
+right_format = """$status $cmd_duration $time"""
+
+[time]
+format = "[$time]($style)"
+style = "bold white"
+disabled = false
+
+[cmd_duration]
+format = "[$duration]($style)"
+style = "fg:#9ED2C6 bold"
+
+[username]
+format = "[$user]($style) "
+style_user = "fg:#54BAB9 bold"
+show_always = true
+
+[status]
+disabled = false
+
+[aws]
+disabled = true
+
