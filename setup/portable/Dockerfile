@@ -9,13 +9,8 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en  
 ENV LC_ALL en_US.UTF-8
 
-WORKDIR /root/dotfiles
+WORKDIR /root
 COPY ./setup.sh .
-COPY ./setup_prezto.zsh .
-COPY ./vim-conf ./vim-conf
-COPY ./zpreztorc zpreztorc
 
 RUN chmod +x setup.sh && ./setup.sh
-
-WORKDIR /root
 

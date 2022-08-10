@@ -35,11 +35,11 @@ else
     if [ -e ~/.config/nvim/init.vim ]; then
         rm ~/.config/nvim/init.vim
     fi
-    ln -s $PWD/vim-conf/init.vim ~/.config/nvim/init.vim
+    ln -s $PWD/nvim/init.vim ~/.config/nvim/init.vim
     if [ -d ~/.vim ]; then
         rm -rf ~/.vim
     fi
-    ln -s $PWD/vim-conf/.vim ~/
+    ln -s $PWD/nvim/.vim ~/
 fi
 
 if ($(which pip > /dev/null))
@@ -74,11 +74,32 @@ else
     echo "Error: zsh is not installed."
     exit 1
 fi
-echo "Setup prezto"
-zsh ./setup_prezto.zsh
 
-rm ~/.zpreztorc
-ln -s $PWD/zpreztorc ~/.zpreztorc
+if ($(which zinit > /dev/null))
+then
+    echo "zinit is installed"
+else
+    echo "zinit is not installed. insalling."
+    bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+    zsh -c "zinit self-update"
+fi
+
+if  ($(which cargo > /dev/null))
+then
+    echo "cargo is installed."
+else
+    echo "cargo is not installed. run rustup install."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
+
+echo "Install starship."
+cargo install starship --locked
+
+echo "create symlink of zsh configuration"
+ln -sf $PWD/zsh/portable/zshrc ~/.zshrc
+ln -sf $PWD/zsh/portable/zprofile ~/.zprofile
+ln -sf $PWD/zsh/portable/zshenv ~/.zshenv
+ln -sf $PWD/starship/starship.toml ~/.config/starship.toml
 
 echo 'export PATH=$PATH:~/.local/bin' >> ~/.zshrc
 

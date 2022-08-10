@@ -158,6 +158,3 @@ nnoremap <silent><C-t> :<C-u> Defx<CR>
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
-[[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter'
-hook_post_update = "TSUpdate"
