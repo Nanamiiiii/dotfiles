@@ -19,4 +19,6 @@ set expandtab
 set tabstop=4
 set smarttab
 
+# Detect filetype automatically via Defx 
+autocmd FileReadPost,BufAdd,BufEnter,BufNew,BufNewfile,BufRead * filetype detect
 
