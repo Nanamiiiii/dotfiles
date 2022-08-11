@@ -25,3 +25,6 @@ disabled = false
 [aws]
 disabled = true
 
+[hostname]
+ssh_symbol = "🖥️  "
+format = "[$ssh_symbol$hostname]($style) "
