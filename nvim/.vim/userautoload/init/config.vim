@@ -21,3 +21,4 @@ set smarttab
 
 autocmd FileReadPost,BufAdd,BufEnter,BufNew,BufNewfile,BufRead * filetype detect
 
+autocmd Filetype yaml setlocal expandtab softtabstop=2 shiftwidth=2 tabstop=2
