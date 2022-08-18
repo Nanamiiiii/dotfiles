@@ -8,7 +8,7 @@ eval "$(starship init zsh)"
 alias vim="nvim"
 alias ls="ls --color=auto"
 export GOBIN=~/.go/bin
-export PATH=$PATH:$GOBIN:~/.local/bin:/var/lib/snapd/snap/bin:/home/linuxbrew/.linuxbrew/bin
+export PATH=$PATH:$GOBIN:~/.local/bin:/var/lib/snapd/snap/bin
 export PATH=$PATH:/opt/riscv/bin:/opt/riscv-musl-10/bin:/opt/riscv-qemu/bin
 export KEYSTONE_SDK_DIR=/opt/keystone-sdk
 
