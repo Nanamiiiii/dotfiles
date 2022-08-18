@@ -1,16 +1,15 @@
-# Vim Mode!!!
+# Vim Mode!!
 bindkey -v
 
 # Starship
 eval "$(starship init zsh)"
 
-# Customize to your needs...
+# Personal Config
 alias vim="nvim"
 alias ls="ls --color=auto"
-export GOBIN=~/.go/bin
-export PATH=$PATH:$GOBIN:~/.local/bin:/var/lib/snapd/snap/bin:/home/linuxbrew/.linuxbrew/bin
-export PATH=$PATH:/opt/riscv/bin:/opt/riscv-musl-10/bin:/opt/riscv-qemu/bin
-export KEYSTONE_SDK_DIR=/opt/keystone-sdk
+export PATH="$PATH:/home/nanami/scripts"
+export GOPATH=~/.go
+export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin:$HOME/.local/bin"
 
 # History
 export HISTFILE=${HOME}/.zsh_history

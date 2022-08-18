@@ -3,15 +3,15 @@ add_newline = true
 command_timeout = 5000
 
 format = """$all"""
-right_format = """$status $cmd_duration $time"""
+right_format = """$status$cmd_duration$time"""
 
 [time]
-format = "[$time]($style)"
+format = "[$time]($style) "
 style = "bold white"
 disabled = false
 
 [cmd_duration]
-format = "[$duration]($style)"
+format = "[$duration]($style) "
 style = "fg:#9ED2C6 bold"
 
 [username]
