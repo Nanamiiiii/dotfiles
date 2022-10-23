@@ -9,7 +9,7 @@ alias vim="nvim"
 alias ls="ls --color=auto"
 export PATH="$PATH:/home/nanami/scripts"
 export GOPATH=~/.go
-export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin:$HOME/.local/bin"
+export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin:$HOME/.local/bin:/opt/riscv/bin:/opt/riscv-openocd/bin"
 
 # History
 export HISTFILE=${HOME}/.zsh_history
