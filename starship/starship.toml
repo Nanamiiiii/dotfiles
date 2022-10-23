@@ -28,3 +28,4 @@ disabled = true
 [hostname]
 format = "[$hostname]($style) "
 style = "fg:#EE82EE bold"
+ssh_only = false
