@@ -144,3 +144,7 @@ end
 EOF
 '''
 
+[[plugins]]
+repo = 'raghur/vim-ghost'
+hook_post_source = "GhostInstall"
+
