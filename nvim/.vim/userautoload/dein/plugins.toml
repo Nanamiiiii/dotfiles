@@ -158,9 +158,3 @@ nnoremap <silent><C-t> :<C-u> Defx<CR>
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-
