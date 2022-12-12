@@ -30,5 +30,8 @@ format = "[$hostname]($style) "
 style = "fg:#EE82EE bold"
 ssh_only = false
 
+[container]
+disabled = true
+
 [fill]
 symbol = " "
