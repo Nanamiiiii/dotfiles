@@ -8,7 +8,7 @@ eval "$(starship init zsh)"
 alias vim="nvim"
 alias ls="ls --color=auto"
 export GOBIN=~/.go/bin
-export PATH=$PATH:$GOBIN:~/.local/bin:/var/lib/snapd/snap/bin:/home/linuxbrew/.linuxbrew/bin
+export PATH=$PATH:$GOBIN:~/.local/bin:/var/lib/snapd/snap/bin:/home/linuxbrew/.linuxbrew/bin:~/scripts
 
 # History
 export HISTFILE=${HOME}/.zsh_history
