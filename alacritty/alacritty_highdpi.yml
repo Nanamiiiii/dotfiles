@@ -6,48 +6,52 @@ window:
   class:
     instance: Alacritty
     general: Alacritty
+  dynamic_title: true
 
 font:
   normal:
-    family: "UDEV Gothic NFLG"
-    style: Regular
+    family: "Fira Code Nerd Font"
+    style: Medium
   bold:
-    family: "UDEV Gothic NFLG"
+    family: "Fira Code Nerd Font"
     style: Bold
   italic:
-    family: "UDEV Gothic NFLG"
+    family: "Fira Code Nerd Font"
     style: Italic
   bold_italic:
-    family: "UDEV Gothic NFLG"
+    family: "Fira Code Nerd Font"
     style: Bold Italic
-  size: 16
+  size: 12
 
-colors:
-  bright:
-    black: '#878A91'
-    blue: '#1081d6'
-    cyan: '#0f7ddb'
-    green: '#1dd361'
-    magenta: '#5350b9'
-    red: '#de352e'
-    white: '#ffffff'
-    yellow: '#f3bd09'
-  cursor:
-    cursor: '#b9b9b9'
-    text: '#101010'
-  normal:
-    black: '#1f1f1f'
-    blue: '#2a84d2'
-    cyan: '#1081d6'
-    green: '#2dc55e'
-    magenta: '#4e5ab7'
-    red: '#f81118'
-    white: '#d6dbe5'
-    yellow: '#ecba0f'
-  primary:
-    background: '#131313'
-    foreground: '#d6dbe5'
-  selection:
-    background: '#1f1f1f'
-    text: '#d6dbe5'
+import:
+  - ~/.config/alacritty/nord.yml
+
+    # colors:
+    #   bright:
+    #     black: '#878A91'
+    #     blue: '#1081d6'
+    #     cyan: '#0f7ddb'
+    #     green: '#1dd361'
+    #     magenta: '#5350b9'
+    #     red: '#de352e'
+    #     white: '#ffffff'
+    #     yellow: '#f3bd09'
+    #   cursor:
+    #     cursor: '#b9b9b9'
+    #     text: '#101010'
+    #   normal:
+    #     black: '#1f1f1f'
+    #     blue: '#2a84d2'
+    #     cyan: '#1081d6'
+    #     green: '#2dc55e'
+    #     magenta: '#4e5ab7'
+    #     red: '#f81118'
+    #     white: '#d6dbe5'
+    #     yellow: '#ecba0f'
+    #   primary:
+    #     background: '#131313'
+    #     foreground: '#d6dbe5'
+    #   selection:
+    #     background: '#1f1f1f'
+    #     text: '#d6dbe5'
 

@@ -1,3 +1,16 @@
+[[plugins]]
+repo = 'arcticicestudio/nord-vim'
+hook_add = '''
+colorscheme nord
+'''
+
+[[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
+
+[[plugins]]
+repo = 'nvim-lualine/lualine.nvim'
+depends = ['nvim-web-devicons']
+
 [[plugins]] 
 repo = 'vim-airline/vim-airline'
 
@@ -6,7 +19,7 @@ repo = 'vim-airline/vim-airline-themes'
 depends = ['vim-airline']
 hook_add = '''
 let g:airline_section_b = '%{strftime("%c")}'
-let g:airline_theme = 'papercolor'
+let g:airline_theme = 'nord'
 let g:airline#extensions#tabline#enabled = 1
 nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
