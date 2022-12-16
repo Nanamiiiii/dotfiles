@@ -11,7 +11,7 @@
 }
 
 window#waybar {
-  background-color: rgba(18, 14, 18, 0.7);
+  background-color: rgba(80, 95, 120, 0.7);
   /* background-color: #120e12; */
   /*  border: 2px solid #5e5662;*/
   color: #c9d8f2;
@@ -209,7 +209,7 @@ label:focus {
 }
 
 #temperature {
-  background-color: #d92365;
+  background-color: #d94465;
   color: #0b0b0b;
   border-radius: 5px;
 }

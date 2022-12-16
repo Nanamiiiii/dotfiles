@@ -2,7 +2,7 @@ window:
   padding:
     x: 8
     y: 6
-  opacity: 0.95
+  opacity: 0.90
   class:
     instance: Alacritty
     general: Alacritty
@@ -10,18 +10,18 @@ window:
 
 font:
   normal:
-    family: "Fira Code Nerd Font"
-    style: Medium
+    family: "FirgeNerd Console"
+    style: Regular
   bold:
-    family: "Fira Code Nerd Font"
+    family: "FirgeNerd Console"
     style: Bold
   italic:
-    family: "Fira Code Nerd Font"
+    family: "FirgeNerd Console"
     style: Italic
   bold_italic:
-    family: "Fira Code Nerd Font"
+    family: "FirgeNerd Console"
     style: Bold Italic
-  size: 12
+  size: 14
 
 import:
   - ~/.config/alacritty/nord.yml

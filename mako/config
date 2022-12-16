@@ -9,17 +9,17 @@ margin=20
 padding=10,10,10,15
 border-size=2
 icon-path=/usr/share/icons/Tela:/usr/share/icons/Tela-dark
-background-color=#292433dd
+background-color=#6272A4dd
 text-color=#d2ced9
-border-color=#d9989c
-border-radius=10
+border-color=#6272A4
+border-radius=5
 default-timeout=10000
 
 [urgency=low]
 border-color=#d2ced9
 
 [urgency=normal]
-border-color=#abbf86
+border-color=#6272A4
 
 [urgency=critical]
 border-color=#d9989c

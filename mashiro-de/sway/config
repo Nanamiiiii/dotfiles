@@ -14,14 +14,14 @@ set $drun wofi -I --show drun | xargs swaymsg exec
 
 default_border pixel 5
 
-output * bg /usr/share/backgrounds/wallpaper7.jpg fill
+output * bg /usr/share/backgrounds/wallpaper8.jpg fill
 
 ### Style
 font "Firge Nerd"
 
 # set inner and outer gaps
 gaps outer 3
-gaps inner 15
+gaps inner 8
 default_border pixel 3
 
 # transparency
@@ -77,7 +77,7 @@ exec_always autotiling
 
 # Load GTK Config
 exec_always ~/scripts/import_gsettings.sh
-exec_always gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
+exec_always gsettings set org.gnome.desktop.wm.preferences theme "Nordic-bluish-accent"
 
 # wob socket
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
@@ -129,6 +129,9 @@ bindsym $mod+Shift+c reload
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+# emoji
+bindsym $super+control+e exec emote
 
 #
 # Moving around:
@@ -244,6 +247,107 @@ for_window [title=".* — 1Password$"] {
 for_window [title="^Vivaldi Settings:.*"] {
     floating enable
     resize set 1000 800
+}
+
+for_window [class="zoom" title="^Zoom Cloud Meetings$"] {
+    floating enable
+    resize set 1000 800
+}
+
+for_window [app_id="zoom" title="^Zoom Cloud Meetings$"] {
+    floating enable
+    resize set 1000 800
+}
+
+for_window [class="zoom" title="^Zoom - Free Account$"] {
+    floating enable
+    resize set 1000 800
+}
+
+for_window [app_id="zoom" title="^Zoom - Free Account$"] {
+    floating enable
+    resize set 1000 800
+}
+
+for_window [class="zoom" title="Settings"] {
+  floating enable
+  resize set 3000 1500
+}
+
+for_window [app_id="zoom" title="Settings"] {
+  floating enable
+  resize set 1200 900
+}
+
+for_window [app_id="zoom" title="zoom"] {
+  floating enable
+}
+
+for_window [class="zoom" title="zoom"] {
+  floating enable
+}
+
+for_window [class="zoom" title="Zoom"] {
+  floating enable
+}
+
+for_window [app_id="zoom" title="zoom_linux_float_message_reminder"] {
+  floating enable
+  sticky enable
+  move down 900 px
+  move right 1575 px
+  border none
+}
+
+for_window [class="zoom" title="Zoom Meetings"] {
+  floating disable
+}
+
+for_window [class="zoom" title="Zoom Webinar"] {
+  floating disable
+}
+
+for_window [app_id="zoom" title="Zoom Webinar"] {
+  floating disable
+}
+
+for_window [class="zoom" title="^Participants"] {
+  floating enable
+  resize set 3000 1500
+}
+
+for_window [class="zoom" title="^Breakout Rooms"] {
+  floating enable
+  resize set 2000 1500
+}
+
+for_window [app_id="zoom" title="as_toolbar"] {
+  floating enable
+  move up 1050 px
+  move left 750 px
+}
+
+for_window [app_id="zoom" title="Recording Alerts"] {
+  floating enable
+}
+
+for_window [app_id="zoom" title="Details"] {
+  floating enable
+}
+
+for_window [app_id="virt-manager" title="Virtual Machine Manager"] {
+    floating enable
+    resize set 1200 900
+}
+
+for_window [class="virt-manager" title="Virtual Machine Manager"] {
+    floating enable
+    resize set 1200 900
+}
+
+for_window [app_id="virt-manager" title="^.+ on QEMU\/KVM$"] {
+    floating disable
+    fullscreen enable
 }
 
 include /etc/sway/config.d/*
