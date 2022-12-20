@@ -376,4 +376,9 @@ for_window [app_id="firefox" title="Firefox — 共有インジケーター"] {
     move left 1220 px
 }
 
+for_window [app_id="pavucontrol" title="^Volume Control$"] {
+    floating enable
+    move position 1600 px 0 px
+}
+
 include /etc/sway/config.d/*
