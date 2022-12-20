@@ -51,6 +51,7 @@
         "max-length": 100,
         "rewrite": {
             "(.*) - Vivaldi":"$1",
+            "(.*) — Mozilla Firefox":"$1",
             "(.*) - NVIM": "$1"
             // "(.*) - (.*)": "$0 $1"
         }
@@ -160,7 +161,7 @@
         "on-click": "pavucontrol"
     },
     "custom/media": {
-        "format": "<span color=\"#9abf86\">{icon}</span> {}",
+        "format": "{icon} {}",
         "return-type": "json",
         "signal": 15,
         //  "min-length": 25,
@@ -174,10 +175,7 @@
         "on-click": "playerctl play-pause",
         "on-scroll-up": "playerctl next",
         "on-scroll-down": "playerctl previous",
-        //  "exec-if": "pgrep spotify",
-        //  "exec": "$HOME/.config/waybar/media.sh 2> /dev/null",
-        // "exec": "~/.config/waybar/mediaplayer.sh" // Incompatible with spotifyd (daemon)
-        "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null"
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"
     },
      "custom/pacman": {
         "format": "{} ",
