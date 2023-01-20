@@ -107,8 +107,8 @@ require('neo-tree').setup {
   }
 }
 EOF
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Neotree | endif
+
+autocmd VimEnter * Neotree 
 nnoremap <silent><C-t> :Neotree toggle<CR>
 '''
 
@@ -250,3 +250,5 @@ nnoremap <silent><C-t> :Neotree toggle<CR>
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
+[[plugins]]
+repo = 'Shougo/deol.nvim'
