@@ -7,21 +7,16 @@ set $down j
 set $up k
 set $right l
 
-set $term ~/.cargo/bin/alacritty
-
-set $menu wofi --show run | xargs swaymsg exec
-set $drun wofi -I --show drun | xargs swaymsg exec
-
 default_border pixel 5
 
 output * bg /usr/share/backgrounds/wallpaper8.jpg fill
 
 ### Style
-font "Firge Nerd"
+font "FirgeNerd 14"
 
 # set inner and outer gaps
 gaps outer 3
-gaps inner 8
+gaps inner 5
 default_border pixel 3
 
 # transparency
@@ -84,6 +79,11 @@ set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 exec mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 
 ### Key bindings
+
+set $term ~/.cargo/bin/alacritty
+
+set $menu wofi --show run | xargs swaymsg exec
+set $drun wofi -I --show drun | xargs swaymsg exec
 
 # media control
 
@@ -379,6 +379,10 @@ for_window [app_id="firefox" title="Firefox — 共有インジケーター"] {
 for_window [app_id="pavucontrol" title="^Volume Control$"] {
     floating enable
     move position 1600 px 0 px
+}
+
+for_window [app_id="org.kde.dolphin" title="^Copying — Dolphin$"] {
+    floating enable
 }
 
 include /etc/sway/config.d/*
