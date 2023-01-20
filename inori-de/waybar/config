@@ -7,23 +7,55 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
     "modules-center": ["sway/window"],
-    "modules-right": ["mpd", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "clock", "tray"],
+    "modules-right": [
+        "pulseaudio", 
+        "network", 
+        "cpu", 
+        "memory", 
+        "temperature", 
+        "keyboard-state", 
+        "battery",
+        "clock", 
+        "tray"
+    ],
     // Modules configuration
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
+    "sway/workspaces": {
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        },
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format":"{icon}",
+        "format-icons": {
+           // "1": "",
+           // "2": "",
+           // "3": "",
+           // "4": "",
+           // "5": "",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+    "sway/window": {
+        "format": "{}",
+        "min-length": 15,
+        "max-length": 100,
+        "rewrite": {
+            "(.*) - Vivaldi":"$1",
+            "(.*) - NVIM": "$1"
+            // "(.*) - (.*)": "$0 $1"
+        }
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -100,28 +132,6 @@
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""]
     },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": [" ", " ", " ", " ", " "]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
@@ -150,17 +160,51 @@
         },
         "on-click": "pavucontrol"
     },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
     "custom/media": {
-        "format": "{icon} {}",
+        "format": "<span color=\"#9abf86\">{icon}</span> {}",
         "return-type": "json",
+        "signal": 15,
+        //  "min-length": 25,
         "max-length": 40,
         "format-icons": {
             "spotify": "",
-            "default": "🎜"
+            "spotifyd": "",
+            "default": ""
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous",
+        //  "exec-if": "pgrep spotify",
+        //  "exec": "$HOME/.config/waybar/media.sh 2> /dev/null",
+        // "exec": "~/.config/waybar/mediaplayer.sh" // Incompatible with spotifyd (daemon)
+        "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null"
+    },
+     "custom/pacman": {
+        "format": "{} ",
+        "interval": 3600,                     // every hour
+        "exec": "checkupdates | wc -l",       // # of updates
+        "exec-if": "exit 0",                  // always run; consider advanced run conditions
+        "on-click": "alacritty -e 'sudo pacman -Syu'; pkill -SIGRTMIN+8 waybar", // update system
+        "signal": 8,
+        //  "tooltip-format": "pacman wants to eat... {}"
     }
 }
 
