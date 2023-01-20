@@ -37,4 +37,4 @@ screenshots
 effect-blur=7x5
 effect-greyscale
 effect-vignette=0.3:0.3
-fade-in=0.5
+fade-in=1.0

@@ -5,3 +5,4 @@ noremap <silent><C-l> <C-w>l
 
 inoremap <C-f> <C-g>U<Right>
 inoremap <C-f><C-f> <C-g>U<ESC><S-a>
+inoremap <silent> jj <ESC>

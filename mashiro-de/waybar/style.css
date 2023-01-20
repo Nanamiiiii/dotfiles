@@ -272,12 +272,12 @@ label:focus {
 }
 
 #custom-media {
-  /*  color: #afd9ad;*/
-  color: #2a5c45;
+  color: #f0bf92;
+  /* color: #2a5c45; */
   /* background-color: #afd9ad; */
   border-radius: 20px;
   padding: 0 10px;
-  border-color: #afd9ad;
+  border-color: #f0bf92;
   border-style: solid;
   border-width: 1.5px;
   margin: 7 0px;
@@ -285,6 +285,12 @@ label:focus {
 
 #custom-media.custom-spotify {
   color: #afd9ad;
+  border-color: #afd9ad;
+}
+
+#custom-media.custom-spotifyd {
+  color: #afd9ad;
+  border-color: #afd9ad;
 }
 
 /*
