@@ -1,26 +1,13 @@
-window:
-  padding:
-    x: 8
-    'y': 6
-  opacity: 0.9
-  class:
-    instance: Alacritty
-    general: Alacritty
-  dynamic_title: true
-font:
-  normal:
-    family: FirgeNerd Console
-    style: Regular
-  bold:
-    family: FirgeNerd Console
-    style: Bold
-  italic:
-    family: FirgeNerd Console
-    style: Italic
-  bold_italic:
-    family: FirgeNerd Console
-    style: Bold Italic
-  size: 14
+# Copyright (c) 2017-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (c) 2017-present Sven Greb <code@svengreb.de>
+
+# Project:    Nord Alacritty
+# Version:    0.1.0
+# Repository: https://github.com/arcticicestudio/nord-alacritty
+# License:    MIT
+# References:
+#   https://github.com/alacritty/alacritty
+
 colors:
   primary:
     background: '#2e3440'

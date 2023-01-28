@@ -1,37 +1,38 @@
 @udev: { font-family: 'UDEV Gothic NFLG'; }
 @noto-cjk: { font-family: 'Noto Sans CJK JP'; }
 @migmix: { font-family: 'MigMix 2P'; }
+@firge: { font-family: 'FirgeNerd'; }
 
 .sidebar-menu {
-    @migmix();
+    @noto-cjk();
 }
 
 .note-list-header {
-    @migmix();
+    @noto-cjk();
 }
 
 .note-list-bar-item {
-    @migmix();
+    @noto-cjk();
 }
 
 .editor-header-layout {
-    @migmix();
+    @noto-cjk();
 }
 
 .editor-meta-layout {
-    @migmix();
+    @noto-cjk();
 }
 
 .mde-preview {
-    @migmix();
+    @noto-cjk();
     h1, h2, h3, h4, h5 {
-        @migmix();
+        @noto-cjk();
     }
     code {
-        @udev();
+        @firge();
     }
     .code-title {
-        @udev();
+        @firge();
     }
 }
 
