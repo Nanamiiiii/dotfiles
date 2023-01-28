@@ -1,173 +1,298 @@
+#[[plugins]]
+#repo = 'arcticicestudio/nord-vim'
+#hook_add = '''
+#colorscheme nord
+#'''
+
 [[plugins]]
-repo = 'arcticicestudio/nord-vim'
+repo = 'Nanamiiiii/vimsence'
 hook_add = '''
-colorscheme nord
+let g:vimsence_small_text = 'NeoVim'
+let g:vimsence_small_image = 'neovim'
+let g:vimsence_editing_details = 'Editing: {}'
+let g:vimsence_editing_state = 'Working on: {}'
+let g:vimsence_file_explorer_text = 'In Neo-tree'
+let g:vimsence_file_explorer_details = 'Exploring files'
+'''
+
+[[plugins]]
+repo = 'williamboman/mason.nvim'
+
+[[plugins]]
+repo = 'williamboman/mason-lspconfig.nvim'
+
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+depends = ['mason.nvim', 'mason-lspconfig.nvim']
+merged = 0
+on_event = 'BufRead'
+hook_source='''
+lua << EOF
+  local nvim_lsp = require('lspconfig')
+  local on_attach = function(client, bufnr)
+    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    -- Mappings.
+    local opts = { noremap=true, silent=true }
+    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+    buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+    buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+    buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+    buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+    -- Set autocommands conditional on server_capabilities
+    if client.server_capabilities.document_highlight then
+      vim.api.nvim_exec([[
+        :hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
+        :hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
+        :hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+        augroup lsp_document_highlight
+          autocmd!
+          autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+          autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+        augroup END
+      ]], false)
+    end
+  end
+  require('mason').setup()
+  require('mason-lspconfig').setup()
+  require("mason-lspconfig").setup_handlers {
+    function(server_name) -- default handler (optional)
+      require("lspconfig")[server_name].setup {
+        on_attach = on_attach,
+      }
+    end
+  }
+EOF
 '''
 
 [[plugins]]
 repo = 'kyazdani42/nvim-web-devicons'
 
 [[plugins]]
-repo = 'nvim-lualine/lualine.nvim'
-depends = ['nvim-web-devicons']
-
-[[plugins]] 
-repo = 'vim-airline/vim-airline'
+repo = 'akinsho/bufferline.nvim'
+hook_add = '''
+set termguicolors
+lua << EOF
+require("bufferline").setup{
+    options = {
+        indicator = {
+            icon = '▎', 
+            style = 'icon',
+        },
+        offsets = {
+            {
+                filetype = "neo-tree",
+                text = " Neotree",
+                text_align = "center",
+                highlight = "Directory",
+                separator = true
+            }
+        },
+        separator_style = "thick"
+    }
+}
+EOF
+nnoremap <C-n> :BufferLineCycleNext<CR>
+nnoremap <C-p> :BufferLineCyclePrev<CR>
+'''
 
 [[plugins]]
-repo = 'vim-airline/vim-airline-themes'
-depends = ['vim-airline']
+repo = 'nvim-lualine/lualine.nvim'
+depends = ['nvim-web-devicons']
 hook_add = '''
-let g:airline_section_b = '%{strftime("%c")}'
-let g:airline_theme = 'nord'
-let g:airline#extensions#tabline#enabled = 1
-nmap <C-p> <Plug>AirlineSelectPrevTab
-nmap <C-n> <Plug>AirlineSelectNextTab
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline_powerline_fonts = 1
+lua << EOF
+require('lualine').setup {
+    options = {
+        disabled_filetypes = {
+            'neo-tree'
+        }
+    }    
+}
+EOF
 '''
+
+[[plugins]]
+repo = 'marko-cerovac/material.nvim'
+hook_add = '''
+lua << EOF
+require('material').setup({
+
+    contrast = {
+        terminal = false, -- Enable contrast for the built-in terminal
+        sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
+        floating_windows = false, -- Enable contrast for floating windows
+        cursor_line = false, -- Enable darker background for the cursor line
+        non_current_windows = false, -- Enable darker background for non-current windows
+        filetypes = {}, -- Specify which filetypes get the contrasted (darker) background
+    },
+
+    styles = { -- Give comments style such as bold, italic, underline etc.
+        comments = { --[[ italic = true ]] },
+        strings = { --[[ bold = true ]] },
+        keywords = { --[[ underline = true ]] },
+        functions = { --[[ bold = true, undercurl = true ]] },
+        variables = {},
+        operators = {},
+        types = {},
+    },
+
+    plugins = { -- Uncomment the plugins that you use to highlight them
+        -- Available plugins:
+        -- "dap",
+        -- "dashboard",
+        -- "gitsigns",
+        -- "hop",
+        -- "indent-blankline",
+        -- "lspsaga",
+        -- "mini",
+        -- "neogit",
+        -- "nvim-cmp",
+        -- "nvim-navic",
+        -- "nvim-tree",
+        "nvim-web-devicons",
+        -- "sneak",
+        -- "telescope",
+        -- "trouble",
+        -- "which-key",
+    },
+
+    disable = {
+        colored_cursor = false, -- Disable the colored cursor
+        borders = false, -- Disable borders between verticaly split windows
+        background = false, -- Prevent the theme from setting the background (NeoVim then uses your terminal background)
+        term_colors = false, -- Prevent the theme from setting terminal colors
+        eob_lines = false -- Hide the end-of-buffer lines
+    },
+
+    high_visibility = {
+        lighter = false, -- Enable higher contrast text for lighter style
+        darker = false -- Enable higher contrast text for darker style
+    },
+
+    lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
+
+    async_loading = true, -- Load parts of the theme asyncronously for faster startup (turned on by default)
+
+    custom_colors = nil, -- If you want to everride the default colors, set this to a function
+
+    custom_highlights = {}, -- Overwrite highlights with your own
+})
+
+vim.g.material_style = "deep ocean"
+EOF
+
+colorscheme material
+'''
+
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
 
 [[plugins]]
-repo = 'vimsence/vimsence'
+repo = 'MunifTanjim/nui.nvim'
 
 [[plugins]]
-repo = "kristijanhusak/defx-git"
+repo = 'nvim-lua/plenary.nvim'
+
+[[plugins]]
+repo = 'nvim-neo-tree/neo-tree.nvim'
+depends = ['nui.nvim', 'plenary.nvim', 'nvim-web-devicons']
 hook_add = '''
-call defx#custom#column('git', 'column_length', 2)
-call defx#custom#column('git', 'indicators', {
-    \ 'Modified'  : '✹',
-    \ 'Staged'    : '✚',
-    \ 'Untracked' : '✭',
-    \ 'Renamed'   : '➜',
-    \ 'Unmerged'  : '═',
-    \ 'Ignored'   : '☒',
-    \ 'Deleted'   : '✖',
-    \ 'Unknown'   : '?'
-    \ })
-'''
+lua << EOF
+require('neo-tree').setup {
+  filesystem = {
+    filtered_items = {
+      visible = true, -- when true, they will just be displayed differently than normal items
+      hide_dotfiles = false,
+      hide_gitignored = false,
+      hide_hidden = false, -- only works on Windows for hidden files/directories
+      hide_by_name = {
+        --"node_modules"
+      },
+      hide_by_pattern = { -- uses glob style patterns
+        --"*.meta",
+        --"*/src/*/tsconfig.json",
+      },
+      always_show = { -- remains visible even if other settings would normally hide it
+        --".gitignored",
+      },
+      never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
+        --".DS_Store",
+        --"thumbs.db"
+      },
+      never_show_by_pattern = { -- uses glob style patterns
+        --".null-ls_*",
+      },
+    },
+    follow_current_file = false, -- This will find and focus the file in the active buffer every
+                                 -- time the current file is changed while the tree is open.
+    group_empty_dirs = false, -- when true, empty folders will be grouped together
+    hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
+                                            -- in whatever position is specified in window.position
+                          -- "open_current",  -- netrw disabled, opening a directory opens within the
+                                            -- window like netrw would, regardless of window.position
+                          -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
+    use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
+                                    -- instead of relying on nvim autocmd events.
+    window = {
+      mappings = {
+        ["<bs>"] = "navigate_up",
+        ["."] = "set_root",
+        ["H"] = "toggle_hidden",
+        ["/"] = "fuzzy_finder",
+        ["D"] = "fuzzy_finder_directory",
+        ["f"] = "filter_on_submit",
+        ["<c-x>"] = "clear_filter",
+        ["[g"] = "prev_git_modified",
+        ["]g"] = "next_git_modified",
+      }
+    }
+  },
+  buffers = {
+    follow_current_file = true, -- This will find and focus the file in the active buffer every
+                                 -- time the current file is changed while the tree is open.
+    group_empty_dirs = true, -- when true, empty folders will be grouped together
+    show_unloaded = true,
+    window = {
+      mappings = {
+        ["bd"] = "buffer_delete",
+        ["<bs>"] = "navigate_up",
+        ["."] = "set_root",
+      }
+    }
+  }
+}
+EOF
 
-[[plugins]]
-repo = "kristijanhusak/defx-icons"
-
-[[plugins]]
-repo = 'Shougo/defx.nvim'
-depends = ['defx-git', 'defx-icons']
-hook_add = '''
-let g:defx_icons_enable_syntax_highlight = 0
-let g:defx_icons_column_length = 2
-let g:defx_icons_directory_icon = ''
-let g:defx_icons_mark_icon = '*'
-let g:defx_icons_copy_icon = ''
-let g:defx_icons_move_icon = ''
-let g:defx_icons_parent_icon = ''
-let g:defx_icons_default_icon = ''
-let g:defx_icons_directory_symlink_icon = ''
-let g:defx_icons_root_opened_tree_icon = ''
-let g:defx_icons_nested_opened_tree_icon = ''
-let g:defx_icons_nested_closed_tree_icon = ''
-
-call defx#custom#column('icon', {
-    \ 'directory_icon': '▸',
-    \ 'opened_icon': '▾',
-    \ 'root_icon': ' ',
-    \ })
-
-call defx#custom#column('filename', {
-    \ 'min_width': 40,
-    \ 'max_width': 40,
-    \ })
-
-call defx#custom#column('mark', {
-    \ 'readonly_icon': '✗',
-    \ 'selected_icon': '✓',
-    \ })
-
-call defx#custom#option('_', {
-    \ 'columns': 'indent:git:icons:filename:type:size:time',
-    \ 'show_ignored_files': 1,
-    \ 'toggle': 1,
-    \ 'resume': 1,
-    \ 'buffer_name': 'defx',
-    \ })
-
-autocmd FileType defx call s:defx_my_settings()
-    function! s:defx_my_settings() abort
-        " Define mappings
-        nnoremap <silent><buffer><expr> <CR>
-        \ defx#do_action('drop')
-        nnoremap <silent><buffer><expr> c
-        \ defx#do_action('copy')
-        nnoremap <silent><buffer><expr> m
-        \ defx#do_action('move')
-        nnoremap <silent><buffer><expr> p
-        \ defx#do_action('paste')
-        nnoremap <silent><buffer><expr> l
-        \ defx#do_action('drop')
-        nnoremap <silent><buffer><expr> E
-        \ defx#do_action('open', 'vsplit')
-        nnoremap <silent><buffer><expr> P
-        \ defx#do_action('preview')
-        nnoremap <silent><buffer><expr> o
-        \ defx#do_action('open_tree', 'toggle')
-        nnoremap <silent><buffer><expr> K
-        \ defx#do_action('new_directory')
-        nnoremap <silent><buffer><expr> N
-        \ defx#do_action('new_file')
-        nnoremap <silent><buffer><expr> M
-        \ defx#do_action('new_multiple_files')
-        nnoremap <silent><buffer><expr> C
-        \ defx#do_action('toggle_columns',
-        \                'mark:indent:icon:filename:type:size:time')
-        nnoremap <silent><buffer><expr> S
-        \ defx#do_action('toggle_sort', 'time')
-        nnoremap <silent><buffer><expr> d
-        \ defx#do_action('remove')
-        nnoremap <silent><buffer><expr> r
-        \ defx#do_action('rename')
-        nnoremap <silent><buffer><expr> !
-        \ defx#do_action('execute_command')
-        nnoremap <silent><buffer><expr> x
-        \ defx#do_action('execute_system')
-        nnoremap <silent><buffer><expr> yy
-        \ defx#do_action('yank_path')
-        nnoremap <silent><buffer><expr> .
-        \ defx#do_action('toggle_ignored_files')
-        nnoremap <silent><buffer><expr> ;
-        \ defx#do_action('repeat')
-        nnoremap <silent><buffer><expr> h
-        \ defx#do_action('cd', ['..'])
-        nnoremap <silent><buffer><expr> ~
-        \ defx#do_action('cd')
-        nnoremap <silent><buffer><expr> q
-        \ defx#do_action('quit')
-        nnoremap <silent><buffer><expr> <Space>
-        \ defx#do_action('toggle_select') . 'j'
-        nnoremap <silent><buffer><expr> *
-        \ defx#do_action('toggle_select_all')
-        nnoremap <silent><buffer><expr> j
-        \ line('.') == line('$') ? 'gg' : 'j'
-        nnoremap <silent><buffer><expr> k
-        \ line('.') == 1 ? 'G' : 'k'
-        nnoremap <silent><buffer><expr> <C-l>
-        \ defx#do_action('redraw')
-        nnoremap <silent><buffer><expr> <C-g>
-        \ defx#do_action('print')
-        nnoremap <silent><buffer><expr> cd
-        \ defx#do_action('change_vim_cwd')
-    endfunction
-
-autocmd BufWritePost * call defx#redraw()
-autocmd BufEnter * call defx#redraw()
-
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Defx | endif
-nnoremap <silent><C-t> :<C-u> Defx<CR>
-
+autocmd VimEnter * Neotree 
+nnoremap <silent><C-t> :Neotree toggle<CR>
 '''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+hook_add = '''
+nnoremap <silent><C-o> :<C-u>Deol -toggle -split=floating<CR>
+tnoremap <ESC>   <C-\><C-n>
+'''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugin]]
+repo = 'Shougo/pum.vim'
 

@@ -1,8 +1,8 @@
 window:
   padding:
     x: 8
-    y: 6
-  opacity: 0.90
+    'y': 6
+  opacity: 0.9
   class:
     instance: Alacritty
     general: Alacritty

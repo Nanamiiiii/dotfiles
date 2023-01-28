@@ -1,5 +1,6 @@
 # Vim Mode!!!
 bindkey -v
+bindkey "\e[3~" delete-char
 
 # Starship
 eval "$(starship init zsh)"
