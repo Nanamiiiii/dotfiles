@@ -1,0 +1,29 @@
+max-history=5
+sort=-time
+on-button-middle=exec makoctl menu -n "$id" wofi -d -p 'Select action: '
+font=MigMix 2P 11
+layer=overlay
+width=400
+height=130
+margin=20
+padding=10,10,10,15
+border-size=2
+icon-path=/usr/share/icons/Tela:/usr/share/icons/Tela-dark
+background-color=#6272A4dd
+text-color=#d2ced9
+border-color=#6272A4
+border-radius=5
+default-timeout=10000
+
+[urgency=low]
+border-color=#d2ced9
+
+[urgency=normal]
+border-color=#6272A4
+
+[urgency=critical]
+border-color=#d9989c
+on-notify=exec mpv --keep-open=no /usr/share/sounds/freedesktop/stereo/message-new-instant.oga
+
+[mode=silent]
+invisible=1

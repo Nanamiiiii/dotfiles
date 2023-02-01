@@ -1,0 +1,53 @@
+* {
+  font-family: Neon Zone;
+  font-size: 15px;
+  color: @fg_color;
+}
+
+window {
+  margin: 0px;
+  border-radius: 5px;
+  background-color: @theme_base_color;
+  box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.3),
+    0px 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+#input {
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  background-color: @bg_color;
+}
+
+#inner-box {
+  border: none;
+}
+
+#outer-box {
+  border: none;
+}
+
+#scroll {
+  margin: 0px;
+}
+
+#text {
+  margin: 15px;
+}
+
+#entry {
+  margin: 5px;
+}
+
+#entry:selected {
+  background-color: @unfocused_borders;
+  border: none;
+}
+
+#selected #text {
+  /*color: @fg_color;*/
+}
+
+/* #img */
+
+/* #unselected */
