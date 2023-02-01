@@ -51,3 +51,5 @@ colors:
     background: '#1f1f1f'
     text: '#d6dbe5'
 
+keybinding:
+  - { key: Yen, chars: "\x5c" }
