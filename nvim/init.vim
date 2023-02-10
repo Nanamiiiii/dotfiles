@@ -7,8 +7,6 @@ if $compatible
 endif
 
 set rtp+=~/.vim/
-runtime! userautoload/init/*.vim
-runtime! userautoload/dein/*.vim
 
 let g:tex_flavor = 'latex'
 let s:dein_dir = expand('~/.cache/dein')
@@ -36,4 +34,7 @@ endif
 if dein#check_install()
   call dein#install()
 endif
+
+runtime! userautoload/init/*.vim
+runtime! userautoload/dein/*.vim
 
