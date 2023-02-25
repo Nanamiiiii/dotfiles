@@ -2,7 +2,8 @@ import gi
 gi.require_version('Playerctl', '2.0')
 gi.require_version('Secret', '1')
 gi.require_version('Notify', '0.7')
-from gi.repository import Playerctl, Secret, Notify
+gi.require_version('GdkPixbuf', '2.0')
+from gi.repository import Playerctl, Secret, Notify, GdkPixbuf
 import logging
 import os
 import pathlib
@@ -13,7 +14,7 @@ from spotipy.oauth2 import SpotifyClientCredentials
 logger = logging.getLogger(__name__)
 
 CRED_SCHEMA = Secret.Schema.new("org.freedesktop.Secret.Generic",
-    Secret.SchemaFlags.NONE,
+    Secret.SchemaFlags.DONT_MATCH_NAME,
     {
         "application": Secret.SchemaAttributeType.STRING,
         "type": Secret.SchemaAttributeType.STRING,
@@ -35,12 +36,15 @@ def notify_info(info, track_id):
         else:
             logger.error("Failed to cache coverimage track_id:%s", track_id)
 
+    cover_buf = GdkPixbuf.Pixbuf.new_from_file(cover_path)
+
     Notify.init("Spotify")
     notification = Notify.Notification.new(
         "{} - {}".format(info["title"], ",".join(info["artists"])),
         info["album"],
-        cover_path
+        "spotify"
     )
+    notification.set_image_from_pixbuf(cover_buf)
     notification.set_urgency(Notify.Urgency.NORMAL)
 
     # Pickup notification id

@@ -1,0 +1,9 @@
+configuration {
+    font: "Firge Nerd 14";
+    icon-theme: "Tela-circle-nord-dark";
+    modi: "combi,drun,run,window";
+    combi-modi: "drun,run,window";
+    show-icons: true;
+}
+@theme "nanami"
+
