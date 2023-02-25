@@ -2,6 +2,9 @@
 bindkey -v
 bindkey "\e[3~" delete-char
 
+# editor
+export EDITOR=nvim
+
 # Starship
 eval "$(starship init zsh)"
 
