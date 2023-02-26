@@ -25,6 +25,8 @@ set $sysmenu rofi -show p -modi p:~/.config/rofi/rofi_power_menu
 set $primary DP-4
 set $secondary DP-0
 
+set $lockcmd i3lock-fancy --font "Neon-Zone" --grayscale --nofork
+
 ### Style
 
 # font
@@ -55,7 +57,7 @@ exec "setxkbmap -layout us"
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1;
 
 # kde wallet
-exec --no-startup-id /usr/lib/pam_kwallet_init
+exec /usr/lib/pam_kwallet_init
 
 # IME
 exec fcitx5 -d
@@ -81,6 +83,13 @@ exec --no-startup-id picom -b
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
+# Screen lock
+exec_always --no-startup-id xset dpms 0 0 600 &
+exec --no-startup-id xss-lock --transfer-sleep-lock -- $lockcmd
+
+# spotifyd 
+exec --no-startup-id spotifyd
+
 ### keybindings
 
 ## terminal
@@ -105,14 +114,17 @@ bindsym $mod+shift+comma exec playerctl --player playerctld position -10
 bindsym $mod+shift+slash exec playerctl --player playerctld position +10
 
 ## Screenshots
-bindsym $super+shift+a exec --no-startup-id maim "~/Pictures/ScreenShots$(date +%Y%m%d%H%M%S).png"
-bindsym $super+shift+s exec --no-startup-id maim --window $(xdotool getactivewindow) "~/Pictures/ScreenShots/$(date +%Y%m%d%H%M%S).png"
-bindsym $super+shift+f exec --no-startup-id maim --select "~/Pictures/ScreenShots/$(date +%Y%m%d%H%M%S).png"
+bindsym $super+shift+a exec --no-startup-id maim "$HOME/Pictures/ScreenShots/ScreenShot_$(date +%Y%m%d%H%M%S).png"
+bindsym $super+shift+s exec --no-startup-id maim --window $(xdotool getactivewindow) "$HOME/Pictures/ScreenShots/ScreenShot_$(date +%Y%m%d%H%M%S).png"
+bindsym $super+shift+f exec --no-startup-id maim --select "$HOME/Pictures/ScreenShots/ScreenShot_$(date +%Y%m%d%H%M%S).png"
 
 ## Clipboard Screenshots
 bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym $super+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym $super+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
+## lock
+bindsym ctrl+shift+L exec $lockcmd
 
 ## reload
 bindsym $mod+shift+r restart
