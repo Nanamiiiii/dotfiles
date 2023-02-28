@@ -120,7 +120,7 @@ function install_neovim() {
     git clone "$NEOVIM_REPO" "$SOURCE_DIR/neovim"
 
     echo -e "\033[1m==> Entering into source directory...\033[0m"
-    cd "$SOURCE_DIR" || { echo "Failed to change directory."; exit 1; }
+    cd "$SOURCE_DIR/neovim" || { echo "Failed to change directory."; exit 1; }
 
     echo -e "\033[1m==> Building neovim...\033[0m"
     make CMAKE_BUILD_TYPE=RelWithDebInfo || exit 1
