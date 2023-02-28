@@ -119,11 +119,17 @@ function install_neovim() {
 
     git clone "$NEOVIM_REPO" "$SOURCE_DIR/neovim"
 
+    echo -e "\033[1m==> Entering into source directory...\033[0m"
+    cd "$SOURCE_DIR" || { echo "Failed to change directory."; exit 1; }
+
     echo -e "\033[1m==> Building neovim...\033[0m"
-    (cd "$SOURCE_DIR" && make CMAKE_BUILD_TYPE=RelWithDebInfo) || exit 1
+    make CMAKE_BUILD_TYPE=RelWithDebInfo || exit 1
 
     echo -e "\033[1m==> Installing neovim...\033[0m"
-    (cd "$SOURCE_DIR" && sudo make install) || exit 1
+    sudo make install || exit 1
+
+    echo -e "\033[1m==> Getting back working directory...\033[0m"
+    cd "$WORK_DIR" || { echo "Failed to change directory."; exit 1; }
 }
 
 function install_dein() {
@@ -160,21 +166,21 @@ function install_deno() {
     echo -e "\033[1m[Install]\033[0m deno"
     ! command -v deno > /dev/null 2>&1 || { echo "  -> deno already installed. skipping."; return; }
     echo -e "\033[1m==> Execute install script.\033[0m"
-    curl -fsSL https://deno.land/x/install/install.sh | sh
+    (curl -fsSL https://deno.land/x/install/install.sh | sh) || exit 1
 }
 
 function install_npm() {
     echo -e "\033[1m[Install]\033[0m node.js/npm"
     ! command -v npm > /dev/null 2>&1 || { echo "  -> npm already installed. skipping."; return; }
     echo -e "\033[1m==> Installing n & node.js with n-install.\033[0m"
-    curl -L https://bit.ly/n-install | bash
+    (curl -L https://bit.ly/n-install | bash) || exit 1
 }
 
 function install_pynvim() {
     echo -e "\033[1m[Install]\033[0m pynvim"
     ! pip list | grep -x -E '^pynvi\s+[0-9]+\.[0-9]+\.[0-9]+$' > /dev/null || { echo "  -> pynvim already installed. skipping."; return; }
     echo -e "\033[1m==> Installing pynvim...\033[0m"
-    pip install pynvim 2> /dev/null || python -m pip install pynvim 2> /dev/null || python3 -m pip install pynvim 2> /dev/null
+    pip install pynvim 2> /dev/null || python -m pip install pynvim 2> /dev/null || python3 -m pip install pynvim 2> /dev/null || exit 1
 }
 
 function configure_neovim() {
