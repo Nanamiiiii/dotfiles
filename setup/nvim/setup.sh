@@ -119,17 +119,11 @@ function install_neovim() {
 
     git clone "$NEOVIM_REPO" "$SOURCE_DIR/neovim"
 
-    echo -e "\033[1m==> Entering into source directory...\033[0m"
-    cd "$SOURCE_DIR" || { echo "Failed to change directory."; exit 1; }
-
     echo -e "\033[1m==> Building neovim...\033[0m"
-    make CMAKE_BUILD_TYPE=RelWithDebInfo
+    (cd "$SOURCE_DIR" && make CMAKE_BUILD_TYPE=RelWithDebInfo) || exit 1
 
     echo -e "\033[1m==> Installing neovim...\033[0m"
-    sudo make install
-
-    echo -e "\033[1m==> Getting back working directory...\033[0m"
-    cd "$WORK_DIR" || { echo "Failed to change directory."; exit 1; }
+    (cd "$SOURCE_DIR" && sudo make install) || exit 1
 }
 
 function install_dein() {
