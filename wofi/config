@@ -20,7 +20,7 @@ show=drun
 width=35%
       #Specifies the menu width in pixels or percent  of  screen  size,  default  is  50%. Pixels are used unless the number ends with a %.
 
-height=30%
+height=50%
       #Specifies  the  menu  height  in  pixels or percent of screen size, default is 40%.
       #Pixels are used unless the number ends with a %.
 

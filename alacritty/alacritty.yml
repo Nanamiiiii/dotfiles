@@ -2,25 +2,25 @@ window:
   padding:
     x: 8
     y: 6
-  opacity: 0.9
+  opacity: 1.0
   class:
     instance: Alacritty
     general: Alacritty
 
 font:
   normal:
-    family: "UDEV Gothic NFLG"
+    family: "FirgeNerd Console"
     style: Regular
   bold:
-    family: "UDEV Gothic NFLG"
+    family: "FirgeNerd Console"
     style: Bold
   italic:
-    family: "UDEV Gothic NFLG"
+    family: "FirgeNerd Console"
     style: Italic
   bold_italic:
-    family: "UDEV Gothic NFLG"
+    family: "FirgeNerd Console"
     style: Bold Italic
-  size: 12
+  size: 10
 
 schemes:
   nord: &nord

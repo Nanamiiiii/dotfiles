@@ -7,17 +7,17 @@ set $down j
 set $up k
 set $right l
 
-set $term ~/.cargo/bin/alacritty
+set $term alacritty
 
-set $menu wofi --show run | xargs swaymsg exec
-set $drun wofi -I --show drun | xargs swaymsg exec
+set $menu wofi --show run -p ">_" | xargs swaymsg exec
+set $drun wofi -I --show drun -p Applications | xargs swaymsg exec
 
 default_border pixel 5
 
-output * bg /usr/share/backgrounds/wallpaper.jpg fill
+output * bg ~/Pictures/wallpaper.jpg fill
 
 ### Style
-font "Firge Nerd"
+font "FirgeNerd 10"
 
 # set inner and outer gaps
 gaps outer 3
@@ -59,7 +59,10 @@ input 1278:33:HHKB-Hybrid_3_Keyboard {
 exec xsettingsd
 
 # polkit
-exec /usr/libexec/polkit-gnome-authentication-agent-1
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# kde wallet
+exec /usr/lib/pam_kwallet_init
 
 # IME
 exec fcitx5 -d
@@ -89,8 +92,8 @@ exec swayidle -w \
 exec_always autotiling
 
 # Load GTK Config
-exec_always ~/scripts/import_gsettings.sh
-exec_always gsettings set org.gnome.desktop.wm.preferences theme "Nordic-bluish-accent"
+exec_always ~/.config/sway/import_gsettings.sh
+exec_always gsettings set org.gnome.desktop.wm.preferences theme "TokyoNight"
 
 # wob socket
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
@@ -98,9 +101,9 @@ exec mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 
 ### Key bindings
 
-bindsym $super+b exec firefox
+bindsym $mod+b exec firefox
 
-bindsym $super+e exec dolphin
+bindsym $mod+g exec dolphin
 
 # media control
 
@@ -132,7 +135,7 @@ bindsym $super+shift+Print exec grimshot --notify copy window
 bindsym $mod+Return exec $term
 
 # Kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # Start your launcher
 bindsym $mod+d exec $menu
@@ -146,6 +149,9 @@ bindsym $mod+Shift+c reload
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+# powermenu
+bindsym $mod+Shift+q exec ~/.config/wofi/wofi_power.sh
 
 # emoji
 bindsym $super+control+e exec emote

@@ -3,15 +3,15 @@
 /* General Configuration */
 * {
   border: none;
-  border-radius: 0px;
+  /*border-radius: 0px;*/
   /* `otf-font-awesome` is required to be installed for icons */
-  font-family: FirgeNerd Console, UDEV Gothic NFLG, Roboto Mono, sans-serif;
-  font-size: 15px;
+  font-family: FiraCode NF, FirgeNerd Console, UDEV Gothic NFLG, Roboto Mono, sans-serif;
+  font-size: 14px;
   /*  min-height: 24px;*/
 }
 
 window#waybar {
-  background-color: rgba(80, 95, 120, 0.7);
+  background-color: rgba(26, 27, 38, 0.9);
   /* background-color: #120e12; */
   /*  border: 2px solid #5e5662;*/
   color: #c9d8f2;
@@ -43,10 +43,11 @@ window#waybar.firefox {
 }*/
 
 #workspaces button {
-  padding: 0px 10px;
+  padding: 0px 0px;
   font-weight: bold;
-  font-size: 18px;
-  color: #a0c2f2;
+  font-size: 14px;
+  color: #565f89;
+  border-radius: 10px;
   /* Use box-shadow instead of border so the text isn't offset */
   /*  box-shadow: inset 0 -3px transparent;*/
 }
@@ -69,7 +70,7 @@ window#waybar.firefox {
 #workspaces button.urgent {
   /* background-color: #d92365;
   color: #120e12;*/
-  color: #d92365;
+  color: #f7768e;
 }
 
 #mode {
@@ -107,7 +108,7 @@ button:disabled {
 #mode,
 #idle_inhibitor,
 #mpd {
-  padding: 0 15px;
+  padding: 0 14px;
   /*  margin: 0 4px;*/
 }
 
@@ -119,12 +120,12 @@ button:disabled {
 #network,
 #pulseaudio,
 #mpd {
-  margin: 7px 0px;
+  margin: 0px 0px;
 }
 
 #window,
 #workspaces {
-  margin: 5 0px;
+  margin: 0px 0px;
 }
 
 .modules-left > widget:first-child > #workspaces {
@@ -137,27 +138,27 @@ button:disabled {
 }
 
 #window {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 #clock {
-  /*background-color: #f2d8e9;
-  color: #0b0b0b;*/
-  margin: 10px;
-  border-radius: 5px;
-  font-size: 16px;
+  background-color: #414868;
+  /*color: #0b0b0b;*/
+  padding: 5px 30px;
+  /*border-radius: 5px;*/
+  font-size: 14px;
 }
 
 
 #battery {
-    background-color: #f2d8e9;
+    background-color: #9aa5ce;
     color: #000000;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
 }
 
 #battery.charging, #battery.plugged {
     color: #f2d8e9;
-    background-color: #26A65B;
+    background-color: #9ece6a;
 }
 
 @keyframes blink {
@@ -202,18 +203,18 @@ label:focus {
 }
 
 #cpu {
-  background-color: #d9919e;
+  background-color: #7dcfff;
   color: #0b0b0b;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   /* min-width: 11em;*/
   /*  border-bottom-left-radius:30;
     border-top-left-radius:30;*/
 }
 
 #temperature {
-  background-color: #d94465;
+  background-color: #bb9af7;
   color: #0b0b0b;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
 }
 
 #temperature.critical {
@@ -221,9 +222,9 @@ label:focus {
 }
 
 #memory {
-  background-color: #a48abf;
+  background-color: #7aa2f7;
   color: #0b0b0b;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   /*  background-color: #9b59b6;*/
   /*  background-color: #eba0aa;*/
 }
@@ -231,16 +232,16 @@ label:focus {
 #disk {
   background-color: #a65682;
   color: #0b0b0b;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   /*  background-color: #964B00;*/
   /*  background-color: #50fa7b;*/
   /*  background-color: #50fa7b;*/
 }
 
 #network {
-  background-color: #96bfd9;
+  background-color: #2ac3de;
   color: #0b0b0b;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   /*  background-color: #2980b9;*/
   /*  background-color: #8be9fd;*/
   /*  background-color: #f27999;*/
@@ -260,9 +261,9 @@ label:focus {
 */
 
 #pulseaudio {
-  background-color: #afd9ad;
+  background-color: #b4f9f8;
   color: #0b0b0b;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   /*  border-top-right-radius: 30;
     border-bottom-right-radius: 30;*/
   /*border-bottom-right-radius: 30;*/
@@ -275,14 +276,14 @@ label:focus {
 
 #custom-media {
   /*  color: #afd9ad;*/
-  color: #2a5c45;
+  color: #afd9ad;
   /* background-color: #afd9ad; */
   border-radius: 20px;
   padding: 0 10px;
   border-color: #afd9ad;
   border-style: solid;
   border-width: 1.5px;
-  margin: 7 0px;
+  margin: 2 0px;
 }
 
 #custom-media.custom-spotify {
@@ -334,7 +335,7 @@ label:focus {
   background: #00b093;
   /*  color: #740864;*/
   color: #f2d8e9;
-  border-radius: 30;
+  /*border-radius: 30;*/
   padding: 0 7px;
   padding-right: 15px;
   /*border-top-right-radius: 15px;
