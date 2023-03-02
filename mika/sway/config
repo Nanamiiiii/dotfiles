@@ -404,4 +404,8 @@ for_window [app_id="firefox" title="^Firefox — Sharing Indicator$"] {
     move position 6px 1085px
 }
 
+for_window [class="Alacritty"] {
+    opacity 0.90
+}
+
 include /etc/sway/config.d/*

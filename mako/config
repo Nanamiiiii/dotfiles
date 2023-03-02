@@ -1,17 +1,17 @@
 max-history=5
 sort=-time
-on-button-middle=exec makoctl menu -n "$id" wofi -d -p 'Select action: '
+on-button-middle=exec makoctl menu -n "$id" wofi -d -p 'Action: '
 font=MigMix 2P 11
 layer=overlay
 width=400
 height=130
 margin=20
 padding=10,10,10,15
-border-size=2
-icon-path=/usr/share/icons/Tela:/usr/share/icons/Tela-dark
-background-color=#6272A4dd
+border-size=1
+icon-path=~/.local/share/icons/Tela-circle-purple-dark:~/.local/share/icons/Tela-circle-purple
+background-color=#1a1b26
 text-color=#d2ced9
-border-color=#6272A4
+border-color=#414868
 border-radius=5
 default-timeout=10000
 

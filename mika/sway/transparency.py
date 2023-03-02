@@ -15,6 +15,15 @@ import signal
 import sys
 from functools import partial
 
+def set_visible(focused):
+    app_id = focused.app_id # wayland
+    win_class = focused.window_class # xwayland
+    # Add application specific opacity configuration
+    if app_id == "Alacritty" or win_class == "Alacritty":
+        focused.command("opacity 0.95")
+    else:
+        focused.command("opacity 1")
+
 
 def on_window_focus(inactive_opacity, ipc, event):
     global prev_focused
@@ -24,7 +33,7 @@ def on_window_focus(inactive_opacity, ipc, event):
     workspace = ipc.get_tree().find_focused().workspace().num
 
     if focused.id != prev_focused.id:  # https://github.com/swaywm/sway/issues/2859
-        focused.command("opacity 1")
+        set_visible(focused)
         if workspace == prev_workspace:
             prev_focused.command("opacity " + inactive_opacity)
         prev_focused = focused
@@ -40,7 +49,7 @@ def remove_opacity(ipc):
 
 
 if __name__ == "__main__":
-    transparency_val = "0.95"
+    transparency_val = "0.8"
 
     parser = argparse.ArgumentParser(
         description="This script allows you to set the transparency of unfocused windows in sway."
