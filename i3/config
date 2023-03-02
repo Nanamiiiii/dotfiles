@@ -278,9 +278,9 @@ for_window [class="zoom" title="Details"] floating enable
 
 for_window [class="zoom" title="^Zoom$"] floating enable, resize set 406 371
 
-for_window [class="virt-manager" title="Virtual Machine Manager"] floating enable, resize set 1200 900
+for_window [class="Virt-manager" title="Virtual Machine Manager"] floating enable, resize set 1200 900
 
-for_window [class="virt-manager" title="^.+ on QEMU\/KVM$"] floating disable, fullscreen enable
+for_window [class="Virt-manager" title="^.+ on QEMU\/KVM$"] floating disable, fullscreen enable
 
 for_window [class="inkdrop" title="^Preferences$"] floating enable, resize set 1200 800
 
@@ -293,4 +293,6 @@ for_window [class="dolphin" title="^Copying — Dolphin$"] floating enable
 for_window [class="dolphin" title="^Moving — Dolphin$"] floating enable
 
 for_window [instance="nitrogen" class="Nitrogen"] floating enable
+
+for_window [class="Docker Desktop"] floating enable
 

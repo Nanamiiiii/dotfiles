@@ -224,7 +224,6 @@ require('neo-tree').setup {
 }
 EOF
 
-autocmd VimEnter * Neotree 
 nnoremap <silent><C-t> :Neotree toggle<CR>
 '''
 
