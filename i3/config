@@ -18,14 +18,13 @@ set $right l
 
 set $term alacritty
 
-set $menu rofi -show combi
-set $drun rofi -show drun 
-set $sysmenu rofi -show p -modi p:~/.config/rofi/rofi_power_menu
+set $menu rofi -show combi -display-combi "󰞷"
+set $drun rofi -show drun -display-drun "Applications"
+set $sysmenu rofi -show p -modi p:~/.config/rofi/rofi_power_menu 
 
 set $primary DP-4
 set $secondary DP-0
 
-set $lockcmd i3lock-fancy --font "Neon-Zone" --grayscale --nofork
 
 ### Style
 
@@ -84,16 +83,19 @@ exec --no-startup-id picom -b
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Screen lock
-exec_always --no-startup-id xset dpms 0 0 600 &
-exec --no-startup-id xss-lock --transfer-sleep-lock -- $lockcmd
-
-# spotifyd 
-exec --no-startup-id spotifyd
+exec_always --no-startup-id xset dpms 0 0 900 &
+exec xautolock -time 10 -locker '"i3lock-fancy --font Neon-Zone --nofork"' -detectsleep &
 
 ### keybindings
 
 ## terminal
 bindsym $mod+Return exec $term
+
+## web browser
+bindsym $mod+b exec firefox
+
+## file manager
+bindsym $mod+g exec dolphin
 
 ## kill focused
 bindsym $mod+q kill
@@ -124,7 +126,7 @@ bindsym $super+Print exec --no-startup-id maim --window $(xdotool getactivewindo
 bindsym $super+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 ## lock
-bindsym ctrl+shift+L exec $lockcmd
+bindsym ctrl+shift+L exec i3lock-fancy --font Neon-Zone --nofork 
 
 ## reload
 bindsym $mod+shift+r restart
