@@ -49,10 +49,10 @@ jobs:
       id: meta
       uses: docker/metadata-action@v4
       with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        images: ${{ env.REGISTRY }}/nanamiiiii/${{ env.IMAGE_NAME }}
         tags: |
           type=raw,value=latest
-          type=schedule,pattern={{date 'YYYYMMDD-HHmmss' tz='Asia/Tokyo'}}
+          type=raw,value={{date 'YYYYMMDD' tz='Asia/Tokyo'}}-{{sha}}
           
     - name: Build and push Docker image
       id: build-and-push
