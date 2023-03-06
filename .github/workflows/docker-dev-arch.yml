@@ -1,0 +1,68 @@
+name: Build ArchLinux based devenv image
+
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - "nvim/*"
+      - "zsh/docker/*"
+      - "tmux/tmux.conf"
+      - "starship/starship.toml"
+      - "docker/Dockerfile.arch"
+      
+  schedule:
+    - cron: "0 0 */7 * *"
+  
+  workflow_dispatch: 
+    
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: nanamiiiii-devenv-arch
+  
+jobs:
+
+  package:
+
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+      
+    - name: Log into registry ghcr.io
+      uses: docker/login-action@v2
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+      
+    - name: Extract Docker metadata
+      id: meta
+      uses: docker/metadata-action@v4
+      with:
+        images: ${{ env.REGISTRY }}/nanamiiiii/${{ env.IMAGE_NAME }}
+        tags: |
+          type=raw,value=latest
+          type=raw,value={{date 'YYYYMMDD' tz='Asia/Tokyo'}}-{{sha}}
+          
+    - name: Build and push Docker image
+      id: build-and-push
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        file: docker/Dockerfile.arch
+        target: runner
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
