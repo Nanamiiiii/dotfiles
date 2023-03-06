@@ -8,9 +8,14 @@ export EDITOR=nvim
 # Starship
 eval "$(starship init zsh)"
 
-# Customize to your needs...
+# Aliases
 alias vim="nvim"
-alias ls="ls --color=auto"
+alias ls="exa"
+alias lsa="exa --icons -la"
+alias df="duf"
+alias ps="procs"
+
+# ENV
 export GOBIN=~/.go/bin
 export PATH=$PATH:$GOBIN:~/.local/bin:/var/lib/snapd/snap/bin:/home/linuxbrew/.linuxbrew/bin:~/scripts
 
@@ -26,4 +31,7 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # zinit
 source ~/.myzinit
+
+# zoxide
+eval "$(zoxide init zsh)"
 
