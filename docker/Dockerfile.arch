@@ -18,12 +18,12 @@ USER $USER_NAME
 WORKDIR /home/$USER_NAME/
 
 # Copy shell config
-COPY ./zsh/docker/zshrc .zshrc
-COPY ./zsh/docker/zshenv .zshenv
-COPY ./zsh/docker/zprofile .zprofile
-COPY ./zsh/docker/myzinit .myzinit
-COPY ./starship/starship.toml .config/
-COPY ./tmux/tmux.conf .tmux.conf
+COPY --chown=$USER_NAME ./zsh/docker/zshrc .zshrc
+COPY --chown=$USER_NAME ./zsh/docker/zshenv .zshenv
+COPY --chown=$USER_NAME ./zsh/docker/zprofile .zprofile
+COPY --chown=$USER_NAME ./zsh/docker/myzinit .myzinit
+COPY --chown=$USER_NAME ./starship/starship.toml .config/
+COPY --chown=$USER_NAME ./tmux/tmux.conf .tmux.conf
 RUN git clone https://github.com/tmux-plugins/tpm ./.tmux/plugins/tpm
 
 # rustup & tools made with rust
@@ -46,10 +46,10 @@ RUN git clone https://github.com/neovim/neovim && \
 FROM base AS runner
 WORKDIR /home/$USER_NAME/
 # Copy cargo artifacts
-COPY --from=builder /home/$USER_NAME/.cargo/bin ./.cargo/bin 
+COPY --from=builder --chown=$USER_NAME /home/$USER_NAME/.cargo/bin ./.cargo/bin 
 
 # Copy neovim artifacts
-COPY --from=builder /home/$USER_NAME/src/neovim ./src/neovim
+COPY --from=builder --chown=$USER_NAME /home/$USER_NAME/src/neovim ./src/neovim
 RUN cd ./src/neovim && sudo make install
 RUN sudo rm -rf src
 
@@ -62,8 +62,8 @@ RUN rm -rf yay
 
 # Configure neovim
 RUN git clone https://github.com/Shougo/dein.vim ./.cache/dein/repos/github.com/Shougo/dein.vim 
-COPY ./nvim/.vim ./.vim
-COPY ./nvim/init.vim .config/nvim/
+COPY --chown=$USER_NAME ./nvim/.vim ./.vim
+COPY --chown=$USER_NAME ./nvim/init.vim .config/nvim/
 RUN pip install pynvim
 
 # Change shell
