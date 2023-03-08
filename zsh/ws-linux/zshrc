@@ -10,6 +10,7 @@ eval "$(starship init zsh)"
 
 # Aliases
 alias vim="nvim"
+alias cd="z"
 alias ls="exa"
 alias lsa="exa --icons -la"
 alias df="duf"
