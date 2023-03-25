@@ -26,7 +26,7 @@ hook_post_update = "TSUpdate"
 hook_source ='''
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
+  ensure_installed = {"c", "rust", "go", "lua", "python"},
   sync_install = false,
   auto_install = true,
   highlight = {
@@ -122,4 +122,22 @@ repo = 'rafamadriz/friendly-snippets'
 [[plugins]]
 repo = 'raghur/vim-ghost'
 hook_post_source = "GhostInstall"
+
+[[plugins]]
+repo = 'petertriho/nvim-scrollbar'
+on_event = [
+    "BufWinEnter",
+    "CmdwinLeave",
+    "TabEnter",
+    "TermEnter",
+    "TextChanged",
+    "VimResized",
+    "WinEnter",
+    "WinScrolled",
+]
+hook_source = '''
+lua << EOF
+require("scrollbar").setup()
+EOF
+'''
 

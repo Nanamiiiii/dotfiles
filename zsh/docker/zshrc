@@ -10,15 +10,13 @@ eval "$(starship init zsh)"
 
 # Aliases
 alias vim="nvim"
-alias cd="z"
 alias ls="exa"
 alias lsa="exa --icons -la"
 alias df="duf"
 alias ps="procs"
 
 # ENV
-export GOBIN=~/.go/bin
-export PATH=$PATH:$GOBIN:~/.local/bin:/var/lib/snapd/snap/bin:/home/linuxbrew/.linuxbrew/bin:~/scripts
+export PATH=$PATH:~/.local/bin:~/scripts
 
 # History
 export HISTFILE=${HOME}/.zsh_history

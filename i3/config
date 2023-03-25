@@ -83,8 +83,8 @@ exec --no-startup-id picom -b
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Screen lock
-exec_always --no-startup-id xset dpms 0 0 900 &
-exec xautolock -time 10 -locker '"i3lock-fancy --font Neon-Zone --nofork"' -detectsleep &
+exec_always --no-startup-id xset dpms 0 0 900
+exec xautolock -time 10 -locker "~/.config/i3/screenlock.sh" -detectsleep
 
 ### keybindings
 
@@ -252,7 +252,8 @@ bindsym $mod+r mode "resize"
 ### window specific
 
 # Window Type
-for_window [title=".* — 1Password$"] floating enable, resize set 1200 900
+for_window [class="1Password"] floating enable
+for_window [class="1Password" title=".* — 1Password$"] floating enable, resize set 1200 900
 
 for_window [title="^Vivaldi Settings:.*"] floating enable, resize set 1000 800
 
