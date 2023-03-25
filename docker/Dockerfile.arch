@@ -1,0 +1,79 @@
+# ArchLinux based container devenv
+FROM archlinux:base-devel AS base
+RUN pacman-key --init && pacman -Syyu --noconfirm
+RUN pacman -S --noconfirm zsh git tmux duf deno npm python-pip llvm cmake unzip ninja
+
+# User Setup
+ARG USER_NAME=nanami
+ARG GROUP_NAME=nanami
+ARG UID=1000
+ARG GID=1000 
+
+RUN groupadd -g $GID $GROUP_NAME && \
+    useradd -m -s /bin/bash -u $UID -g $GID $USER_NAME
+RUN usermod -aG wheel $USER_NAME
+RUN sed -i -e 's/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers 
+
+USER $USER_NAME
+WORKDIR /home/$USER_NAME/
+
+# Copy shell config
+COPY --chown=$USER_NAME ./zsh/docker/zshrc .zshrc
+COPY --chown=$USER_NAME ./zsh/docker/zshenv .zshenv
+COPY --chown=$USER_NAME ./zsh/docker/zprofile .zprofile
+COPY --chown=$USER_NAME ./zsh/docker/myzinit .myzinit
+COPY --chown=$USER_NAME ./starship/starship.toml .config/
+COPY --chown=$USER_NAME ./tmux/tmux.conf .tmux.conf
+RUN git clone https://github.com/tmux-plugins/tpm ./.tmux/plugins/tpm
+
+# rustup & tools made with rust
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rustup.sh && \
+    sh rustup.sh -y && \
+    rm -f rustup.sh
+SHELL ["/bin/bash", "-l", "-c"]
+
+FROM base AS builder
+RUN cargo install --locked starship && \
+    cargo install --locked zoxide && \
+    cargo install bat exa fd-find ripgrep
+
+WORKDIR /home/$USER_NAME/src
+# Install neovim
+RUN git clone https://github.com/neovim/neovim && \
+    cd neovim && \
+    CMAKE_BUILD_TYPE=RelWithDebInfo make
+
+FROM base AS runner
+WORKDIR /home/$USER_NAME/
+# Copy cargo artifacts
+COPY --from=builder --chown=$USER_NAME /home/$USER_NAME/.cargo/bin ./.cargo/bin 
+
+# Copy neovim artifacts
+COPY --from=builder --chown=$USER_NAME /home/$USER_NAME/src/neovim ./src/neovim
+RUN cd ./src/neovim && sudo make install
+RUN sudo rm -rf src
+
+# Setup yay
+RUN git clone https://aur.archlinux.org/yay.git && \
+    cd yay && \
+    makepkg -si --noconfirm
+
+RUN rm -rf yay
+
+# Configure neovim
+RUN git clone https://github.com/Shougo/dein.vim ./.cache/dein/repos/github.com/Shougo/dein.vim 
+COPY --chown=$USER_NAME ./nvim/.vim ./.vim
+COPY --chown=$USER_NAME ./nvim/init.vim .config/nvim/
+RUN pip install pynvim
+
+# Change shell
+USER root
+RUN chsh -s /bin/zsh $USER_NAME
+
+USER $USER_NAME
+ENV USER=$USER_NAME
+ENV TZ=Asia/Tokyo
+ENV TERM=screen-256color
+
+CMD ["/bin/zsh"]
+
