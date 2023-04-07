@@ -83,8 +83,8 @@ exec --no-startup-id picom -b
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Screen lock
-exec_always --no-startup-id xset dpms 0 0 900 &
-exec xautolock -time 10 -locker '"i3lock-fancy --font Neon-Zone --nofork"' -detectsleep &
+exec_always --no-startup-id xset dpms 0 0 900
+exec_always xautolock -time 5 -locker "~/.config/i3/lock.sh" -detectsleep
 
 ### keybindings
 
@@ -126,10 +126,17 @@ bindsym $super+Print exec --no-startup-id maim --window $(xdotool getactivewindo
 bindsym $super+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 ## lock
-bindsym ctrl+shift+L exec i3lock-fancy --font Neon-Zone --nofork 
+bindsym ctrl+shift+L exec ~/.config/i3/lock.sh 
 
 ## reload
 bindsym $mod+shift+r restart
+
+## Keyboard Control
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 ### window focus
 
