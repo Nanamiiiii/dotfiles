@@ -20,7 +20,7 @@ font:
   bold_italic:
     family: "FirgeNerd Console"
     style: Bold Italic
-  size: 10
+  size: 14
 
 schemes:
   nord: &nord

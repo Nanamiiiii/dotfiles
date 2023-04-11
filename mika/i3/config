@@ -24,7 +24,9 @@ set $sysmenu rofi -show p -modi p:~/.config/rofi/rofi_power_menu
 
 #set $primary DP-4
 #set $secondary DP-0
-
+set $internal eDP-1-1
+set $ext01 DP-1
+set $ext02 HDMI-0
 
 ### Style
 
@@ -62,10 +64,10 @@ exec /usr/lib/pam_kwallet_init
 exec fcitx5 -d
 
 # nitrogen (wallpaper)
-exec --no-startup-id nitrogen --restore
+exec_always --no-startup-id nitrogen --restore
 
 # notification
-exec deadd-notification-center
+exec_always ~/.config/i3/notify_center.sh
 
 # media controller
 exec playerctld daemon
@@ -187,8 +189,14 @@ set $ws10 "10:S5"
 #workspace $ws10 output $secondary
 
 # switch focused display
-#bindsym $mod+shift+w focus output $primary
-#bindsym $mod+shift+c focus output $secondary
+bindsym $mod+shift+s focus output $internal
+bindsym $mod+shift+w focus output $ext01
+bindsym $mod+shift+c focus output $ext02
+
+# move workspace
+bindsym $mod+ctrl+s move workspace to output $internal
+bindsym $mod+ctrl+w move workspace to output $ext01
+bindsym $mod+ctrl+c move workspace to output $ext02
 
 # Switch to workspace
 bindsym $mod+1 workspace $ws1
