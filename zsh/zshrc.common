@@ -1,0 +1,103 @@
+# Key bindings
+bindkey -e
+bindkey "\e[3~" delete-char
+
+# ENV
+export PATH=$PATH:~/.local/bin:~/.scripts
+
+# Local settings
+source ~/.zshrc.local
+
+# editor
+if ( $(command -v nvim > /dev/null) )
+then
+    export EDITOR=nvim
+    alias vim="nvim"
+else
+    echo "You need to build & install neovim."
+fi
+
+# Rustup
+if [[ ! -f $HOME/.cargo/bin/rustup ]]; then
+    echo "Rustup is not installed. Installing..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    source "$HOME/.cargo/env"
+fi
+
+# Check rust applications
+if ( ! $(command -v starship > /dev/null) )
+then
+    echo "starship is not found in PATH. Installing..."
+    cargo install starship --locked
+fi
+
+if ( ! $(command -v deno > /dev/null) )
+then
+    echo "deno is not installed. Installing..."
+    cargo install deno --locked
+fi
+
+if ( ! $(command -v exa > /dev/null) )
+then
+    echo "exa is not installed. Installing..."
+    cargo install exa
+fi
+
+if ( ! $(command -v zoxide > /dev/null) )
+then
+    echo "zoxide is not installed. Installing..."
+    cargo install zoxide
+fi
+
+if ( ! $(command -v bat > /dev/null) )
+then
+    echo "bat is not installed. Installing..."
+    cargo install bat
+fi
+
+if ( ! $(command -v fd > /dev/null) )
+then
+    echo "fd is not installed. Installing..."
+    cargo install fd-find
+fi
+
+if ( ! $(command -v dust > /dev/null) )
+then
+    echo "dust is not installed. Installing..."
+    cargo install du-dust
+fi
+
+if ( ! $(command -v procs > /dev/null) )
+then
+    echo "procs is not installed. Installing..."
+    cargo install procs
+fi
+
+if ( ! $(command -v rg > /dev/null) )
+then
+    echo "ripgrep is not installed. Installing..."
+    cargo install ripgrep
+fi
+
+# Starship
+eval "$(starship init zsh)"
+
+# Aliases
+alias lsa="exa --icons -la"
+
+# History
+export HISTFILE=${HOME}/.zsh_history
+export HISTSIZE=1000
+export SAVEHIST=100000
+setopt hist_ignore_dups
+setopt EXTENDED_HISTORY
+
+# For extra completion
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+# zinit
+source ~/.myzinit
+
+# zoxide
+eval "$(zoxide init zsh)"
+
