@@ -9,20 +9,27 @@ endif
 set rtp+=~/.vim/
 
 let g:tex_flavor = 'latex'
-let s:dein_dir = expand('~/.cache/dein')
-let s:dein_repo_dir = expand('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-set rtp+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-
+let $CACHE = expand('~/.cache')
+if !isdirectory($CACHE)
+  call mkdir($CACHE, 'p')
+endif
 if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  let s:dein_dir = fnamemodify('dein.vim', ':p')
+  if !isdirectory(s:dein_dir)
+    let s:dein_dir = $CACHE .. '/dein/repos/github.com/Shougo/dein.vim'
+    if !isdirectory(s:dein_dir)
+      execute '!git clone https://github.com/Shougo/dein.vim' s:dein_dir
+    endif
   endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+  execute 'set runtimepath^=' .. substitute(
+        \ fnamemodify(s:dein_dir, ':p') , '[/\\]$', '', '')
 endif
 
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
+let s:dein_repo_dir = expand('~/.cache/dein')
+
+if dein#load_state(s:dein_repo_dir)
+  call dein#begin(s:dein_repo_dir)
 
   call dein#load_toml('~/.vim/userautoload/dein/plugins.toml', {'lazy': 0})
   call dein#load_toml('~/.vim/userautoload/dein/lazy_plug.toml', {'lazy': 1})

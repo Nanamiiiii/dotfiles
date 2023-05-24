@@ -12,5 +12,8 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch the bar
 polybar -q main -c "$DIR"/config.ini &
-polybar -q sub_hdmi -c "$DIR"/config.ini &
-polybar -q sub_edp -c "$DIR"/config.ini &
+DP_EXT=`xrandr | grep "DP-1 connected" | wc -l`
+if [ $DP_EXT -eq 1 ]; then
+    polybar -q sub_hdmi -c "$DIR"/config.ini &
+    polybar -q sub_edp -c "$DIR"/config.ini &
+fi

@@ -63,6 +63,9 @@ exec /usr/lib/pam_kwallet_init
 # IME
 exec fcitx5 -d
 
+# SKK dict server
+exec yaskkserv2 --google-japanese-input=last ~/.local/share/fcitx5/skk/dictionary.yaskkserv2
+
 # nitrogen (wallpaper)
 exec_always --no-startup-id nitrogen --restore
 
@@ -89,6 +92,14 @@ exec_always --no-startup-id xset dpms 0 0 900
 exec_always xautolock -time 5 -locker "~/.config/i3/lock.sh" -detectsleep
 
 ### keybindings
+## Built-in keyboard setting
+## disable
+bindsym $mod+y exec ~/.config/i3/disable-keyboard.sh
+## enable
+bindsym $mod+shift+y exec ~/.config/i3/enable-keyboard.sh
+
+# Display Settings
+bindsym $mod+m exec ~/.config/i3/display.sh
 
 ## terminal
 bindsym $mod+Return exec $term
@@ -137,8 +148,8 @@ bindsym $mod+shift+r restart
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
 
 ### window focus
 
@@ -321,3 +332,8 @@ for_window [instance="nitrogen" class="Nitrogen"] floating enable
 
 for_window [class="Docker Desktop"] floating enable
 
+for_window [class="fcitx5-config-qt"] floating enable
+
+for_window [class="Termius"] floating enable
+
+for_window [class="kclock"] floating enable
