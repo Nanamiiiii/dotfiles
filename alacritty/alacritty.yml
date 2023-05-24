@@ -20,7 +20,14 @@ font:
   bold_italic:
     family: "FirgeNerd Console"
     style: Bold Italic
-  size: 10
+  size: 14
+
+shell:
+  program: /bin/zsh
+  args:
+   - -l
+   - -c
+   - 'tmux a -t main || tmux new -s main'
 
 schemes:
   nord: &nord

@@ -24,7 +24,9 @@ set $sysmenu rofi -show p -modi p:~/.config/rofi/rofi_power_menu
 
 #set $primary DP-4
 #set $secondary DP-0
-
+set $internal eDP-1-1
+set $ext01 DP-1
+set $ext02 HDMI-0
 
 ### Style
 
@@ -61,11 +63,14 @@ exec /usr/lib/pam_kwallet_init
 # IME
 exec fcitx5 -d
 
+# SKK dict server
+exec yaskkserv2 --google-japanese-input=last ~/.local/share/fcitx5/skk/dictionary.yaskkserv2
+
 # nitrogen (wallpaper)
-exec --no-startup-id nitrogen --restore
+exec_always --no-startup-id nitrogen --restore
 
 # notification
-exec deadd-notification-center
+exec_always ~/.config/i3/notify_center.sh
 
 # media controller
 exec playerctld daemon
@@ -87,6 +92,14 @@ exec_always --no-startup-id xset dpms 0 0 900
 exec_always xautolock -time 5 -locker "~/.config/i3/lock.sh" -detectsleep
 
 ### keybindings
+## Built-in keyboard setting
+## disable
+bindsym $mod+y exec ~/.config/i3/disable-keyboard.sh
+## enable
+bindsym $mod+shift+y exec ~/.config/i3/enable-keyboard.sh
+
+# Display Settings
+bindsym $mod+m exec ~/.config/i3/display.sh
 
 ## terminal
 bindsym $mod+Return exec $term
@@ -135,8 +148,8 @@ bindsym $mod+shift+r restart
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
 
 ### window focus
 
@@ -187,8 +200,14 @@ set $ws10 "10:S5"
 #workspace $ws10 output $secondary
 
 # switch focused display
-#bindsym $mod+shift+w focus output $primary
-#bindsym $mod+shift+c focus output $secondary
+bindsym $mod+shift+s focus output $internal
+bindsym $mod+shift+w focus output $ext01
+bindsym $mod+shift+c focus output $ext02
+
+# move workspace
+bindsym $mod+ctrl+s move workspace to output $internal
+bindsym $mod+ctrl+w move workspace to output $ext01
+bindsym $mod+ctrl+c move workspace to output $ext02
 
 # Switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -313,3 +332,8 @@ for_window [instance="nitrogen" class="Nitrogen"] floating enable
 
 for_window [class="Docker Desktop"] floating enable
 
+for_window [class="fcitx5-config-qt"] floating enable
+
+for_window [class="Termius"] floating enable
+
+for_window [class="kclock"] floating enable
