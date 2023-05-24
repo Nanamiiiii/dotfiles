@@ -1,0 +1,12 @@
+#!/bin/sh
+SOURCE_DIR=$HOME/src/neovim
+
+if [ -d "$SOURCE_DIR" ]; then
+    git -C "$SOURCE_DIR" pull
+else
+    git clone https://github.com/neovim/neovim.git "$SOURCE_DIR"
+fi
+
+make -C "$SOURCE_DIR" CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make -C "$SOURCE_DIR" install
+

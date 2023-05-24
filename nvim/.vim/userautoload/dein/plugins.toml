@@ -243,6 +243,3 @@ repo = 'airblade/vim-gitgutter'
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 
-[[plugin]]
-repo = 'Shougo/pum.vim'
-

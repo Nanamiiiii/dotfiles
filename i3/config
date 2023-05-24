@@ -61,6 +61,9 @@ exec /usr/lib/pam_kwallet_init
 # IME
 exec fcitx5 -d
 
+# SKK dict server
+exec yaskkserv2 --google-japanese-input=last --google-suggest --google-cache-filename=/tmp/google_cache.yaskkserv2 /home/nanami/.local/share/fcitx5/skk/dictionary.yaskkserv2
+
 # nitrogen (wallpaper)
 exec --no-startup-id nitrogen --restore
 
@@ -306,4 +309,12 @@ for_window [class="dolphin" title="^Moving — Dolphin$"] floating enable
 for_window [instance="nitrogen" class="Nitrogen"] floating enable
 
 for_window [class="Docker Desktop"] floating enable
+
+for_window [class="fcitx5-config-qt"] floating enable
+
+for_window [class="Termius"] floating enable
+
+for_window [class="kcalc"] floating enable
+
+for_window [class="kclock"] floating enable
 

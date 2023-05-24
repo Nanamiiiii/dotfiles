@@ -36,3 +36,6 @@ source ~/.myzinit
 # zoxide
 eval "$(zoxide init zsh)"
 
+# Load local config
+source ~/.zshrc.local
+
