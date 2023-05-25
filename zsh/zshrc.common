@@ -83,6 +83,7 @@ fi
 eval "$(starship init zsh)"
 
 # Aliases
+alias ls="ls --color=auto"
 alias lsa="exa --icons -la"
 
 # History
