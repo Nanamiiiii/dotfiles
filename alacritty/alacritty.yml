@@ -9,16 +9,16 @@ window:
 
 font:
   normal:
-    family: "FirgeNerd Console"
+    family: "Firge Console Nerd Font"
     style: Regular
   bold:
-    family: "FirgeNerd Console"
+    family: "Firge Console Nerd Font"
     style: Bold
   italic:
-    family: "FirgeNerd Console"
+    family: "Firge Console Nerd Font"
     style: Italic
   bold_italic:
-    family: "FirgeNerd Console"
+    family: "Firge Console Nerd Font"
     style: Bold Italic
   size: 14
 
