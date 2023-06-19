@@ -244,9 +244,12 @@ repo = 'hrsh7th/completion-snippet'
 [[plugins]]
 repo = 'rafamadriz/friendly-snippets'
 
+#[[plugins]]
+#repo = 'raghur/vim-ghost'
+#hook_post_source = "GhostInstall"
+
 [[plugins]]
-repo = 'raghur/vim-ghost'
-hook_post_source = "GhostInstall"
+repo = 'gamoutatsumi/dps-ghosttext.vim'
 
 [[plugins]]
 repo = 'petertriho/nvim-scrollbar'

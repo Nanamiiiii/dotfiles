@@ -31,7 +31,7 @@ set $ext02 HDMI-0
 ### Style
 
 # font
-font FirgeNerd 14
+font Firge Nerd Font 14
 
 # set inner and outer gaps
 gaps outer 3
