@@ -1,6 +1,6 @@
 configuration {
     font: "Firge Nerd 14";
-    icon-theme: "Tela-circle-nord-dark";
+    icon-theme: "Fluent-dark";
     modi: "combi,drun,run,window";
     combi-modi: "drun,run,window";
     show-icons: true;

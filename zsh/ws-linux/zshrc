@@ -1,4 +1,4 @@
 # Local shell config
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+#export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 export GOBIN=~/.go/bin
 export PATH=$PATH:$GOBIN:/var/lib/snapd/snap/bin:/home/linuxbrew/.linuxbrew/bin

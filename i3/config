@@ -29,7 +29,7 @@ set $secondary DP-0
 ### Style
 
 # font
-font FirgeNerd 14
+font Firge Nerd Font 14
 
 # set inner and outer gaps
 gaps outer 3
@@ -86,8 +86,8 @@ exec --no-startup-id picom -b
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Screen lock
-exec_always --no-startup-id xset dpms 0 0 900
-exec xautolock -time 10 -locker "~/.config/i3/screenlock.sh" -detectsleep
+exec_always --no-startup-id xset dpms 900 900 900
+exec xautolock -time 10 -locker "~/.config/i3/screenlock.sh" -detectsleep 
 
 ### keybindings
 
@@ -130,6 +130,12 @@ bindsym $super+Shift+Print exec --no-startup-id maim --select | xclip -selection
 
 ## lock
 bindsym ctrl+shift+L exec i3lock-fancy --font Neon-Zone --nofork 
+
+## Display Off
+bindsym $super+shift+L exec xset dpms force off
+
+## Toggle Auto Sleep
+bindsym $super+L exec ~/.config/i3/toggle_autosleep.sh 
 
 ## reload
 bindsym $mod+shift+r restart
