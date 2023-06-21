@@ -250,6 +250,7 @@ repo = 'rafamadriz/friendly-snippets'
 
 [[plugins]]
 repo = 'gamoutatsumi/dps-ghosttext.vim'
+depends = ['denops.vim']
 
 [[plugins]]
 repo = 'petertriho/nvim-scrollbar'

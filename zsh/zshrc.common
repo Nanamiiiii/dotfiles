@@ -5,9 +5,6 @@ bindkey "\e[3~" delete-char
 # ENV
 export PATH=$PATH:~/.local/bin:~/.scripts
 
-# Local settings
-source ~/.zshrc.local
-
 # editor
 if ( $(command -v nvim > /dev/null) )
 then
@@ -16,6 +13,11 @@ then
 else
     echo "You need to build & install neovim."
 fi
+
+
+################
+# Installation #
+################
 
 # Rustup
 if [[ ! -f $HOME/.cargo/bin/rustup ]]; then
@@ -79,7 +81,12 @@ then
     cargo install ripgrep
 fi
 
-# Starship
+#######################
+# End of installation #
+#######################
+
+
+# Starship init
 eval "$(starship init zsh)"
 
 # Aliases

@@ -9,18 +9,14 @@ window:
   dynamic_title: true
 font:
   normal:
-    family: FirgeConsole Nerd Font
-    style: Regular
+    family: HackGen Console NF
   bold:
-    family: FirgeConsole Nerd Font
-    style: Bold
+    family: HackGen Console NF
   italic:
-    family: FirgeConsole Nerd Font
-    style: Italic
+    family: HackGen Console NF
   bold_italic:
-    family: FirgeConsole Nerd Font
-    style: Bold Italic
-  size: 16
+    family: HackGen Console NF
+  size: 18
 
 shell:
   program: /bin/zsh
