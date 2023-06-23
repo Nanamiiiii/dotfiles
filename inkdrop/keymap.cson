@@ -6,6 +6,7 @@
     'ctrl-K': 'sidetoc:width-increase'
     'ctrl-0': 'sidetoc:width-reset'
     'ctrl-t': 'sidetoc:wraptext-toggle'
+    'ctrl-shift-e': 'view:toggle-preview'
 
 '.mde-preview':
     'ctrl-n': 'sidetoc:jump-next'

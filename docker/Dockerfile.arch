@@ -1,7 +1,7 @@
 # ArchLinux based container devenv
 FROM archlinux:base-devel AS base
 RUN pacman-key --init && pacman -Syyu --noconfirm
-RUN pacman -S --noconfirm zsh git tmux duf deno npm python-pip llvm cmake unzip ninja
+RUN pacman -S --noconfirm zsh git tmux duf deno npm python-pip llvm cmake unzip ninja python-pynvim
 
 # User Setup
 ARG USER_NAME=nanami
@@ -64,7 +64,6 @@ RUN rm -rf yay
 RUN git clone https://github.com/Shougo/dein.vim ./.cache/dein/repos/github.com/Shougo/dein.vim 
 COPY --chown=$USER_NAME ./nvim/.vim ./.vim
 COPY --chown=$USER_NAME ./nvim/init.vim .config/nvim/
-RUN pip install pynvim
 
 # Change shell
 USER root
