@@ -13,6 +13,8 @@ local is_windows = wezterm.target_triple:find("windows") -- windows
 local is_linux = wezterm.target_triple:find("linux")     -- linux
 
 -- Shell
+-- Linux / macOS: default shell
+-- Windows: PowerShell Core (F**k cmd.exe)
 if is_windows then
     -- config.default_prog = { 'C:\\Program Files\\nu\\bin\\nu.exe' } -- nushell
     config.default_prog = { 'C:\\Program Files\\PowerShell\\7\\pwsh.exe', '-nologo' } -- powershell
@@ -78,6 +80,14 @@ config.hide_tab_bar_if_only_one_tab = true
 
 -- Tab bar
 config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
+
+-- Hide Titlebar
+if is_macos then
+    config.window_decorations = "RESIZE | MACOS_FORCE_ENABLE_SHADOW"
+else
+    config.window_decorations = "RESIZE"
+end
 
 -- Key bindings
 local act = wezterm.action
@@ -88,6 +98,14 @@ config.leader = {
 }
 
 config.keys = {
+    {
+        key = "s",
+        mods = "LEADER",
+        action = act.SendKey {
+            key = "s",
+            mods = "CTRL",
+        },
+    },
     {
         key = "c",
         mods = "LEADER",
@@ -115,12 +133,12 @@ config.keys = {
     },
 
     {
-        key = "v",
+        key = "%",
         mods = "LEADER",
         action = act.SplitHorizontal { domain = "CurrentPaneDomain" }
     },
     {
-        key = "s",
+        key = "v",
         mods = "LEADER",
         action = act.SplitVertical { domain = "CurrentPaneDomain" }
     },
