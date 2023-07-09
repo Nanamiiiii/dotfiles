@@ -27,9 +27,6 @@ return {
     {
         'gamoutatsumi/dps-ghosttext.vim',
         dependencies = 'vim-denops/denops.vim',
-        cmd = {
-            "GhostStart"
-        },
     },
 }
 
