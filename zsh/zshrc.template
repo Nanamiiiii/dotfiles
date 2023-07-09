@@ -1,0 +1,3 @@
+# Load Common Config
+source ~/.zshrc.common
+
