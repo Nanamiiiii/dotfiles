@@ -61,9 +61,7 @@ RUN git clone https://aur.archlinux.org/yay.git && \
 RUN rm -rf yay
 
 # Configure neovim
-RUN git clone https://github.com/Shougo/dein.vim ./.cache/dein/repos/github.com/Shougo/dein.vim 
-COPY --chown=$USER_NAME ./nvim/.vim ./.vim
-COPY --chown=$USER_NAME ./nvim/init.vim .config/nvim/
+COPY --chown=$USER_NAME ./nvim .config/nvim
 
 # Change shell
 USER root
