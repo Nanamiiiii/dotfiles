@@ -16,7 +16,7 @@ set $down j
 set $up k
 set $right l
 
-set $term alacritty
+set $term wezterm
 
 set $menu rofi -show combi -display-combi "󰞷"
 set $drun rofi -show drun -display-drun "Applications"
@@ -29,7 +29,7 @@ set $secondary DP-0
 ### Style
 
 # font
-font Firge Nerd Font 14
+font HackGen Console NF 14
 
 # set inner and outer gaps
 gaps outer 3
