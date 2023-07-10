@@ -53,7 +53,7 @@ else
 end
 
 -- Color Scheme
-config.color_scheme = 'tokyonight_night'
+config.color_scheme = 'iceberg-dark'
 
 -- Opacity
 config.window_background_opacity = 0.90
