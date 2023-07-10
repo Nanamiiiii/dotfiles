@@ -1,6 +1,6 @@
 -- plugins/lsp.lua
 
-local setup = function()
+local lsp_setup = function()
     local nvim_lsp = require('lspconfig')
     local on_attach = function(client, bufnr)
         local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -50,6 +50,17 @@ local setup = function()
     })
 end
 
+local null_setup = function ()
+    local null_ls = require("null-ls")
+    null_ls.setup({
+        sources = {
+            null_ls.builtins.formatting.stylua,
+            null_ls.builtins.diagnostics.eslint,
+            null_ls.builtins.completion.spell,
+        },
+    })
+end
+
 return {
     {
         'neovim/nvim-lspconfig',
@@ -58,7 +69,12 @@ return {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
         },
-        config = setup,
+        config = lsp_setup,
+    },
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        event = "BufReadPre",
+        config = null_setup,
     },
 }
 

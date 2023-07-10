@@ -1,6 +1,9 @@
 -- keymap.lua
 local keymap = vim.api.nvim_set_keymap
 
+-- mapleader
+vim.g.mapleader = " "
+
 -- Options
 local norm_opt = { noremap = true, silent = true }
 local term_opt = { silent = true }

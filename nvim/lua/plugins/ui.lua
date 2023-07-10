@@ -15,7 +15,7 @@ return {
                     separator_style = 'slant'
                 }
             }
-            
+
             local opts = { silent = true, noremap = true }
             local keymap = vim.api.nvim_set_keymap
             keymap("n", "<C-n>", ":BufferLineCycleNext<CR>", opts)
@@ -30,6 +30,7 @@ return {
                 disabled_filetypes = {
                     'neo-tree',
                 },
+                theme = 'iceberg_dark',
             }
         },
     },

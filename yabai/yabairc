@@ -39,6 +39,7 @@ yabai -m rule --add app="^Docker Desktop$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Finder$" title="^Connect to Server$" manage=off
 yabai -m rule --add app="^Finder$" title="^Connecting to Server$" manage=off
+yabai -m rule --add app="^Finder$" title="^.* Info$" manage=off
 yabai -m rule --add app="^Inkdrop$" title="^Preferences$" manage=off
 
 echo "yabai configuration loaded.."
