@@ -68,9 +68,6 @@ return {
                 "CmdlineChanged",
             })
 
-            vim.cmd([[inoremap <silent><expr> <TAB> ddc#map#pum_visible() ? '<C-n>' : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ? '<TAB>' : ddc#map#manual_complete()]])
-            vim.cmd([[inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>']])
-
             vim.fn['ddc#enable']()
         end,
     },

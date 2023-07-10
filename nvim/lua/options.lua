@@ -20,6 +20,7 @@ local options = {
     updatetime = 500,
     timeoutlen = 500,
     termguicolors = true,
+    pumheight = 15,
 }
 
 for k, v in pairs(options) do
