@@ -8,7 +8,22 @@ return {
         lazy = false,
         dependencies = { 
             'vim-denops/denops.vim',
-            'delphinus/skkeleton_indicator.nvim',
+            {
+                'delphinus/skkeleton_indicator.nvim',
+                config = function ()
+                    vim.api.nvim_set_hl(0, "SkkeletonIndicatorEiji",
+                      { fg = "#82c9f5", bg = "#1d2840", bold = true })
+                    vim.api.nvim_set_hl(0, "SkkeletonIndicatorHira",
+                      { fg = "#1d2840", bg = "#82c9f5", bold = true })
+                    require("skkeleton_indicator").setup({
+                        eijiText = "en",
+                        hiraText = "hira",
+                        kataText = "kana",
+                        hankataText = "h-kana",
+                        zenkakuText = "z-en",
+                    })
+                end,
+            },
         },
         init = function ()
             -- keymap

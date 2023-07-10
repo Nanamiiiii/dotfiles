@@ -41,9 +41,16 @@ return {
                 },
                 formatting = {
                     format = lspkind.cmp_format({
-                        mode = 'symbol',
-                        maxwidth = 50,
+                        mode = 'symbol_text',
+                        maxwidth = 80,
                         ellipsis_char = '...',
+                        menu = {
+                            nvim_lsp = "[LSP]",
+                            vsnip = "[Snip]", 
+                            buffer = "[Buf]",
+                            path = "[Path]",
+                            skkeleton = "[SKK]",
+                        },
                     })
                 }
             })
@@ -51,6 +58,16 @@ return {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = {
                     { name = 'buffer' },
+                },
+                formatting = {
+                    format = lspkind.cmp_format({
+                        mode = 'symbol_text',
+                        maxwidth = 80,
+                        ellipsis_char = '...',
+                        menu = {
+                            buffer = "[Buf]",
+                        },
+                    })
                 }
             })
             cmp.setup.cmdline(":", {
@@ -58,6 +75,17 @@ return {
                 sources = {
                     { name = "path" },
                     { name = "cmdline" },
+                },
+                formatting = {
+                    format = lspkind.cmp_format({
+                        mode = 'symbol_text',
+                        maxwidth = 80,
+                        ellipsis_char = '...',
+                        menu = {
+                            path = "[Path]",
+                            cmdline = "[CMD]",
+                        },
+                    })
                 }
             })
         end,
