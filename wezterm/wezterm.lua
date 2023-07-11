@@ -85,7 +85,7 @@ config.tab_bar_at_bottom = true
 -- Hide Titlebar
 if is_macos then
     config.window_decorations = "RESIZE | MACOS_FORCE_ENABLE_SHADOW"
-else
+elseif is_linux then
     config.window_decorations = "RESIZE"
 end
 
