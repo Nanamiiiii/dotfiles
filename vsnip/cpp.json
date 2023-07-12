@@ -1,0 +1,17 @@
+{
+    "doxygen-src": {
+        "prefix": ["doxsrc", "/**"],
+        "body": [
+            "/**",
+            " * @file $TM_FILENAME",
+            " * @author $1 ($2)",
+            " * @brief $3",
+            " * @version $4",
+            " * @date $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+            " *",
+            " */"
+        ],
+        "description": "doxygen source comment"
+    }
+}
+

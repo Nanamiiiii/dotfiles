@@ -21,7 +21,11 @@ return {
             { "<ESC>", [[<C-\><C-n>]], mode = "t", silent = true },
         },
     },
-    'airblade/vim-gitgutter',
+    --'airblade/vim-gitgutter',
+    {
+        'lewis6991/gitsigns.nvim',
+        config = true,
+    },
     { 'vim-denops/denops.vim', lazy = true },
     { 'lambdalisue/gin.vim', dependencies = 'vim-denops/denops.vim' },
     {
