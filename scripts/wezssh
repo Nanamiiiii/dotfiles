@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo "Invalid arguments."
+    exit 1
+fi
+
+if (! $(command -v wezterm > /dev/null) )
+then
+    echo "wezterm is not in PATH"
+    exit 1
+fi
+
+wezterm cli spawn --domain-name SSH:"$1"
+
