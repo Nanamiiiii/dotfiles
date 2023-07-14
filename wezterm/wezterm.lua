@@ -16,8 +16,8 @@ local is_linux = wezterm.target_triple:find("linux")     -- linux
 -- Linux / macOS: default shell
 -- Windows: PowerShell Core (F**k cmd.exe)
 if is_windows then
-    -- config.default_prog = { 'C:\\Program Files\\nu\\bin\\nu.exe' } -- nushell
-    config.default_prog = { 'C:\\Program Files\\PowerShell\\7\\pwsh.exe', '-nologo' } -- powershell
+    config.default_prog = { 'C:\\Program Files\\nu\\bin\\nu.exe' } -- nushell
+    --config.default_prog = { 'C:\\Program Files\\PowerShell\\7\\pwsh.exe', '-nologo' } -- powershell
 end
 
 -- Size
