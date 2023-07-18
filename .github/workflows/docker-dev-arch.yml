@@ -6,7 +6,8 @@ on:
       - "main"
     paths:
       - "nvim/*"
-      - "zsh/docker/*"
+      - "vsnip/*"
+      - "zsh/*"
       - "tmux/tmux.conf"
       - "starship/starship.toml"
       - "docker/Dockerfile.arch"

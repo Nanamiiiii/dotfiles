@@ -1,68 +1,61 @@
 # ArchLinux based container devenv
+# Step 1
 FROM archlinux:base-devel AS base
 RUN pacman-key --init && pacman -Syyu --noconfirm
-RUN pacman -S --noconfirm zsh git tmux duf deno npm python-pip llvm cmake unzip ninja python-pynvim
-
+RUN pacman -S --noconfirm zsh git tmux npm python-pip llvm cmake unzip ninja python-pynvim nodejs
 # User Setup
 ARG USER_NAME=nanami
 ARG GROUP_NAME=nanami
 ARG UID=1000
 ARG GID=1000 
-
 RUN groupadd -g $GID $GROUP_NAME && \
     useradd -m -s /bin/bash -u $UID -g $GID $USER_NAME
 RUN usermod -aG wheel $USER_NAME
 RUN sed -i -e 's/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers 
-
 USER $USER_NAME
 WORKDIR /home/$USER_NAME/
-
 # Copy shell config
-COPY --chown=$USER_NAME ./zsh/docker/zshrc .zshrc
-COPY --chown=$USER_NAME ./zsh/docker/zshenv .zshenv
-COPY --chown=$USER_NAME ./zsh/docker/zprofile .zprofile
-COPY --chown=$USER_NAME ./zsh/docker/myzinit .myzinit
+COPY --chown=$USER_NAME ./zsh/docker/zshrc .zsh/.zshrc
+COPY --chown=$USER_NAME ./zsh/zshrc .zsh/zshrc.common
+COPY --chown=$USER_NAME ./zsh/zshenv .zshenv
+COPY --chown=$USER_NAME ./zsh/docker/zprofile .zsh/.zprofile
+COPY --chown=$USER_NAME ./zsh/zinit .zsh/zinit
+COPY --chown=$USER_NAME ./zsh/zshrc.lazy .zsh/zshrc.lazy
 COPY --chown=$USER_NAME ./starship/starship.toml .config/
-COPY --chown=$USER_NAME ./tmux/tmux.conf .tmux.conf
+COPY --chown=$USER_NAME ./tmux/tmux.conf .config/tmux/.tmux.conf
 RUN git clone https://github.com/tmux-plugins/tpm ./.tmux/plugins/tpm
-
 # rustup & tools made with rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rustup.sh && \
-    sh rustup.sh -y && \
+    CARGO_HOME="/home/$USER_NAME/.cargo" sh rustup.sh -y && \
     rm -f rustup.sh
+RUN curl -fsSL https://deno.land/x/install/install.sh -o deno.sh && \
+    DENO_INSTALL="/home/$USER_NAME/.deno" sh deno.sh && \
+    rm -f deno.sh
 SHELL ["/bin/bash", "-l", "-c"]
 
+# Step 2
 FROM base AS builder
-RUN cargo install --locked starship && \
-    cargo install --locked zoxide && \
-    cargo install bat exa fd-find ripgrep
-
 WORKDIR /home/$USER_NAME/src
 # Install neovim
 RUN git clone https://github.com/neovim/neovim && \
     cd neovim && \
     CMAKE_BUILD_TYPE=RelWithDebInfo make
 
+# Step 3
 FROM base AS runner
 WORKDIR /home/$USER_NAME/
-# Copy cargo artifacts
-COPY --from=builder --chown=$USER_NAME /home/$USER_NAME/.cargo/bin ./.cargo/bin 
-
 # Copy neovim artifacts
 COPY --from=builder --chown=$USER_NAME /home/$USER_NAME/src/neovim ./src/neovim
 RUN cd ./src/neovim && sudo make install
 RUN sudo rm -rf src
-
 # Setup yay
 RUN git clone https://aur.archlinux.org/yay.git && \
     cd yay && \
     makepkg -si --noconfirm
-
 RUN rm -rf yay
-
 # Configure neovim
 COPY --chown=$USER_NAME ./nvim .config/nvim
-
+COPY --chown=$USER_NAME ./vsnip .config/vsnip
 # Change shell
 USER root
 RUN chsh -s /bin/zsh $USER_NAME
