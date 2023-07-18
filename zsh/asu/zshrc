@@ -1,0 +1,18 @@
+# Nanamiiiii's zshrc for mbp
+# Last Update: 2023/6/21
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+
+# Load common configuration
+source "$ZDOTDIR/zshrc.common"
+
+# Additional Settings
+path=(
+    "/opt/homebrew/opt/curl/bin"(N-/)
+    "/opt/homebrew/opt/python@3.11/libexec/bin"(N-/)
+    "/opt/homebrew/opt/openjdk/bin"(N-/)
+    "$path[@]"
+)
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"

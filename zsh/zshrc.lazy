@@ -1,0 +1,115 @@
+# Lazy config
+
+# editor
+if ( $(command -v nvim > /dev/null) )
+then
+    export EDITOR=nvim
+    alias vim="nvim"
+    alias lvim="NVIM_APPNAME=lvim nvim"
+    alias avim="NVIM_APPNAME=avim nvim"
+else
+    echo "You need to build & install neovim."
+fi
+
+# Plugins & Commands
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma/fast-syntax-highlighting
+zinit light zdharma/history-search-multi-word
+
+## zoxide
+zinit wait lucid light-mode as"program" from"gh-r" for \
+    pick"zoxide" \
+    atclone"./zoxide init zsh > init.zsh; cp completions/_zoxide _zoxide" \
+    atpull"%atclone" src"init.zsh" \
+    @'ajeetdsouza/zoxide'
+
+## exa
+__exa_atload() {
+    alias ls='exa --group-directories-first'
+    alias la='exa --group-directories-first -a'
+    alias ll='exa --group-directories-first -al --header --color-scale --git --icons --time-style=long-iso'
+    alias tree='exa --group-directories-first -T --icons'
+}
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'bin/exa' \
+    atclone'cp -f completions/exa.zsh _exa' atpull'%atclone' \
+    atload'__exa_atload' \
+    @'ogham/exa'
+
+## bat
+__bat_atload() {
+    alias cat='bat --style=plain --paging=never'
+    alias less='bat --style=plain'
+}
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'bat*/bat' \
+    atclone'cd bat* && cp -f autocomplete/bat.zsh _bat' atpull'%atclone' \
+    atload'__bat_atload' \
+    @'sharkdp/bat'
+
+## fd-find
+__fd_atload() {
+    alias find='fd'
+}
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'fd*/fd' \
+    atclone'cd fd* && p -f autocomplete/_fd _fd' atpull'%atclone' \
+    atload'__fd_atload' \
+    @'sharkdp/fd'
+
+## du-dust
+__dust_atload() {
+    alias du='dust'
+    alias dus='dust --depth=1'
+}
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'dust*/dust' \
+    atload'__dust_atload' \
+    @'bootandy/dust'
+
+## procs
+__procs_atload() {
+    alias ps='procs'
+    alias ptree='procs --tree'
+}
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'procs' \
+    atload'__procs_atload' \
+    @'dalance/procs'
+
+## ripgrep
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'ripgrep*/rg' \
+    atclone'cd ripgrep* && cp -f complete/_rg _rg' atpull'%atclone' \
+    @'BurntSushi/ripgrep'
+
+## fzf
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'fzf' \
+    @'junegunn/fzf'
+
+## duf
+__duf_atload() {
+    alias df='duf'
+}
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'duf' \
+    atload'__duf_atload' \
+    @'muesli/duf'
+
+# Keymap & functions
+## ghq & fzf
+## refs: https://gist.github.com/sheepla/d680f1480d8c36c4290d6aabebf1abc6
+function _fzf_cd_ghq() {
+    FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --reverse --height=50%"
+    local root="$(ghq root)"
+    local repo="$(ghq list | fzf --preview="ls -AF --color=always ${root}/{1}")"
+    local dir="${root}/${repo}"
+    [ -n "${dir}" ] && __zoxide_z "${dir}" # Use zoxide instead of cd
+    zle accept-line
+    zle reset-prompt
+}
+
+zle -N _fzf_cd_ghq
+bindkey "^g" _fzf_cd_ghq
+
