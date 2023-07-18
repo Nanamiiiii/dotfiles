@@ -3,17 +3,17 @@
 return {
     {
         'nvim-treesitter/nvim-treesitter',
-        event = "BufRead",
-        cmd = {
-            "TSUpdate",
-            "TSInstall"
-        },
+        version = false,
+        event = { "BufReadPost", "BufNewFile" },
         build = ":TSUpdate",
+        cmd = {
+            "TSUpdateSync",
+        },
         config = function()
             require('nvim-treesitter.configs').setup {
-                ensure_installed = { 
+                ensure_installed = {
                     "c",
-                    "rust", 
+                    "rust",
                     "go",
                     "lua",
                     "python",
@@ -27,7 +27,7 @@ return {
                     "make",
                     "cmake",
                 },
-                sync_install = true,
+                sync_install = false,
                 auto_install = true,
                 highlight = {
                     enable = true,
