@@ -1,0 +1,8 @@
+# Load common config
+source "$ZDOTDIR/zshrc.common"
+
+path=(
+    "/var/lib/snapd/snap/bin"(N-/)
+    "/home/linuxbrew/.linuxbrew/bin"(N-/)
+    "$path[@]"
+)

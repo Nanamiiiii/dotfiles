@@ -49,6 +49,7 @@ client.background       #F8F8F2
 
 # Key maps
 exec "setxkbmap -layout us"
+exec "setxkbmap -option ctrl:nocaps"
 
 ### background apps
 
