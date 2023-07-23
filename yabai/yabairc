@@ -43,6 +43,7 @@ yabai -m rule --add app="^Finder$" title="^.* Info$" manage=off
 yabai -m rule --add app="^Inkdrop$" title="^Preferences$" manage=off
 yabai -m rule --add app="^Weather$" manage=off
 yabai -m rule --add app="^Clock$" manage=off
+yabai -m rule --add app="^1Password$" manage=off
 
 echo "yabai configuration loaded.."
 

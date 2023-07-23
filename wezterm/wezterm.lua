@@ -66,9 +66,9 @@ elseif is_windows then
 end
 
 -- background
-if is_macos then
-    config.window_background_image = "/Users/nanami/.config/wezterm/background.jpg"
-end
+--if is_macos then
+--    config.window_background_image = "/Users/nanami/.config/wezterm/background.jpg"
+--end
 config.window_background_image_hsb = {
     brightness = 0.005,
     hue = 1.0,
