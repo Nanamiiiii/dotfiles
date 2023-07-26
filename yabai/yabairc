@@ -1,4 +1,7 @@
 #!/usr/bin/env sh
+# loading sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
 
 # global settings
 yabai -m config mouse_follows_focus          off
@@ -31,6 +34,16 @@ yabai -m config left_padding                 12
 yabai -m config right_padding                12
 yabai -m config window_gap                   06
 
+# in external display, top padding is different
+# on M1 or later macbook, the notch space working as padding
+DISPLAY_UUID=37D8832A-2D66-02CA-B9F7-8F30A301B230 # UUID of built-in display
+BAR_PADDING=50
+SPACES_ON_SUB=$(yabai -m query --displays | jq '.[]' | jq "select(.uuid != \"${DISPLAY_UUID}\")" | jq '.spaces[]')
+for idx in ${SPACES_ON_SUB}
+do
+    yabai -m config --space "$idx" top_padding "$BAR_PADDING"
+done
+
 # Rules
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Termius$" manage=off
@@ -40,10 +53,12 @@ yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Finder$" title="^Connect to Server$" manage=off
 yabai -m rule --add app="^Finder$" title="^Connecting to Server$" manage=off
 yabai -m rule --add app="^Finder$" title="^.* Info$" manage=off
+yabai -m rule --add app="^Finder$" title="^Copy$" manage=off
 yabai -m rule --add app="^Inkdrop$" title="^Preferences$" manage=off
 yabai -m rule --add app="^Weather$" manage=off
 yabai -m rule --add app="^Clock$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
+yabai -m rule --add app="^Discord$" title="^Discord Updater$" manage=off
 
 echo "yabai configuration loaded.."
 
