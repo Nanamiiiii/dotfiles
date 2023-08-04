@@ -117,6 +117,11 @@ config.keys = {
         action = act.CloseCurrentTab { confirm = true }
     },
     {
+        key = "d",
+        mods = "LEADER",
+        action = act.DetachDomain("CurrentPaneDomain")
+    },
+    {
         key = "n",
         mods = "LEADER",
         action = act.ActivateTabRelative(1)

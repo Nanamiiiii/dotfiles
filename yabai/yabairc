@@ -59,6 +59,9 @@ yabai -m rule --add app="^Weather$" manage=off
 yabai -m rule --add app="^Clock$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
 yabai -m rule --add app="^Discord$" title="^Discord Updater$" manage=off
+yabai -m rule --add app="^Archive Utility$" manage=off
+yabai -m rule --add app="^Microsoft To Do$" manage=off
+yabai -m rule --add app="^UTM$" manage=off
 
 echo "yabai configuration loaded.."
 
