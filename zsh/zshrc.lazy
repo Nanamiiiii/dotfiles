@@ -97,6 +97,12 @@ zinit wait lucid light-mode as'program' from'gh-r' for \
     atload'__duf_atload' \
     @'muesli/duf'
 
+## ghq
+zinit wait lucid light-mode as'program' from'gh-r' for\
+    pick'ghq*/ghq' \
+    atclone'cd ghq* && cp -f misc/zsh/_ghq _ghq' atpull'%atclone' \
+    @'x-motemen/ghq'
+
 # Keymap & functions
 ## ghq & fzf
 ## refs: https://gist.github.com/sheepla/d680f1480d8c36c4290d6aabebf1abc6
