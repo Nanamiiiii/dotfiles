@@ -19,10 +19,19 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 # starship (no lazy)
-zinit ice as"command" from"gh-r" \
-    atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-    atpull"%atclone" src"init.zsh"
-zinit light starship/starship
+if [ "$(uname -m)" = 'x86_64' ] || [ "$(uname -m)" = "arm64" -a "$(uname)" = "Darwin" ]; then
+    zinit ice as"command" from"gh-r" \
+        atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+        atpull"%atclone" src"init.zsh"
+    zinit light starship/starship
+elif [ "$(uname -m)" = 'aarch64' -a "$(uname)" = 'Linux' ]; then
+    zinit ice as"command" from"gh-r" bpick"*aarch64-unknown-linux-musl*" \
+        atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+        atpull"%atclone" src"init.zsh"
+    zinit light starship/starship
+else
+    echo "starship installation failed. cannot detect compatible release."
+fi 
 
 # lazy load
 zinit wait lucid null for \

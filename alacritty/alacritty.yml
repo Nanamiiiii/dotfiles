@@ -24,10 +24,6 @@ font:
 
 shell:
   program: /bin/zsh
-  args:
-   - -l
-   - -c
-   - 'tmux a -t main || tmux new -s main'
 
 schemes:
   nord: &nord
