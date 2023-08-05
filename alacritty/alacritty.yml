@@ -9,16 +9,16 @@ window:
 
 font:
   normal:
-    family: "Firge Console Nerd Font"
+    family: "HackGen Console NF"
     style: Regular
   bold:
-    family: "Firge Console Nerd Font"
+    family: "HackGen Console NF"
     style: Bold
   italic:
-    family: "Firge Console Nerd Font"
+    family: "HackGen Console NF"
     style: Italic
   bold_italic:
-    family: "Firge Console Nerd Font"
+    family: "HackGen Console NF"
     style: Bold Italic
   size: 14
 
