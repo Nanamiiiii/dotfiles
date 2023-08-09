@@ -86,10 +86,16 @@ zinit wait lucid light-mode as'program' from'gh-r' for \
     @'dalance/procs'
 
 ## ripgrep
-zinit wait lucid light-mode as'program' from'gh-r' for \
-    pick'ripgrep*/rg' \
-    atclone'cd ripgrep* && cp -f complete/_rg _rg' atpull'%atclone' \
-    @'BurntSushi/ripgrep'
+if [ "$(uname -m)" = 'aarch64' -a "$(uname)" = 'Linux' ]; then
+    if ! (type "rg" > /dev/null 2>&1); then
+        echo "install ripgrep manually"
+    fi
+else
+    zinit wait lucid light-mode as'program' from'gh-r' for \
+        pick'ripgrep*/rg' \
+        atclone'cd ripgrep* && cp -f complete/_rg _rg' atpull'%atclone' \
+        @'BurntSushi/ripgrep'
+fi
 
 ## fzf
 zinit wait lucid light-mode as'program' from'gh-r' for \
