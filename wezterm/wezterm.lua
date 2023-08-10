@@ -12,6 +12,12 @@ local is_macos = wezterm.target_triple:find("darwin")    -- macos
 local is_windows = wezterm.target_triple:find("windows") -- windows
 local is_linux = wezterm.target_triple:find("linux")     -- linux
 
+-- Detect desktop environment
+local de_name = ""
+if is_linux then
+    de_name = os.getenv("XDG_CURRENT_DESKTOP")
+end
+
 -- Shell
 -- Linux / macOS: default shell
 -- Windows: PowerShell Core (F**k cmd.exe)
@@ -82,11 +88,16 @@ config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 
--- Hide Titlebar
+-- Window setting
 if is_macos then
     config.window_decorations = "RESIZE | MACOS_FORCE_ENABLE_SHADOW"
 elseif is_linux then
-    config.window_decorations = "RESIZE"
+    if de_name == "i3" or de_name == "sway" then
+        config.window_decorations = "RESIZE"
+    else
+        config.window_decorations = "TITLE | RESIZE"
+        -- config.enable_wayland = false
+    end
 end
 
 -- Key bindings

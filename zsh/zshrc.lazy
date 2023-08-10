@@ -30,11 +30,19 @@ __exa_atload() {
     alias ll='exa --group-directories-first -al --header --color-scale --git --icons --time-style=long-iso'
     alias tree='exa --group-directories-first -T --icons'
 }
-zinit wait lucid light-mode as'program' from'gh-r' for \
-    pick'bin/exa' \
-    atclone'cp -f completions/exa.zsh _exa' atpull'%atclone' \
-    atload'__exa_atload' \
-    @'ogham/exa'
+if [ "$(uname -m)" = 'aarch64' -a "$(uname)" = 'Linux' ]; then
+    if type "exa" > /dev/null 2>&1; then
+        __exa_atload
+    else
+        echo "install exa manually"
+    fi
+else
+    zinit wait lucid light-mode as'program' from'gh-r' for \
+        pick'bin/exa' \
+        atclone'cp -f completions/exa.zsh _exa' atpull'%atclone' \
+        atload'__exa_atload' \
+        @'ogham/exa'
+fi
 
 ## bat
 __bat_atload() {
@@ -53,7 +61,7 @@ __fd_atload() {
 }
 zinit wait lucid light-mode as'program' from'gh-r' for \
     pick'fd*/fd' \
-    atclone'cd fd* && p -f autocomplete/_fd _fd' atpull'%atclone' \
+    atclone'cd fd* && cp -f autocomplete/_fd _fd' atpull'%atclone' \
     atload'__fd_atload' \
     @'sharkdp/fd'
 
@@ -78,10 +86,16 @@ zinit wait lucid light-mode as'program' from'gh-r' for \
     @'dalance/procs'
 
 ## ripgrep
-zinit wait lucid light-mode as'program' from'gh-r' for \
-    pick'ripgrep*/rg' \
-    atclone'cd ripgrep* && cp -f complete/_rg _rg' atpull'%atclone' \
-    @'BurntSushi/ripgrep'
+if [ "$(uname -m)" = 'aarch64' -a "$(uname)" = 'Linux' ]; then
+    if ! (type "rg" > /dev/null 2>&1); then
+        echo "install ripgrep manually"
+    fi
+else
+    zinit wait lucid light-mode as'program' from'gh-r' for \
+        pick'ripgrep*/rg' \
+        atclone'cd ripgrep* && cp -f complete/_rg _rg' atpull'%atclone' \
+        @'BurntSushi/ripgrep'
+fi
 
 ## fzf
 zinit wait lucid light-mode as'program' from'gh-r' for \
