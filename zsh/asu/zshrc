@@ -1,8 +1,5 @@
 # Nanamiiiii's zshrc for mbp
-# Last Update: 2023/6/21
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-
+# Last Update: 2023/8/11
 # Load common configuration
 source "$ZDOTDIR/zshrc.common"
 
@@ -14,5 +11,6 @@ path=(
     "$path[@]"
 )
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+# sudo prompt
+export SUDO_PROMPT='[sudo] %p: '
+
