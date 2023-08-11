@@ -112,10 +112,19 @@ zinit wait lucid light-mode as'program' from'gh-r' for \
     @'muesli/duf'
 
 ## ghq
-zinit wait lucid light-mode as'program' from'gh-r' for\
+zinit wait lucid light-mode as'program' from'gh-r' for \
     pick'ghq*/ghq' \
     atclone'cd ghq* && cp -f misc/zsh/_ghq _ghq' atpull'%atclone' \
     @'x-motemen/ghq'
+
+## lazygit
+__lg_atload() {
+    alias lg='lazygit'
+}
+zinit wait lucid light-mode as'program' from'gh-r' for \
+    pick'lazygit*/lazygit' \
+    atload'__lg_atload' \
+    @'jesseduffield/lazygit'
 
 # Keymap & functions
 ## ghq & fzf

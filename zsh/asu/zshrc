@@ -12,5 +12,5 @@ path=(
 )
 
 # sudo prompt
-export SUDO_PROMPT='[sudo] %p: '
+export SUDO_PROMPT="[sudo] %p's password: "
 
