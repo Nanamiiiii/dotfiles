@@ -62,6 +62,7 @@ yabai -m rule --add app="^Discord$" title="^Discord Updater$" manage=off
 yabai -m rule --add app="^Archive Utility$" manage=off
 yabai -m rule --add app="^Microsoft To Do$" manage=off
 yabai -m rule --add app="^UTM$" manage=off
+yabai -m rule --add app="^GitKraken$" manage=off
 
 echo "yabai configuration loaded.."
 

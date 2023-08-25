@@ -65,7 +65,7 @@ alt - t : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
 shift + alt - r : yabai --restart-service && osascript -e 'tell application "Übersicht" to refresh widget id "simple-bar-index-jsx"'
 
 # restart skhd
-shift + cmd - r : skhd --restart-service
+shift + ctrl - r : skhd --restart-service
 
 # Close app
 alt - q : yabai -m window --close
@@ -104,7 +104,9 @@ alt - return : open -a "WezTerm"
 ## memos
 alt - m : open "https://memos.myuu.dev"
 ## FireFox
-alt - b : open -a "Firefox"
+alt - b : open -a "Firefox Developer Edition"
+## Vivaldi 
+shift + alt - b : open -a "Firefox"
 ## Finder
 alt - g : osascript ~/.config/skhd/finder.scpt
 ## Inkdrop

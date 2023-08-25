@@ -8,6 +8,7 @@ path=(
     "/opt/homebrew/opt/curl/bin"(N-/)
     "/opt/homebrew/opt/python@3.11/libexec/bin"(N-/)
     "/opt/homebrew/opt/openjdk/bin"(N-/)
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin"
     "$path[@]"
 )
 
