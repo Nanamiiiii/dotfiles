@@ -19,7 +19,7 @@ on:
     
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: nanamiiiii-devenv-arch
+  IMAGE_NAME: nanami-devenv-arch
   
 jobs:
 
