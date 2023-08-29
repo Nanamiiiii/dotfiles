@@ -67,7 +67,7 @@ jobs:
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
-        file: docker/Dockerfile.arch
+        file: docker/Dockerfile.fedora
         target: runner
         cache-from: type=gha
         cache-to: type=gha,mode=max
