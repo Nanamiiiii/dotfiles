@@ -11,6 +11,7 @@ on:
       - "tmux/tmux.conf"
       - "starship/starship.toml"
       - "docker/Dockerfile.arch"
+      - ".github/workflows/docker-dev-arch.yml"
       
   schedule:
     - cron: "0 0 */7 * *"
