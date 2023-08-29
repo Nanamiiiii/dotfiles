@@ -1,4 +1,4 @@
-name: Build ArchLinux based devenv image
+name: Build Fedora based devenv image
 
 on:
   push:
@@ -20,7 +20,7 @@ on:
     
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: nanamiiiii-devenv-arch
+  IMAGE_NAME: nanami-devenv-fc
   
 jobs:
 
