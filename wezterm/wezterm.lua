@@ -149,7 +149,7 @@ config.keys = {
     },
 
     {
-        key = "%",
+        key = "b",
         mods = "LEADER",
         action = act.SplitHorizontal { domain = "CurrentPaneDomain" }
     },

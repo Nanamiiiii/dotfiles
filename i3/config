@@ -22,8 +22,8 @@ set $menu rofi -show combi -display-combi "󰞷"
 set $drun rofi -show drun -display-drun "Applications"
 set $sysmenu rofi -show p -modi p:~/.config/rofi/rofi_power_menu 
 
-set $primary DP-4
-set $secondary DP-0
+set $primary DP-0
+set $secondary DP-4
 
 
 ### Style
@@ -89,7 +89,8 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Screen lock
 exec_always --no-startup-id xset dpms 900 900 900
-exec xautolock -time 10 -locker "~/.config/i3/screenlock.sh" -detectsleep 
+exec_always --no-startup-id light-locker
+exec xautolock -time 10 -locker "light-locker-command --lock" -detectsleep 
 
 ### keybindings
 
@@ -97,7 +98,7 @@ exec xautolock -time 10 -locker "~/.config/i3/screenlock.sh" -detectsleep
 bindsym $mod+Return exec $term
 
 ## web browser
-bindsym $mod+b exec firefox
+bindsym $mod+b exec firefox-developer-edition
 
 ## file manager
 bindsym $mod+g exec dolphin
@@ -131,7 +132,7 @@ bindsym $super+Print exec --no-startup-id maim --window $(xdotool getactivewindo
 bindsym $super+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 ## lock
-bindsym ctrl+shift+L exec i3lock-fancy --font Neon-Zone --nofork 
+bindsym ctrl+shift+L exec light-locker-command --lock 
 
 ## Display Off
 bindsym $super+shift+L exec xset dpms force off
