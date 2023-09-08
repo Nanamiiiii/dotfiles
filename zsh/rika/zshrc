@@ -6,3 +6,6 @@ path=(
     "/home/linuxbrew/.linuxbrew/bin"(N-/)
     "$path[@]"
 )
+
+export SSH_AUTH_SOCK=~/.1password/agent.sock
+
