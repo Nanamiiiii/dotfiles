@@ -64,7 +64,7 @@ yabai -m rule --add app="^Microsoft To Do$" manage=off
 yabai -m rule --add app="^UTM$" manage=off
 yabai -m rule --add app="^GitKraken$" manage=off
 yabai -m rule --add app="^Parallels Desktop$" manage=off
-yabai -m rule --add app="^Plexamp$" sticky=on
+yabai -m rule --add app="^Plexamp$" manage=off sticky=on
 
 echo "yabai configuration loaded.."
 
