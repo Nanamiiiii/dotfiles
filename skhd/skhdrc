@@ -4,6 +4,8 @@ alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
+alt - n : ~/.scripts/yabai_next_window.sh
+alt - p : ~/.scripts/yabai_prev_window.sh
 
 # swap window
 shift + alt - x : yabai -m window --swap recent
@@ -61,8 +63,11 @@ alt - e : yabai -m window --toggle split
 # alt - t : yabai -m window --toggle float && /tmp/yabai-restore/$(yabai -m query --windows --window | jq -re '.id').restore 2>/dev/null || true
 alt - t : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
 
+# toggle sticky window
+alt - s : yabai -m window --toggle sticky
+
 # restart yabai
-shift + alt - r : yabai --restart-service && osascript -e 'tell application "Übersicht" to refresh widget id "simple-bar-index-jsx"'
+shift + alt - r : yabai --restart-service && osascript -e 'tell application id "tracesOf.Uebersicht" to reload widget id "simple-bar-index-jsx"'
 
 # restart skhd
 shift + ctrl - r : skhd --restart-service
@@ -108,7 +113,7 @@ alt - b : open -a "Firefox Developer Edition"
 ## Vivaldi 
 shift + alt - b : open -a "Firefox"
 ## Finder
-alt - g : osascript ~/.config/skhd/finder.scpt
+alt - g : osascript ~/.scripts/finder.scpt
 ## Inkdrop
 cmd + alt - m : open -a "Inkdrop"
 ## Code

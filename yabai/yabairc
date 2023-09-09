@@ -38,7 +38,7 @@ yabai -m config window_gap                   06
 # on M1 or later macbook, the notch space working as padding
 DISPLAY_UUID=37D8832A-2D66-02CA-B9F7-8F30A301B230 # UUID of built-in display
 BAR_PADDING=50
-SPACES_ON_SUB=$(yabai -m query --displays | jq '.[]' | jq "select(.uuid != \"${DISPLAY_UUID}\")" | jq '.spaces[]')
+SPACES_ON_SUB=$(yabai -m query --displays | jq ".[] | select(.uuid != \"${DISPLAY_UUID}\") | .spaces[]")
 for idx in ${SPACES_ON_SUB}
 do
     yabai -m config --space "$idx" top_padding "$BAR_PADDING"
@@ -63,6 +63,8 @@ yabai -m rule --add app="^Archive Utility$" manage=off
 yabai -m rule --add app="^Microsoft To Do$" manage=off
 yabai -m rule --add app="^UTM$" manage=off
 yabai -m rule --add app="^GitKraken$" manage=off
+yabai -m rule --add app="^Parallels Desktop$" manage=off
+yabai -m rule --add app="^Plexamp$" sticky=on
 
 echo "yabai configuration loaded.."
 
