@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FOCUSED=$(yabai -m query --windows --window)
+FOCUSED=$(yabai -m query --windows --window 2> /dev/null)
 FOCUSED_ID=$(echo "$FOCUSED" | jq ".id")
 
 if [ -n "$FOCUSED_ID" ]; then
