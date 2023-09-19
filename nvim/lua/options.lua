@@ -21,6 +21,7 @@ local options = {
     timeoutlen = 500,
     termguicolors = true,
     pumheight = 15,
+    scrolloff = 5,
 }
 
 for k, v in pairs(options) do

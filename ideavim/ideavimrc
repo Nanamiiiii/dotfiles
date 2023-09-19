@@ -1,0 +1,37 @@
+set mapleader '\'
+
+set scrolloff=5
+set incsearch
+set hlsearch
+set showmatch matchtime=1
+set clipboard+=unnamed
+
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-commentary'
+Plug 'preservim/nerdtree'
+set keep-english-in-normal
+set easymotion
+
+sethandler <C-h> n-v:vim i:ide
+sethandler <C-j> n-v:vim i:ide
+sethandler <C-k> n-v:vim i:ide
+sethandler <C-l> n-v:vim i:ide
+sethandler <C-b> n-v:vim i:ide
+sethandler <C-f> n-v:vim i:ide
+sethandler <C-e> n-v:vim i:ide
+sethandler <C-n> n-v:vim i:ide
+sethandler <C-p> n-v:vim i:ide
+
+nnoremap <C-t> :NERDTreeFocus<CR>
+map Q gq
+imap jj <Esc>
+
+map <C-k> <C-w>k
+map <C-j> <C-w>j
+map <C-h> <C-w>h
+map <C-l> <C-w>l
+
+map <leader>v <Action>(SplitVertically)
+map <leader>h <Action>(SplitHorizontally)
+map <leader><BS> <Action>(Unsplit)
+imap <C-y> <Action>(EditorChooseLookupItem)
