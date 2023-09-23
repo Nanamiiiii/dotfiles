@@ -67,10 +67,13 @@ alt - t : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
 alt - s : yabai -m window --toggle sticky
 
 # restart yabai
-shift + alt - r : yabai --restart-service && osascript -e 'tell application id "tracesOf.Uebersicht" to reload widget id "simple-bar-index-jsx"'
+shift + alt - r : yabai --restart-service
 
 # restart skhd
 shift + ctrl - r : skhd --restart-service
+
+# reload sketchybar
+shift + alt - b : sketchybar --reload
 
 # Close app
 alt - q : yabai -m window --close
@@ -111,7 +114,7 @@ alt - m : open "https://memos.myuu.dev"
 ## FireFox
 alt - b : open -a "Firefox Developer Edition"
 ## Vivaldi 
-shift + alt - b : open -a "Firefox"
+#shift + alt - b : open -a "Firefox"
 ## Finder
 alt - g : osascript ~/.scripts/finder.scpt
 ## Inkdrop

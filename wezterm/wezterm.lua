@@ -39,6 +39,7 @@ config.font = wezterm.font_with_fallback {
     'FirgeConsole Nerd Font',
     'FirgeNerd Console',
     'UDEV Gothic NFLG',
+    'SF Pro',
 }
 
 -- HackGen
