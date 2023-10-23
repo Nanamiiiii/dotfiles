@@ -9,3 +9,8 @@ require("autocmd")
 require("keymaps")
 require("lazy_nvim")
 
+-- neovide
+if vim.g.neovide then
+    require("neovide")
+end
+
