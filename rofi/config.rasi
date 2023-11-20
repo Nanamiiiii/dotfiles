@@ -1,5 +1,5 @@
 configuration {
-    font: "Firge Nerd 14";
+    font: "PlemolJP35 Console NF 14";
     icon-theme: "Fluent-dark";
     modi: "combi,drun,run,window";
     combi-modi: "drun,run,window";

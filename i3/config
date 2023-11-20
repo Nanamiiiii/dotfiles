@@ -30,7 +30,8 @@ set $secondary DP-4
 
 # font
 #font HackGen Console NF 14
-font Cantarell 14
+#font Cantarell 14
+font PlemolJP Console NF 14
 
 # set inner and outer gaps
 gaps outer 3
@@ -51,6 +52,9 @@ client.background       #F8F8F2
 # Key maps
 exec "setxkbmap -layout us"
 exec "setxkbmap -option ctrl:nocaps"
+
+# Load deafult display setting
+exec ~/.screenlayout/default.sh
 
 ### background apps
 
@@ -88,7 +92,7 @@ exec --no-startup-id picom -b
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Screen lock
-exec_always --no-startup-id xset dpms 900 900 900
+exec_always --no-startup-id xset s off -dpms
 exec_always --no-startup-id light-locker
 exec xautolock -time 10 -locker "light-locker-command --lock" -detectsleep 
 
