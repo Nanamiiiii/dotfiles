@@ -72,6 +72,8 @@ yabai -m rule --add app="^Microsoft Word$" manage=on
 yabai -m rule --add app="^Microsoft Excel$" manage=on
 yabai -m rule --add app="^Microsoft PowerPoint$" manage=off
 yabai -m rule --add app="^Dropbox Capture$" manage=off
+yabai -m rule --add app="^CLion$" manage=off
+yabai -m rule --add app="^JetBrains Client$" manage=off
 
 echo "yabai configuration loaded.."
 
