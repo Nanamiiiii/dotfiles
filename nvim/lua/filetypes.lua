@@ -15,6 +15,11 @@ M.yaml = function()
     set_indent(2, true)
 end
 
+-- makefile
+M.make = function()
+    set_indent(4, false)
+end
+
 return setmetatable(M, {
     __index = function()
         return function()

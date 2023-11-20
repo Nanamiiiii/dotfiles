@@ -124,6 +124,11 @@ config.keys = {
         action = act.SpawnTab("CurrentPaneDomain")
     },
     {
+        key = "C",
+        mods = "LEADER",
+        action = act.SpawnWindow
+    },
+    {
         key = "q",
         mods = "LEADER",
         action = act.CloseCurrentTab { confirm = true }
@@ -221,12 +226,16 @@ config.keys = {
         mods = "CTRL|SHIFT",
         action = act.PasteFrom("Clipboard")
     },
-
     {
         key = "Enter",
         mods = "ALT",
         action = 'DisableDefaultAssignment'
     },
+    {
+        key = "P",
+        mods = "LEADER",
+        action = act.ActivateCommandPalette
+    }
 }
 
 return config

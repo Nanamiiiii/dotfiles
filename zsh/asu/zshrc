@@ -12,6 +12,14 @@ path=(
     "$path[@]"
 )
 
+fpath=(
+    "$(brew --prefix)/share/zsh/site-functions"
+    "$fpath[@]"
+)
+
+autoload -Uz compinit
+compinit
+
 # sudo prompt
 export SUDO_PROMPT="[sudo] %p's password: "
 

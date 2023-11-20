@@ -109,16 +109,14 @@ shift + alt - n : yabai -m space --move next
 # Launch Apps
 ## WezTerm
 alt - return : open -a "WezTerm"
-## memos
-alt - m : open "https://memos.myuu.dev"
+## Obsidian
+alt - m : open -a "Obsidian"
 ## FireFox
 alt - b : open -a "Firefox Developer Edition"
-## Vivaldi 
-#shift + alt - b : open -a "Firefox"
 ## Finder
 alt - g : osascript ~/.scripts/finder.scpt
-## Inkdrop
-cmd + alt - m : open -a "Inkdrop"
+## memos
+cmd + alt - m : open "https://memos.myuu.dev"
 ## Code
 cmd + alt - o : open -a "Visual Studio Code"
 ## 1Password

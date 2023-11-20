@@ -12,6 +12,7 @@ apple_logo=(
   click_script="$POPUP_CLICK_SCRIPT"
   popup.height=35
   popup.y_offset=5
+  popup.background.border_width=0
 )
 
 apple_prefs=(

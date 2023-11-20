@@ -28,4 +28,9 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
+-- wrapping
 vim.wo.wrap = false
+
+-- invisible chars
+vim.wo.list = true
+vim.opt.listchars = {tab='»-', space='･', trail='-', eol='↲', extends='»', precedes='«', nbsp='%'}

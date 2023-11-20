@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    exit 1
+fi
+
+ssh -fNq -L 6666:localhost:6666 "$1"
+
