@@ -7,6 +7,9 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
+-- TERM
+config.term = 'xterm-256color'
+
 -- Detect OS
 local is_macos = wezterm.target_triple:find("darwin")    -- macos
 local is_windows = wezterm.target_triple:find("windows") -- windows
