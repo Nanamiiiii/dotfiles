@@ -31,8 +31,9 @@ return {
             h.cmap("<C-j>", "<Plug>(skkeleton-enable)")
             -- dictionary
             local dictionaries = {}
-            local skk_dir = h.os == "Windows" and [[C:\skkeleton\]] or "~/.skkeleton/"
-            local handle = h.os == "Windows" and io.popen([[dir /s /b /a-d]] .. skk_dir .. "dict") or io.popen("ls -d -p " .. skk_dir .. "dict/* | grep -vE /$")
+            local skk_dir = h.os() == "Windows_NT" and "C:\\skkeleton\\" or "~/.skkeleton/"
+            local list_cmd = h.os() == "Windows_NT" and "dir /s /b /a-d " .. skk_dir .. "dict" or "ls -d -p " .. skk_dir .. "dict/* | grep -vE /$"
+            local handle = io.popen(list_cmd)
             if handle then
                 for path in handle:lines() do
                     table.insert(dictionaries, path)
