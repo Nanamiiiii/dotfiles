@@ -22,9 +22,9 @@ set $menu rofi -show combi -display-combi "󰞷"
 set $drun rofi -show drun -display-drun "Applications"
 set $sysmenu rofi -show p -modi p:~/.config/rofi/rofi_power_menu 
 
-set $primary DP-2.8
-set $secondary DP-4
-
+set $primary DP-4
+set $secondary DP-0
+set $sub-secondary DP-2
 
 ### Style
 
@@ -95,6 +95,12 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id xset s off -dpms
 exec_always --no-startup-id light-locker
 exec xautolock -time 10 -locker "light-locker-command --lock" -detectsleep 
+
+# Dropbox
+exec --no-startup-id dropbox
+
+# 1Password
+exec --no-startup-id 1password --silent
 
 ### keybindings
 
@@ -188,16 +194,17 @@ workspace $ws1 output $primary
 workspace $ws2 output $primary 
 workspace $ws3 output $primary 
 workspace $ws4 output $primary 
-workspace $ws5 output $primary 
+workspace $ws5 output $secondary 
 workspace $ws6 output $secondary 
 workspace $ws7 output $secondary 
-workspace $ws8 output $secondary 
-workspace $ws9 output $secondary 
-workspace $ws10 output $secondary
+workspace $ws8 output $sub-secondary 
+workspace $ws9 output $sub-secondary 
+workspace $ws10 output $sub-secondary
 
 # switch focused display
 bindsym $mod+shift+w focus output $primary
 bindsym $mod+shift+c focus output $secondary
+bindsym $mod+shift+d focus output $sub-secondary
 
 # Switch to workspace
 bindsym $mod+1 workspace $ws1
