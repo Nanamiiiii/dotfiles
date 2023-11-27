@@ -25,8 +25,8 @@ end
 -- Linux / macOS: default shell
 -- Windows: PowerShell Core (F**k cmd.exe)
 if is_windows then
-    config.default_prog = { 'C:\\Program Files\\nu\\bin\\nu.exe' } -- nushell
-    --config.default_prog = { 'C:\\Program Files\\PowerShell\\7\\pwsh.exe', '-nologo' } -- powershell
+    -- config.default_prog = { 'C:\\Program Files\\nu\\bin\\nu.exe' } -- nushell
+    config.default_prog = { 'C:\\Program Files\\PowerShell\\7\\pwsh.exe', '-nologo' } -- powershell
 end
 
 -- Size
@@ -104,9 +104,25 @@ end
 
 -- Title table
 local title_map = {}
+title_map["zsh"] = {
+    title = "Zsh",
+    symbol = "󰞷 ",
+}
 title_map["nu.exe"] = {
     title = "Nu",
     symbol = "󰞷 ",
+}
+title_map["pwsh.exe"] = {
+    title = "Pwsh",
+    symbol = "󰞷 ",
+}
+title_map["nvim.exe"] = {
+    title = "nvim",
+    symbol = " "
+}
+title_map["nvim"] = {
+    title = "nvim",
+    symbol = " "
 }
 -- add new mappings here
 
@@ -115,7 +131,7 @@ function title_mapper(title, symbol)
         local items = title_map[title]
         local mapped_title = ""
         if items["symbol"] ~= nil and symbol then
-            mapped_title = mapped_title .. items["symbol"] .. " "
+            mapped_title = mapped_title .. items["symbol"]
         end
         if items["title"] ~= nil then
             mapped_title = mapped_title .. items["title"]
