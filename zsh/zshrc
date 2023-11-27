@@ -22,11 +22,11 @@ fpath=(
 # Title
 autoload -Uz add-zsh-hook
 function _set_title() {
-    echo -ne "\033]0; ${USER}@${HOST} \007"
+    echo -ne "\033]0;󰞷 ${USER}@${HOST}\007"
 }
 function _set_cmd_title() {
     cmd=$(echo ${2} | awk '{print $1}')
-    echo -ne "\033]0; ${cmd} \007"
+    echo -ne "\033]0;${cmd}\007"
 }
 add-zsh-hook precmd _set_title
 add-zsh-hook preexec _set_cmd_title
