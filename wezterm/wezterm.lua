@@ -140,6 +140,12 @@ function title_mapper(title, symbol)
             mapped_title = mapped_title .. title
         end
         return mapped_title
+    elseif string.match(title, "^.*@.*$") then
+        local shell_symbol = ""
+        if symbol then
+            shell_symbol = "󰞷 "
+        end
+        return shell_symbol .. title
     else
         return title 
     end
