@@ -22,9 +22,9 @@ set $menu rofi -show combi -display-combi "󰞷"
 set $drun rofi -show drun -display-drun "Applications"
 set $sysmenu rofi -show p -modi p:~/.config/rofi/rofi_power_menu 
 
-set $primary DP-4
-set $secondary DP-0
-set $sub-secondary DP-2
+set $primary DP-0
+set $secondary DP-2
+set $third DP-4
 
 ### Style
 
@@ -194,17 +194,17 @@ workspace $ws1 output $primary
 workspace $ws2 output $primary 
 workspace $ws3 output $primary 
 workspace $ws4 output $primary 
-workspace $ws5 output $secondary 
+workspace $ws5 output $secondary
 workspace $ws6 output $secondary 
 workspace $ws7 output $secondary 
-workspace $ws8 output $sub-secondary 
-workspace $ws9 output $sub-secondary 
-workspace $ws10 output $sub-secondary
+workspace $ws8 output $secondary 
+workspace $ws9 output $third 
+workspace $ws10 output $third
 
 # switch focused display
 bindsym $mod+shift+w focus output $primary
 bindsym $mod+shift+c focus output $secondary
-bindsym $mod+shift+d focus output $sub-secondary
+bindsym $mod+shift+d focus output $third
 
 # Switch to workspace
 bindsym $mod+1 workspace $ws1
