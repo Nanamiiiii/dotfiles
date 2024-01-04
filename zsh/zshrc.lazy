@@ -150,3 +150,22 @@ function _fzf_cd_ghq() {
 zle -N _fzf_cd_ghq
 bindkey "^g" _fzf_cd_ghq
 
+## Random Generator
+function rand_str() {
+    if [ $# -eq 0 ]; then
+        RAND_LEN=16
+    else
+        RAND_LEN=$1
+    fi
+    LC_ALL=C tr -dc 'A-Za-z0-9' < /dev/urandom | head -c "$RAND_LEN"; echo
+}
+
+function rand_sym() {
+    if [ $# -eq 0 ]; then
+        RAND_LEN=16
+    else
+        RAND_LEN=$1
+    fi
+    LC_ALL=C tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' < /dev/urandom | head -c "$RAND_LEN"; echo
+}
+
