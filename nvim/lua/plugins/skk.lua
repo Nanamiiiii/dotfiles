@@ -32,7 +32,7 @@ return {
             -- dictionary
             local dictionaries = {}
             local skk_dir = h.os() == "Windows_NT" and "C:\\skkeleton\\" or "~/.skkeleton/"
-            local list_cmd = h.os() == "Windows_NT" and "dir /s /b /a-d " .. skk_dir .. "dict" or "ls -d -p " .. skk_dir .. "dict/* | grep -vE /$"
+            local list_cmd = h.os() == "Windows_NT" and "dir /s /b /a-d " .. skk_dir .. "dict" or "/bin/ls -d -p " .. skk_dir .. "dict/* | grep -vE /$"
             local handle = io.popen(list_cmd)
             if handle then
                 for path in handle:lines() do
@@ -49,7 +49,8 @@ return {
                         registerConvertResult = true,
                         completionRankFile = skk_dir .. "rank.json",
                         globalDictionaries = dictionaries,
-                        userJisyo = skk_dir .. "userdict.txt",
+                        sources = {"skk_dictionary"},
+                        userDictionary = skk_dir .. "userdict.txt",
                         --useSkkServer = true,
                     })
                 end,

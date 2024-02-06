@@ -22,7 +22,7 @@ set $menu rofi -show combi -display-combi "󰞷"
 set $drun rofi -show drun -display-drun "Applications"
 set $sysmenu rofi -show p -modi p:~/.config/rofi/rofi_power_menu 
 
-set $primary DP-0
+set $primary DP-0.8
 set $secondary DP-2
 set $third DP-4
 
@@ -74,7 +74,7 @@ exec yaskkserv2 --google-japanese-input=last --google-suggest --google-cache-fil
 exec --no-startup-id nitrogen --restore
 
 # notification
-exec deadd-notification-center
+exec_always deadd-notification-center
 
 # media controller
 exec playerctld daemon
