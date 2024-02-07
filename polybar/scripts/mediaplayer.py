@@ -16,7 +16,6 @@ from gi.repository import Playerctl, GLib
 
 logger = logging.getLogger(__name__)
 
-
 def write_output(text, player):
     logger.info('Writing output')
 
@@ -39,11 +38,14 @@ def on_metadata(player, metadata, manager):
             'mpris:trackid' in metadata.keys() and \
             ':ad:' in player.props.metadata['mpris:trackid']:
         track_info = 'AD PLAYING'
-    elif player.get_artist() != '' and player.get_title() != '':
-        track_info = '{artist} - {title}'.format(artist=player.get_artist(),
-                                                 title=player.get_title())
-    else:
-        track_info = player.get_title()
+    else: 
+        artist = player.get_artist()
+        title = player.get_title()
+        if (artist != '' and title != '') and (artist != None and title != None):
+            track_info = '{artist} - {title}'.format(artist=artist,
+                                                 title=title)
+        else:
+            track_info = "Spotify"
 
     if player.props.status != 'Playing' and track_info:
         track_info = ' ' + track_info
@@ -59,7 +61,7 @@ def on_player_appeared(manager, player, selected_player=None):
 
 def on_player_vanished(manager, player):
     logger.info('Player has vanished')
-    sys.stdout.write('\n')
+    sys.stdout.write('Not Launched\n')
     sys.stdout.flush()
 
 
@@ -114,6 +116,8 @@ def main():
     signal.signal(signal.SIGINT, signal_handler)
     signal.signal(signal.SIGTERM, signal_handler)
 
+    initial_count = 0
+
     for player in manager.props.player_names:
         if arguments.player is not None and arguments.player != player.name:
             logger.debug('{player} is not the filtered player, skipping it'
@@ -121,7 +125,12 @@ def main():
                          )
             continue
 
+        initial_count += 1
         init_player(manager, player)
+
+    if initial_count == 0:
+        sys.stdout.write("Not Launched\n")
+        sys.stdout.flush()
 
     loop.run()
 

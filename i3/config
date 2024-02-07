@@ -36,7 +36,8 @@ font PlemolJP Console NF 14
 # set inner and outer gaps
 gaps outer 3
 gaps inner 5
-default_border pixel 3
+gaps top 52
+default_border pixel 0
 default_floating_border pixel 3
 
 # color
@@ -74,7 +75,7 @@ exec yaskkserv2 --google-japanese-input=last --google-suggest --google-cache-fil
 exec --no-startup-id nitrogen --restore
 
 # notification
-exec_always deadd-notification-center
+exec_always ~/.config/i3/launch_notification.sh
 
 # media controller
 exec playerctld daemon
@@ -152,6 +153,7 @@ bindsym $super+L exec ~/.config/i3/toggle_autosleep.sh
 
 ## reload
 bindsym $mod+shift+r restart
+bindsym $super+shift+r exec --no-startup-id ~/.config/polybar/launch.sh
 
 ### window focus
 
@@ -178,16 +180,16 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 ### workspaces
-set $ws1 "1:term"
-set $ws2 "2:code"
-set $ws3 "3:web"
-set $ws4 "4:comm"
-set $ws5 "5:tools"
-set $ws6 "6:S1"
-set $ws7 "7:S2"
-set $ws8 "8:S3"
-set $ws9 "9:S4"
-set $ws10 "10:S5"
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
 
 # assign to display
 workspace $ws1 output $primary 

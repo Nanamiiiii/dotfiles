@@ -2,7 +2,7 @@
 /* Notification center */
 
 .blurredBG, #main_window, .blurredBG.low, .blurredBG.normal {
-    background: rgba(26, 27, 38, 0.5);
+    background: rgba(26, 27, 38, 0.6);
 }
 
 .noti-center.time {
@@ -30,15 +30,15 @@
 }
 
 .blurredBG.notification {
-    background:  rgba(26, 27, 38, 0.4);
+    background:  rgba(26, 27, 38, 0.5);
 }
 
 .blurredBG.notification.critical {
-    background: rgba(255, 0, 0, 0.5);
+    background: rgba(255, 0, 0, 0.6);
 }
 
 .notificationInCenter.critical {
-    background: rgba(155, 0, 20, 0.5);
+    background: rgba(155, 0, 20, 0.6);
 }
 
 /* Labels */
@@ -72,7 +72,7 @@ button {
 
 button:hover {
     border-radius: 3px;
-    background: rgba(0, 20, 20, 0.2);
+    background: rgba(0, 20, 20, 0.3);
     border-width: 0px;
     border-top: transparent;
     border-color: #f00;
@@ -83,7 +83,7 @@ button:hover {
 /* Custom Buttons */
 
 .userbutton {
-    background: rgba(20,0,0, 0.15);
+    background: rgba(20,0,0, 0.25);
 }
 
 .userbuttonlabel {
@@ -92,7 +92,7 @@ button:hover {
 }
 
 .userbutton:hover {
-    background: rgba(20, 0, 0, 0.2);
+    background: rgba(20, 0, 0, 0.3);
 }
 
 .userbuttonlabel:hover {
@@ -100,7 +100,7 @@ button:hover {
 }
 
 button.buttonState1 {
-    background: rgba(20,0,0,0.5);
+    background: rgba(20,0,0,0.6);
 }
 
 .userbuttonlabel.buttonState1 {
@@ -108,7 +108,7 @@ button.buttonState1 {
 }
 
 button.buttonState1:hover {
-    background: rgba(20,0,0, 0.4);
+    background: rgba(20,0,0, 0.5);
 }
 
 .userbuttonlabel.buttonState1:hover {
@@ -116,7 +116,7 @@ button.buttonState1:hover {
 }
 
 button.buttonState2 {
-    background: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.4);
 }
 
 .userbuttonlabel.buttonState2 {
@@ -124,7 +124,7 @@ button.buttonState2 {
 }
 
 button.buttonState2:hover {
-    background: rgba(20,0,0, 0.3);
+    background: rgba(20,0,0, 0.4);
 }
 
 .userbuttonlabel.buttonState2:hover {
