@@ -17,12 +17,15 @@ if [ "$TYPE" == "all" ]; then
         notify-send -a "Screen Capture" -u critical "Failed to save screenshot!" "$FILE_NAME"
         exit
     fi
-    ACT=$(notify-send -a "Screen Capture" -u normal -A "open=Open" -A "rm=Delete" -w -t 5000 "Screenshot was saved!" "$FILE_NAME")
+    ACT=$(notify-send -a "Screen Capture" -u normal -A "open=Open" -A "rm=Delete" -A "db=Upload to Dropbox" -w -t 5000 "Screenshot was saved!" "$FILE_NAME")
     if [ "$ACT" == "open" ]; then
         xdg-open "$FILE_PATH"
     elif [ "$ACT" == "rm" ]; then
         rm -f "$FILE_PATH"
         notify-send -a "Screen Capture" -u normal "Screenshot was deleted!" "$FILE_NAME"
+    elif [ "$ACT" == "db" ]; then
+        cp "$FILE_PATH" "${HOME}/Dropbox/Capture/${FILE_NAME}"
+        notify-send -a "Screen Capture" -u normal "Uploaded to Dropbox" "$FILE_NAME"
     fi
 elif [ "$TYPE" == "window" ]; then
     WINDOW_ID=$(xdotool getactivewindow)
@@ -34,12 +37,15 @@ elif [ "$TYPE" == "window" ]; then
         notify-send -a "Screen Capture" -u critical "Failed to save screenshot!" "$FILE_NAME"
         exit
     fi
-    ACT=$(notify-send -a "Screen Capture" -u normal -A "open=Open" -A "rm=Delete" -w -t 5000 "Screenshot was saved!" "$FILE_NAME")
+    ACT=$(notify-send -a "Screen Capture" -u normal -A "open=Open" -A "rm=Delete" -A "db=Upload to Dropbox" -w -t 5000 "Screenshot was saved!" "$FILE_NAME")
     if [ "$ACT" == "open" ]; then
         xdg-open "$FILE_PATH"
     elif [ "$ACT" == "rm" ]; then
         rm -f "$FILE_PATH"
         notify-send -a "Screen Capture" -u normal "Screenshot was deleted!" "$FILE_NAME"
+    elif [ "$ACT" == "db" ]; then
+        cp "$FILE_PATH" "${HOME}/Dropbox/Capture/${FILE_NAME}"
+        notify-send -a "Screen Capture" -u normal "Uploaded to Dropbox" "$FILE_NAME"
     fi
 elif [ "$TYPE" == "rect" ]; then
     FILE_NAME="Screenshot_$(date +%Y%m%d%H%M%S).png"
@@ -49,12 +55,15 @@ elif [ "$TYPE" == "rect" ]; then
         notify-send -a "Screen Capture" -u critical "Failed to save screenshot!" "$FILE_PATH"
         exit
     fi
-    ACT=$(notify-send -a "Screen Capture" -u normal -A "open=Open" -A "rm=Delete" -w -t 5000 "Screenshot was saved!" "$FILE_PATH")
+    ACT=$(notify-send -a "Screen Capture" -u normal -A "open=Open" -A "rm=Delete" -A "db=Upload to Dropbox" -w -t 5000 "Screenshot was saved!" "$FILE_PATH")
     if [ "$ACT" == "open" ]; then
         xdg-open "$FILE_PATH"
     elif [ "$ACT" == "rm" ]; then
         rm -f "$FILE_PATH"
         notify-send -a "Screen Capture" -u normal "Screenshot was deleted!" "$FILE_NAME"
+    elif [ "$ACT" == "db" ]; then
+        cp "$FILE_PATH" "${HOME}/Dropbox/Capture/${FILE_NAME}"
+        notify-send -a "Screen Capture" -u normal "Uploaded to Dropbox" "$FILE_NAME"
     fi
 elif [ "$TYPE" == "clip_all" ]; then
     maim | xclip -selection clipboard -t image/png
