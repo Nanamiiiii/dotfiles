@@ -38,6 +38,8 @@ config.line_height = 1.0
 -- Font
 -- Fallback
 config.font = wezterm.font_with_fallback {
+    'PlemolJP Console',
+    'Symbols Nerd Font',
     'PlemolJP Console NF',
     'HackGen Console NF',
     'FirgeConsole Nerd Font',

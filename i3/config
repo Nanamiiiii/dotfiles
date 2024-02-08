@@ -31,7 +31,7 @@ set $third DP-4
 # font
 #font HackGen Console NF 14
 #font Cantarell 14
-font PlemolJP Console NF 14
+font pango:PlemolJP Console NF 14
 
 # set inner and outer gaps
 gaps outer 3
@@ -42,11 +42,11 @@ default_floating_border pixel 3
 
 # color
 # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.focused          #6272A4ff #6272A4 #F8F8F2 #6272A4   #6272A4ff
+client.focused_inactive #44475A00 #44475A #F8F8F2 #44475A   #44475A00
+client.unfocused        #282A3600 #282A36 #BFBFBF #282A36   #282A3600
+client.urgent           #44475A00 #FF5555 #F8F8F2 #FF5555   #FF555500
+client.placeholder      #282A3600 #282A36 #F8F8F2 #282A36   #282A3600
 
 client.background       #F8F8F2
 
@@ -133,14 +133,14 @@ bindsym $mod+shift+comma exec playerctl --player playerctld position -10
 bindsym $mod+shift+slash exec playerctl --player playerctld position +10
 
 ## Screenshots
-bindsym $super+shift+a exec --no-startup-id maim "$HOME/Pictures/ScreenShots/ScreenShot_$(date +%Y%m%d%H%M%S).png"
-bindsym $super+shift+s exec --no-startup-id maim --window $(xdotool getactivewindow) "$HOME/Pictures/ScreenShots/ScreenShot_$(date +%Y%m%d%H%M%S).png"
-bindsym $super+shift+f exec --no-startup-id maim --select "$HOME/Pictures/ScreenShots/ScreenShot_$(date +%Y%m%d%H%M%S).png"
+bindsym $super+shift+a exec --no-startup-id ~/.config/i3/screenshot.sh all 
+bindsym $super+shift+s exec --no-startup-id ~/.config/i3/screenshot.sh window 
+bindsym $super+shift+f exec --no-startup-id ~/.config/i3/screenshot.sh rect 
 
 ## Clipboard Screenshots
-bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
-bindsym $super+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym $super+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+bindsym Print exec --no-startup-id ~/.config/i3/screenshot.sh clip_all
+bindsym $super+Print exec --no-startup-id ~/.config/i3/screenshot.sh clip_window 
+bindsym $super+Shift+Print exec --no-startup-id ~/.config/i3/screenshot.sh clip_rect 
 
 ## lock
 bindsym ctrl+shift+L exec light-locker-command --lock 
