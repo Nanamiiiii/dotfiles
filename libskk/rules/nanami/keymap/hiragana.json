@@ -9,7 +9,8 @@
             "x": "set-input-mode-latin",
             "X": "set-input-mode-wide-latin",
             "C-q": "set-input-mode-hankaku-katakana",
-	    "C-j": "commit"
+            "C-j": "commit",
+            ";": "start-preedit-no-delete"
         }
     }
 }
