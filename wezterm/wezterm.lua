@@ -23,8 +23,6 @@ end
 
 -- Default Domain
 if is_windows then
-    -- config.default_prog = { 'C:\\Program Files\\nu\\bin\\nu.exe' } -- nushell
-    -- config.default_prog = { 'C:\\Program Files\\PowerShell\\7\\pwsh.exe', '-nologo' } -- powershell
     config.default_domain = 'WSL:Arch'
 end
 
@@ -35,7 +33,6 @@ config.cell_width = 1.0
 config.line_height = 1.0
 
 -- Font
--- Fallback
 config.font = wezterm.font_with_fallback {
     'PlemolJP Console',
     'Symbols Nerd Font',
@@ -46,16 +43,6 @@ config.font = wezterm.font_with_fallback {
     'UDEV Gothic NFLG',
     'SF Pro',
 }
-
--- HackGen
--- config.font = wezterm.font 'HackGen Console NF'
-
--- Firge Nerd
--- config.font = wezterm.font 'FirgeConsole Nerd Font'
--- config.font = wezterm.font 'FirgeNerd Console'
-
--- UDEV Gothic
--- config.font = wezterm.font 'UDEV Gothic NFLG'
 
 -- Font Size
 if is_macos then
@@ -78,9 +65,6 @@ elseif is_windows then
 end
 
 -- background
---if is_macos then
---    config.window_background_image = "/Users/nanami/.config/wezterm/background.jpg"
---end
 config.window_background_image_hsb = {
     brightness = 0.005,
     hue = 1.0,
@@ -195,7 +179,6 @@ elseif is_linux then
         config.window_decorations = "RESIZE"
     else
         config.window_decorations = "TITLE | RESIZE"
-        -- config.enable_wayland = false
     end
 else -- Windows
     config.window_decorations = "TITLE | RESIZE"
@@ -232,7 +215,7 @@ config.keys = {
     {
         key = "m",
         mods = "LEADER",
-        action = act.ShowLauncher,
+        action = act.ShowLauncherArgs { flags = "FUZZY | LAUNCH_MENU_ITEMS | DOMAINS" },
     },
     {
         key = "q",
@@ -345,13 +328,79 @@ config.keys = {
 }
 
 -- WSL
-config.wsl_domains = {
-    {
-        name = 'WSL:Arch',
-        distribution = 'Arch',
-        default_cwd = '~',
-    },
-}
+if is_windows then
+    config.wsl_domains = {
+        {
+            name = 'WSL:Arch',
+            distribution = 'Arch',
+            default_cwd = '~',
+        },
+    }
+end
+
+-- Linux Launch Menu
+if is_linux then
+    config.launch_menu = {
+        {
+            label = 'zsh',
+            args = { 'zsh', '-l' },
+        },
+        {
+            label = 'bash',
+            args = { 'bash', '-l' },
+        },
+        {
+            label = 'nvim',
+            args = { 'nvim' },
+            cwd = "~/",
+        },
+        {
+            label = 'ranger',
+            args = { 'ranger' },
+            cwd = "~/",
+        },
+        {
+            label = 'btop',
+            args = { 'btop' },
+        },
+        {
+            label = 'spotify',
+            args = { 'spotify' },
+        },
+    }
+end
+
+-- macOS Launch Menu
+if is_macos then
+    config.launch_menu = {
+        {
+            label = 'zsh',
+            args = { 'zsh', '-l' },
+        },
+        {
+            label = 'bash',
+            args = { 'bash', '-l' },
+        },
+        {
+            label = 'nvim',
+            args = { 'nvim' },
+            cwd = "~/",
+        },
+        {
+            label = 'ranger',
+            args = { 'ranger' },
+            cwd = "~/",
+        },
+        {
+            label = 'btop',
+            args = { 'btop' },
+        },
+        {
+            label = 'spotify',
+            args = { 'spt' },
+        },
+    }
+end
 
 -- Windows Launch Menu
 ---- Select nu, pwsh, cmd, wsl
