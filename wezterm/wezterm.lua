@@ -21,12 +21,11 @@ if is_linux then
     de_name = os.getenv("XDG_CURRENT_DESKTOP")
 end
 
--- Shell
--- Linux / macOS: default shell
--- Windows: PowerShell Core (F**k cmd.exe)
+-- Default Domain
 if is_windows then
     -- config.default_prog = { 'C:\\Program Files\\nu\\bin\\nu.exe' } -- nushell
-    config.default_prog = { 'C:\\Program Files\\PowerShell\\7\\pwsh.exe', '-nologo' } -- powershell
+    -- config.default_prog = { 'C:\\Program Files\\PowerShell\\7\\pwsh.exe', '-nologo' } -- powershell
+    config.default_domain = 'WSL:Arch'
 end
 
 -- Size
@@ -127,6 +126,10 @@ title_map["nvim"] = {
     title = "nvim",
     symbol = " "
 }
+title_map["wslhost.exe"] = {
+    title = "WSL",
+    symbol = "󰣇 "
+}
 -- add new mappings here
 
 function title_mapper(title, symbol)
@@ -225,6 +228,11 @@ config.keys = {
         key = "C",
         mods = "LEADER",
         action = act.SpawnWindow
+    },
+    {
+        key = "m",
+        mods = "LEADER",
+        action = act.ShowLauncher,
     },
     {
         key = "q",
@@ -335,5 +343,40 @@ config.keys = {
         action = act.ActivateCommandPalette
     }
 }
+
+-- WSL
+config.wsl_domains = {
+    {
+        name = 'WSL:Arch',
+        distribution = 'Arch',
+        default_cwd = '~',
+    },
+}
+
+-- Windows Launch Menu
+---- Select nu, pwsh, cmd, wsl
+if is_windows then
+    config.launch_menu = {
+        {
+            label = 'ArchLinux - WSL',
+            domain = { DomainName = 'WSL:Arch' },
+        },
+        {
+            label = "Powershell",
+            domain = { DomainName = 'local' },
+            args = { 'C:\\Program Files\\PowerShell\\7\\pwsh.exe', '-nologo' }, 
+        },
+        {
+            label = "Nu",
+            domain = { DomainName = 'local' },
+            args = { 'C:\\Program Files\\nu\\bin\\nu.exe' },
+        },
+        {
+            label = "CMD",
+            domain = { DomainName = 'local' },
+            args = { 'C:\\Windows\\System32\\cmd.exe' },
+        }
+    }
+end
 
 return config
