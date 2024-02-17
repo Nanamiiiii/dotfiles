@@ -49,6 +49,18 @@ then
     echo "deno is not installed."
 fi
 
+## rbenv
+if ( $(command -v rbenv > /dev/null) )
+then
+    eval "$(rbenv init - zsh)"
+fi
+
+## rubygems
+if ( $(command -v gem > /dev/null) )
+then
+    path+=$(gem environment | grep "EXECUTABLE DIRECTORY" | awk '{print $4}')
+fi 
+
 # History
 export HISTFILE="${ZDOTDIR}/.zsh_history"
 export HISTSIZE=100000

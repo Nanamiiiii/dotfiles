@@ -4,20 +4,16 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
 # global settings
-yabai -m config mouse_follows_focus          off
-yabai -m config focus_follows_mouse          on
+yabai -m config mouse_follows_focus          on
+yabai -m config focus_follows_mouse          autoraise
 yabai -m config window_origin_display        default
 yabai -m config window_placement             second_child
-yabai -m config window_topmost               off
-yabai -m config window_shadow                on
+yabai -m config window_zoom_persist          on
+yabai -m config window_shadow                float
 yabai -m config window_opacity               off
 yabai -m config window_opacity_duration      0.0
 yabai -m config active_window_opacity        1.0
 yabai -m config normal_window_opacity        0.90
-yabai -m config window_border                off
-yabai -m config window_border_width          6
-yabai -m config active_window_border_color   0xff775759
-yabai -m config normal_window_border_color   0xff555555
 yabai -m config insert_feedback_color        0xffd75f5f
 yabai -m config split_ratio                  0.50
 yabai -m config auto_balance                 off
@@ -32,7 +28,7 @@ yabai -m config top_padding                  12
 yabai -m config bottom_padding               12
 yabai -m config left_padding                 12
 yabai -m config right_padding                12
-yabai -m config window_gap                   06
+yabai -m config window_gap                   10
 
 # in external display, top padding is different
 # on M1 or later macbook, the notch space working as padding
@@ -74,6 +70,9 @@ yabai -m rule --add app="^Microsoft PowerPoint$" manage=off
 yabai -m rule --add app="^Dropbox Capture$" manage=off
 yabai -m rule --add app="^CLion$" manage=off
 yabai -m rule --add app="^JetBrains Client$" manage=off
+
+# Borders
+borders active_color=0xff95bbcf inactive_color=0xff494d64 width=5.0 &
 
 echo "yabai configuration loaded.."
 

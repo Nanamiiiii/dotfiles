@@ -42,7 +42,7 @@ window_state() {
 
 windows_on_spaces () {
   CURRENT_SPACES="$(yabai -m query --displays | jq -r '.[].spaces | @sh')"
-  FOCUSED="$(yabai -m query --spaces | jq '.[] | select(."has-focus" == true ) | .index')"
+  #FOCUSED="$(yabai -m query --spaces | jq '.[] | select(."has-focus" == true ) | .index')"
 
   args=(--set spaces_bracket drawing=off
         --set '/space\..*/' background.drawing=on
@@ -52,20 +52,20 @@ windows_on_spaces () {
   do
     for space in $line
     do
-      icon="􀝝"
+      icon="􀝝 $space"
       label_show="false"
       icon_strip=""
       apps=$(yabai -m query --windows --space $space | jq -r ".[].app")
       if [ "$apps" != "" ]; then
-        icon="􀝞"
+        icon="􀝞 $space"
         label_show="true"
         while IFS= read -r app; do
           icon_strip+="$($CONFIG_DIR/plugins/icon_map.sh "$app") "
         done <<< "$apps"
       fi
-      if [ "$FOCUSED" -ne "$space" ]; then
-          label_show="false"
-      fi
+      #if [ "$FOCUSED" -ne "$space" ]; then
+      #    label_show="false"
+      #fi
       args+=(--set space.$space label="$icon_strip" label.drawing="$label_show" icon="$icon")
     done
   done <<< "$CURRENT_SPACES"
