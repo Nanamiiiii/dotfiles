@@ -1,0 +1,4 @@
+alias ssh="/mnt/c/Windows/System32/OpenSSH/ssh.exe"
+alias ssh-add="/mnt/c/Windows/System32/OpenSSH/ssh-add.exe"
+# Load common configuration
+source $ZDOTDIR/zshrc.common
