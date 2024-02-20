@@ -8,8 +8,8 @@
 
 ### Variables
 
-set $mod Mod1
-set $super Mod4
+set $mod Mod4
+set $super Mod1
 
 set $left h
 set $down j
@@ -22,9 +22,8 @@ set $menu rofi -show combi -display-combi "󰞷"
 set $drun rofi -show drun -display-drun "Applications"
 set $sysmenu rofi -show p -modi p:~/.config/rofi/rofi_power_menu 
 
-set $primary DP-0.8
-set $secondary DP-2
-set $third DP-4
+set $primary DP-1
+set $secondary HDMI-0
 
 ### Style
 
@@ -55,15 +54,16 @@ exec "setxkbmap -layout us"
 exec "setxkbmap -option ctrl:nocaps"
 
 # Load deafult display setting
-exec ~/.screenlayout/default.sh
+# exec ~/.screenlayout/default.sh
 
 ### background apps
 
 # polkit
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1;
+#exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1;
+exec /usr/lib/polkit-kde-authentication-agent-1;
 
 # kde wallet
-exec /usr/lib/pam_kwallet_init
+#exec /usr/lib/pam_kwallet_init
 
 # IME
 exec fcitx5 -d
@@ -93,9 +93,9 @@ exec --no-startup-id picom -b
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Screen lock
-exec_always --no-startup-id xset s off -dpms
-exec_always --no-startup-id light-locker
-exec xautolock -time 10 -locker "light-locker-command --lock" -detectsleep 
+#exec_always --no-startup-id xset s off -dpms
+#exec_always --no-startup-id light-locker
+#exec xautolock -time 10 -locker "light-locker-command --lock" -detectsleep 
 
 # Dropbox
 exec --no-startup-id dropbox
@@ -143,7 +143,7 @@ bindsym $super+Print exec --no-startup-id ~/.config/i3/screenshot.sh clip_window
 bindsym $super+Shift+Print exec --no-startup-id ~/.config/i3/screenshot.sh clip_rect 
 
 ## lock
-bindsym ctrl+shift+L exec light-locker-command --lock 
+#bindsym ctrl+shift+L exec light-locker-command --lock 
 
 ## Display Off
 bindsym $super+shift+L exec xset dpms force off
@@ -196,17 +196,17 @@ workspace $ws1 output $primary
 workspace $ws2 output $primary 
 workspace $ws3 output $primary 
 workspace $ws4 output $primary 
-workspace $ws5 output $secondary
+workspace $ws5 output $primary
 workspace $ws6 output $secondary 
 workspace $ws7 output $secondary 
 workspace $ws8 output $secondary 
-workspace $ws9 output $third 
-workspace $ws10 output $third
+workspace $ws9 output $secondary 
+workspace $ws10 output $secondary
 
 # switch focused display
 bindsym $mod+shift+w focus output $primary
 bindsym $mod+shift+c focus output $secondary
-bindsym $mod+shift+d focus output $third
+#bindsym $mod+shift+d focus output $third
 
 # Switch to workspace
 bindsym $mod+1 workspace $ws1

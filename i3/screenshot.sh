@@ -24,7 +24,7 @@ if [ "$TYPE" == "all" ]; then
         rm -f "$FILE_PATH"
         notify-send -a "Screen Capture" -u normal "Screenshot was deleted!" "$FILE_NAME"
     elif [ "$ACT" == "db" ]; then
-        cp "$FILE_PATH" "${HOME}/Dropbox/Capture/${FILE_NAME}"
+        cp "$FILE_PATH" "/mnt/rc350f/Dropbox/Capture/${FILE_NAME}"
         notify-send -a "Screen Capture" -u normal "Uploaded to Dropbox" "$FILE_NAME"
     fi
 elif [ "$TYPE" == "window" ]; then
@@ -44,7 +44,7 @@ elif [ "$TYPE" == "window" ]; then
         rm -f "$FILE_PATH"
         notify-send -a "Screen Capture" -u normal "Screenshot was deleted!" "$FILE_NAME"
     elif [ "$ACT" == "db" ]; then
-        cp "$FILE_PATH" "${HOME}/Dropbox/Capture/${FILE_NAME}"
+        cp "$FILE_PATH" "/mnt/rc350f/Dropbox/Capture/${FILE_NAME}"
         notify-send -a "Screen Capture" -u normal "Uploaded to Dropbox" "$FILE_NAME"
     fi
 elif [ "$TYPE" == "rect" ]; then
@@ -62,7 +62,7 @@ elif [ "$TYPE" == "rect" ]; then
         rm -f "$FILE_PATH"
         notify-send -a "Screen Capture" -u normal "Screenshot was deleted!" "$FILE_NAME"
     elif [ "$ACT" == "db" ]; then
-        cp "$FILE_PATH" "${HOME}/Dropbox/Capture/${FILE_NAME}"
+        cp "$FILE_PATH" "/mnt/rc350f/Dropbox/Capture/${FILE_NAME}"
         notify-send -a "Screen Capture" -u normal "Uploaded to Dropbox" "$FILE_NAME"
     fi
 elif [ "$TYPE" == "clip_all" ]; then

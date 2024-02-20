@@ -12,8 +12,8 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Enumerate Monitors
 DISPLAYS=(`polybar -m | sed -e 's/:.*$//g' | sort`)
-export POLY_MONITOR_0=${DISPLAYS[0]}
-#export POLY_MONITOR_1=${DISPLAYS[1]} 
+export POLY_MONITOR_0="DP-1" 
+export POLY_MONITOR_1="HDMI-0"
 #export POLY_MONITOR_2=${DISPLAYS[2]} 
 
 # Launch the bar
@@ -21,9 +21,9 @@ polybar -q main-left -c "$DIR"/config.ini &
 polybar -q main-ws -c "$DIR"/config.ini &
 polybar -q main-right -c "$DIR"/config.ini &
 polybar -q main-center -c "$DIR"/config.ini &
-polybar -q main-media -c "$DIR"/config.ini &
+#polybar -q main-media -c "$DIR"/config.ini &
 polybar -q main-tray -c "$DIR"/config.ini &
-POLY_MONITOR_1=${DISPLAYS[1]} polybar -q sub-ws -c "$DIR"/config.ini &
-POLY_MONITOR_1=${DISPLAYS[2]} polybar -q sub-ws -c "$DIR"/config.ini &
+polybar -q sub-ws -c "$DIR"/config.ini &
+#POLY_MONITOR_1=${DISPLAYS[2]} polybar -q sub-ws -c "$DIR"/config.ini &
 #polybar -q sub -c "$DIR"/config.ini &
 #polybar -q sub2 -c "$DIR"/config.ini &
