@@ -24,6 +24,6 @@ polybar -q main-center -c "$DIR"/config.ini &
 polybar -q main-media -c "$DIR"/config.ini &
 polybar -q main-tray -c "$DIR"/config.ini &
 POLY_MONITOR_1=${DISPLAYS[0]} polybar -q sub-ws -c "$DIR"/config.ini &
-POLY_MONITOR_1=${DISPLAYS[1]} polybar -q sub-ws -c "$DIR"/config.ini &
+POLY_MONITOR_1=${DISPLAYS[1]} polybar -q sub-ws-wqhd -c "$DIR"/config.ini &
 #polybar -q sub -c "$DIR"/config.ini &
 #polybar -q sub2 -c "$DIR"/config.ini &
