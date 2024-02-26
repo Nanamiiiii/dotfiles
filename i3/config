@@ -50,8 +50,8 @@ client.placeholder      #282A3600 #282A36 #F8F8F2 #282A36   #282A3600
 client.background       #F8F8F2
 
 # Key maps
-exec "setxkbmap -layout us"
-exec "setxkbmap -option ctrl:nocaps"
+exec_always "setxkbmap -layout us"
+exec_always "setxkbmap -option ctrl:nocaps"
 
 # Load deafult display setting
 # exec ~/.screenlayout/default.sh
@@ -60,10 +60,10 @@ exec "setxkbmap -option ctrl:nocaps"
 
 # polkit
 #exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1;
-exec /usr/lib/polkit-kde-authentication-agent-1;
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1;
 
 # kde wallet
-#exec /usr/lib/pam_kwallet_init
+exec --no-startup-id /usr/lib/pam_kwallet_init
 
 # IME
 exec fcitx5 -d
@@ -93,15 +93,15 @@ exec --no-startup-id picom -b
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Screen lock
-#exec_always --no-startup-id xset s off -dpms
-#exec_always --no-startup-id light-locker
-#exec xautolock -time 10 -locker "light-locker-command --lock" -detectsleep 
+exec_always --no-startup-id xset s off -dpms
+exec_always --no-startup-id light-locker
+exec xautolock -time 20 -locker "light-locker-command --lock" -detectsleep 
 
 # Dropbox
-exec --no-startup-id dropbox
+exec dropbox
 
 # 1Password
-exec --no-startup-id 1password --silent
+exec 1password --silent
 
 ### keybindings
 
