@@ -97,6 +97,9 @@ exec_always --no-startup-id xset s off -dpms
 exec_always --no-startup-id light-locker
 exec xautolock -time 20 -locker "light-locker-command --lock" -detectsleep 
 
+# Beep
+exec_always --no-startup-id xset b off
+
 # Dropbox
 exec dropbox
 
