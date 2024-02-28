@@ -1,5 +1,5 @@
 "$schema" = 'https://starship.rs/config-schema.json'
-add_newline = false
+add_newline = true
 command_timeout = 5000
 
 format = """$username$hostname 🐬 $os [\\[](cyan bold) $directory[\\]](cyan bold) $container$git_branch$git_status$rust$cmake$package$fill$status$cmd_duration$time
