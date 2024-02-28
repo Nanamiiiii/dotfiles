@@ -15,10 +15,29 @@ local is_macos = wezterm.target_triple:find("darwin")    -- macos
 local is_windows = wezterm.target_triple:find("windows") -- windows
 local is_linux = wezterm.target_triple:find("linux")     -- linux
 
+-- Hostname
+local hostname = ""
+if is_linux then
+    local handle = io.popen("/bin/hostname")
+    hostname = string.gsub(handle:read("a"), "[\n\r]", "")
+    handle:close()
+end
+
 -- Detect desktop environment
 local de_name = ""
+local wm_name = ""
 if is_linux then
     de_name = os.getenv("XDG_CURRENT_DESKTOP")
+elseif is_macos then
+    de_name = "aqua"
+    local handle = io.popen("/bin/ps -e | grep -o -e \"[y]abai\" | uniq")
+    local result = string.gsub(handle:read("a"), "[\n\r]", "") 
+    handle:close()
+    if result == "yabai" then
+        wm_name = "yabai"
+    else
+        wm_name = "quartz"
+    end
 end
 
 -- Default Domain
@@ -47,6 +66,8 @@ config.font = wezterm.font_with_fallback {
 -- Font Size
 if is_macos then
     config.font_size = 18.0
+elseif hostname == "xanadu" then
+    config.font_size = 12.5 
 else
     config.font_size = 14.0
 end
@@ -103,14 +124,18 @@ title_map["pwsh.exe"] = {
     symbol = "󰞷 ",
 }
 title_map["nvim.exe"] = {
-    title = "nvim",
+    title = "neovim",
     symbol = " "
 }
 title_map["nvim"] = {
-    title = "nvim",
+    title = "neovim",
     symbol = " "
 }
 title_map["wslhost.exe"] = {
+    title = "WSL",
+    symbol = "󰣇 "
+}
+title_map["wsl.exe"] = {
     title = "WSL",
     symbol = "󰣇 "
 }
@@ -173,7 +198,11 @@ end)
 
 -- Window setting
 if is_macos then
-    config.window_decorations = "RESIZE | MACOS_FORCE_ENABLE_SHADOW"
+    if wm_name == "yabai" then -- yabai
+        config.window_decorations = "RESIZE | MACOS_FORCE_ENABLE_SHADOW"
+    else -- default floating
+        config.window_decorations = "TITLE | RESIZE | MACOS_FORCE_ENABLE_SHADOW"
+    end
 elseif is_linux then
     if de_name == "i3" or de_name == "sway" then
         config.window_decorations = "RESIZE"
