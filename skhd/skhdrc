@@ -1,3 +1,6 @@
+# default mode
+:: default : borders active_color=0xff95bbcf inactive_color=0xff494d64 width=5.0 &
+
 # focus window
 alt - x : yabai -m window --focus recent
 alt - h : yabai -m window --focus west
@@ -26,26 +29,31 @@ shift + ctrl - s : yabai -m window --move rel:0:20
 shift + ctrl - w : yabai -m window --move rel:0:-20
 shift + ctrl - d : yabai -m window --move rel:20:0
 
+# resize mode
+:: resize @ : borders active_color=0xffccb3ff inactive_color=0xff494d64 width=5.0 &
+alt - r ; resize
+resize < escape ; default
+
 # increase window size
-shift + alt - a : yabai -m window --resize left:-20:0
-shift + alt - s : yabai -m window --resize bottom:0:20
-shift + alt - w : yabai -m window --resize top:0:-20
-shift + alt - d : yabai -m window --resize right:20:0
+resize < alt - h : yabai -m window --resize left:-20:0
+resize < alt - j : yabai -m window --resize bottom:0:20
+resize < alt - k : yabai -m window --resize top:0:-20
+resize < alt - l : yabai -m window --resize right:20:0
 
 # decrease window size
-shift + cmd - a : yabai -m window --resize left:20:0
-shift + cmd - s : yabai -m window --resize bottom:0:-20
-shift + cmd - w : yabai -m window --resize top:0:20
-shift + cmd - d : yabai -m window --resize right:-20:0
+resize < cmd - h : yabai -m window --resize left:20:0
+resize < cmd - j : yabai -m window --resize bottom:0:-20
+resize < cmd - k : yabai -m window --resize top:0:20
+resize < cmd - l : yabai -m window --resize right:-20:0
 
 # rotate tree
-alt - r : yabai -m space --rotate 90
+resize < alt - r : yabai -m space --rotate 90
 
 # mirror tree y-axis
-alt - y : yabai -m space --mirror y-axis
+resize < alt - y : yabai -m space --mirror y-axis
 
 # mirror tree x-axis
-alt - x : yabai -m space --mirror x-axis
+resize < alt - x : yabai -m space --mirror x-axis
 
 # toggle desktop offset
 alt - a : yabai -m space --toggle padding && yabai -m space --toggle gap
@@ -60,7 +68,6 @@ shift + alt - f : yabai -m window --toggle native-fullscreen
 alt - e : yabai -m window --toggle split
 
 # float / unfloat window and restore position
-# alt - t : yabai -m window --toggle float && /tmp/yabai-restore/$(yabai -m query --windows --window | jq -re '.id').restore 2>/dev/null || true
 alt - t : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
 
 # toggle sticky window
@@ -109,16 +116,25 @@ shift + alt - n : yabai -m space --move next
 # Launch Apps
 ## WezTerm
 alt - return : open -a "WezTerm"
-## Obsidian
-alt - m : open -a "Obsidian"
+## Notion
+alt - m : open -a "Notion"
 ## FireFox
 alt - b : open -a "Firefox Developer Edition"
 ## Finder
 alt - g : osascript ~/.scripts/finder.scpt
-## memos
-cmd + alt - m : open "https://memos.myuu.dev"
+
+# Applicatioin alt mode
+:: app @ : borders active_color=0xff99ffcc inactive_color=0xff494d64 width=5.0 &
+alt - v ; app
+app < escape ; default
+
+## iTerm
+app < alt - return : open -a "iTerm"
+## Obsidian
+app < alt - m : open -a "Obsdian"
 ## Code
-cmd + alt - o : open -a "Visual Studio Code"
-## 1Password
-cmd + alt - k : open -a "1Password"
+app < alt - o : open -a "Visual Studio Code"
+
+## Chrome
+app < alt - b : open -a "Google Chrome"
 
