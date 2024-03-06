@@ -5,7 +5,7 @@ sudo yabai --load-sa
 
 # global settings
 yabai -m config mouse_follows_focus          on
-yabai -m config focus_follows_mouse          autofocus
+yabai -m config focus_follows_mouse          off
 yabai -m config window_origin_display        default
 yabai -m config window_placement             second_child
 yabai -m config window_zoom_persist          on
@@ -24,8 +24,6 @@ yabai -m config mouse_drop_action            swap
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config --space 4 layout             float 
-yabai -m config --space 5 layout             float 
 yabai -m config top_padding                  12
 yabai -m config bottom_padding               12
 yabai -m config left_padding                 12
@@ -53,28 +51,29 @@ yabai -m rule --add app="^Finder$" title="^Connect to Server$" manage=off
 yabai -m rule --add app="^Finder$" title="^Connecting to Server$" manage=off
 yabai -m rule --add app="^Finder$" title="^.* Info$" manage=off
 yabai -m rule --add app="^Finder$" title="^Copy$" manage=off
-yabai -m rule --add app="^Inkdrop$" title="^Preferences$" manage=off
 yabai -m rule --add app="^Weather$" manage=off
 yabai -m rule --add app="^Clock$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
 yabai -m rule --add app="^Discord$" title="^Discord Updater$" manage=off
 yabai -m rule --add app="^Archive Utility$" manage=off
-yabai -m rule --add app="^Microsoft To Do$" manage=off
-yabai -m rule --add app="^UTM$" manage=off
 yabai -m rule --add app="^GitKraken$" manage=off
 yabai -m rule --add app="^Parallels Desktop$" manage=off
 yabai -m rule --add app="^Plexamp$" manage=off sticky=on
 yabai -m rule --add app="^JetBrains Toolbox$" manage=off
 yabai -m rule --add app="^Preview$" manage=off
-yabai -m rule --add app="^Microsoft Word$" manage=on
-yabai -m rule --add app="^Microsoft Excel$" manage=on
-yabai -m rule --add app="^Microsoft PowerPoint$" manage=off
 yabai -m rule --add app="^Dropbox Capture$" manage=off
 yabai -m rule --add app="^CLion$" manage=off
 yabai -m rule --add app="^JetBrains Client$" manage=off
 
 # Borders
-borders active_color=0xff95bbcf inactive_color=0xff494d64 width=5.0 &
+borders_options=(
+    style=round
+    active_color=0xff95bbcf
+    inactive_color=0xff494d64
+    width=5.0
+    blacklist="Dropbox Capture"
+)
+borders "${borders_options[@]}" &
 
 echo "yabai configuration loaded.."
 

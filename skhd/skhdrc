@@ -58,6 +58,9 @@ resize < alt - x : yabai -m space --mirror x-axis
 # toggle desktop offset
 alt - a : yabai -m space --toggle padding && yabai -m space --toggle gap
 
+# toggle layout
+alt - d : ~/.scripts/yabai_toggle_layout.sh
+
 # toggle window fullscreen zoom
 alt - f : yabai -m window --toggle zoom-fullscreen
 
@@ -73,11 +76,11 @@ alt - t : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
 # toggle sticky window
 alt - s : yabai -m window --toggle sticky
 
+# reset notch space
+shift + alt - t : ~/.scripts/yabai_notch_reset.sh
+
 # restart yabai
 shift + alt - r : yabai --restart-service
-
-# restart skhd
-shift + ctrl - r : skhd --restart-service
 
 # reload sketchybar
 shift + alt - b : sketchybar --reload
@@ -127,14 +130,12 @@ alt - g : osascript ~/.scripts/finder.scpt
 :: app @ : borders active_color=0xff99ffcc inactive_color=0xff494d64 width=5.0 &
 alt - v ; app
 app < escape ; default
-
 ## iTerm
 app < alt - return : open -a "iTerm"
 ## Obsidian
 app < alt - m : open -a "Obsdian"
 ## Code
 app < alt - o : open -a "Visual Studio Code"
-
 ## Chrome
 app < alt - b : open -a "Google Chrome"
 
