@@ -4,7 +4,7 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
 # global settings
-yabai -m config mouse_follows_focus          on
+yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          off
 yabai -m config window_origin_display        default
 yabai -m config window_placement             second_child
@@ -71,7 +71,7 @@ borders_options=(
     active_color=0xff95bbcf
     inactive_color=0xff494d64
     width=5.0
-    blacklist="Dropbox Capture"
+    blacklist="Dropbox Capture,WinAppHelper"
 )
 borders "${borders_options[@]}" &
 

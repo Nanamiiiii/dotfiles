@@ -73,7 +73,8 @@ else
 end
 
 -- Color Scheme
-config.color_scheme = 'iceberg-dark'
+-- config.color_scheme = 'iceberg-dark'
+config.color_scheme = 'Tokyo Night'
 
 -- Opacity
 config.window_background_opacity = 0.90
