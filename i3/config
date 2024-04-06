@@ -22,9 +22,9 @@ set $menu rofi -show combi -display-combi "󰞷"
 set $drun rofi -show drun -display-drun "Applications"
 set $sysmenu rofi -show p -modi p:~/.config/rofi/rofi_power_menu 
 
-set $primary DP-0.8
+set $primary DP-4.8
 set $secondary DP-2
-set $third DP-4
+set $third DP-0
 
 ### Style
 
