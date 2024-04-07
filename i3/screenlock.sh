@@ -1,4 +1,4 @@
 #!/bin/sh
 
-i3lock-fancy --font Neon-Zone --nofork
+i3lock-fancy -gpf PlemolJP-Light --nofork -- maim
 
