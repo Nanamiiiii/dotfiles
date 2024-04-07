@@ -35,7 +35,7 @@ font pango:PlemolJP Console NF 14
 # set inner and outer gaps
 gaps outer 3
 gaps inner 5
-gaps top 52
+gaps top 3
 default_border pixel 0
 default_floating_border pixel 3
 
@@ -90,12 +90,13 @@ exec --no-startup-id clipmenud
 exec --no-startup-id picom -b
 
 # Polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+#exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Screen lock
 exec_always --no-startup-id xset s off -dpms
-exec_always --no-startup-id light-locker
-exec xautolock -time 20 -locker "light-locker-command --lock" -detectsleep 
+#exec_always --no-startup-id light-locker
+#exec xautolock -time 20 -locker "light-locker-command --lock" -detectsleep 
+exec xautolock -time 10 -locker "/usr/bin/i3lock-fancy -gpf PlemolJP-Light -- maim" -detectsleep
 
 # Beep
 exec_always --no-startup-id xset b off
@@ -146,7 +147,7 @@ bindsym $super+Print exec --no-startup-id ~/.config/i3/screenshot.sh clip_window
 bindsym $super+Shift+Print exec --no-startup-id ~/.config/i3/screenshot.sh clip_rect 
 
 ## lock
-#bindsym ctrl+shift+L exec light-locker-command --lock 
+bindsym ctrl+shift+L exec ~/.config/i3/screenlock.sh
 
 ## Display Off
 bindsym $super+shift+L exec xset dpms force off
@@ -156,7 +157,7 @@ bindsym $super+L exec ~/.config/i3/toggle_autosleep.sh
 
 ## reload
 bindsym $mod+shift+r restart
-bindsym $super+shift+r exec --no-startup-id ~/.config/polybar/launch.sh
+#bindsym $super+shift+r exec --no-startup-id ~/.config/polybar/launch.sh
 
 ### window focus
 
@@ -260,6 +261,14 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
+# Pipewire-pulse
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+bindsym XF86AudioMute --release exec pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioLowerVolume --release exec pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioRaiseVolume --release exec pkill -RTMIN+1 i3blocks
+
 # Resizing containers
 mode "resize" {
     bindsym $left resize shrink width 10px
@@ -275,72 +284,83 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
 bindsym $mod+r mode "resize"
+
+# i3blocks
+## colors
+set $bar_background #24283b
+set $bar_foreground #a9b1d6
+set $bar_secondary #3f4751
+set $bar_black #414868
+set $bar_red #f7768e
+set $bar_green #9ece6a
+set $bar_yellow #e0af68
+set $bar_blue #7aa2f7
+set $bar_magenta #bb9af7
+set $bar_cyan #2ac3de
+set $bar_white #cfc9c2
+
+bar {
+    status_command i3blocks
+    font pango:PlemolJP Console NF 12
+    mode dock
+    position bottom
+    separator_symbol " │ "
+    workspace_buttons yes
+    strip_workspace_numbers yes
+    binding_mode_indicator yes
+    tray_output primary
+    tray_padding 3
+    colors {
+        background $bar_background
+        focused_background $bar_background
+        statusline $bar_blue
+        focused_statusline $bar_blue
+        separator $bar_secondary
+        focused_separator $bar_secondary
+        focused_workspace  $bar_blue $bar_blue $bar_background
+        active_workspace $bar_background $bar_background $bar_foreground
+        inactive_workspace $bar_background $bar_background $bar_foreground
+        urgent_workspace   $bar_red $bar_red $bar_background
+        binding_mode       $bar_blue $bar_blue $bar_background
+    }
+}
 
 ### window specific
 
 # Window Type
 for_window [class="1Password"] floating enable
 for_window [class="1Password" title=".* — 1Password$"] floating enable, resize set 1200 900
-
 for_window [title="^Vivaldi Settings:.*"] floating enable, resize set 1000 800
-
 for_window [class="zoom" title="^Zoom Cloud Meetings$"] floating enable resize set 1000 800
-
 for_window [class="zoom" title="^Zoom - Free Account$"] floating enable, resize set 1000 800
-
 for_window [class="zoom" title="^Select a window or an application that you want to share$"] floating enable, resize set 1000 800
-
 for_window [class="zoom" title="^OBS Virtual Camera$"] fullscreen disable
-
 for_window [class="zoom" title="Settings"] floating enable, resize set 1200 900
-
 for_window [class="zoom" title="zoom"] floating enable
-
 for_window [class="zoom" title="Zoom"] floating enable
-
 for_window [class="zoom" title="zoom_linux_float_message_reminder"] floating enable, sticky enable, move down 900 px, move right 1575 px, border none
-
 for_window [class="zoom" title="Zoom Meetings"] floating disable
-
 for_window [class="zoom" title="Zoom Webinar"] floating disable
-
 for_window [class="zoom" title="^Participants"] floating enable, resize set 3000 1500
-
 for_window [class="zoom" title="^Breakout Rooms"] floating enable, resize set 2000 1500
-
 for_window [class="zoom" title="as_toolbar"] floating enable, sticky enable, move up 700 px
-
 for_window [class="zoom" title="Recording Alerts"] floating enable
-
 for_window [class="zoom" title="Details"] floating enable
-
 for_window [class="zoom" title="^Zoom$"] floating enable, resize set 406 371
-
 for_window [class="Virt-manager" title="Virtual Machine Manager"] floating enable, resize set 1200 900
-
 for_window [class="Virt-manager" title="^.+ on QEMU\/KVM$"] floating disable, fullscreen enable
-
 for_window [class="inkdrop" title="^Preferences$"] floating enable, resize set 1200 800
-
 for_window [class="firefox" title="Firefox — 共有インジケーター"] floating enable, sticky enable, move down 660 px, move left 1220 px
-
 for_window [class="Pavucontrol" title="^Volume Control$"] floating enable, resize set 800 1000
-
 for_window [class="dolphin" title="^Copying — Dolphin$"] floating enable
-
 for_window [class="dolphin" title="^Moving — Dolphin$"] floating enable
-
 for_window [instance="nitrogen" class="Nitrogen"] floating enable
-
 for_window [class="Docker Desktop"] floating enable
-
 for_window [class="fcitx5-config-qt"] floating enable
-
 for_window [class="Termius"] floating enable
-
 for_window [class="kcalc"] floating enable
-
 for_window [class="kclock"] floating enable
-
 for_window [class="VirtualBox Machine"] floating enable
+
