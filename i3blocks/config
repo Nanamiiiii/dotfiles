@@ -9,7 +9,7 @@ bar_chars=_▁▂▃▄▅▆▇█
 [cpu]
 LABEL=󰍛 
 command=~/.config/i3blocks/cpu_usage
-interval=10
+interval=5
 COLOR_NORMAL=#a9b1d6
 
 [network]
@@ -45,8 +45,8 @@ command=kill -s USR1 $(pidof deadd-notification-center)
 color=#a9b1d6
 
 [date]
-label=
-command=date +'%d %b %H:%M '
+label= 
+command=date +' %d %b %H:%M:%S '
 color=#a9b1d6
 interval=1
 
