@@ -12,7 +12,12 @@ local apple = sbar.add("item", {
     padding_right = 8,
     padding_left = 8,
   },
-  label = { drawing = false },
+  label = {
+      width = 0,
+      padding_left = 0,
+      padding_right = 8,
+      string = "Menu",
+  },
   background = {
     color = colors.bg2,
     border_color = colors.black,
@@ -31,6 +36,22 @@ sbar.add("bracket", { apple.name }, {
     border_color = colors.grey,
   }
 })
+
+apple:subscribe("mouse.entered", function(env)
+    sbar.animate("tanh", 30, function()
+        apple:set({
+            label = { width = "dynamic" }
+        })
+    end)
+end)
+
+apple:subscribe("mouse.exited", function(env)
+    sbar.animate("tanh", 30, function()
+        apple:set({
+            label = { width = 0 }
+        })
+    end)
+end)
 
 -- Padding item required because of bracket
 sbar.add("item", { width = 7 })
