@@ -2,6 +2,7 @@
 -- Simple plugin definition (without complex opts)
 
 return {
+    { "folke/lazy.nvim", version = "*" },
     {
         'Nanamiiiii/vimsence',
         config = function()

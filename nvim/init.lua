@@ -1,6 +1,9 @@
 -- Nanamiiiii's neovim config
 -- Last Update: 2023.07.08
 
+-- hacks for without bundled parser
+vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/lazy/nvim-treesitter")
+
 vim.cmd("syntax on")
 vim.cmd("filetype plugin indent on")
 
