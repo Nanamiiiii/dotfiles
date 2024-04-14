@@ -24,7 +24,7 @@ set $sysmenu rofi -show p -modi p:~/.config/rofi/rofi_power_menu
 
 set $primary HDMI-0
 set $secondary DP-2
-set $third DP-4
+#set $third DP-4
 
 ### Mouse
 focus_follows_mouse no
@@ -63,7 +63,8 @@ exec "setxkbmap -option ctrl:nocaps"
 ### background apps
 
 # polkit
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1;
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1;
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-kde-authentication-agent-1;
 
 # kde wallet
 exec /usr/lib/pam_kwallet_init
@@ -208,17 +209,17 @@ workspace $ws1 output $primary
 workspace $ws2 output $primary 
 workspace $ws3 output $primary 
 workspace $ws4 output $primary 
-workspace $ws5 output $secondary
+workspace $ws5 output $primary
 workspace $ws6 output $secondary 
 workspace $ws7 output $secondary 
 workspace $ws8 output $secondary 
-workspace $ws9 output $third 
-workspace $ws10 output $third
+workspace $ws9 output $secondary 
+workspace $ws10 output $secondary
 
 # switch focused display
 bindsym $mod+shift+w focus output $primary
 bindsym $mod+shift+c focus output $secondary
-bindsym $mod+shift+d focus output $third
+#bindsym $mod+shift+d focus output $third
 
 # Switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -311,7 +312,7 @@ bar {
     strip_workspace_numbers yes
     binding_mode_indicator yes
     tray_output primary
-    tray_padding 3
+    tray_padding 5
     colors {
         background $bar_background
         focused_background $bar_background
