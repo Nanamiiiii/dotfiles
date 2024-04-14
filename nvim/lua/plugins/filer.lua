@@ -50,7 +50,9 @@ local setup = function()
                     ".null-ls_*",
                 },
             },
-            follow_current_file = false, 
+            follow_current_file = {
+                enabled = false,
+            }, 
             group_empty_dirs = false, 
             hijack_netrw_behavior = "open_default", 
             use_libuv_file_watcher = false, 
@@ -69,7 +71,9 @@ local setup = function()
             }
         },
         buffers = {
-            follow_current_file = true, 
+            follow_current_file = {
+                enabled = true,
+            }, 
             group_empty_dirs = true, 
             show_unloaded = true,
             window = {
@@ -86,7 +90,7 @@ end
 return {
     {
         'nvim-neo-tree/neo-tree.nvim',
-        version = "2.*",
+        version = "3.*",
         dependencies = deps,
         keys = {
             { "<C-t>", ":Neotree toggle<CR>", desc = "NeoTree", silent = true },
