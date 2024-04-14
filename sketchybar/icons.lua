@@ -8,6 +8,7 @@ local icons = {
     gear = "􀍟",
     cpu = "􀫥",
     clipboard = "􀉄",
+    clock = "􀐫",
     
 
     switch = {
@@ -51,6 +52,7 @@ local icons = {
     gear = "",
     cpu = "",
     clipboard = "Missing Icon",
+    clock = "",
 
     switch = {
       on = "󱨥",
