@@ -38,7 +38,7 @@ icons[shutdown]=" "
 icons[cancel]="󰜺 "
 
 declare -A actions
-actions[lockscreen]="i3lock-fancy -gpf PlemolJP-Light -- maim"
+actions[lockscreen]="light-locker-command --lock"
 #actions[switchuser]="???"
 actions[logout]="loginctl terminate-session ${XDG_SESSION_ID-}"
 actions[suspend]="systemctl suspend"
