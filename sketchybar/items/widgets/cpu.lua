@@ -8,7 +8,7 @@ sbar.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_
 
 local cpu = sbar.add("graph", "widgets.cpu" , 42, {
   position = "right",
-  graph = { color = colors.blue },
+  graph = { color = colors.black },
   background = {
     height = 22,
     color = { alpha = 0 },
@@ -30,7 +30,7 @@ local cpu = sbar.add("graph", "widgets.cpu" , 42, {
     padding_right = 0,
     width = 0,
     y_offset = 4,
-    color = colors.dark_fore,
+    color = colors.white_dark,
   },
   padding_right = settings.paddings + 6
 })
@@ -43,11 +43,11 @@ cpu:subscribe("cpu_update", function(env)
   local color = colors.black
   if load > 30 then
     if load < 60 then
-      color = colors.yellow
+      color = colors.yellow_dark
     elseif load < 80 then
-      color = colors.orange
+      color = colors.orange_dark
     else
-      color = colors.red
+      color = colors.red_dark
     end
   end
 
