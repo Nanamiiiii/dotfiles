@@ -1,4 +1,5 @@
 -- filetypes.lua
+
 local M = {}
 
 -- indent setting
