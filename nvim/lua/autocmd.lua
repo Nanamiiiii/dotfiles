@@ -5,14 +5,14 @@ local ft = require("filetypes")
 
 augroup("rc", {})
 
--- auto ft detection
+ auto ft detection
 autocmd({ "FileReadPost", "BufAdd", "BufEnter", "BufNew", "BufNewFile", "BufRead" }, {
     group = "rc",
     pattern = {"*"},
     command = "filetype detect",
 })
 
--- ft specific settings
+ ft specific settings
 autocmd("Filetype", {
     group = "rc",
     pattern = "*",
