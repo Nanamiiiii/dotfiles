@@ -160,7 +160,7 @@ bindsym $super+L exec ~/.config/i3/toggle_autosleep.sh
 
 ## reload
 bindsym $mod+shift+r restart
-#bindsym $super+shift+r exec --no-startup-id ~/.config/polybar/launch.sh
+bindsym $super+shift+r exec --no-startup-id killall picom && picom -b
 
 ### window focus
 
