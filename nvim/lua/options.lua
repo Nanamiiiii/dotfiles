@@ -34,3 +34,5 @@ vim.wo.wrap = false
 -- invisible chars
 vim.wo.list = true
 vim.opt.listchars = {tab='»-', space='･', trail='-', eol='↲', extends='»', precedes='«', nbsp='%'}
+
+vim.g.mapleader = " "
