@@ -95,6 +95,7 @@ return {
             'williamboman/mason-lspconfig.nvim',
         },
         config = lsp_setup,
+        cmd = "Mason",
     },
     --{
     --    "jose-elias-alvarez/null-ls.nvim",
