@@ -122,7 +122,7 @@ alt - return : open -a "WezTerm"
 ## Notion
 alt - m : open -a "Notion"
 ## FireFox
-alt - b : open -a "Firefox Developer Edition"
+alt - b : open -a "Arc"
 ## Finder
 alt - g : osascript ~/.scripts/finder.scpt
 
@@ -138,4 +138,5 @@ app < alt - m : open -a "Obsdian"
 app < alt - o : open -a "Visual Studio Code"
 ## Chrome
 app < alt - b : open -a "Google Chrome"
+app < alt - v : open -a "Firefox Developer Edition"
 
