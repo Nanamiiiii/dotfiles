@@ -10,6 +10,9 @@ end
 -- TERM
 config.term = 'xterm-256color'
 
+-- IME
+config.use_ime = false
+
 -- Detect OS
 local is_macos = wezterm.target_triple:find("darwin")    -- macos
 local is_windows = wezterm.target_triple:find("windows") -- windows
