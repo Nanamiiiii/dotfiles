@@ -169,3 +169,12 @@ function rand_sym() {
     LC_ALL=C tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' < /dev/urandom | head -c "$RAND_LEN"; echo
 }
 
+function rand_hex() {
+    if [ $# -eq 0 ]; then
+        RAND_LEN=16
+    else
+        RAND_LEN=$1
+    fi
+    LC_ALL=C tr -dc 'a-f0-9' < /dev/urandom | head -c "$RAND_LEN"; echo
+}
+
