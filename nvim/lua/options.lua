@@ -35,4 +35,5 @@ vim.wo.wrap = false
 vim.wo.list = true
 vim.opt.listchars = {tab='»-', space='･', trail='-', eol='↲', extends='»', precedes='«', nbsp='%'}
 
+-- mapleader
 vim.g.mapleader = " "
