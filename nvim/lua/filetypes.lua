@@ -4,10 +4,10 @@ local M = {}
 
 -- indent setting
 local set_indent = function(tab_size, expand)
-    vim.bo.expandtab    = expand
-    vim.bo.shiftwidth   = tab_size
-    vim.bo.softtabstop  = tab_size
-    vim.bo.tabstop      = tab_size
+    vim.bo.expandtab = expand
+    vim.bo.shiftwidth = tab_size
+    vim.bo.softtabstop = tab_size
+    vim.bo.tabstop = tab_size
 end
 
 -- ft specific settings
@@ -27,6 +27,5 @@ return setmetatable(M, {
             -- default setting
             set_indent(4, true)
         end
-    end
+    end,
 })
-

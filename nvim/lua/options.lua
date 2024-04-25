@@ -33,7 +33,8 @@ vim.wo.wrap = false
 
 -- invisible chars
 vim.wo.list = true
-vim.opt.listchars = {tab='»-', space='･', trail='-', eol='↲', extends='»', precedes='«', nbsp='%'}
+vim.opt.listchars =
+    { tab = "»-", space = "･", trail = "-", eol = "↲", extends = "»", precedes = "«", nbsp = "%" }
 
 -- mapleader
 vim.g.mapleader = " "

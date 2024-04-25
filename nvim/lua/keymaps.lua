@@ -40,4 +40,3 @@ keymap("i", [[""]], [[""]], comp_opt)
 keymap("i", [["]], [[""<ESC>i]], comp_opt)
 keymap("i", [['']], [['']], comp_opt)
 keymap("i", [[']], [[''<ESC>i]], comp_opt)
-

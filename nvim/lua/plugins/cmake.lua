@@ -1,11 +1,11 @@
 return {
-    'Civitasv/cmake-tools.nvim',
+    "Civitasv/cmake-tools.nvim",
     dependencies = {
-        'akinsho/toggleterm.nvim',
+        "akinsho/toggleterm.nvim",
     },
     event = { "BufReadPre", "BufNewFile" },
     config = true,
     opts = {
         cmake_build_directory = "build/${variant:buildType}",
-    }
+    },
 }

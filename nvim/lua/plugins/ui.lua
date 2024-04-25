@@ -2,19 +2,19 @@
 
 return {
     {
-        'akinsho/bufferline.nvim',
+        "akinsho/bufferline.nvim",
         branch = "main",
-        dependencies = 'nvim-tree/nvim-web-devicons',
+        dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
-            require("bufferline").setup {
+            require("bufferline").setup({
                 options = {
                     indicator = {
-                        style = 'underline',
+                        style = "underline",
                     },
                     offsets = {},
-                    separator_style = 'slant'
-                }
-            }
+                    separator_style = "slant",
+                },
+            })
 
             local opts = { silent = true, noremap = true }
             local keymap = vim.api.nvim_set_keymap
@@ -23,19 +23,19 @@ return {
         end,
     },
     {
-        'nvim-lualine/lualine.nvim',
-        dependencies = 'nvim-tree/nvim-web-devicons',
+        "nvim-lualine/lualine.nvim",
+        dependencies = "nvim-tree/nvim-web-devicons",
         opts = {
             options = {
                 disabled_filetypes = {
-                    'neo-tree',
+                    "neo-tree",
                 },
-                theme = 'iceberg_dark',
-            }
+                theme = "iceberg_dark",
+            },
         },
     },
     {
-        'petertriho/nvim-scrollbar',
+        "petertriho/nvim-scrollbar",
         event = {
             "BufWinEnter",
             "CmdwinLeave",
@@ -72,8 +72,8 @@ return {
         },
     },
     {
-        'nvimdev/dashboard-nvim',
-        event = 'VimEnter',
+        "nvimdev/dashboard-nvim",
+        event = "VimEnter",
         opts = function()
             local unyologo = [[
                 ██╗   ██╗███╗   ██╗██╗   ██╗ ██████╗ ██╗   ██╗███╗   ██╗██╗   ██╗ ██████╗                 
@@ -110,18 +110,55 @@ return {
                 config = {
                     header = vim.split(logo, "\n"),
                     center = {
-                        { action = "Telescope find_files",                  desc = " Find File",            icon = " ", key = "f" },
-                        { action = "ene | startinsert",                     desc = " New File",             icon = " ", key = "n" },
-                        { action = "Telescope oldfiles",                    desc = " Recent Files",         icon = " ", key = "r" },
-                        { action = "Telescope live_grep",                   desc = " Find Text",            icon = " ", key = "g" },
-                        { action = 'lua require("persistence").load()',     desc = " Restore Session",      icon = " ", key = "s" },
-                        { action = "Lazy",                                  desc = " Plugin Management",    icon = "󰒲 ", key = "l" },
-                        { action = "qa",                                    desc = " Quit",                 icon = " ", key = "q" },
+                        {
+                            action = "Telescope find_files",
+                            desc = " Find File",
+                            icon = " ",
+                            key = "f",
+                        },
+                        {
+                            action = "ene | startinsert",
+                            desc = " New File",
+                            icon = " ",
+                            key = "n",
+                        },
+                        {
+                            action = "Telescope oldfiles",
+                            desc = " Recent Files",
+                            icon = " ",
+                            key = "r",
+                        },
+                        {
+                            action = "Telescope live_grep",
+                            desc = " Find Text",
+                            icon = " ",
+                            key = "g",
+                        },
+                        {
+                            action = 'lua require("persistence").load()',
+                            desc = " Restore Session",
+                            icon = " ",
+                            key = "s",
+                        },
+                        {
+                            action = "Lazy",
+                            desc = " Plugin Management",
+                            icon = "󰒲 ",
+                            key = "l",
+                        },
+                        {
+                            action = "qa",
+                            desc = " Quit",
+                            icon = " ",
+                            key = "q",
+                        },
                     },
                     footer = function()
                         local stats = require("lazy").stats()
                         local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-                        return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+                        return {
+                            "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms",
+                        }
                     end,
                 },
             }
@@ -144,7 +181,6 @@ return {
 
             return opts
         end,
-        dependencies = {{'nvim-tree/nvim-web-devicons'}}
-    }
+        dependencies = { { "nvim-tree/nvim-web-devicons" } },
+    },
 }
-

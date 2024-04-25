@@ -13,7 +13,6 @@ return {
     },
 }
 
-
 -- settings of material.nvim
 --local setup = function()
 --    local opts = {
@@ -25,7 +24,7 @@ return {
 --            non_current_windows = false, -- Enable darker background for non-current windows
 --            filetypes = {}, -- Specify which filetypes get the contrasted (darker) background
 --        },
---        styles = { 
+--        styles = {
 --            comments = { --[[ italic = true ]] },
 --            strings = { --[[ bold = true ]] },
 --            keywords = { --[[ underline = true ]] },
@@ -34,7 +33,7 @@ return {
 --            operators = {},
 --            types = {},
 --        },
---        plugins = { 
+--        plugins = {
 --            "nvim-cmp",
 --            "nvim-web-devicons",
 --        },

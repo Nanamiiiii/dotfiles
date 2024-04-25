@@ -18,4 +18,3 @@ augroup("rc", {})
 --    pattern = "*",
 --    callback = function(args) ft[args.match]() end,
 --})
-

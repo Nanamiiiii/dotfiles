@@ -16,4 +16,3 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy
 require("lazy").setup("plugins") -- autoload plugin spec under plugins/
-

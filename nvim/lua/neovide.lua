@@ -9,4 +9,3 @@ vim.opt.linespace = 0
 -- IME
 -- always disable IME for skkeleton
 vim.g.neovide_input_ime = false
-

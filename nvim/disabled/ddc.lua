@@ -2,7 +2,7 @@
 
 return {
     {
-        'Shougo/ddc.vim',
+        "Shougo/ddc.vim",
         lazy = false,
         dependencies = {
             "vim-denops/denops.vim",
@@ -23,16 +23,16 @@ return {
             "matsui54/denops-signature_help",
         },
         config = function()
-            local patch_global = vim.fn['ddc#custom#patch_global']
+            local patch_global = vim.fn["ddc#custom#patch_global"]
             patch_global("ui", "native")
             --patch_global("ui", "pum")
             patch_global("sources", {
-                'around',
-                'nvim-lsp',
-                'vsnip',
-                'file',
-                'cmdline',
-                'cmdline-history',
+                "around",
+                "nvim-lsp",
+                "vsnip",
+                "file",
+                "cmdline",
+                "cmdline-history",
             })
             patch_global("sourceOptions", {
                 _ = {
@@ -54,11 +54,11 @@ return {
                     forceCompletionPattern = [[\S/\S*]],
                 },
                 cmdline = {
-                    mark = "[cmd]"
+                    mark = "[cmd]",
                 },
                 ["cmdline-history"] = {
-                    mark = "[cmd-h]"
-                }
+                    mark = "[cmd-h]",
+                },
             })
             patch_global("autoCompleteEvents", {
                 "InsertEnter",
@@ -68,7 +68,7 @@ return {
                 "CmdlineChanged",
             })
 
-            vim.fn['ddc#enable']()
+            vim.fn["ddc#enable"]()
         end,
     },
     --{
