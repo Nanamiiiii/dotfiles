@@ -9,5 +9,5 @@ return {
     ["Bold"] = "Bold",
     ["Heavy"] = "Heavy",
     ["Black"] = "Black",
-  }
+  },
 }

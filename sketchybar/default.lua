@@ -1,5 +1,5 @@
-local settings = require("settings")
 local colors = require("colors")
+local settings = require("settings")
 
 -- Equivalent to the --default domain
 sbar.default({
@@ -8,7 +8,7 @@ sbar.default({
     font = {
       family = settings.font.text,
       style = settings.font.style_map["Bold"],
-      size = 14.0
+      size = 14.0,
     },
     color = colors.white,
     padding_left = settings.paddings,
@@ -19,7 +19,7 @@ sbar.default({
     font = {
       family = settings.font.text,
       style = settings.font.style_map["Semibold"],
-      size = 13.0
+      size = 13.0,
     },
     color = colors.white,
     padding_left = settings.paddings,
@@ -33,8 +33,8 @@ sbar.default({
     image = {
       corner_radius = 9,
       border_color = colors.grey,
-      border_width = 1
-    }
+      border_width = 1,
+    },
   },
   popup = {
     background = {

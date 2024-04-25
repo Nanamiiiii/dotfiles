@@ -1,5 +1,5 @@
-local icons = require("icons")
 local colors = require("colors")
+local icons = require("icons")
 local settings = require("settings")
 
 local battery = sbar.add("item", "widgets.battery", {
@@ -8,7 +8,7 @@ local battery = sbar.add("item", "widgets.battery", {
     font = {
       style = settings.font.style_map["Regular"],
       size = 19.0,
-    }
+    },
   },
   label = { font = { family = settings.font.numbers } },
   update_freq = 180,
@@ -20,17 +20,16 @@ local remaining_time = sbar.add("item", {
   icon = {
     string = "Time remaining:",
     width = 100,
-    align = "left"
+    align = "left",
   },
   label = {
     string = "??:??h",
     width = 100,
-    align = "right"
+    align = "right",
   },
 })
 
-
-battery:subscribe({"routine", "power_source_change", "system_woke"}, function()
+battery:subscribe({ "routine", "power_source_change", "system_woke" }, function()
   sbar.exec("pmset -g batt", function(batt_info)
     local icon = "!"
     local label = "?"
@@ -70,7 +69,7 @@ battery:subscribe({"routine", "power_source_change", "system_woke"}, function()
     battery:set({
       icon = {
         string = icon,
-        color = color
+        color = color,
       },
       label = { string = lead .. label },
     })
@@ -79,13 +78,13 @@ end)
 
 battery:subscribe("mouse.clicked", function(env)
   local drawing = battery:query().popup.drawing
-  battery:set( { popup = { drawing = "toggle" } })
+  battery:set({ popup = { drawing = "toggle" } })
 
   if drawing == "off" then
     sbar.exec("pmset -g batt", function(batt_info)
       local found, _, remaining = batt_info:find(" (%d+:%d+) remaining")
       local label = found and remaining .. "h" or "No estimate"
-      remaining_time:set( { label = label })
+      remaining_time:set({ label = label })
     end)
   end
 end)
@@ -93,10 +92,10 @@ end)
 sbar.add("bracket", "widgets.battery.bracket", { battery.name }, {
   background = {
     color = colors.gradient.color1,
-  }
+  },
 })
 
 sbar.add("item", "widgets.battery.padding", {
   position = "right",
-  width = settings.group_paddings
+  width = settings.group_paddings,
 })
