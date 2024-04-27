@@ -18,6 +18,11 @@ local is_macos = wezterm.target_triple:find("darwin") -- macos
 local is_windows = wezterm.target_triple:find("windows") -- windows
 local is_linux = wezterm.target_triple:find("linux") -- linux
 
+-- Default Shell
+if is_windows then
+	config.default_prog = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-nologo" }
+end
+
 -- Hostname
 local hostname = ""
 if is_linux then
@@ -43,11 +48,6 @@ elseif is_macos then
 	else
 		wm_name = "quartz"
 	end
-end
-
--- Default Domain
-if is_windows then
-	config.default_domain = "WSL:Arch"
 end
 
 -- Size
@@ -445,11 +445,6 @@ if is_windows then
 			label = "Powershell",
 			domain = { DomainName = "local" },
 			args = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-nologo" },
-		},
-		{
-			label = "Nu",
-			domain = { DomainName = "local" },
-			args = { "C:\\Program Files\\nu\\bin\\nu.exe" },
 		},
 		{
 			label = "CMD",
