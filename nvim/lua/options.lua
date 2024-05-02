@@ -9,6 +9,7 @@ local options = {
     smartcase = true,
     autoindent = true,
     number = true,
+    relativenumber = true,
     ruler = true,
     wildmenu = true,
     showcmd = true,
