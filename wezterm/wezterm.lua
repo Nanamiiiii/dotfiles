@@ -99,7 +99,7 @@ config.window_background_image_hsb = {
 }
 
 -- Hide single tab
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
 
 -- Tab bar
 config.use_fancy_tab_bar = false

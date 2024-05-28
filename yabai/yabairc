@@ -70,7 +70,7 @@ borders_options=(
     style=round
     active_color=0xff95bbcf
     inactive_color=0xff494d64
-    width=5.0
+    width=8.0
     blacklist="Dropbox Capture,WinAppHelper"
 )
 borders "${borders_options[@]}" &
