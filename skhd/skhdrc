@@ -120,7 +120,7 @@ alt - q : yabai -m window --close
 ## WezTerm
 alt - return : open -a "WezTerm"
 ## Notion
-alt - m : open -a "Notion"
+alt - m : open -a "Obsidian"
 ## FireFox
 alt - b : open -a "Arc"
 ## Finder
@@ -133,7 +133,7 @@ app < escape ; default
 ## iTerm
 app < alt - return : open -a "iTerm"
 ## Obsidian
-app < alt - m : open -a "Obsdian"
+app < alt - m : open -a "Notion"
 ## Code
 app < alt - o : open -a "Visual Studio Code"
 ## Chrome
