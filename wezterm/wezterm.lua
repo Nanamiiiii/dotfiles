@@ -7,6 +7,8 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
+-- config.enable_wayland = false
+
 -- TERM
 config.term = "xterm-256color"
 

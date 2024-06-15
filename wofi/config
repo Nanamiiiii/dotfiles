@@ -111,7 +111,7 @@ parse_search=true
 #filter_rate=RATE
       #Specifies the rate at which search results are updated in milliseconds, default  is 100.
 
-image_size=60
+image_size=32
       #Specifies the size of images in pixels when images are enabled, default is 32.
 
 #key_up=KEY
