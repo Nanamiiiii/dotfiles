@@ -52,4 +52,12 @@ return {
         "gamoutatsumi/dps-ghosttext.vim",
         dependencies = "vim-denops/denops.vim",
     },
+    {
+        'ojroques/nvim-osc52',
+        keys = {
+            { "<leader>c", function() require('osc52').copy_operator() end, expr = true },
+            { "<leader>cc", "<leader>c_", remap = true },
+            { "<leader>c", function() require('osc52').copy_visual() end, mode = "v" },
+        },
+    },
 }
