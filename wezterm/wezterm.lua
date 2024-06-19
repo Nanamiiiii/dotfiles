@@ -67,6 +67,8 @@ config.font = wezterm.font_with_fallback({
 	"FirgeConsole Nerd Font",
 	"FirgeNerd Console",
 	"UDEV Gothic NFLG",
+    "Noto Sans Symbols",
+    "Noto Sans Symbols 2",
 	"SF Pro",
 })
 
