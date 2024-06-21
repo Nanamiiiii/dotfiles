@@ -24,11 +24,11 @@ yabai -m config mouse_drop_action            swap
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  12
-yabai -m config bottom_padding               12
-yabai -m config left_padding                 12
-yabai -m config right_padding                12
-yabai -m config window_gap                   10
+yabai -m config top_padding                  5
+yabai -m config bottom_padding               5
+yabai -m config left_padding                 5
+yabai -m config right_padding                5
+yabai -m config window_gap                   5
 
 # in external display, top padding is different
 # on M1 or later macbook, the notch space working as padding
@@ -70,7 +70,7 @@ borders_options=(
     style=round
     active_color=0xff95bbcf
     inactive_color=0xff494d64
-    width=8.0
+    width=0.0
     blacklist="Dropbox Capture,WinAppHelper"
 )
 borders "${borders_options[@]}" &
