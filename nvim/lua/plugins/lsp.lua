@@ -117,4 +117,13 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
     },
+    {
+        "aznhe21/actions-preview.nvim",
+        dependencies = {
+            'nvim-telescope/telescope.nvim',
+        },
+        keys = {
+            { "<leader>ca", function() require("actions-preview").code_actions() end, desc = "Preview Code Actions", mode = "n" },
+        }
+    }
 }
