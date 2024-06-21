@@ -149,6 +149,10 @@ title_map["wsl.exe"] = {
 	title = "WSL",
 	symbol = "󰣇 ",
 }
+title_map["tmux"] = {
+    title = "tmux",
+    symbol = " ",
+}
 -- add new mappings here
 
 function title_mapper(title, symbol)
