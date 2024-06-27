@@ -67,6 +67,8 @@ config.font = wezterm.font_with_fallback({
 	"FirgeConsole Nerd Font",
 	"FirgeNerd Console",
 	"UDEV Gothic NFLG",
+    "Noto Sans Symbols",
+    "Noto Sans Symbols 2",
 	"SF Pro",
 })
 
@@ -146,6 +148,10 @@ title_map["wslhost.exe"] = {
 title_map["wsl.exe"] = {
 	title = "WSL",
 	symbol = "󰣇 ",
+}
+title_map["tmux"] = {
+    title = "tmux",
+    symbol = " ",
 }
 -- add new mappings here
 

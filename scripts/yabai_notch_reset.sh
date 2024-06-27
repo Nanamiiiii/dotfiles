@@ -4,8 +4,8 @@
 # on M1 or later macbook, the notch space working as padding
 DISPLAY_UUID=37D8832A-2D66-02CA-B9F7-8F30A301B230 # UUID of built-in display
 
-BAR_PADDING=50
-DEFAULT_PADDING=12
+BAR_PADDING=45
+DEFAULT_PADDING=5
 
 SPACES_ON_SUB=$(yabai -m query --displays | jq ".[] | select(.uuid != \"${DISPLAY_UUID}\") | .spaces[]")
 SPACES_ON_BUILTIN=$(yabai -m query --displays | jq ".[] | select(.uuid == \"${DISPLAY_UUID}\") | .spaces[]")

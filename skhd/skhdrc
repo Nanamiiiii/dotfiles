@@ -1,5 +1,5 @@
 # default mode
-:: default : borders active_color=0xff95bbcf inactive_color=0xff494d64 width=5.0 &
+:: default : borders active_color=0xff95bbcf inactive_color=0xff494d64 width=0.0 &
 
 # focus window
 alt - x : yabai -m window --focus recent
@@ -30,7 +30,7 @@ shift + ctrl - w : yabai -m window --move rel:0:-20
 shift + ctrl - d : yabai -m window --move rel:20:0
 
 # resize mode
-:: resize @ : borders active_color=0xffccb3ff inactive_color=0xff494d64 width=5.0 &
+:: resize @ : borders active_color=0xffccb3ff inactive_color=0xff494d64 width=10.0 &
 alt - r ; resize
 resize < escape ; default
 
@@ -120,20 +120,20 @@ alt - q : yabai -m window --close
 ## WezTerm
 alt - return : open -a "WezTerm"
 ## Notion
-alt - m : open -a "Notion"
+alt - m : open -a "Obsidian"
 ## FireFox
 alt - b : open -a "Arc"
 ## Finder
 alt - g : osascript ~/.scripts/finder.scpt
 
 # Applicatioin alt mode
-:: app @ : borders active_color=0xff99ffcc inactive_color=0xff494d64 width=5.0 &
+:: app @ : borders active_color=0xff99ffcc inactive_color=0xff494d64 width=10.0 &
 alt - v ; app
 app < escape ; default
 ## iTerm
 app < alt - return : open -a "iTerm"
 ## Obsidian
-app < alt - m : open -a "Obsdian"
+app < alt - m : open -a "Notion"
 ## Code
 app < alt - o : open -a "Visual Studio Code"
 ## Chrome
