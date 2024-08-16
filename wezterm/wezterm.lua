@@ -209,11 +209,7 @@ end)
 
 -- Window setting
 if is_macos then
-	if wm_name == "yabai" then -- yabai
-		config.window_decorations = "RESIZE | MACOS_FORCE_ENABLE_SHADOW"
-	else -- default floating
-		config.window_decorations = "TITLE | RESIZE | MACOS_FORCE_ENABLE_SHADOW"
-	end
+    config.window_decorations = "RESIZE | MACOS_FORCE_ENABLE_SHADOW"
 elseif is_linux then
 	if de_name == "i3" or de_name == "sway" then
 		config.window_decorations = "RESIZE"

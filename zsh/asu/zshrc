@@ -8,12 +8,14 @@ path=(
     "$(brew --prefix)/opt/curl/bin"(N-/)
     "$(brew --prefix)/opt/python@3.11/libexec/bin"(N-/)
     "$(brew --prefix)/opt/openjdk/bin"(N-/)
+    "$(brew --prefix)/opt/curl/bin"(N-/)
     "/Library/Frameworks/Python.framework/Versions/3.11/bin"
     "$path[@]"
 )
 
 fpath=(
     "$(brew --prefix)/share/zsh/site-functions"
+    "$(brew --prefix)/opt/curl/share/zsh/site-functions"
     "$fpath[@]"
 )
 

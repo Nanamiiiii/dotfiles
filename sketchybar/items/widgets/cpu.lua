@@ -40,21 +40,9 @@ cpu:subscribe("cpu_update", function(env)
     local load = tonumber(env.total_load)
     cpu:push({ load / 100. })
 
-    local color = colors.white_dark
-    if load > 30 then
-        if load < 60 then
-            color = colors.yellow_dark
-        elseif load < 80 then
-            color = colors.orange_dark
-        else
-            color = colors.red_dark
-        end
-    end
-
     cpu:set({
         label = {
             string = "CPU " .. env.total_load .. "%",
-            color = color,
         },
     })
 end)
