@@ -4,7 +4,7 @@ if [ $$ != `pgrep -fo $0` ]; then
   exit 1
 fi
 
-python3 ~/.config/waybar/mediaplayer.py
+python3 ~/.config/waybar/scripts/mediaplayer.py
 
 exit 0
 

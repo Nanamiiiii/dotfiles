@@ -51,7 +51,7 @@ allow_images=true
 #cache_file=PATH
       #Specifies the cache file to load/store cache, default is $XDG_CACHE_HOME/wofi-<mode name>  where  <mode  name>  is  the  name  of  the  mode, if $XDG_CACHE_HOME is not specified ~/.cache is used.
 
-term=alacritty
+term=wezterm
       #Specifies the term to use when running a program in a terminal. This overrides  the default terminal run order which is kitty, termite, gnome-terminal, weston-terminal in that order.
 
 #password=CHARACTER
@@ -114,10 +114,10 @@ parse_search=true
 image_size=32
       #Specifies the size of images in pixels when images are enabled, default is 32.
 
-#key_up=KEY
+key_up=Ctrl-p
       #Specifies  the  key  to  use  in  order  to  move  up. Default is Up(Up arrow). See wofi-keys(7) for the key codes.
 
-#key_down=KEY
+key_down=Ctrl-n
       #Specifies the key to use in order to move down. Default is  Down(Down  arrow).  See wofi-keys(7) for the key codes.
 
 #key_left=KEY
@@ -132,7 +132,7 @@ image_size=32
 #key_backward=KEY
       #Specifies  the   key   to   use   in   order   to   move   backward.   Default   is ISO_Left_Tab(Shift+Tab). See wofi-keys(7) for the key codes.
 
-#key_submit=KEY
+key_submit=Ctrl-y
       #Specifies  the  key  to  use  in  order to submit an action. Default is Return. See wofi-keys(7) for the key codes.
 
 #key_exit=Alt_L-space
