@@ -1,0 +1,2 @@
+docker run --rm -it -v $PWD:/workdir ghcr.io/nanamiiiii/tex-build-container:debian-latest \
+    sh -c "latexmk -synctex=1 -silent -outdir=./out ${1}"

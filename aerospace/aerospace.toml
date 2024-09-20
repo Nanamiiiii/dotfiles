@@ -2,18 +2,10 @@ after-login-command = []
 
 after-startup-command = []
 
-start-at-login = true
+start-at-login = false
 
-enable-normalization-flatten-containers = false
-enable-normalization-opposite-orientation-for-nested-containers = false
-
-accordion-padding = 30
-
-default-root-container-layout = 'tiles'
-
-default-root-container-orientation = 'auto'
-
-key-mapping.preset = 'qwerty'
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
 
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
@@ -22,16 +14,11 @@ inner.horizontal = 5
 inner.vertical =   5
 outer.left =       5
 outer.bottom =     5
-outer.top =        5
+outer.top =        8
 outer.right =      5
 
 [mode.main.binding]
-alt-enter = '''exec-and-forget osascript -e '
-tell application "WezTerm"
-    do script
-    activate
-end tell'
-'''
+alt-enter = 'exec-and-forget open -a "WezTerm"'
 alt-b = 'exec-and-forget open -a "Arc"'
 alt-n = 'exec-and-forget open -a "Obsidian"'
 alt-g = '''exec-and-forget osascript -e '

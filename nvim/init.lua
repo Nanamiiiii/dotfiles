@@ -3,7 +3,7 @@
 require("options")
 require("keymaps")
 require("lazy_nvim")
---require("autocmd")
+require("autocmd")
 
 -- neovide
 require("neovide")

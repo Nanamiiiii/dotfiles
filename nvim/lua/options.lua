@@ -23,6 +23,7 @@ local options = {
     termguicolors = true,
     pumheight = 15,
     scrolloff = 5,
+    conceallevel = 0,
 }
 
 for k, v in pairs(options) do
