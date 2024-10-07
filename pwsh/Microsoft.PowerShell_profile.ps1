@@ -14,16 +14,14 @@ function repo() {
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 # Command Not Found
-#34de4b3d-13a8-4540-b76d-b9e8d3851756 PowerToys CommandNotFound module
-Import-Module "C:\Program Files\PowerToys\WinUI3Apps\..\WinGetCommandNotFound.psd1"
-#34de4b3d-13a8-4540-b76d-b9e8d3851756
+Import-Module -Name Microsoft.WinGet.CommandNotFound
 
 # Alias
 function __ls() {
     eza --icons --group-directories-first
 }
 function __ll() {
-    eza --group-directories-first -al --header --color-scale --git --icons --time-style=long-iso
+    eza --group-directories-first -alg --header --color-scale --git --icons --time-style=long-iso
 }
 function __tree() {
     eza --group-directories-first -T --icons

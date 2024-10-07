@@ -92,7 +92,7 @@ if is_macos then
 	config.macos_window_background_blur = 25
 elseif is_windows then
 	config.window_background_opacity = 0
-	config.win32_system_backdrop = "Tabbed"
+	config.win32_system_backdrop = "Mica"
 end
 
 -- background
