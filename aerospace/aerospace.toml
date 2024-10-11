@@ -73,11 +73,26 @@ alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-0 = 'move-node-to-workspace 10'
 
+alt-shift-n = 'move-node-to-monitor next'
+alt-shift-p = 'move-node-to-monitor prev'
+
 alt-shift-c = 'reload-config'
 
 alt-r = 'mode resize'
 
 alt-shift-semicolon = 'mode service'
+
+[workspace-to-monitor-force-assignment]
+1 = 'main'
+2 = 'main'
+3 = 'main'
+4 = 'main'
+5 = 'main'
+6 = ['secondary', 'main']
+7 = ['secondary', 'main']
+8 = ['secondary', 'main']
+9 = ['secondary', 'main']
+10 = ['secondary', 'main']
 
 [mode.resize.binding]
 h = 'resize width -50'
