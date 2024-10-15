@@ -403,13 +403,26 @@ if is_linux then
 			args = { "spotify" },
 		},
 	}
+
+    config.serial_ports = {
+        {
+            name = "USB Serial 1",
+            port = "/dev/ttyUSB0",
+            baud = 115200,
+        },
+        {
+            name = "USB Serial 2",
+            port = "/dev/ttyUSB1",
+            baud = 115200,
+        },
+    }
 end
 
 -- macOS Launch Menu
 if is_macos then
 	config.launch_menu = {
 		{
-			label = "zsh",
+			label  "zsh",
 			args = { "zsh", "-l" },
 		},
 		{
