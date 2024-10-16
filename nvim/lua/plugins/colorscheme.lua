@@ -2,15 +2,45 @@
 
 return {
     {
-        "cocopon/iceberg.vim",
+        "Nanamiiiii/iceberg.vim",
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd([[colorscheme iceberg]])
+            vim.cmd.colorscheme("iceberg")
             vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
             vim.cmd([[hi Comment gui=italic]])
         end,
     },
+    --{
+    --    "oahlen/iceberg.nvim",
+    --    lazy = false,
+    --    priority = 1000,
+    --    config = function()
+    --        vim.cmd.colorscheme "iceberg"
+    --    end,
+    --},
+    --{
+    --    "catppuccin/nvim",
+    --    name = "catppuccin",
+    --    priority = 1000,
+    --    opts = {
+    --        flavour = "mocha",
+    --    },
+    --    config = function()
+    --        vim.cmd.colorscheme "catppuccin"
+    --    end,
+    --},
+    --{
+    --    "folke/tokyonight.nvim",
+    --    lazy = false,
+    --    priority = 1000,
+    --    opts = {},
+    --    config = function()
+    --        vim.cmd([[colorscheme tokyonight-moon]])
+    --        vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
+    --        vim.cmd([[hi Comment gui=italic]])
+    --    end
+    --},
 }
 
 -- settings of material.nvim

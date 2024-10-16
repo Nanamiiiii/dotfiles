@@ -53,9 +53,9 @@ return {
                         userDictionary = skk_dir .. "userdict.txt",
                         --useSkkServer = true,
                     })
-                    vim.fn["skkeleton#register_kanatable"]('rom', {
-                        [','] = {'，', ''},
-                        ['.'] = {'．', ''},
+                    vim.fn["skkeleton#register_kanatable"]("rom", {
+                        [","] = { "，", "" },
+                        ["."] = { "．", "" },
                     })
                 end,
             })

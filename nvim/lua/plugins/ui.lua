@@ -30,7 +30,7 @@ return {
                 disabled_filetypes = {
                     "neo-tree",
                 },
-                theme = "iceberg_dark",
+                theme = "auto",
             },
         },
     },
@@ -75,40 +75,29 @@ return {
         "nvimdev/dashboard-nvim",
         event = "VimEnter",
         opts = function()
-            local unyologo = [[
-                ██╗   ██╗███╗   ██╗██╗   ██╗ ██████╗ ██╗   ██╗███╗   ██╗██╗   ██╗ ██████╗                 
-                ██║   ██║████╗  ██║╚██╗ ██╔╝██╔═══██╗██║   ██║████╗  ██║╚██╗ ██╔╝██╔═══██╗                
-                ██║   ██║██╔██╗ ██║ ╚████╔╝ ██║   ██║██║   ██║██╔██╗ ██║ ╚████╔╝ ██║   ██║                
-                ██║   ██║██║╚██╗██║  ╚██╔╝  ██║   ██║██║   ██║██║╚██╗██║  ╚██╔╝  ██║   ██║                
-                ╚██████╔╝██║ ╚████║   ██║   ╚██████╔╝╚██████╔╝██║ ╚████║   ██║   ╚██████╔╝                
-                 ╚═════╝ ╚═╝  ╚═══╝   ╚═╝    ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝    ╚═════╝                 
-            ]]
-
-            local normallogo = [[
-                ███╗   ██╗██╗   ██╗██╗███╗   ███╗██╗   ██╗██╗   ██╗██╗   ██╗                
-                ████╗  ██║██║   ██║██║████╗ ████║╚██╗ ██╔╝██║   ██║██║   ██║                
-                ██╔██╗ ██║██║   ██║██║██╔████╔██║ ╚████╔╝ ██║   ██║██║   ██║                
-                ██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║  ╚██╔╝  ██║   ██║██║   ██║                
-                ██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║   ██║   ╚██████╔╝╚██████╔╝                
-                ╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝   ╚═╝    ╚═════╝  ╚═════╝                 
-            ]]
-
-            math.randomseed(os.time())
-            local logoselect = math.random(5)
-            local logo
-            if logoselect == 3 then
-                logo = string.rep("\n", 8) .. unyologo .. "\n\n"
-            else
-                logo = string.rep("\n", 8) .. normallogo .. "\n\n"
-            end
-
             local opts = {
                 theme = "doom",
                 hide = {
                     statusline = false,
                 },
                 config = {
-                    header = vim.split(logo, "\n"),
+                    header = {
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "Neovim - HEAD",
+                        "",
+                        os.date("%A, %B %d, %Y"),
+                        "",
+                        "",
+                        "",
+                        "",
+                    },
                     center = {
                         {
                             action = "Telescope find_files",
