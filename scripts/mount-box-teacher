@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rclone mount --daemon Box-teacher:/ ~/Box/Teacher
+

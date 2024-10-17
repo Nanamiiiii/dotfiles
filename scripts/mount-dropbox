@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rclone mount --daemon Dropbox:/ ~/Dropbox
+
