@@ -422,7 +422,7 @@ end
 if is_macos then
 	config.launch_menu = {
 		{
-			label  "zsh",
+			label = "zsh",
 			args = { "zsh", "-l" },
 		},
 		{
