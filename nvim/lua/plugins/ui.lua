@@ -90,7 +90,7 @@ return {
                         "",
                         "",
                         "",
-                        "Neovim - HEAD",
+                        "Neovim - " .. tostring(vim.version()),
                         "",
                         os.date("%A, %B %d, %Y"),
                         "",
