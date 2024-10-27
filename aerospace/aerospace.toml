@@ -27,6 +27,7 @@ tell application "Finder"
     activate
 end tell'
 '''
+alt-i = 'exec-and-forget open -a "Neovide"'
 
 alt-q = 'close'
 
@@ -126,6 +127,10 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-id = 'com.neovide.neovide'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
