@@ -63,7 +63,7 @@ fi
 
 ## ghcup
 if [[ -f "${HOME}/.ghcup/env" ]]; then
-    . "/home/nanami/.ghcup/env" # ghcup-env
+    . "${HOME}/.ghcup/env" # ghcup-env
 fi
 
 # History
