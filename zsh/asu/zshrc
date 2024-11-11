@@ -1,5 +1,4 @@
 # Nanamiiiii's zshrc for mbp
-# Last Update: 2023/8/11
 # Load common configuration
 source "$ZDOTDIR/zshrc.common"
 
