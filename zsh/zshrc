@@ -39,7 +39,7 @@ then
 fi
 
 ## Rustup
-if [[ ! -f $HOME/.cargo/bin/rustup ]]; then
+if [[ ! -f "${HOME}/.cargo/bin/rustup" ]]; then
     echo "Rustup is not installed."
 fi
 
@@ -60,6 +60,11 @@ if ( $(command -v gem > /dev/null) )
 then
     path+=$(gem environment | grep "EXECUTABLE DIRECTORY" | awk '{print $4}')
 fi 
+
+## ghcup
+if [[ -f "${HOME}/.ghcup/env" ]]; then
+    . "/home/nanami/.ghcup/env" # ghcup-env
+fi
 
 # History
 export HISTFILE="${ZDOTDIR}/.zsh_history"
