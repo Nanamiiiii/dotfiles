@@ -4,6 +4,7 @@ if [ $$ != `pgrep -fo $0` ]; then
   exit 1
 fi
 
+echo "Launching mediaplayer daemon" >&2
 python3 ~/.config/waybar/scripts/mediaplayer.py
 
 exit 0

@@ -2,9 +2,9 @@
     "layer": "top",
     "modules-left": [
         "clock",
+        "custom/media",
         "sway/window", 
         "sway/mode", 
-        "custom/media",
     ],
     "modules-center": [
         "sway/workspaces"
@@ -21,10 +21,9 @@
         "battery", 
     ],
     "custom/media": {
-        "exec": "$HOME/.config/waybar/scripts/mediaplayer.sh",
-        "format": "{icon} {}",
+        "exec": "$HOME/.config/waybar/scripts/mediaplayer.py",
+        "format": "{icon} {0}",
         "return-type": "json",
-        "signal": 15,
         //"min-length": 25,
         "max-length": 40,
         "format-icons": {
