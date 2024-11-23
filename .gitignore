@@ -1,5 +1,5 @@
 .DS_Store
 **/.spotify_token_cache.json
-spotify-tui/client.yml
-nvim/lazy-lock.json
+config/spotify-tui/client.yml
+config/nvim/lazy-lock.json
 
