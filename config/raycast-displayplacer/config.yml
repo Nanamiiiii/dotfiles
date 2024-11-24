@@ -1,0 +1,29 @@
+profiles:
+  - name: Home Desk
+    description: ASUS PA27CRV 4K & HP OMEN 27i QHD
+    color: blue
+    displays:
+      - id: CE60CC19-3BE2-4815-9149-E8F3945CC4BB
+        res:
+          x: 2560
+          y: 1440
+        hz: 60
+        color_depth: 8
+        enabled: true
+        scaling: true
+        origin:
+          x: 0
+          y: 0
+        degree: 0
+      - id: DF5549D0-8524-4A1D-8E07-D32EB6C2C51B
+        res:
+          x: 2560
+          y: 1440
+        hz: 60
+        color_depth: 8
+        enabled: true
+        scaling: false
+        origin:
+          x: 2560
+          y: 114
+        degree: 0
