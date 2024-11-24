@@ -19,7 +19,7 @@ let
 
   desktopUtilities = with pkgs; [
     pkgs-unstable.aerospace
-    raycast
+    pkgs-unstable.raycast
     utm
   ];
 in
@@ -44,7 +44,7 @@ in
     raycast = {
       enable = true;
       config = {
-        ProgramArguments = [ "${pkgs.raycast}/Applications/Raycast.app/Contents/MacOS/Raycast" ];
+        ProgramArguments = [ "${pkgs-unstable.raycast}/Applications/Raycast.app/Contents/MacOS/Raycast" ];
         RunAtLoad = true;
         KeepAlive = true;
       };

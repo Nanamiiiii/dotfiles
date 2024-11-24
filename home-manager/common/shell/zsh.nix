@@ -79,17 +79,21 @@ let
         zle reset-prompt
     }
 
-    # Fuzzy find history
-    function fzf-select-history(){
+    zle -N _fzf_cd_ghq
+    bindkey -M viins "^g" _fzf_cd_ghq
+
+    ## Fuzzy find history
+    function _fzf_select_history(){
         BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER")
         CURSOR=$#BUFFER
         zle reset-prompt
     }
-    zle -N fzf-select-history
-    bindkey '^R' fzf-select-history
 
-    zle -N _fzf_cd_ghq
-    bindkey "^g" _fzf_cd_ghq
+    zle -N _fzf_select_history
+
+    function zvm_after_init() {
+        bindkey -M viins "^R" _fzf_select_history
+    }
 
     ## Random Generator
     function rand_str() {

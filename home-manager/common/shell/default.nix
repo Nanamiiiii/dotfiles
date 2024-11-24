@@ -10,6 +10,10 @@ in
 {
   imports = [ ./zsh.nix ];
 
+  programs = {
+    starship.enable = true;
+  };
+
   home = {
     packages = with pkgs; [
       tmux
@@ -17,7 +21,6 @@ in
       tmuxPlugins.cpu
       tmuxPlugins.pain-control
       tmuxPlugins.prefix-highlight
-      starship
     ];
   };
 

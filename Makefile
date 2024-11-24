@@ -15,3 +15,7 @@ nix-darwin-init-%:
 	@$(NIX_CMD) build ".#darwinConfigurations."${@:nix-darwin-init-%=%}".system" --verbose --show-trace
 	@$(DARWIN_FIRST_BUILD) switch --flake ".#"${@:nix-darwin-init-%=%}
 
+.PHONY: fmt
+fmt:
+	@$(NIX_CMD) fmt
+

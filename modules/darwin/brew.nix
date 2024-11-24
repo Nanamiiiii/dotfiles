@@ -4,6 +4,7 @@
     brews = [
       "mas"
       "displayplacer"
+      "pam-reattach"
     ];
 
     casks = [
@@ -15,6 +16,7 @@
       "homerow"
       "karabiner-elements"
       "firefox@developer-edition"
+      "notchnook"
     ];
 
     masApps = {
