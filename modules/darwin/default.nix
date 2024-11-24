@@ -1,8 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
-    imports = [ ];
+    imports = [ ./brew.nix ];
 
-    nix.settings.trusted-users = [ "nanami" ];
+    nix.settings.trusted-users = [ username ];
+
+    nix.extraOptions = ''
+    experimental-features = nix-command flakes
+    '';
 
     nixpkgs.config.allowUnfree = true;
 

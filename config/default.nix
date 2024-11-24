@@ -106,9 +106,8 @@ in
         };
 
         wezterm = {
-            "wezterm" = {
-                source = symlink "${configDir}/wezterm";
-                recursive = true;
+            "wezterm/wezterm.lua" = {
+                source = symlink "${configDir}/wezterm/wezterm.lua";
             };
         };
 

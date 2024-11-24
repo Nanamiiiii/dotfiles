@@ -5,23 +5,20 @@ let
     }; 
 in
 {
-    imports = [ ];
+    imports = [
+        ./zsh.nix
+    ];
 
-    programs = {
-        zsh.enable = true;
-        tmux = {
-            enable = true;
-            plugins = with pkgs; [
-                tmuxPlugins.sensible
-                tmuxPlugins.cpu
-                tmuxPlugins.pain-control
-                tmuxPlugins.prefix-highlight
-            ];
-        };
-        starship.enable = true;
+    home = {
+        packages = with pkgs; [
+            tmux
+            tmuxPlugins.sensible
+            tmuxPlugins.cpu
+            tmuxPlugins.pain-control
+            tmuxPlugins.prefix-highlight
+            starship
+        ];
     };
-
-    home.file = configFiles.shellConfigs;
     
     xdg.configFile = with configFiles.dotConfigs;
         tmux // starship;

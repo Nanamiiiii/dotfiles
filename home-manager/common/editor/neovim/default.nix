@@ -16,7 +16,6 @@ in
 
     home.packages = with pkgs; [
         neovide
-        python312Packages.pynvim
     ];
 
     xdg.configFile = configFiles.dotConfigs.neovim;

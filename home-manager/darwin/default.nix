@@ -1,8 +1,9 @@
-{ ... }:
+{ hostname, ... }:
 {
     imports = [
         ../common
         ./apps
+        ./hosts/${hostname}
     ];
 
     home.stateVersion = "24.05";

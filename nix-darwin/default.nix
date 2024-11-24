@@ -16,6 +16,7 @@ rec {
         inherit
             inputs
             hostname
+            username
             baseSystem
             ;
         desktop = true; # Assumed non-headless

@@ -6,7 +6,6 @@ let
         discord
         obsidian
         pkgs-unstable.zotero
-        slack
     ];
 
     cliPkgs = with pkgs-unstable; [ 

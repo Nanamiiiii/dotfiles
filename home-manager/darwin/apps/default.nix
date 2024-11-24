@@ -8,16 +8,45 @@ let
         gawk
         gnutar
         gnused
+        coreutils-prefixed # g-prefixed coreutils to avoid duplication
+        wireguard-tools
+        pngpaste
     ];
 
     desktopUtilities = with pkgs; [
         pkgs-unstable.aerospace
         raycast
-        pkgs-unstable.wireguard-ui
+        utm
     ];
 in
 {
     home.packages = cliUtilities ++ desktopUtilities;
+
     xdg.configFile = with configFiles.darwinConfigs;
         aerospace // raycast;
+
+    launchd.agents = {
+        aerospace = {
+            enable = true;
+            config = {
+                ProgramArguments = [
+                    "${pkgs-unstable.aerospace}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace"
+                    "--started-at-login"
+                ];
+                RunAtLoad = true;
+                KeepAlive = true;
+            };
+        };
+
+        raycast = {
+            enable = true;
+            config = {
+                ProgramArguments = [
+                    "${pkgs.raycast}/Applications/Raycast.app/Contents/MacOS/Raycast"
+                ];
+                RunAtLoad = true;
+                KeepAlive = true;
+            };
+        };
+    };
 }
