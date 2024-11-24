@@ -1,37 +1,27 @@
 # dotfiles
-## Configurations
-### Editor
-- neovim
-- vsnip snippets
-### Term / Shell
-- Wezterm
-- Alacritty
-- iterm2
-- tmux
-- zsh
-- starship
-### Desktop
-- yabai / skhd (macOS)
-- i3wm
-- sway
-- rofi
-- wofi
-- swaylock 
-- deadd notification center
-- mako
-- picom
-- polybar
-- waybar
-- fcitx
-- skk
-- networkmanager-dmenu
-### Misc
-- inkdrop
-- spotify-tui
-- spotifyd
+dotfiles with Nix
 
-## Docker Devenv
-ArchLinux based devenv
+## Install Nix
+```bash
+make nix-install
 ```
-docker pull ghcr.io/nanamiiiii/nanamiiiii-devenv-arch
+
+## Linux
+TBD
+
+## Darwin
+### First Build
+```bash
+make nix-darwin-init-${HOST}
 ```
+
+### Build & Switch
+```bash
+make nix-darwin-${HOST}
+```
+
+## Format
+```bash
+make fmt
+```
+
