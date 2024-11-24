@@ -34,7 +34,6 @@ in
       config = {
         ProgramArguments = [
           "${pkgs-unstable.aerospace}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace"
-          "--started-at-login"
         ];
         RunAtLoad = true;
         KeepAlive = true;

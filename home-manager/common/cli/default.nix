@@ -7,6 +7,14 @@
 }:
 let
   configFiles = import ../../../config { inherit config hostname; };
+
+  btopThemes = {
+    "btop/themes" = {
+      source = "${pkgs.btop}/share/btop/themes";
+      recursive = true;
+    };
+  };
+
 in
 {
   imports = [ ./git ];
@@ -26,7 +34,9 @@ in
     gh.enable = true;
     fastfetch = {
       enable = true;
+      package = pkgs-unstable.fastfetch;
       settings = {
+        logo = "nix";
         display = {
           bar = {
             charElapsed = "=";
@@ -263,5 +273,5 @@ in
 
   home.file = configFiles.homeScripts;
 
-  xdg.configFile = with configFiles.dotConfigs; ranger;
+  xdg.configFile = configFiles.dotConfigs.ranger // btopThemes;
 }
