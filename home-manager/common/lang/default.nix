@@ -1,80 +1,73 @@
 { pkgs, pkgs-unstable, ... }:
 let
-    cTools = with pkgs; [
-        gcc
-        libclang
-    ];
+  cTools = with pkgs; [
+    gcc
+    libclang
+  ];
 
-    buildTools = with pkgs; [
-        cmake
-        gnumake
-        bear
-        ninja
-        ncurses
-    ];
+  buildTools = with pkgs; [
+    cmake
+    gnumake
+    bear
+    ninja
+    ncurses
+  ];
 
-    rustTools = with pkgs; [
-        rustup
-        cargo-make
-        cargo-binutils
-        cargo-hf2
-    ];
+  rustTools = with pkgs; [
+    rustup
+    cargo-make
+    cargo-binutils
+    cargo-hf2
+  ];
 
-    golangTools = with pkgs; [
-        go
-    ];
-    
-    tsjsTools = with pkgs; [
-        nodejs_22
-        deno
-    ];
+  golangTools = with pkgs; [ go ];
 
-    rubyTools = with pkgs; [
-        ruby
-    ];
+  tsjsTools = with pkgs; [
+    nodejs_22
+    deno
+  ];
 
-    luaTools = with pkgs; [
-        luajitPackages.luarocks
-        stylua
-    ];
+  rubyTools = with pkgs; [ ruby ];
 
-    haskellTools = with pkgs; [
-        #haskellPackages.ghcup
-        ghc
-        cabal-install
-        haskell-language-server
-    ];
+  luaTools = with pkgs; [
+    luajitPackages.luarocks
+    stylua
+  ];
 
-    nixTools = with pkgs; [
-        nix-prefetch-github
-        nix-search-cli
-        devenv
-        nix-direnv
-    ];
+  haskellTools = with pkgs; [
+    #haskellPackages.ghcup
+    ghc
+    cabal-install
+    haskell-language-server
+  ];
 
-    typesetTools = with pkgs; [
-        typst
-    ];
+  nixTools = with pkgs; [
+    nix-prefetch-github
+    nix-search-cli
+    devenv
+    nix-direnv
+  ];
 
-    pythonTools = with pkgs-unstable; [
-        python313
-        python313Packages.pynvim
-        python313Packages.wheel
-        python313Packages.pip
-    ];
+  typesetTools = with pkgs; [ typst ];
+
+  pythonTools = with pkgs-unstable; [
+    python313
+    python313Packages.pynvim
+    python313Packages.wheel
+    python313Packages.pip
+  ];
 in
 {
-    home.packages =
-        cTools
-        ++ buildTools
-        ++ rustTools
-        ++ golangTools
-        ++ tsjsTools
-        ++ rubyTools
-        ++ luaTools
-        ++ haskellTools
-        ++ nixTools
-        ++ typesetTools
-        ++ pythonTools
-        ;
+  home.packages =
+    cTools
+    ++ buildTools
+    ++ rustTools
+    ++ golangTools
+    ++ tsjsTools
+    ++ rubyTools
+    ++ luaTools
+    ++ haskellTools
+    ++ nixTools
+    ++ typesetTools
+    ++ pythonTools;
 }

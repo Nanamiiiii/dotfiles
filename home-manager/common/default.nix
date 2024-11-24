@@ -1,13 +1,13 @@
 { ... }:
 {
-    imports = [
-        ./apps
-        ./cli
-        ./editor
-        ./lang
-        ./shell
-        ./terminal
-    ];
+  imports = [
+    ./apps
+    ./cli
+    ./editor
+    ./lang
+    ./shell
+    ./terminal
+  ];
 
-    xdg.enable = true;
+  xdg.enable = true;
 }

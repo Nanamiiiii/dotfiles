@@ -1,15 +1,18 @@
-{ config, hostname, desktop, ... }:
+{
+  config,
+  hostname,
+  desktop,
+  ...
+}:
 let
-    configFiles = import ../../../config {
-        inherit config hostname;
-    }; 
+  configFiles = import ../../../config { inherit config hostname; };
 in
 {
-    imports = [ ];
+  imports = [ ];
 
-    programs = {
-        wezterm.enable = desktop;
-    };
+  programs = {
+    wezterm.enable = desktop;
+  };
 
-    xdg.configFile = configFiles.dotConfigs.wezterm;
+  xdg.configFile = configFiles.dotConfigs.wezterm;
 }

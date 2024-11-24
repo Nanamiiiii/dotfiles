@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
-    home.packages = with pkgs; [
-        yt-dlp
-        flyctl
-    ];
+  home.packages = with pkgs; [
+    yt-dlp
+    flyctl
+  ];
 }

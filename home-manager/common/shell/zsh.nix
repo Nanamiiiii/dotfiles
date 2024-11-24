@@ -1,20 +1,20 @@
 { pkgs, hostname, ... }:
 let
-    zshenvExt = ''
+  zshenvExt = ''
     # xdg
     export XDG_CONFIG_HOME="$HOME/.config"
     export XDG_DATA_HOME="$HOME/.local/share"
     export XDG_STATE_HOME="$HOME/.local/state"
     export XDG_CACHE_HOME="$HOME/.cache"
-    
+
     # misc
     export CARGO_HOME="$HOME/.cargo"
     export RUSTUP_HOME="$HOME/.rustup"
     export DENO_INSTALL="$HOME/.deno"
     export GOPATH="$HOME/.go"
-    '';
+  '';
 
-    zprofileExt = ''
+  zprofileExt = ''
     # Path
     typeset -U path
     typeset -U fpath
@@ -33,25 +33,25 @@ let
     )
 
     export EDITOR="nvim"
+  '';
+
+  hostZprofileExt = {
+    asu = ''
+      eval $(/opt/homebrew/bin/brew shellenv)
+      export MANPATH=/opt/local/share/man:$MANPATH
+      path=(
+          "/opt/local/bin:/opt/local/sbin"
+          "/Users/nanami/Library/Application Support/JetBrains/Toolbox/scripts"
+          "$path[@]"
+      )
+      fpath=(
+          "$(brew --prefix)/share/zsh/site-functions"
+          "$fpath[@]"
+      )
     '';
+  };
 
-    hostZprofileExt = {
-        asu = ''
-        eval $(/opt/homebrew/bin/brew shellenv)
-        export MANPATH=/opt/local/share/man:$MANPATH
-        path=(
-            "/opt/local/bin:/opt/local/sbin"
-            "/Users/nanami/Library/Application Support/JetBrains/Toolbox/scripts"
-            "$path[@]"
-        )
-        fpath=(
-            "$(brew --prefix)/share/zsh/site-functions"
-            "$fpath[@]"
-        )
-        '';
-    };
-
-    zshrcExt = ''
+  zshrcExt = ''
     bindkey "\e[3~" delete-char
 
     # Title
@@ -87,10 +87,10 @@ let
     }
     zle -N fzf-select-history
     bindkey '^R' fzf-select-history
-    
+
     zle -N _fzf_cd_ghq
     bindkey "^g" _fzf_cd_ghq
-    
+
     ## Random Generator
     function rand_str() {
         if [ $# -eq 0 ]; then
@@ -100,7 +100,7 @@ let
         fi
         LC_ALL=C tr -dc 'A-Za-z0-9' < /dev/urandom | head -c "$RAND_LEN"; echo
     }
-    
+
     function rand_sym() {
         if [ $# -eq 0 ]; then
             RAND_LEN=16
@@ -109,7 +109,7 @@ let
         fi
         LC_ALL=C tr -dc 'A-Za-z0-9!"#$%&'\'''()*+,-./:;<=>?@[\]^_`{|}~' < /dev/urandom | head -c "$RAND_LEN"; echo
     }
-    
+
     function rand_hex() {
         if [ $# -eq 0 ]; then
             RAND_LEN=16
@@ -118,55 +118,55 @@ let
         fi
         LC_ALL=C tr -dc 'a-f0-9' < /dev/urandom | head -c "$RAND_LEN"; echo
     }
+  '';
+
+  hostZshrcExt = {
+    asu = ''
+      # sudo prompt
+      export SUDO_PROMPT="[sudo] %p's password: "
+
+      # 1Password SSH Agent
+      SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
     '';
-
-    hostZshrcExt = {
-        asu = ''
-        # sudo prompt
-        export SUDO_PROMPT="[sudo] %p's password: "
-
-        # 1Password SSH Agent
-        SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
-        '';
-    };
+  };
 in
 {
-    programs = {
-        zsh = {
-            enable = true;
-            dotDir = ".zsh";
+  programs = {
+    zsh = {
+      enable = true;
+      dotDir = ".zsh";
 
-            autocd = true;
-            enableCompletion = true;
-            autosuggestion.enable = true;
-            syntaxHighlighting.enable = true; 
+      autocd = true;
+      enableCompletion = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
 
-            shellAliases = import ./aliases.nix;
+      shellAliases = import ./aliases.nix;
 
-            history = {
-                # release 24.05 does not have this option
-                #append = true;
-                ignoreDups = true;
-                extended = true;
-                path = "$ZDOTDIR/.zsh_history";
-                size = 100000;
-                save = 100000;
-            };
+      history = {
+        # release 24.05 does not have this option
+        #append = true;
+        ignoreDups = true;
+        extended = true;
+        path = "$ZDOTDIR/.zsh_history";
+        size = 100000;
+        save = 100000;
+      };
 
-            envExtra = zshenvExt; 
+      envExtra = zshenvExt;
 
-            profileExtra = zprofileExt + (hostZprofileExt.${hostname} or "");
+      profileExtra = zprofileExt + (hostZprofileExt.${hostname} or "");
 
-            initExtra = zshrcExt + (hostZshrcExt.${hostname} or ""); 
+      initExtra = zshrcExt + (hostZshrcExt.${hostname} or "");
 
-            plugins = [
-                {
-                    name = "vi-mode";
-                    src = pkgs.zsh-vi-mode;
-                    file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-                }
-            ];
-        };
+      plugins = [
+        {
+          name = "vi-mode";
+          src = pkgs.zsh-vi-mode;
+          file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        }
+      ];
     };
+  };
 
 }
