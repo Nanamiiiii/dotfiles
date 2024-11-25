@@ -5,14 +5,17 @@
     {
       "matchPackageNames": ["*"],
       "enabled": false
+    },
+    {
+      "matchPackageNames": ["nix"],
+      "enabled": true
     }
   ],
-  "nix": {
-      "enabled": true
-  },
   "lockFileMaintenance": {
     "enabled": true,
-    "extends": ["schedule:daily"]
+    "extends": ["schedule:daily"],
+    "automerge": true,
+    "automergeStrategy": "rebase"
   },
   "timezone": "Asia/Tokyo",
   "dependencyDashboard": true
