@@ -26,17 +26,13 @@ in
       # On headless environment, use gpg key.
       key = if desktop then signingKey.sshKeyFingerprint else signingKey.gpgKeyFingerprint;
     };
-    includes = [
-      { path = "${config.xdg.configHome}/git/common.conf"; }
-      { path = "${config.xdg.configHome}/git/${baseSystem}.conf"; }
-    ];
     extraConfig = {
       gpg = {
         format = if desktop then "ssh" else "openpgp";
         ssh.program = gpgSshProgram."${baseSystem}";
       };
       ghq.root = "~/src";
-      commit.gpgsign = true;
+      commit.gpgSign = true;
     };
   };
 }
