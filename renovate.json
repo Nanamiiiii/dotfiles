@@ -1,6 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ]
+  "nix": {
+      "fileMatch": [
+          "(^|/)flake\\.nix$"
+      ],
+      "commitMessageTopic": "nixpkgs",
+      "commitMessageExtra": "to {{newValue}}",
+      "enabled": true
+  },
+  "timezone": "Asia/Tokyo"
 }
