@@ -2,7 +2,7 @@
 # Architecture: amd64 / arm64
 
 # Step 1
-FROM fedora:38 AS base
+FROM fedora:42 AS base
 RUN dnf upgrade -y
 RUN dnf install -y zsh git tmux python3-pip llvm gcc gcc-c++ make cmake unzip ninja-build nodejs nodejs-npm gettext curl
 # User Setup
