@@ -26,6 +26,11 @@ nix-darwin-init-%:
 	@$(NIX_CMD) build ".#darwinConfigurations."${@:nix-darwin-init-%=%}".system" --verbose --show-trace
 	@$(DARWIN_FIRST_BUILD) switch --flake ".#"${@:nix-darwin-init-%=%}
 
+# Update
+.PHONY: update
+update:
+	@$(NIX_CMD) flake update
+
 # nix fmt
 .PHONY: fmt
 fmt:
@@ -36,7 +41,7 @@ fmt:
 clean-store:
 	@$(NIX_STORE_CMD) --gc
 
-# Test Nix Installation
+# Test Nix installation
 .PHONY: test
 .DEFAULT_GOAL := test
 test:
