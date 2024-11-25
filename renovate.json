@@ -1,12 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
   "nix": {
-      "fileMatch": [
-          "(^|/)flake\\.nix$"
-      ],
-      "commitMessageTopic": "nixpkgs",
-      "commitMessageExtra": "to {{newValue}}",
       "enabled": true
   },
-  "timezone": "Asia/Tokyo"
+  "lockFileMaintenance": {
+    "enabled": true,
+    "extends": ["schedule:daily"]
+  },
+  "timezone": "Asia/Tokyo",
+  "dependencyDashboard": true
 }
