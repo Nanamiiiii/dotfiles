@@ -19,6 +19,9 @@
     #    };
     #};
 
-    vscode.enable = desktop;
+    vscode = {
+      enable = desktop;
+      package = pkgs-unstable.vscode;
+    };
   };
 }
