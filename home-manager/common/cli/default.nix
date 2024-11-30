@@ -1,12 +1,18 @@
 {
   pkgs,
-  pkgs-unstable,
+  pkgs-stable,
   config,
-  hostname,
+  osConfig,
   ...
 }:
 let
-  configFiles = import ../../../config { inherit config hostname; };
+  configFiles = import ../../../config {
+    inherit
+      pkgs
+      config
+      osConfig
+      ;
+  };
 
   btopThemes = {
     "btop/themes" = {
@@ -34,7 +40,6 @@ in
     gh.enable = true;
     fastfetch = {
       enable = true;
-      package = pkgs-unstable.fastfetch;
       settings = {
         logo = "nix";
         display = {

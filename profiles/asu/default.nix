@@ -1,12 +1,12 @@
-{ ... }:
+{ username, ... }:
 {
   imports = [
-    ../../modules/darwin
+    ../nix-darwin/settings
     ./brew.nix
   ];
 
   users.users.nanami = {
-    home = "/Users/nanami";
+    home = "/Users/${username}";
   };
 
   networking = {

@@ -1,0 +1,1 @@
+{ time.timeZone = "Asia/Tokyo"; }

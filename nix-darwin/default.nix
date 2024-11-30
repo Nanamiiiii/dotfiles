@@ -1,6 +1,6 @@
 {
   inputs,
-  hostname,
+  profile,
   username,
   system,
   ...
@@ -13,14 +13,9 @@ rec {
   inherit system;
 
   specialArgs = {
-    inherit
-      inputs
-      hostname
-      username
-      baseSystem
-      ;
+    inherit inputs profile username;
     desktop = true; # Assumed non-headless
-    pkgs-unstable = import inputs.nixpkgs-unstable {
+    pkgs-stable = import inputs.nixpkgs-stable {
       inherit system;
       config.allowUnfree = true;
     };
@@ -29,10 +24,17 @@ rec {
   modules =
     let
       inherit (inputs.home-manager.darwinModules) home-manager;
-      homeConfig = import ../home-manager { inherit username baseSystem specialArgs; };
+      homeConfig = import ../home-manager {
+        inherit
+          profile
+          username
+          system
+          specialArgs
+          ;
+      };
     in
     [
-      ../hosts/${hostname}
+      ../profiles/${profile}
       home-manager
       homeConfig
     ];

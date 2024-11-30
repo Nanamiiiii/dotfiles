@@ -212,7 +212,7 @@ if is_macos then
     config.window_decorations = "RESIZE | MACOS_FORCE_ENABLE_SHADOW"
 elseif is_linux then
 	if de_name == "i3" or de_name == "sway" then
-		config.window_decorations = "RESIZE"
+		config.window_decorations = "NONE"
 	else
 		config.window_decorations = "TITLE | RESIZE"
 	end

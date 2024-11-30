@@ -1,12 +1,18 @@
 {
   pkgs,
-  pkgs-unstable,
+  pkgs-stable,
   config,
-  hostname,
+  osConfig,
   ...
 }:
 let
-  configFiles = import ../../../config { inherit config hostname; };
+  configFiles = import ../../../config {
+    inherit
+      pkgs
+      config
+      osConfig
+      ;
+  };
 
   cliUtilities = with pkgs; [
     gawk
@@ -18,8 +24,8 @@ let
   ];
 
   desktopUtilities = with pkgs; [
-    pkgs-unstable.aerospace
-    pkgs-unstable.raycast
+    aerospace
+    raycast
     utm
   ];
 in
@@ -33,7 +39,7 @@ in
       enable = true;
       config = {
         ProgramArguments = [
-          "${pkgs-unstable.aerospace}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace"
+          "${pkgs.aerospace}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace"
         ];
         RunAtLoad = true;
         KeepAlive = true;
@@ -43,7 +49,7 @@ in
     raycast = {
       enable = true;
       config = {
-        ProgramArguments = [ "${pkgs-unstable.raycast}/Applications/Raycast.app/Contents/MacOS/Raycast" ];
+        ProgramArguments = [ "${pkgs.raycast}/Applications/Raycast.app/Contents/MacOS/Raycast" ];
         RunAtLoad = true;
         KeepAlive = true;
       };

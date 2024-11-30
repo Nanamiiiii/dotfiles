@@ -1,21 +1,19 @@
 {
   pkgs,
-  pkgs-unstable,
+  pkgs-stable,
   config,
-  hostname,
   desktop,
+  osConfig,
   ...
 }:
 let
   desktopPkgs = with pkgs; [
-    # broken now on darwin
-    #_1password-gui
     discord
     obsidian
-    pkgs-unstable.zotero
+    zotero
   ];
 
-  cliPkgs = with pkgs-unstable; [
+  cliPkgs = with pkgs; [
     skkDictionaries.l
     skkDictionaries.emoji
     skkDictionaries.jinmei
@@ -26,15 +24,16 @@ let
     skkDictionaries.jis2004
   ];
 
-  configFiles = import ../../../config { inherit config hostname; };
+  configFiles = import ../../../config {
+    inherit
+      pkgs
+      config
+      osConfig
+      ;
+  };
 in
 {
   home.packages = if desktop then desktopPkgs ++ cliPkgs else cliPkgs;
-
-  home.file.".skkeleton/dict" = {
-    source = "${pkgs-unstable.skkDictionaries.l}/share/skk"; # FIXME: Is the path correct?
-    recursive = true;
-  };
 
   xdg.configFile = with configFiles.dotConfigs; _1password;
 }

@@ -1,13 +1,31 @@
 {
   pkgs,
   config,
-  hostname,
   desktop,
   inputs,
+  osConfig,
   ...
 }:
 let
-  configFiles = import ../../../../config { inherit config hostname; };
+  configFiles = import ../../../../config {
+    inherit
+      pkgs
+      config
+      osConfig
+      ;
+  };
+
+  skkeletonDicts = {
+    "${config.home.homeDirectory}/.skkeleton/dict/SKK-JISYO.L" = {
+      source = "${pkgs.skkDictionaries.l}/share/skk/SKK-JISYO.L";
+    };
+    "${config.home.homeDirectory}/.skkeleton/dict/SKK-JISYO.emoji" = {
+      source = "${pkgs.skkDictionaries.emoji}/share/skk/SKK-JISYO.emoji";
+    };
+    "${config.home.homeDirectory}/.skkeleton/dict/SKK-JISYO.jinmei" = {
+      source = "${pkgs.skkDictionaries.emoji}/share/skk/SKK-JISYO.jinmei";
+    };
+  };
 in
 {
   programs = {
@@ -15,11 +33,32 @@ in
       enable = true;
       package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     };
-    # acivated from 24.11
-    # neovide.enable = desktop;
+    #neovide = {
+    #  enable = desktop;
+    #  settings = {
+    #    fork = false;
+    #    frame = "full";
+    #    idle = true;
+    #    maximized = false;
+    #    neovim-bin = "${pkgs.neovim}/bin/nvim";
+    #    no-multigrid = false;
+    #    srgb = false;
+    #    tabs = true;
+    #    theme = "auto";
+    #    mouse-cursor-icon = "arrow";
+    #    title-hidden = true;
+    #    vsync = true;
+    #    wsl = false;
+    #    font = {
+    #      normal = [
+    #        "PlemolJP Console NF"
+    #        "Symbols Nerd Font"
+    #      ];
+    #      size = 16.0;
+    #    };
+    #  };
+    #};
   };
-
-  home.packages = with pkgs; [ neovide ];
 
   xdg.configFile = configFiles.dotConfigs.neovim;
 }

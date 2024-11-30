@@ -65,7 +65,7 @@ window#waybar.right {
 }
 
 #workspaces button {
-  padding: 0 0 0 0;
+  padding: 0 10px;
   margin: 0 0 0 0;
   background: #11111b;
   color: #b4befe;

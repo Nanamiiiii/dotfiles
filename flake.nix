@@ -2,29 +2,40 @@
   description = "Nanamiiiii's Nix Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-
-    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-24.05-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     darwin = {
       url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    wez-flake = {
+      url = "github:wez/wezterm/main?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       nixpkgs,
-      nixpkgs-unstable,
+      nixpkgs-stable,
       darwin,
       home-manager,
       ...
@@ -39,18 +50,47 @@
           aarch64-darwin = legacyPkgs.aarch64-darwin.nixfmt-rfc-style;
         };
 
+      nixosConfigurations =
+        let
+          nixosSystemArgs =
+            {
+              profile,
+              username,
+              system,
+              desktop,
+            }:
+            import ./nixos {
+              inherit
+                inputs
+                profile
+                username
+                system
+                desktop
+                ;
+            };
+          inherit (nixpkgs.lib) nixosSystem;
+        in
+        {
+          yuki = nixosSystem (nixosSystemArgs {
+            profile = "yuki";
+            username = "nanami";
+            system = "x86_64-linux";
+            desktop = true;
+          });
+        };
+
       darwinConfigurations =
         let
           darwinSystemArgs =
             {
-              hostname,
+              profile,
               username,
               system,
             }:
             import ./nix-darwin {
               inherit
                 inputs
-                hostname
+                profile
                 username
                 system
                 ;
@@ -59,7 +99,7 @@
         in
         {
           asu = darwinSystem (darwinSystemArgs {
-            hostname = "asu";
+            profile = "asu";
             username = "nanami";
             system = "aarch64-darwin";
           });

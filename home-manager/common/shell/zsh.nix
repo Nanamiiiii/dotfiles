@@ -1,4 +1,9 @@
-{ pkgs, hostname, ... }:
+{
+  pkgs,
+  config,
+  osConfig,
+  ...
+}:
 let
   zshenvExt = ''
     # xdg
@@ -133,6 +138,8 @@ let
       SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
     '';
   };
+
+  hostname = osConfig.networking.hostName;
 in
 {
   programs = {
@@ -172,5 +179,4 @@ in
       ];
     };
   };
-
 }

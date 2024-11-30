@@ -1,11 +1,17 @@
 {
   pkgs,
   config,
-  hostname,
+  osConfig,
   ...
 }:
 let
-  configFiles = import ../../../config { inherit config hostname; };
+  configFiles = import ../../../config {
+    inherit
+      pkgs
+      config
+      osConfig
+      ;
+  };
 in
 {
   imports = [ ./zsh.nix ];

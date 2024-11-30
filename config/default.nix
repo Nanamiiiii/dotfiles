@@ -1,7 +1,13 @@
-{ config, hostname }:
+{
+  pkgs,
+  config,
+  osConfig,
+  ...
+}:
 let
   symlink = config.lib.file.mkOutOfStoreSymlink;
   configDir = "${config.home.homeDirectory}/dotfiles/config";
+  hostname = osConfig.networking.hostName;
 in
 {
   # My script sets
@@ -9,34 +15,6 @@ in
     ".scripts" = {
       source = symlink "${configDir}/scripts";
       recursive = true;
-    };
-  };
-
-  # Shell Configuration
-  shellConfigs = {
-    # Zsh
-    ".zshenv" = {
-      source = symlink "${configDir}/zsh/zshenv";
-    };
-
-    ".zsh/zshrc.common" = {
-      source = symlink "${configDir}/zsh/zshrc";
-    };
-
-    ".zsh/zshrc.lazy" = {
-      source = symlink "${configDir}/zsh/zshrc.lazy";
-    };
-
-    ".zsh/zinit" = {
-      source = symlink "${configDir}/zsh/zinit";
-    };
-
-    ".zsh/.zshrc" = {
-      source = symlink "${configDir}/zsh/${hostname}/zshrc";
-    };
-
-    ".zsh/.zprofile" = {
-      source = symlink "${configDir}/zsh/${hostname}/zprofile";
     };
   };
 
@@ -112,6 +90,100 @@ in
       "ranger" = {
         source = symlink "${configDir}/ranger";
         recursive = true;
+      };
+    };
+  };
+
+  # Linux specific
+  linuxConfigs = {
+    sway = {
+      "sway/config" = {
+        source = symlink "${configDir}/sway/config";
+      };
+      "sway/variables.conf" = {
+        source = symlink "${configDir}/sway/variables.conf";
+      };
+      "sway/daemon.conf" = {
+        source = symlink "${configDir}/sway/daemon.conf";
+      };
+      "sway/keybinding.conf" = {
+        source = symlink "${configDir}/sway/keybinding.conf";
+      };
+      "sway/fx.conf" = {
+        source = symlink "${configDir}/sway/fx.conf";
+      };
+      "sway/styles.conf" = {
+        source = symlink "${configDir}/sway/styles.conf";
+      };
+      "sway/bar.conf" = {
+        source = symlink "${configDir}/sway/bar.conf";
+      };
+      "sway/rules.conf" = {
+        source = symlink "${configDir}/sway/rules.conf";
+      };
+      "sway/transparency.py" = {
+        source = symlink "${configDir}/sway/transparency.py";
+      };
+      "sway/import-gsettings.sh" = {
+        source = symlink "${configDir}/sway/import-gsettings.sh";
+      };
+      "sway/config.d" = {
+        source = symlink "${configDir}/sway/${hostname}";
+        recursive = true;
+      };
+    };
+
+    swaylock = {
+      "swaylock" = {
+        source = symlink "${configDir}/swaylock";
+        recursive = true;
+      };
+    };
+
+    waybar = {
+      "waybar" = {
+        source = symlink "${configDir}/waybar/${hostname}";
+        recursive = true;
+      };
+    };
+
+    wleave = {
+      "wleave/layout" = {
+        source = symlink "${configDir}/wleave/layout";
+      };
+      "wleave/style.css" = {
+        text = builtins.readFile (
+          pkgs.substituteAll {
+            src = ./wleave/style.css;
+            wleave_pkg_path = pkgs.wleave;
+          }
+        );
+      };
+    };
+
+    wofi = {
+      "wofi" = {
+        source = symlink "${configDir}/wofi";
+        recursive = true;
+      };
+    };
+
+    mako = {
+      "mako" = {
+        source = symlink "${configDir}/mako";
+        recursive = true;
+      };
+    };
+
+    nm-dmenu = {
+      "networkmanager-dmenu/config.ini" = {
+        source = symlink "${configDir}/networkmanager-dmenu/config.ini";
+      };
+    };
+
+    nm-dmenu-wofi = {
+      "networkmanager-dmenu/config.ini" = {
+        source = symlink "${configDir}/networkmanager-dmenu/config_wofi.ini";
       };
     };
   };

@@ -1,6 +1,7 @@
 {
+  profile,
   username,
-  baseSystem,
+  system,
   specialArgs,
   ...
 }:
@@ -8,7 +9,8 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.${username} = import ./${baseSystem};
+    users.${username} = import ./profiles/${profile};
     extraSpecialArgs = specialArgs;
+    backupFileExtension = "hm-bkp";
   };
 }

@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  baseSystem,
   desktop,
   ...
 }:
@@ -15,6 +14,8 @@ let
     "darwin" = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
     "linux" = "${pkgs._1password-gui}/share/1password/op-ssh-sign";
   };
+
+  baseSystem = builtins.elemAt (builtins.split "-" pkgs.system) 2;
 in
 {
   programs.git = {
@@ -24,6 +25,7 @@ in
     signing = {
       # On desktop environment, use ssh key from password manager.
       # On headless environment, use gpg key.
+      # FIXME: How to deploy gpg key?
       key = if desktop then signingKey.sshKeyFingerprint else signingKey.gpgKeyFingerprint;
     };
     extraConfig = {

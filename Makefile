@@ -1,6 +1,7 @@
 # Nix deployment commands
 NIX_CMD = nix
 NIX_STORE_CMD = nix-store
+NIXOS_REBUILD = nixos-rebuild
 DARWIN_FIRST_BUILD = ./result/sw/bin/darwin-rebuild
 DARWIN_REBUILD = darwin-rebuild
 
@@ -14,6 +15,16 @@ endif
 .PHONY: nix-install
 nix-install:
 	@curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+
+# nixos
+.PHONY: nixos-%
+nixos-%:
+	@sudo $(NIXOS_REBUILD) switch --flake ".#"${@:nixos-%=%}
+
+# nixos (build only)
+.PHONY: nixos-build-%
+nixos-build-%:    
+	@$(NIX_CMD) build ".#nixosConfigurations."${@:nixos-build-%=%}".config.system.build.toplevel" --verbose --show-trace --no-link
 
 # nix-darwin
 .PHONY: nix-darwin-%

@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, pkgs-stable, ... }:
 let
   cTools = with pkgs; [
     gcc
@@ -50,9 +50,8 @@ let
 
   typesetTools = with pkgs; [ typst ];
 
-  pythonTools = with pkgs-unstable; [
+  pythonTools = with pkgs; [
     python313
-    python313Packages.pynvim
     python313Packages.wheel
     python313Packages.pip
   ];
