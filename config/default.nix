@@ -140,10 +140,25 @@ in
       };
     };
 
-    waybar = {
-      "waybar" = {
-        source = symlink "${configDir}/waybar/${hostname}";
-        recursive = true;
+    qt6ct = {
+      "qt6ct/qt6ct.conf" = {
+        text = builtins.readFile (
+          pkgs.substituteAll {
+            src = ./qt6ct/qt6ct.conf;
+            qt6ct_pkg = pkgs.qt6Packages.qt6ct;
+          }
+        );
+      };
+    };
+
+    qt5ct = {
+      "qt5ct/qt5ct.conf" = {
+        text = builtins.readFile (
+          pkgs.substituteAll {
+            src = ./qt5ct/qt5ct.conf;
+            qt5ct_pkg = pkgs.libsForQt5.qt5ct;
+          }
+        );
       };
     };
 

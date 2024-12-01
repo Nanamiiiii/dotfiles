@@ -13,7 +13,7 @@ let
 
   configTools = with pkgs; [
     brightnessctl
-    pavucontrol
+    lxqt.pavucontrol-qt
     nwg-look
     nwg-displays
     xsettingsd
@@ -49,6 +49,11 @@ let
     (catppuccin-gtk.override {
       accents = [ "lavender" ];
       variant = "mocha";
+      size = "standard";
+      tweaks = [
+        "normal"
+        "rimless"
+      ];
     })
   ];
 
