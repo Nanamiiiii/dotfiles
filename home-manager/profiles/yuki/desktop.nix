@@ -34,7 +34,7 @@ in
     };
     font = {
       name = "IBM Plex Sans JP";
-      size = 10;
+      size = 11;
     };
     iconTheme = {
       name = gtkIconTheme;

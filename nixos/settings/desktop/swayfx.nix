@@ -67,11 +67,14 @@ let
     cliphist
     wob
     imagemagick
-    kdePackages.kwallet
-    kdePackages.kwalletmanager
-    kdePackages.kwallet-pam
+    gnome-keyring
+    polkit_gnome
     python3Packages.i3ipc
     python3Packages.pygobject3
+    bluez
+    bluez-tools
+    blueman
+    seahorse
   ];
 in
 {
@@ -99,9 +102,4 @@ in
 
   environment.systemPackages =
     [ ] ++ swayTools ++ configTools ++ guiFramework ++ desktopThemes ++ miscTools;
-
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-  };
 }

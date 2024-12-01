@@ -9,10 +9,18 @@
     rtkit.enable = true;
     polkit.enable = true;
     tpm2.enable = true;
+    pam.services = {
+      login = {
+        enableGnomeKeyring = true;
+        gnupg.enable = true;
+      };
+    };
   };
 
-  # TODO: need to modify pam settings?
-  services.fprintd.enable = true;
+  services = {
+    fprintd.enable = true;
+    gnome.gnome-keyring.enable = true;
+  };
 
   programs = {
     _1password.enable = true;
@@ -22,15 +30,15 @@
     };
   };
 
-  systemd.user.services.polkit-kde-authentication-agent = {
+  systemd.user.services.polkit-gnome-authentication-agent-1 = {
     enable = desktop;
-    description = "polkit authentication kde agent";
+    description = "polkit authentication gnome agent";
     wantedBy = [ "graphical-session.target" ];
     wants = [ "graphical-session.target" ];
     after = [ "graphical-session.target" ];
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
       Restart = "on-failure";
       RestartSec = 1;
       TimeoutStopSec = 10;

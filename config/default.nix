@@ -98,37 +98,43 @@ in
   linuxConfigs = {
     sway = {
       "sway/config" = {
-        source = symlink "${configDir}/sway/config";
+        source = ./sway/config;
       };
       "sway/variables.conf" = {
-        source = symlink "${configDir}/sway/variables.conf";
+        source = ./sway/variables.conf;
       };
       "sway/daemon.conf" = {
-        source = symlink "${configDir}/sway/daemon.conf";
+        text = builtins.readFile (
+          pkgs.substituteAll {
+            src = ./sway/daemon.conf;
+            kwallet_pkg = pkgs.kwallet-pam;
+            kde_auth_agent_pkg = pkgs.kdePackages.polkit-kde-agent-1;
+          }
+        );
       };
       "sway/keybinding.conf" = {
-        source = symlink "${configDir}/sway/keybinding.conf";
+        source = ./sway/keybinding.conf;
       };
       "sway/fx.conf" = {
-        source = symlink "${configDir}/sway/fx.conf";
+        source = ./sway/fx.conf;
       };
       "sway/styles.conf" = {
-        source = symlink "${configDir}/sway/styles.conf";
+        source = ./sway/styles.conf;
       };
       "sway/bar.conf" = {
-        source = symlink "${configDir}/sway/bar.conf";
+        source = ./sway/bar.conf;
       };
       "sway/rules.conf" = {
-        source = symlink "${configDir}/sway/rules.conf";
+        source = ./sway/rules.conf;
       };
       "sway/transparency.py" = {
-        source = symlink "${configDir}/sway/transparency.py";
+        source = ./sway/transparency.py;
       };
       "sway/import-gsettings.sh" = {
-        source = symlink "${configDir}/sway/import-gsettings.sh";
+        source = ./sway/import-gsettings.sh;
       };
       "sway/config.d" = {
-        source = symlink "${configDir}/sway/${hostname}";
+        source = ./sway/${hostname};
         recursive = true;
       };
     };
