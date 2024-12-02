@@ -6,8 +6,16 @@ dotfiles with Nix
 make nix-install
 ```
 
-## Linux
-TBD
+## NixOS
+### Build & Switch 
+```
+make nixos-${HOST}
+```
+
+### Build Only
+```
+make nixos-build-${HOST}
+```
 
 ## Darwin
 ### First Build
@@ -23,5 +31,10 @@ make nix-darwin-${HOST}
 ## Format
 ```bash
 make fmt
+```
+
+## GC
+```
+make clean-store
 ```
 
