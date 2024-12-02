@@ -4,7 +4,7 @@ let
     waybar
     mako
     swayidle
-    swaylock-fancy
+    swaylock-effects
     sway-contrib.grimshot
     wofi
     networkmanager_dmenu

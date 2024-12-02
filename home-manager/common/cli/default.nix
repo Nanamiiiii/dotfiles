@@ -160,14 +160,9 @@ in
             type = "theme";
           }
           {
-            key = "├─󰀻";
+            key = "╰─󰀻";
             keyColor = "yellow";
             type = "icons";
-          }
-          {
-            key = "╰─󰸉";
-            keyColor = "yellow";
-            type = "wallpaper";
           }
           "break"
           {
