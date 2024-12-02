@@ -1,7 +1,7 @@
 { username, ... }:
 {
   imports = [
-    ../nix-darwin/settings
+    ../../nix-darwin/settings
     ./brew.nix
   ];
 
