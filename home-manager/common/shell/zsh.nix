@@ -130,6 +130,9 @@ let
   '';
 
   hostZshrcExt = {
+    yuki = ''
+      SSH_AUTH_SOCK=~/.1password/agent.sock
+    '';
     asu = ''
       # sudo prompt
       export SUDO_PROMPT="[sudo] %p's password: "

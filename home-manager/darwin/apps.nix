@@ -34,6 +34,15 @@ in
 
   xdg.configFile = with configFiles.darwinConfigs; aerospace // raycast;
 
+  programs = {
+    ssh = {
+      extraConfig = if desktop then ''
+        Host *
+            IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+      '' else "";
+    };
+  };
+
   launchd.agents = {
     aerospace = {
       enable = true;

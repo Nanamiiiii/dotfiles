@@ -23,7 +23,7 @@ let
 
 in
 {
-  imports = [ ./git ];
+  imports = [ ./git ./ssh ];
 
   # CLI Tools
   programs = {

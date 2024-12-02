@@ -22,6 +22,13 @@ in
     gpg = {
       enable = true;
     };
+
+    ssh = {
+      extraConfig = if desktop then ''
+        Host *
+            IdentityAgent "~/.1password/agent.sock"
+      '' else "";
+    };
   };
 
   services.gpg-agent = {
