@@ -6,7 +6,7 @@
       gnumake
       git
       curl
-      killall
+      bash
     ];
   };
 }
