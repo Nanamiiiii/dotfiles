@@ -24,6 +24,7 @@ let
     ../../nixos/settings/system/time.nix
     ../../nixos/settings/system/i18n.nix
     ../../nixos/settings/system/tlp.nix
+    ../../nixos/settings/system/bluetooth.nix
   ];
 
   # Graphics
