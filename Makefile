@@ -16,26 +16,31 @@ endif
 nix-install:
 	@curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 
-# nixos
-.PHONY: nixos-%
-nixos-%:
-	@sudo $(NIXOS_REBUILD) switch --flake ".#"${@:nixos-%=%}
-
 # nixos (build only)
 .PHONY: nixos-build-%
 nixos-build-%:    
 	@$(NIX_CMD) build ".#nixosConfigurations."${@:nixos-build-%=%}".config.system.build.toplevel" --verbose --show-trace --no-link
 
-# nix-darwin
-.PHONY: nix-darwin-%
-nix-darwin-%:
-	@$(DARWIN_REBUILD) switch --flake ".#"${@:nix-darwin-%=%}
+# nixos
+.PHONY: nixos-%
+nixos-%:
+	@sudo $(NIXOS_REBUILD) switch --flake ".#"${@:nixos-%=%}
 
 # nix-darwin for first deployment
 .PHONY: nix-darwin-init-%
 nix-darwin-init-%:
 	@$(NIX_CMD) build ".#darwinConfigurations."${@:nix-darwin-init-%=%}".system" --verbose --show-trace
 	@$(DARWIN_FIRST_BUILD) switch --flake ".#"${@:nix-darwin-init-%=%}
+
+# nix-darwin (build only)
+.PHONY: nix-darwin-build-%
+nix-darwin-build-%:
+	@$(NIX_CMD) build ".#darwinConfigurations."${@:nix-darwin-init-%=%}".system" --verbose --show-trace --no-link
+
+# nix-darwin
+.PHONY: nix-darwin-%
+nix-darwin-%:
+	@$(DARWIN_REBUILD) switch --flake ".#"${@:nix-darwin-%=%}
 
 # Update
 .PHONY: update
