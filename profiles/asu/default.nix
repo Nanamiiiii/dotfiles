@@ -3,6 +3,7 @@
   imports = [
     ../../nix-darwin/settings
     ./brew.nix
+    ./apps.nix
   ];
 
   users.users.nanami = {

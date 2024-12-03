@@ -24,10 +24,14 @@ in
     };
 
     ssh = {
-      extraConfig = if desktop then ''
-        Host *
-            IdentityAgent "~/.1password/agent.sock"
-      '' else "";
+      extraConfig =
+        if desktop then
+          ''
+            Host *
+                IdentityAgent "~/.1password/agent.sock"
+          ''
+        else
+          "";
     };
   };
 

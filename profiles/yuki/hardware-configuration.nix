@@ -23,7 +23,7 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  # Currently, intagrated Intel Arc GPU not working by default 
+  # Currently, intagrated Intel Arc GPU not working by default
   boot.kernelParams = [ "i915.force_probe=7d55" ];
 
   fileSystems."/" = {
