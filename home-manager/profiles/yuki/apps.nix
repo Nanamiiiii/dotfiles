@@ -9,6 +9,7 @@
       rclone
       hwloc
       vlc
+      zoom-us
     ]
     ++ (with kdePackages; [
       ark
