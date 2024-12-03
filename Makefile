@@ -35,7 +35,7 @@ nix-darwin-init-%:
 # nix-darwin (build only)
 .PHONY: nix-darwin-build-%
 nix-darwin-build-%:
-	@$(NIX_CMD) build ".#darwinConfigurations."${@:nix-darwin-init-%=%}".system" --verbose --show-trace --no-link
+	@$(NIX_CMD) build ".#darwinConfigurations."${@:nix-darwin-build-%=%}".system" --verbose --show-trace --no-link
 
 # nix-darwin
 .PHONY: nix-darwin-%
