@@ -89,22 +89,6 @@
       interval = 5;
       tooltip = true;
     };
-    "custom/media" = {
-      escape = true;
-      exec = "$HOME/.config/waybar/scripts/mediaplayer.py";
-      format = "{icon} {0}";
-      format-icons = {
-        default = "";
-        spotify = "";
-        spotifyd = "";
-      };
-      max-length = 40;
-      min-length = 25;
-      on-click = "playerctl play-pause";
-      on-scroll-down = "playerctl previous";
-      on-scroll-up = "playerctl next";
-      return-type = "json";
-    };
     layer = "top";
     memory = {
       format = "{}% ";
@@ -113,7 +97,7 @@
     modules-center = [ "sway/workspaces" ];
     modules-left = [
       "clock"
-      "custom/media"
+      "mpris"
       "sway/window"
       "sway/mode"
     ];
@@ -128,6 +112,19 @@
       "network"
       "battery"
     ];
+    mpris = {
+      format = "{player_icon} {title} - {artist}";
+      format-paused = "{player_icon} {status_icon} {title} - {artist}";
+      title-len = 20;
+      artist-len = 20;
+      player-icons = {
+        default = "󰎆";
+        spotify = "";
+      };
+      status-icons = {
+        paused = "󱖒";
+      };
+    };
     network = {
       format = "";
       format-disconnected = "󰤭";
@@ -255,14 +252,13 @@
       color: #b4befe;
     }
 
-    #custom-media {
-      margin-left: 5px;
-      margin-right: 5px;
-      padding-left: 5px;
-      padding-right: 5px;
-      /*color: #b4befe;*/
-      color: #9ece6a;
-      background-color: transparent;
+    #mpris {
+      margin: 5px 5px; 
+      padding-left: 10px;
+      padding-right: 10px;
+      color: #b4befe;
+      background-color: #39568f;
+      border-radius: 5px;
     }
 
     #workspaces {
@@ -393,6 +389,4 @@
       margin-right: 5px;
     }
   '';
-
-  script = builtins.readFile ./scripts/mediaplayer.py;
 }

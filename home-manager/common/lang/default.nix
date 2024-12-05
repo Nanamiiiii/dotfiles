@@ -51,9 +51,12 @@ let
   typesetTools = with pkgs; [ typst ];
 
   pythonTools = with pkgs; [
-    python313
-    python313Packages.wheel
-    python313Packages.pip
+    (python3.withPackages (
+      python-pkgs: with python-pkgs; [
+        wheel
+        pip
+      ]
+    ))
   ];
 in
 {

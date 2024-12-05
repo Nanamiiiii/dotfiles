@@ -69,8 +69,6 @@ let
     imagemagick
     gnome-keyring
     polkit_gnome
-    python3Packages.i3ipc
-    python3Packages.pygobject3
     bluez
     bluez-tools
     blueman

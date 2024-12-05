@@ -50,9 +50,5 @@ in
       "waybar/style.css" = {
         text = waybar.waybarStyle;
       };
-
-      "waybar/scripts/mediaplayer.py" = {
-        text = waybar.script;
-      };
     };
 }

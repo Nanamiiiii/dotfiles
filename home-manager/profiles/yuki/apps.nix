@@ -10,6 +10,8 @@
       hwloc
       vlc
       zoom-us
+      spotify
+      python3Packages.i3ipc
     ]
     ++ (with kdePackages; [
       ark
