@@ -24,7 +24,6 @@ let
     polkit_gnome
     libsecret
     networkmanagerapplet
-    wleave
     networkmanager_dmenu
     libnotify
   ];
@@ -96,19 +95,6 @@ in
   xdg.configFile."networkmanager-dmenu" = {
     source = ./networkmanager-dmenu;
     recursive = true;
-  };
-
-  xdg.configFile."wleave/layout" = {
-    source = ./wleave/layout;
-  };
-
-  xdg.configFile."wleave/style.css" = {
-    text = builtins.readFile (
-      pkgs.substituteAll {
-        src = ./wleave/style.css;
-        wleave_pkg_path = pkgs.wleave;
-      }
-    );
   };
 
   xdg.configFile."waybar/style.css" = {

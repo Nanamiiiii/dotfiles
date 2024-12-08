@@ -91,7 +91,7 @@
       "$mainMod, V, exec, cliphist list | wofi -d -p clipboard | cliphist decode | wl-copy"
 
       # wleave
-      "$mainMod SHIFT, Q, exec, wleave"
+      "$mainMod SHIFT, Q, exec, bash ~/.config/wofi/wofi_power.sh"
 
       # Reload waybar
       "$mainMod SHIFT, B, exec, pkill waybar && waybar"
