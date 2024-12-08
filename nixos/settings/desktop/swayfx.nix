@@ -1,79 +1,6 @@
 { pkgs, pkgs-stable, ... }:
 let
-  swayTools = with pkgs; [
-    waybar
-    mako
-    swayidle
-    swaylock-effects
-    sway-contrib.grimshot
-    wofi
-    networkmanager_dmenu
-    wleave
-  ];
-
-  configTools = with pkgs; [
-    brightnessctl
-    lxqt.pavucontrol-qt
-    nwg-look
-    nwg-displays
-    xsettingsd
-  ];
-
-  guiFramework =
-    with pkgs;
-    [
-      gtk4
-      gtk3
-      themechanger
-      glib
-    ]
-    ++ (with pkgs.qt6Packages; [
-      qt6ct
-      qt6.qtbase
-      qtstyleplugin-kvantum
-    ])
-    ++ (with pkgs.libsForQt5; [
-      qt5ct
-      qt5.qtbase
-      qtstyleplugin-kvantum
-    ]);
-
-  desktopThemes = with pkgs; [
-    catppuccin-papirus-folders
-    catppuccin-cursors.mochaLavender
-    (catppuccin-kvantum.override {
-      accent = "lavender";
-      variant = "mocha";
-    })
-    # the repo is archived now ;(
-    (catppuccin-gtk.override {
-      accents = [ "lavender" ];
-      variant = "mocha";
-      size = "standard";
-      tweaks = [
-        "normal"
-        "rimless"
-      ];
-    })
-  ];
-
-  miscTools = with pkgs; [
-    lxqt.pcmanfm-qt
-    playerctl
-    emote
-    firefox-devedition
-    autotiling
-    wl-clipboard
-    cliphist
-    wob
-    imagemagick
-    gnome-keyring
-    polkit_gnome
-    bluez
-    bluez-tools
-    blueman
-    seahorse
-  ];
+  tools = import ./tools.nix;
 in
 {
   programs = {
@@ -98,6 +25,18 @@ in
     };
   };
 
+  xdg.portal = {
+    wlr.enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-wlr
+    ];
+  };
+
   environment.systemPackages =
-    [ ] ++ swayTools ++ configTools ++ guiFramework ++ desktopThemes ++ miscTools;
+    [ lxqt.pcmanfm-qt ]
+    ++ tools.swayTools
+    ++ tools.configTools
+    ++ tools.guiFramework
+    ++ tools.desktopThemes
+    ++ tools.miscTools;
 }

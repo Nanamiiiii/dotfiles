@@ -1,8 +1,13 @@
-{ nixos-hardware, ... }:
+{
+  pkgs,
+  config,
+  nixos-hardware,
+  username,
+  ...
+}:
 let
   # Hardware
   hardwareSettings = [
-    nixos-hardware.nixosModules.lenovo-thinkpad-x13
     ./hardware-configuration.nix
   ];
 
@@ -13,32 +18,34 @@ let
   ];
 
   # Boot Settings
-  boot = ../../nixos/settings/boot/secureboot.nix;
+  boot = [
+    ../../nixos/settings/boot/secureboot.nix
+    ../../nixos/settings/boot/zen.nix
+  ];
 
   # System
   systemSettings = [
-    (import ../../nixos/settings/system/networking.nix { hostName = "yuki"; })
+    (import ../../nixos/settings/system/networking.nix { hostName = "rika"; })
     ../../nixos/settings/system/security.nix
     ../../nixos/settings/system/user.nix
     ../../nixos/settings/system/environment.nix
     ../../nixos/settings/system/time.nix
     ../../nixos/settings/system/i18n.nix
-    ../../nixos/settings/system/tlp.nix
     ../../nixos/settings/system/bluetooth.nix
   ];
 
   # Graphics
-  graphics = ../../nixos/settings/graphics/intel.nix;
+  graphics = ../../nixos/settings/graphics/nvidia.nix;
 
   # Display
   displaySettings = [
-    ../../nixos/settings/display/gdm.nix
+    (import ../../nixos/settings/display/greetd.nix { inherit pkgs config; })
     ../../nixos/settings/display/xserver.nix
   ];
 
   # Desktop
   desktopSettings = [
-    ../../nixos/settings/desktop/swayfx.nix
+    ../../nixos/settings/desktop/hyprland.nix
     ../../nixos/settings/desktop/gui.nix
     ../../nixos/settings/desktop/fonts.nix
     ../../nixos/settings/desktop/pipewire.nix
@@ -59,14 +66,16 @@ in
 {
   imports =
     [
-      boot
       graphics
       ime
     ]
-    ++ hardwareSettings ++ nixSettings ++ systemSettings ++ displaySettings ++ desktopSettings ++ misc;
-
-  # I prefer zen kernel
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    ++ boot
+    ++ hardwareSettings
+    ++ nixSettings
+    ++ systemSettings
+    ++ displaySettings
+    ++ desktopSettings
+    ++ misc;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -74,5 +83,5 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 }

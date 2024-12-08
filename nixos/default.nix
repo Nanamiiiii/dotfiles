@@ -15,6 +15,7 @@ rec {
       profile
       username
       desktop
+      system
       ;
     inherit (inputs) nixos-hardware;
     pkgs-stable = import inputs.nixpkgs-stable {

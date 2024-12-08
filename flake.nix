@@ -30,6 +30,8 @@
       url = "github:wez/wezterm/main?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
   outputs =
@@ -71,6 +73,13 @@
           inherit (nixpkgs.lib) nixosSystem;
         in
         {
+          rika = nixosSystem (nixosSystemArgs {
+            profile = "rika";
+            username = "nanami";
+            system = "x86_64-linux";
+            desktop = true;
+          });
+
           yuki = nixosSystem (nixosSystemArgs {
             profile = "yuki";
             username = "nanami";

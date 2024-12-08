@@ -25,8 +25,5 @@
       enable = true;
       pkiBundle = "/etc/secureboot";
     };
-
-    # I prefer zen kernel
-    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
   };
 }
