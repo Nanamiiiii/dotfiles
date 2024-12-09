@@ -44,6 +44,7 @@ in
     windowrulev2 = [
       "pseudo noblur, class:^(fcitx)(.*)$"
       "noblur class:(wofi)"
+      "noblur, title:^()$, class:^()$"
       "float, class:(zoom), title:^(Zoom Cloud Meetings)$"
       "float, class:(zoom), title:^(Zoom - Free Account)$"
       "float, class:(zoom), title:^(Select a window or an application that you want to share)$"
@@ -65,6 +66,8 @@ in
       "opaque, class:^(firefox)$"
       "opaque, initialTitle:^(Picture in picture)(.*)$"
       "opaque, class:(firefox), initialTitle:^(Picture-in-Picture)$"
+      "opaque, class:(Zotero)"
+      "opaque, title:^()$, class:^()$"
       "suppressevent maximize, class:.*"
     ];
 
