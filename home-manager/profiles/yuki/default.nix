@@ -5,7 +5,7 @@
     ../../linux
     ./config.nix
     ./apps.nix
-    ./desktop.nix
+    ./desktop-hypr.nix
   ];
 
   home.stateVersion = "24.11";

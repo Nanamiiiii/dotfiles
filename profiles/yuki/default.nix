@@ -1,4 +1,9 @@
-{ nixos-hardware, ... }:
+{
+  pkgs,
+  config,
+  nixos-hardware,
+  ...
+}:
 let
   # Hardware
   hardwareSettings = [
@@ -13,7 +18,10 @@ let
   ];
 
   # Boot Settings
-  boot = ../../nixos/settings/boot/secureboot.nix;
+  boot = [
+    ../../nixos/settings/boot/secureboot.nix
+    ../../nixos/settings/boot/zen.nix
+  ];
 
   # System
   systemSettings = [
@@ -32,13 +40,13 @@ let
 
   # Display
   displaySettings = [
-    ../../nixos/settings/display/gdm.nix
+    (import ../../nixos/settings/display/greetd.nix { inherit pkgs config; })
     ../../nixos/settings/display/xserver.nix
   ];
 
   # Desktop
   desktopSettings = [
-    ../../nixos/settings/desktop/swayfx.nix
+    ../../nixos/settings/desktop/hyprland.nix
     ../../nixos/settings/desktop/gui.nix
     ../../nixos/settings/desktop/fonts.nix
     ../../nixos/settings/desktop/pipewire.nix
@@ -59,10 +67,10 @@ in
 {
   imports =
     [
-      boot
       graphics
       ime
     ]
+    ++ boot
     ++ hardwareSettings
     ++ nixSettings
     ++ systemSettings
@@ -70,10 +78,7 @@ in
     ++ desktopSettings
     ++ misc;
 
-  # I prefer zen kernel
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-
-  initrd.systemd.enable = true;
+  boot.initrd.systemd.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

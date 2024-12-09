@@ -1,10 +1,21 @@
 {
   hostname,
-  networkIf,
   thermalZone,
   laptop,
 }:
 let
+  modulesLeftLaptop = [
+    "custom/nix"
+    "mpris"
+    "hyprland/window"
+    "hyprland/submap"
+  ];
+  modulesLeftDesktop = [
+    "custom/nix"
+    "mpris"
+    "hyprland/window"
+    "hyprland/submap"
+  ];
   modulesRightLaptop = [
     "tray"
     "temperature"
@@ -157,7 +168,7 @@ in
         mode = "month";
         on-scroll = 1;
       };
-      format = "󰥔 {:%Y-%m-%d %H:%M:%S}";
+      format = if laptop then "󰥔 {:%H:%M}" else "󰥔 {:%Y-%m-%d %H:%M:%S}";
       interval = 1;
       tooltip-format = "<tt><small>{calendar}</small></tt>";
     };
@@ -172,12 +183,7 @@ in
       interval = 5;
     };
     modules-center = [ "hyprland/workspaces" ];
-    modules-left = [
-      "custom/nix"
-      "mpris"
-      "hyprland/window"
-      "hyprland/submap"
-    ];
+    modules-left = if laptop then modulesLeftLaptop else modulesLeftDesktop;
     modules-right = if laptop then modulesRightLaptop else modulesRightDesktop;
     mpris = {
       format = "{player_icon} {title} - {artist}";
@@ -195,7 +201,7 @@ in
     network = {
       format = "";
       format-disconnected = "󰤭";
-      format-ethernet = "󰌗 {ifname}";
+      format-ethernet = "{ifname} 󰌗";
       format-wifi = "{signalStrength}% 󰤨";
       tooltip = true;
       tooltip-format-ethernet = "{ifname} - {ipaddr}/{cidr}\n{bandwidthDownBits} bps / {bandwidthUpBits} bps";
@@ -430,7 +436,7 @@ in
       color: #24283b;
       margin: 5px 0; 
       padding-left: 10px;
-      padding-right: 10px;
+      padding-right: 15px;
       margin-right: 5px;
     }
 

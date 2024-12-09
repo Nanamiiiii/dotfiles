@@ -2,7 +2,6 @@
   pkgs,
   inputs,
   osConfig,
-  networkIf,
   thermalZone,
   laptop,
   ...
@@ -60,7 +59,6 @@ let
   waybarConfig = import ./waybar {
     hostname = osConfig.networking.hostName;
     inherit
-      networkIf
       thermalZone
       laptop
       ;
