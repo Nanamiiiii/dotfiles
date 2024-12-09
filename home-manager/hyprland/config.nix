@@ -26,6 +26,7 @@ in
       "XDG_SESSION_DESKTOP,Hyprland"
       "XDG_CURRENT_DESKTOP,Hyprland"
       "GDK_SCALE,1"
+      "NIXOS_OZONE_WL,1"
     ];
 
     # Exec Once

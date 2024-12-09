@@ -23,6 +23,11 @@ in
         ];
       };
     };
+    cageArgs = [
+      "-s"
+      "-m"
+      "last"
+    ];
     theme = {
       name = gtkThemeName;
       package = pkgs.catppuccin-gtk.override {
