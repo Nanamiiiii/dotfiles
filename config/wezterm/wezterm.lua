@@ -7,7 +7,7 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
--- config.enable_wayland = false
+config.enable_wayland = false
 
 -- TERM
 config.term = "xterm-256color"
@@ -211,7 +211,7 @@ end)
 if is_macos then
     config.window_decorations = "RESIZE | MACOS_FORCE_ENABLE_SHADOW"
 elseif is_linux then
-	if de_name == "i3" or de_name == "sway" then
+	if de_name == "i3" or de_name == "sway" or de_name == "Hyprland" then
 		config.window_decorations = "NONE"
 	else
 		config.window_decorations = "TITLE | RESIZE"

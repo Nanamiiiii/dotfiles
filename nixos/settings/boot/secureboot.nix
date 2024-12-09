@@ -18,8 +18,6 @@
       efi.canTouchEfiVariables = true;
     };
 
-    initrd.systemd.enable = true;
-
     # Lanzaboote config
     lanzaboote = {
       enable = true;

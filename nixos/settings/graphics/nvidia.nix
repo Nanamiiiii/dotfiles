@@ -13,7 +13,7 @@
       powerManagement.finegrained = false;
       open = false;
       nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.production;
     };
   };
 
@@ -25,7 +25,7 @@
       "vfio_iommu_type1"
       "vfio_pci"
       "kvm"
-      "kvm-amd"
+      "kvm-intel"
     ];
     kernelParams = [
       "nvidia_drm.modeset=1"

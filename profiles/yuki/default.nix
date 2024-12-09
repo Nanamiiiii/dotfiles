@@ -63,10 +63,17 @@ in
       graphics
       ime
     ]
-    ++ hardwareSettings ++ nixSettings ++ systemSettings ++ displaySettings ++ desktopSettings ++ misc;
+    ++ hardwareSettings
+    ++ nixSettings
+    ++ systemSettings
+    ++ displaySettings
+    ++ desktopSettings
+    ++ misc;
 
   # I prefer zen kernel
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+
+  initrd.systemd.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
