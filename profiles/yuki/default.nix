@@ -53,9 +53,6 @@ let
     ../../nixos/settings/desktop/xdg.nix
   ];
 
-  # IME
-  ime = ../../nixos/settings/ime/skk.nix;
-
   # Misc
   misc = [
     ../../nixos/settings/misc/programs.nix
@@ -68,7 +65,6 @@ in
   imports =
     [
       graphics
-      ime
     ]
     ++ boot
     ++ hardwareSettings
