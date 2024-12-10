@@ -218,7 +218,7 @@ in
         headphone = " ";
       };
       format-muted = "{volume}%  {format_source}";
-      format-source = "{volume}% ";
+      format-source = if laptop then "" else "{volume}% ";
       format-source-muted = "{volume}% ";
       on-click = "pavucontrol-qt";
       scroll-step = 1;
