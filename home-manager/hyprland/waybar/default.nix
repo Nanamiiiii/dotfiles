@@ -208,17 +208,22 @@ in
       tooltip-format-wifi = "{essid} - {ipaddr}/{cidr}\n{frequency} GHz / {signaldBm} dBm\n{bandwidthDownBits} bps / {bandwidthUpBits} bps";
     };
     pulseaudio = {
-      format = "{volume}% {icon} {format_source}";
+      format = if laptop then "{volume}% {icon}" else "{volume}% {icon} {format_source}";
       format-icons = {
-        default = [
+        default = if laptop then [
+          ""
+          ""
+          ""
+        ] 
+        else [
           " "
           " "
           " "
         ];
-        headphone = " ";
+        headphone = if laptop then "" else " ";
       };
-      format-muted = "{volume}%  {format_source}";
-      format-source = if laptop then "" else "{volume}% ";
+      format-muted = if laptop then "{volume}% " else "{volume}%  {format_source}";
+      format-source = "{volume}% ";
       format-source-muted = "{volume}% ";
       on-click = "pavucontrol-qt";
       scroll-step = 1;

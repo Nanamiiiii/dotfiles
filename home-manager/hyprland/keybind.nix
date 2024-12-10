@@ -62,12 +62,18 @@
       "$mainMod SHIFT, K, movewindow, u"
       "$mainMod SHIFT, J, movewindow, d"
 
+      # Move workspace to monitor by direction
+      "$subMod SHIFT, H, movecurrentworkspacetomonitor, l"
+      "$subMod SHIFT, L, movecurrentworkspacetomonitor, r"
+      "$subMod SHIFT, K, movecurrentworkspacetomonitor, u"
+      "$subMod SHIFT, J, movecurrentworkspacetomonitor, d"
+
       # Scratchpad
       "$mainMod SHIFT, minus, togglespecialworkspace, magic"
       "$mainMod, minus, movetoworkspace, special:magic"
 
       # Lock
-      "$subMod SHIFT, l, exec, hyprlock"
+      "$subMod, l, exec, hyprlock"
 
       # Toggle Display
       "$mainMod, Tab, exec, hyprctl monitors -j | jq 'map(select(.focused|not).activeWorkspace.id)[0]' | xargs hyprctl dispatch workspace"
