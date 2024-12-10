@@ -11,6 +11,10 @@
       vlc
       zoom-us
       spotify
+      plexamp
+      plex-desktop
+      floorp
+      google-chrome
     ]
     ++ (with kdePackages; [
       ark
