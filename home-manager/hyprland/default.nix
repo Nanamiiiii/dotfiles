@@ -54,6 +54,7 @@ let
     gnome-keyring
     seahorse
     lxqt.pcmanfm-qt
+    lxqt.lxqt-sudo
   ];
 
   waybarConfig = import ./waybar {
