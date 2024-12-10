@@ -13,7 +13,7 @@
         inputs
         osConfig
         ;
-      thermalZone = 4;
+      thermalZone = 6;
       laptop = true;
     })
   ];
