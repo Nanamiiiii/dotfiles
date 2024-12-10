@@ -14,7 +14,7 @@
       plexamp
       plex-desktop
       floorp
-      google-chrome
+      vivaldi
     ]
     ++ (with kdePackages; [
       ark

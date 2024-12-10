@@ -73,6 +73,15 @@ in
     ++ desktopSettings
     ++ misc;
 
+  # 1Password Custom Browser
+  environment.etc."1password/custom_allowed_browsers" = {
+    text = ''
+      vivaldi-bin
+      floorp
+    '';
+    mode = "0755";
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
