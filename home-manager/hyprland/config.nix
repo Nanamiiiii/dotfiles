@@ -34,7 +34,6 @@ in
       "hyprpaper"
       "waybar"
       "swaync"
-      "fcitx5 -D"
       "wl-paste --watch cliphist store"
       "plyerctld daemon"
       "1password --silent"
