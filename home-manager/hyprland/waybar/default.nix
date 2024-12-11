@@ -193,6 +193,9 @@ in
       player-icons = {
         default = "󰎆";
         spotify = "";
+        kdeconnect = "";
+        Plexamp = "󰚺";
+        firefox = "";
       };
       status-icons = {
         paused = "󱖒";

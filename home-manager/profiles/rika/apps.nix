@@ -12,7 +12,7 @@
       zoom-us
       spotify
       plexamp
-      plex-desktop
+      pkgs-stable.plex-desktop
       floorp
       vivaldi
     ]

@@ -24,9 +24,7 @@ nixos-build-%:
 # nixos
 .PHONY: nixos-%
 nixos-%:
-	-systemctl --user stop fcitx5-daemon.service
 	@sudo $(NIXOS_REBUILD) switch --flake ".#"${@:nixos-%=%}
-	-systemctl --user start fcitx5-daemon.service
 
 # nix-darwin for first deployment
 .PHONY: nix-darwin-init-%

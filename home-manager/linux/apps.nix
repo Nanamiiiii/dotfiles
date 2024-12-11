@@ -62,8 +62,15 @@ in
     };
   };
 
-  services.gpg-agent = {
-    enable = true;
-    pinentryPackage = pkgs.pinentry-curses;
+  services = {
+    gpg-agent = {
+      enable = true;
+      pinentryPackage = pkgs.pinentry-curses;
+    };
+
+    kdeconnect = {
+      enable = true;
+      indicator = true;
+    };
   };
 }

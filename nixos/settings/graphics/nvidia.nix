@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 {
   services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -6,6 +6,7 @@
     graphics = {
       enable = true;
       enable32Bit = true;
+      extraPackages = with pkgs; [ nvidia-vaapi-driver ];
     };
     nvidia = {
       modesetting.enable = true;

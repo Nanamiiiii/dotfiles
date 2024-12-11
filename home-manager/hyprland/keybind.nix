@@ -8,8 +8,8 @@
     "$fileManager" = "pcmanfm-qt";
     "$appLauncher" = "wofi --show drun";
     "$cmdLauncher" = "wofi --show run";
-    "$browser" = "zen-browser";
-    "$subBrowser" = "firefox-devedition";
+    "$browser" = "firefox-devedition";
+    "$subBrowser" = "zen-browser";
 
     bind = [
       # Applications
@@ -18,7 +18,7 @@
       "$mainMod, Space, exec, $appLauncher"
       "$mainMod, D, exec, $cmdLauncher"
       "$mainMod, B, exec, $browser"
-      "$mainMod SHIFT, B, exec, $subBrowser"
+      "$subMod, B, exec, $subBrowser"
 
       # Window Operations
       "$mainMod, Q, killactive"
