@@ -23,5 +23,8 @@
       enable = true;
       pkiBundle = "/etc/secureboot";
     };
+
+    # Use tmpfs
+    tmp.useTmpfs = true;
   };
 }

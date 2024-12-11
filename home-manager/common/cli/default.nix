@@ -21,6 +21,7 @@ let
     };
   };
 
+  hostname = osConfig.networking.hostName;
 in
 {
   imports = [
@@ -49,6 +50,50 @@ in
     };
     fastfetch = {
       enable = true;
+    };
+    spotify-player = {
+      enable = true;
+      settings = {
+        theme = "tokyonight";
+        playback_window_position = "Top";
+        copy_command = {
+          command = "wl-copy";
+          args = [];
+        };
+        default_device = hostname;
+        device = {
+          name = hostname;
+          device_type = "computer";
+          bitrate = 320;
+          audio_cache = true;
+          normalization = true;
+        };
+      };
+      themes = [
+        {
+          name = "tokyonight";
+          palette = {
+            background = "#1a1b26";
+            black = "#15161e";
+            blue = "#7aa2f7";
+            bright_black = "#414868";
+            bright_blue = "#7aa2f7";
+            bright_cyan = "#7dcfff";
+            bright_green = "#9ece6a";
+            bright_magenta = "#bb9af7";
+            bright_red = "#f7768e";
+            bright_white = "#c0caf5";
+            bright_yellow = "#e0af68";
+            cyan = "#7dcfff";
+            foreground = "#c0caf5";
+            green = "#9ece6a";
+            magenta = "#bb9af7";
+            red = "#f7768e";
+            white = "#a9b1d6";
+            yellow = "#e0af68";
+          };
+        }
+      ];
     };
   };
 

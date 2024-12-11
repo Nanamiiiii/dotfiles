@@ -9,6 +9,7 @@
       timeout = 3;
     };
 
-    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    # Use tmpfs
+    tmp.useTmpfs = true;
   };
 }
