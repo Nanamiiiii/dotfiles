@@ -193,6 +193,7 @@ in
       player-icons = {
         default = "󰎆";
         spotify = "";
+        spotify_player = "";
         kdeconnect = "";
         Plexamp = "󰚺";
         firefox = "";
