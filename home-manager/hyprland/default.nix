@@ -36,6 +36,7 @@ let
   ];
 
   miscTools = with pkgs; [
+    zen-browser
     playerctl
     emote
     firefox-devedition

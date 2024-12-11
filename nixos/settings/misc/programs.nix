@@ -112,6 +112,8 @@
         at-spi2-core
         pciutils
         pipewire
+        gtk3
+        gtk4
       ];
     };
     appimage = {

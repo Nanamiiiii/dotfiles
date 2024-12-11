@@ -38,6 +38,7 @@ rec {
     in
     [
       ../profiles/${profile}
+      ../overlays
       home-manager
       homeConfig
     ];
