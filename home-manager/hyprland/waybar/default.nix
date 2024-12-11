@@ -210,16 +210,19 @@ in
     pulseaudio = {
       format = if laptop then "{volume}% {icon}" else "{volume}% {icon} {format_source}";
       format-icons = {
-        default = if laptop then [
-          ""
-          ""
-          ""
-        ] 
-        else [
-          " "
-          " "
-          " "
-        ];
+        default =
+          if laptop then
+            [
+              ""
+              ""
+              ""
+            ]
+          else
+            [
+              " "
+              " "
+              " "
+            ];
         headphone = if laptop then "" else " ";
       };
       format-muted = if laptop then "{volume}% " else "{volume}%  {format_source}";
