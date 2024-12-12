@@ -54,6 +54,7 @@ in
     spotify-player = {
       enable = true;
       settings = {
+        client_id = "59646c782573452dbc0ae08b21b2f845";
         theme = "tokyonight";
         playback_window_position = "Top";
         copy_command = {
