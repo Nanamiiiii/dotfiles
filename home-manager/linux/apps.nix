@@ -9,11 +9,13 @@ let
   desktopPkgs = with pkgs; [
     slack
     thunderbird
+    betterdiscordctl
   ];
 
   cliPkgs = with pkgs; [
     wireguard-tools
     pinentry-curses
+    gocryptfs
   ];
 in
 {

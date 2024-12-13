@@ -13,8 +13,9 @@
       spotify
       plexamp
       pkgs-stable.plex-desktop
-      floorp
       vivaldi
+      krita
+      pinta
     ]
     ++ (with kdePackages; [
       ark

@@ -194,13 +194,15 @@ in
         default = "󰎆";
         spotify = "";
         spotify_player = "";
-        kdeconnect = "";
         Plexamp = "󰚺";
         firefox = "";
       };
       status-icons = {
         paused = "󱖒";
       };
+      ignored-players = [
+        "kdeconnect"
+      ];
     };
     network = {
       format = "";

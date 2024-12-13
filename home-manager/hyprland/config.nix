@@ -68,6 +68,7 @@ in
       "opaque, class:^(zen-beta)$"
       "opaque, initialTitle:^(Picture in picture)(.*)$"
       "opaque, class:(Zotero)"
+      "opaque, class:^(obsidian)$"
       "opaque, title:^()$, class:^()$"
       "pin, class:(firefox), initialTitle:^(Picture-in-Picture)$"
       "pin, class:(zen-beta), initialTitle:^(Picture-in-Picture)$"
