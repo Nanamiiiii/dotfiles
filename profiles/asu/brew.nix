@@ -15,7 +15,5 @@
     taps = [
       "PlayCover/playcover"
     ];
-
-    onActivation.cleanup = "uninstall";
   };
 }
