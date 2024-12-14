@@ -250,8 +250,32 @@ config.keys = {
 	{
 		key = "m",
 		mods = "LEADER",
-		action = act.ShowLauncherArgs({ flags = "FUZZY | LAUNCH_MENU_ITEMS | DOMAINS" }),
+		action = act.ShowLauncherArgs({ flags = "FUZZY | LAUNCH_MENU_ITEMS | DOMAINS", title = "Launcher" }),
 	},
+    {
+        key = "W",
+        mods = "LEADER",
+        action = act.ShowLauncherArgs({ flags = "FUZZY | WORKSPACES", title = "Workspaces Switcher" }),
+    },
+    {
+        key = 'N',
+        mods = 'LEADER',
+        action = act.PromptInputLine {
+            description = "New workspace:",
+            action = wezterm.action_callback(
+                function(window, pane, line)
+                    if line then
+                        window:perform_action(
+                            act.SwitchToWorkspace {
+                                name = line,
+                            },
+                            pane
+                        )
+                    end
+                end
+            ),
+        },
+    },
 	{
 		key = "q",
 		mods = "LEADER",
@@ -277,7 +301,6 @@ config.keys = {
 		mods = "LEADER",
 		action = act.ShowTabNavigator,
 	},
-
 	{
 		key = "b",
 		mods = "LEADER",
@@ -400,7 +423,7 @@ if is_linux then
 		},
 		{
 			label = "spotify",
-			args = { "spotify" },
+			args = { "spotify_player" },
 		},
 	}
 
@@ -445,7 +468,7 @@ if is_macos then
 		},
 		{
 			label = "spotify",
-			args = { "spt" },
+			args = { "spotify_player" },
 		},
 	}
 end
