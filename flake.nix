@@ -32,25 +32,31 @@
     };
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   outputs =
     {
+      self,
       nixpkgs,
       nixpkgs-stable,
       darwin,
       home-manager,
+      treefmt-nix,
+      systems,
       ...
     }@inputs:
+    let
+      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+      treefmtConfig = ./treefmt.nix;
+    in
     {
-      formatter =
-        let
-          legacyPkgs = nixpkgs.legacyPackages;
-        in
-        {
-          x86_64-linux = legacyPkgs.x86_64-linux.nixfmt-rfc-style;
-          aarch64-darwin = legacyPkgs.aarch64-darwin.nixfmt-rfc-style;
-        };
+      formatter = eachSystem (pkgs: treefmt-nix.lib.mkWrapper pkgs treefmtConfig);
+
+      checks = eachSystem (pkgs: {
+        formatting = (treefmt-nix.lib.evalModule pkgs treefmtConfig).config.build.check self;
+      });
 
       nixosConfigurations =
         let

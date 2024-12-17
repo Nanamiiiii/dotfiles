@@ -56,13 +56,17 @@ in
       settings = {
         client_id_command = {
           command = "op";
-          args = [ "read" "-n" "op://Dev/Spotify Player Client/username" ];
+          args = [
+            "read"
+            "-n"
+            "op://Dev/Spotify Player Client/username"
+          ];
         };
         theme = "tokyonight";
         playback_window_position = "Top";
         copy_command = {
           command = "wl-copy";
-          args = [];
+          args = [ ];
         };
         default_device = hostname;
         device = {

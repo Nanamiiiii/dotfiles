@@ -36,32 +36,6 @@ in
         else
           "";
     };
-
-    neovide = {
-      enable = desktop;
-      settings = {
-        fork = false;
-        frame = "full";
-        idle = true;
-        maximized = false;
-        neovim-bin = "${inputs.neovim-nightly-overlay.packages.${pkgs.system}.default}/bin/nvim";
-        no-multigrid = false;
-        srgb = false;
-        tabs = true;
-        theme = "auto";
-        mouse-cursor-icon = "arrow";
-        title-hidden = true;
-        vsync = true;
-        wsl = false;
-        font = {
-          normal = [
-            "PlemolJP Console NF"
-            "Symbols Nerd Font"
-          ];
-          size = 16.0;
-        };
-      };
-    };
   };
 
   services = {
