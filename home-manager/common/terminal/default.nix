@@ -1,8 +1,8 @@
 {
   pkgs,
   config,
-  osConfig,
   desktop,
+  hostname,
   inputs,
   ...
 }:
@@ -11,7 +11,7 @@ let
     inherit
       pkgs
       config
-      osConfig
+      hostname
       ;
   };
 in

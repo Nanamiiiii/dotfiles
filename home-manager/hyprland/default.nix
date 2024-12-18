@@ -1,7 +1,7 @@
 {
   pkgs,
   inputs,
-  osConfig,
+  hostname,
   thermalZone,
   laptop,
   ...
@@ -59,8 +59,8 @@ let
   ];
 
   waybarConfig = import ./waybar {
-    hostname = osConfig.networking.hostName;
     inherit
+      hostname
       thermalZone
       laptop
       ;

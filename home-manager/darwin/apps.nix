@@ -2,8 +2,8 @@
   pkgs,
   pkgs-stable,
   config,
-  osConfig,
   desktop,
+  hostname,
   ...
 }:
 let
@@ -11,7 +11,7 @@ let
     inherit
       pkgs
       config
-      osConfig
+      hostname
       ;
   };
 

@@ -3,7 +3,7 @@
   config,
   desktop,
   inputs,
-  osConfig,
+  hostname,
   ...
 }:
 let
@@ -11,7 +11,7 @@ let
     inherit
       pkgs
       config
-      osConfig
+      hostname
       ;
   };
 

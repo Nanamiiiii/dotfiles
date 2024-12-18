@@ -1,13 +1,12 @@
 {
   pkgs,
   config,
-  osConfig,
+  hostname,
   ...
 }:
 let
   symlink = config.lib.file.mkOutOfStoreSymlink;
   configDir = "${config.home.homeDirectory}/dotfiles/config";
-  hostname = osConfig.networking.hostName;
 in
 {
   # My script sets

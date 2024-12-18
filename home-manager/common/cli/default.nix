@@ -2,7 +2,7 @@
   pkgs,
   pkgs-stable,
   config,
-  osConfig,
+  hostname,
   ...
 }:
 let
@@ -10,7 +10,7 @@ let
     inherit
       pkgs
       config
-      osConfig
+      hostname
       ;
   };
 
@@ -20,8 +20,6 @@ let
       recursive = true;
     };
   };
-
-  hostname = osConfig.networking.hostName;
 in
 {
   imports = [

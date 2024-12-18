@@ -5,12 +5,15 @@
   specialArgs,
   ...
 }:
+{ config, ... }:
 {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
     users.${username} = import ./profiles/${profile};
-    extraSpecialArgs = specialArgs;
+    extraSpecialArgs = specialArgs // {
+      hostname = config.networking.hostName;
+    };
     backupFileExtension = "hm-bkp";
   };
 }

@@ -1,7 +1,7 @@
 {
   pkgs,
   inputs,
-  osConfig,
+  hostname,
   lib,
   ...
 }:
@@ -11,7 +11,7 @@
       inherit
         pkgs
         inputs
-        osConfig
+        hostname
         ;
       thermalZone = 1;
       laptop = false;

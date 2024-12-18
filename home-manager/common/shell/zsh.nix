@@ -1,7 +1,7 @@
 {
   pkgs,
   config,
-  osConfig,
+  hostname,
   ...
 }:
 let
@@ -52,6 +52,13 @@ let
       fpath=(
           "$(brew --prefix)/share/zsh/site-functions"
           "$fpath[@]"
+      )
+    '';
+    xanadu = ''
+      # RISC-V Toolchain
+      path=(
+          "$HOME/.rv/riscv-toolchain/bin"
+          "$path[@]"
       )
     '';
   };
@@ -140,9 +147,10 @@ let
       # 1Password SSH Agent
       SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
     '';
+    xanadu = ''
+      export GPG_TTY=$(tty)
+    '';
   };
-
-  hostname = osConfig.networking.hostName;
 in
 {
   programs = {

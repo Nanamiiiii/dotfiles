@@ -42,6 +42,16 @@ nix-darwin-build-%:
 nix-darwin-%:
 	@$(DARWIN_REBUILD) switch --flake ".#"${@:nix-darwin-%=%}
 
+# standalone home-manager (build only)
+.PHONY: nix-home-build-%
+nix-home-build-%:
+	@$(NIX_CMD) run "nixpkgs#home-manager" -- build --no-out-link --debug --show-trace --flake ".#"${@:nix-home-%=%}
+
+# standalone home-manager
+.PHONY: nix-home-%
+nix-home-%:
+	@$(NIX_CMD) run "nixpkgs#home-manager" -- -b hm-bkp switch --flake ".#"${@:nix-home-%=%}
+
 # Update
 .PHONY: update
 update:

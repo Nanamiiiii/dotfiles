@@ -125,5 +125,37 @@
             system = "aarch64-darwin";
           });
         };
+
+      homeConfigurations =
+        let
+          homeManagerArgs =
+            {
+              profile,
+              hostname,
+              username,
+              system,
+              desktop,
+            }:
+            import ./home-manager/standalone.nix {
+              inherit
+                inputs
+                profile
+                hostname
+                username
+                system
+                desktop
+                ;
+            };
+          inherit (home-manager.lib) homeManagerConfiguration;
+        in
+        {
+          xanadu = homeManagerConfiguration (homeManagerArgs {
+            profile = "xanadu";
+            hostname = "xanadu";
+            username = "nanami";
+            system = "x86_64-linux";
+            desktop = false;
+          });
+        };
     };
 }
