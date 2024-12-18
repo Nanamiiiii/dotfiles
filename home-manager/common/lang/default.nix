@@ -61,8 +61,9 @@ let
 in
 {
   home.packages =
-    cTools
-    ++ buildTools
+    # prefer system native c/c++ toolchain for correct dependencies
+    # cTools
+    buildTools
     ++ rustTools
     ++ golangTools
     ++ tsjsTools

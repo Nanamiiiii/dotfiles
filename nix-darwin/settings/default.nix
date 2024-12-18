@@ -1,6 +1,9 @@
 { pkgs, username, ... }:
 {
-  imports = [ ./brew.nix ];
+  imports = [
+    ./packages.nix
+    ./brew.nix
+  ];
 
   nix.settings.trusted-users = [ username ];
 
