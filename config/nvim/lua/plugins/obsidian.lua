@@ -25,12 +25,12 @@ return {
             default_tags = { "Daily" },
             template = "DailyNotesVim.md",
         },
+        ---@return string
+        image_name_func = function()
+            return string.format("Pasted image %s.png", os.time())
+        end,
         attachments = {
             img_folder = "_assets",
-            ---@return string
-            img_name_func = function()
-                return string.format("Pasted_%s_", os.time())
-            end,
             ---@param client obsidian.Client
             ---@param path obsidian.Path the absolute path to the image file
             ---@return string
@@ -38,6 +38,7 @@ return {
                 path = client:vault_relative_path(path) or path
                 return string.format("![[%s]]", path.name)
             end,
+            confirm_img_paste = false,
         },
         templates = {
             folder = "_config/Template",

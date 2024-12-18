@@ -392,6 +392,12 @@ if is_windows then
             default_cwd = "~",
         },
     }
+else
+    config.unix_domains = {
+        {
+            name = "wezmux",
+        },
+    }
 end
 
 -- Linux Launch Menu
