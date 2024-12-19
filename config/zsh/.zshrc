@@ -60,8 +60,8 @@ setopt EXTENDED_HISTORY
 eval "$(sheldon source)"
 
 # Completions
+## Can lazy
 on_demand_completion 'aqua'
-on_demand_completion 'bat' '/bin/cat $(dirname $(aqua which bat))/autocomplete/bat.zsh' 
 on_demand_completion 'fzf' 'fzf --zsh'
 on_demand_completion 'procs' 'procs --gen-completion-out zsh'
 on_demand_completion 'ghq' '/bin/cat $(dirname $(aqua which ghq))/misc/zsh/_ghq' 
@@ -70,6 +70,8 @@ on_demand_completion 'rg' 'rg --generate complete-zsh'
 on_demand_completion 'zoxide' '/bin/cat $(dirname $(aqua which zoxide))/completions/_zoxide'
 on_demand_completion 'gh' 'gh completion -s zsh'
 
+# Unable to be lazy
+[[ ! -f "${ZDOTDIR}/.zsh_functions/_bat" ]] && cp "$(dirname $(aqua which bat))/autocomplete/bat.zsh" "${ZDOTDIR}/.zsh_functions/_bat" 
 [[ ! -f "${ZDOTDIR}/.zsh_functions/_eza" ]] && curl "https://raw.githubusercontent.com/eza-community/eza/refs/heads/main/completions/zsh/_eza" > "${ZDOTDIR}/.zsh_functions/_eza"
 [[ ! -f "${ZDOTDIR}/.zsh_functions/_dust" ]] && curl "https://raw.githubusercontent.com/bootandy/dust/refs/heads/master/completions/_dust" > "${ZDOTDIR}/.zsh_functions/_dust"
 [[ ! -f "${ZDOTDIR}/.zsh_functions/_fastfetch" ]] && curl "https://raw.githubusercontent.com/fastfetch-cli/fastfetch/refs/heads/dev/completions/fastfetch.zsh" > "${ZDOTDIR}/.zsh_functions/_fastfetch"
