@@ -5,10 +5,13 @@ NIXOS_REBUILD = nixos-rebuild
 DARWIN_FIRST_BUILD = ./result/sw/bin/darwin-rebuild
 DARWIN_REBUILD = darwin-rebuild
 
+# Variables
+AQUA_VERSION = v3.0.1
+
 # Location check
-EXPECT_LOC = $(HOME)/dotfiles
+EXPECT_LOC = $(shell realpath $(HOME))/dotfiles
 ifneq ($(CURDIR),$(EXPECT_LOC))
-$(error Unexpected location. Must locate at ~/dotfiles)
+$(error Unexpected location - $(CURDIR). Must locate at ~/dotfiles.)
 endif
 
 # Install Nix
@@ -66,6 +69,48 @@ fmt:
 .PHONY: gc
 clean-store:
 	@$(NIX_STORE_CMD) --gc
+
+# Setup Legacy
+.PHONY: legacy-install
+legacy-install: sheldon-install aqua-install sheldon-link aqua-link legacy-shell
+
+# Install Sheldon
+.PHONY: sheldon-install
+sheldon-install:
+	@curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh | bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin
+
+# Install aqua
+.PHONY: aqua-install
+aqua-install:
+	@curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/$(AQUA_VERSION)/aqua-installer | bash
+
+# Symlink to sheldon configurations
+.PHONY: sheldon-link
+sheldon-link:
+	ln -sf $(CURDIR)/sheldon $(HOME)/.config/
+
+# Symlink to aqua configurations
+.PHONY: aqua-link
+aqua-link:
+	ln -sf $(CURDIR)/aqua $(HOME)/.config/
+
+# Symlink to zshrc
+.PHONY: lagacy-shell
+legacy-shell:
+	mkdir -p $(HOME)/.zsh
+	echo 'source $$HOME/.zsh/.zshenv' > $(HOME)/.zshenv
+	ln -sf $(CURDIR)/config/zsh/.zshenv $(HOME)/.zsh/.zshenv
+	ln -sf $(CURDIR)/config/zsh/.zprofile $(HOME)/.zsh/.zprofile
+	ln -sf $(CURDIR)/config/zsh/.zshrc $(HOME)/.zsh/.zshrc
+	ln -sf $(CURDIR)/config/starship/starship.toml $(HOME)/.config/starship.toml
+
+.PHONY: scripts-link
+scripts-link:
+	ln -sf $(CURDIR)/config/scripts $(HOME)/.scripts
+
+.PHONY: nvim-install
+nvim-install:
+	@./config/scripts/build_neovim
 
 # Test Nix installation
 .PHONY: test

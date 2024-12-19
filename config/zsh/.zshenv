@@ -12,4 +12,6 @@ export CARGO_HOME="$HOME/.cargo"
 export RUSTUP_HOME="$HOME/.rustup"
 export DENO_INSTALL="$HOME/.deno"
 export GOPATH="$HOME/.go"
-
+export AQUA_GLOBAL_CONFIG="${XDG_CONFIG_HOME}/aqua/aqua.yaml"
+export AQUA_LOG_LEVEL=fatal
+export AQUA_PROGRESS_BAR=true

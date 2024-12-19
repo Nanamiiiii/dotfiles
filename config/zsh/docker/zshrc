@@ -1,3 +1,0 @@
-# Load common configuration
-source "$ZDOTDIR/zshrc.common"
-

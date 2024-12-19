@@ -1,5 +1,6 @@
-#!/bin/sh
-SOURCE_DIR=$HOME/src/neovim
+#!/usr/bin/env bash
+SOURCE_DIR=${NVIM_SOURCE_DIR:-/tmp/neovim}
+INSTALL_DIR=${NVIM_INSTALL_DIR:-$HOME/.local}
 
 if [ -d "$SOURCE_DIR" ]; then
     git -C "$SOURCE_DIR" pull
@@ -7,6 +8,5 @@ else
     git clone https://github.com/neovim/neovim.git "$SOURCE_DIR"
 fi
 
-make -C "$SOURCE_DIR" CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make -C "$SOURCE_DIR" install
+make -C "$SOURCE_DIR" CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=${INSTALL_DIR} BUNDLED_CMAKE_FLAG='-DUSE_BUNDLED_TS_PARSERS=OFF' install
 
