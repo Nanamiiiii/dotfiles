@@ -21,8 +21,9 @@
 
   wayland.windowManager.hyprland.settings = {
     monitor = [
+      "DP-2, 2560x1440@165, 3072x144, 1"
+      "DP-3, 3840x2160@60, 5632x0, 1.25"
       "DP-4, 3840x2160@60, 0x0, 1.25"
-      "DP-3, 2560x1440@165, 3072x144, 1"
       ",preferred,auto,1"
     ];
 
@@ -35,16 +36,16 @@
     };
 
     workspace = [
-      "1,monitor:DP-4,default:true"
-      "2,monitor:DP-4"
-      "3,monitor:DP-4"
-      "4,monitor:DP-4"
-      "5,monitor:DP-4"
-      "6,monitor:DP-3,default:true"
-      "7,monitor:DP-3"
-      "8,monitor:DP-3"
-      "9,monitor:DP-3"
-      "10,monitor:DP-3"
+      "1,monitor:DP-3,default:true"
+      "2,monitor:DP-3"
+      "3,monitor:DP-3"
+      "4,monitor:DP-3"
+      "5,monitor:DP-3"
+      "6,monitor:DP-2,default:true"
+      "7,monitor:DP-2"
+      "8,monitor:DP-2"
+      "9,monitor:DP-2"
+      "10,monitor:DP-2"
     ];
   };
 }

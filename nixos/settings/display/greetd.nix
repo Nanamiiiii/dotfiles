@@ -25,8 +25,8 @@ in
     };
     cageArgs = [
       "-s"
-      "-m"
-      "last"
+      #"-m"
+      #"last"
     ];
     theme = {
       name = gtkThemeName;
