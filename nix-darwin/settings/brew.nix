@@ -17,6 +17,7 @@
       "karabiner-elements"
       "firefox@developer-edition"
       "notchnook"
+      "raycast"
     ];
 
     masApps = {
