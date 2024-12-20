@@ -28,6 +28,7 @@
       plemoljp-nf
       plemoljp-hs
       ibm-plex
+      nerd-fonts.symbols-only
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       (noto-fonts.override {

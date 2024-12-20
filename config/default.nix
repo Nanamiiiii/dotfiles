@@ -67,9 +67,23 @@ in
     };
 
     tmux = {
-      "tmux" = {
-        source = symlink "${configDir}/tmux";
-        recursive = true;
+      "tmux/digit.sh" = {
+        source = symlink "${configDir}/tmux/digit.sh";
+      };
+      "tmux/git.sh" = {
+        source = symlink "${configDir}/tmux/git.sh";
+      };
+      "tmux/hostname.sh" = {
+        source = symlink "${configDir}/tmux/hostname.sh";
+      };
+      "tmux/iconmap.sh" = {
+        source = symlink "${configDir}/tmux/iconmap.sh";
+      };
+      "tmux/memory.sh" = {
+        source = symlink "${configDir}/tmux/memory.sh";
+      };
+      "tmux/network.sh" = {
+        source = symlink "${configDir}/tmux/network.sh";
       };
     };
 
