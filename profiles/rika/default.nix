@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   config,
   nixos-hardware,
   username,
@@ -38,8 +39,35 @@ let
   graphics = ../../nixos/settings/graphics/nvidia.nix;
 
   # Display
+  westonConfig = pkgs.writeText "my-weston.ini" ''
+    [libinput]
+    enable-tap=true
+    left-handed=false 
+
+    [keyboard]
+    keymap_model=pc104
+    keymap_layout=us
+    keymap_variant=
+    keymap_options=ctrl:nocaps
+
+    [output]
+    name=DP-2
+    mode=off
+
+    [output]
+    name=DP-3
+    mode=3840x2160
+
+    [output]
+    name=DP-4
+    mode=off
+  '';
+
   displaySettings = [
-    (import ../../nixos/settings/display/greetd.nix { inherit pkgs config; })
+    (import ../../nixos/settings/display/sddm.nix {
+      inherit pkgs lib config;
+      extraWestonConfig = westonConfig;
+    })
     ../../nixos/settings/display/xserver.nix
   ];
 
