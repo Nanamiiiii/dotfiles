@@ -72,7 +72,7 @@ clean-store:
 
 # Setup Legacy
 .PHONY: legacy-install
-legacy-install: sheldon-install aqua-install sheldon-link aqua-link legacy-shell
+legacy-install: sheldon-install aqua-install sheldon-link aqua-link legacy-shell tmux-install
 
 # Install Sheldon
 .PHONY: sheldon-install
@@ -104,12 +104,21 @@ legacy-shell:
 	ln -sf $(CURDIR)/config/zsh/.zshrc $(HOME)/.zsh/.zshrc
 	ln -sf $(CURDIR)/config/starship/starship.toml $(HOME)/.config/starship.toml
 
+.PHONY: tmux-install
+tmux-install:
+	ln -sf $(CURDIR)/config/tmux $(HOME)/.config/
+	git clone https://github.com/tmux-plugins/tpm $(HOME)/.config/tmux/plugins/tpm
+
 .PHONY: scripts-link
 scripts-link:
 	ln -sf $(CURDIR)/config/scripts $(HOME)/.scripts
 
 .PHONY: nvim-install
-nvim-install:
+nvim-install: nvim-build
+	ln -sf $(CURDIR)/config/nvim $(HOME)/.config
+
+.PHONY: nvim-build
+nvim-build:
 	@./config/scripts/build_neovim
 
 # Test Nix installation
