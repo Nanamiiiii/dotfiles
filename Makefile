@@ -5,9 +5,6 @@ NIXOS_REBUILD = nixos-rebuild
 DARWIN_FIRST_BUILD = ./result/sw/bin/darwin-rebuild
 DARWIN_REBUILD = darwin-rebuild
 
-# Variables
-AQUA_VERSION = v3.0.1
-
 # Location check
 EXPECT_LOC = $(shell realpath $(HOME))/dotfiles
 ifneq ($(CURDIR),$(EXPECT_LOC))
@@ -82,7 +79,7 @@ sheldon-install:
 # Install aqua
 .PHONY: aqua-install
 aqua-install:
-	@curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/$(AQUA_VERSION)/aqua-installer | bash
+	curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.0.1/aqua-installer | bash
 
 # Symlink to sheldon configurations
 .PHONY: sheldon-link
