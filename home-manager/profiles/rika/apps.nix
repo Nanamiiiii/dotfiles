@@ -23,4 +23,8 @@
       gwenview
       okular
     ]);
+
+  # Proton GE
+  home.file.".steam/root/compatibilitytools.d/${pkgs.proton-ge.version}".source =
+    "${pkgs.proton-ge}/bin";
 }
