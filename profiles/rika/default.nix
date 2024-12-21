@@ -33,6 +33,8 @@ let
     ../../nixos/settings/system/time.nix
     ../../nixos/settings/system/i18n.nix
     ../../nixos/settings/system/bluetooth.nix
+    ../../nixos/settings/system/cpupower-performance.nix
+    ../../nixos/settings/system/rgb.nix
   ];
 
   # Graphics
