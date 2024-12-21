@@ -79,7 +79,7 @@ sheldon-install:
 # Install aqua
 .PHONY: aqua-install
 aqua-install:
-	curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.0.1/aqua-installer | bash
+	curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.1.0/aqua-installer | bash
 
 # Symlink to sheldon configurations
 .PHONY: sheldon-link
