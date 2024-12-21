@@ -25,6 +25,6 @@ packages:
 - name: jqlang/jq@jq-1.7.1
 - name: ajeetdsouza/zoxide@v0.9.6
 - name: aristocratos/btop@v1.4.0
-- name: cli/cli@v2.63.2
+- name: cli/cli@v2.64.0
 - name: fastfetch-cli/fastfetch@2.32.1
 - name: haskell/ghcup-hs@v0.1.30.0
