@@ -1,0 +1,33 @@
+name: build system configurations with nix
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-14]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: install nix
+        uses: cachix/install-nix-action@v30
+      - name: GC
+        if: matrix.os == 'ubuntu-latest'
+        uses: jlumbroso/free-disk-space@v1.3.1
+      - name: Create /run for darwin
+        if: matrix.os == 'macos-14'
+        run: |
+          printf "run\tprivate/var/run\n" | sudo tee -a /etc/synthetic.conf
+          /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t || true
+      - name: Cache setup
+        uses: DeterminateSystems/magic-nix-cache-action@v2
+      - name: build
+        run: |
+          make RUNS_ENV=ci ci-build
+          df -h

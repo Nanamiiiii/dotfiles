@@ -2,19 +2,40 @@
 NIX_CMD = nix
 NIX_STORE_CMD = nix-store
 NIXOS_REBUILD = nixos-rebuild
+
 DARWIN_FIRST_BUILD = ./result/sw/bin/darwin-rebuild
 DARWIN_REBUILD = darwin-rebuild
 
+# System
+OS := $(shell uname -s)
+ARCH := $(shell uname -m)
+
+ifeq ($(OS),Linux)
+	ifeq ($(ARCH),x86_64)
+		SYSTEM := x86_64-linux
+	else ifeq ($(ARCH),aarch64)
+		$(error Incompatible system: $(SYSTEM))
+	endif
+else ifeq ($(OS),Darwin)
+	SYSTEM := aarch64-darwin
+endif
+
 # Location check
+# appied for only deployment
+RUNS_ENV ?= deployment
 EXPECT_LOC = $(shell realpath $(HOME))/dotfiles
-ifneq ($(CURDIR),$(EXPECT_LOC))
-$(error Unexpected location - $(CURDIR). Must locate at ~/dotfiles.)
+ifeq ($(RUNS_ENV),deployment)
+	ifneq ($(CURDIR),$(EXPECT_LOC))
+		$(error Unexpected location - $(CURDIR). Must locate at ~/dotfiles.)
+	endif
 endif
 
 # Install Nix
 .PHONY: nix-install
 nix-install:
 	@curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+
+ifeq ($(SYSTEM), x86_64-linux)
 
 # nixos (build only)
 .PHONY: nixos-build-%
@@ -25,6 +46,10 @@ nixos-build-%:
 .PHONY: nixos-%
 nixos-%:
 	@sudo $(NIXOS_REBUILD) switch --flake ".#"${@:nixos-%=%}
+
+endif
+
+ifeq ($(SYSTEM), aarch64-darwin)
 
 # nix-darwin for first deployment
 .PHONY: nix-darwin-init-%
@@ -41,6 +66,8 @@ nix-darwin-build-%:
 .PHONY: nix-darwin-%
 nix-darwin-%:
 	@$(DARWIN_REBUILD) switch --flake ".#"${@:nix-darwin-%=%}
+
+endif
 
 # standalone home-manager (build only)
 .PHONY: nix-home-build-%
@@ -118,9 +145,27 @@ nvim-install: nvim-build
 nvim-build:
 	@./config/scripts/build_neovim
 
+# For CI
+ifeq ($(RUNS_ENV),ci)
+.PHONY: ci-build
+ifeq ($(SYSTEM),x86_64-linux)
+ci-build:
+	@$(NIX_CMD) build --no-link --show-trace --system x86_64-linux \
+		".#nixosConfigurations.yuki.config.system.build.toplevel" \
+		".#nixosConfigurations.rika.config.system.build.toplevel"
+	@$(NIX_CMD) run "nixpkgs#home-manager" -- build --no-out-link --show-trace --flake ".#xanadu"
+else ifeq ($(SYSTEM),aarch64-darwin)
+ci-build:
+	@$(NIX_CMD) build --show-trace --no-link --system aarch64-darwin \
+		".#darwinConfigurations.asu.system" 
+endif
+endif
+
 # Test Nix installation
 .PHONY: test
 .DEFAULT_GOAL := test
 test:
 	@$(NIX_CMD) --version
+	$(info Detected system: $(SYSTEM))
+	$(info Build environment: $(RUNS_ENV))
 
