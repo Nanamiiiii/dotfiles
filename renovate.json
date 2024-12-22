@@ -19,7 +19,29 @@
   "packageRules": [
     {
       "matchPackageNames": ["aquaproj/aqua-registry"],
-      "extends": ["schedule:earlyMondays"]
+      "extends": ["schedule:earlyMondays"],
+      "automerge": true
+    },
+    {
+      "matchFileNames": ["aqua/aqua.yaml"],
+      "groupName": "aqua cli varsion manager",
+      "automerge": true
+    },
+    {
+      "matchFileNames": ["renovate.json"],
+      "groupName": "renovate configuration",
+      "automerge": true
+    },
+    {
+      "matchManagers": ["regex"],
+      "matchFileNames": ["Makefile"],
+      "groupName": "aqua installer",
+      "automerge": true
+    },
+    {
+      "matchManagers": ["github-action"],
+      "groupName": "GitHub Actions manifest",
+      "automerge": true
     }
   ],
   "timezone": "Asia/Tokyo",
