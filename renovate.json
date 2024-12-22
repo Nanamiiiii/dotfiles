@@ -39,7 +39,7 @@
       "automerge": true
     },
     {
-      "matchManagers": ["github-action"],
+      "matchManagers": ["github-actions"],
       "groupName": "GitHub Actions manifest",
       "automerge": true
     }
