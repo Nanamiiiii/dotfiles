@@ -150,7 +150,7 @@ ifeq ($(RUNS_ENV),ci)
 .PHONY: ci-build
 ifeq ($(SYSTEM),x86_64-linux)
 ci-build:
-	@$(NIX_CMD) build --no-link --show-trace --system x86_64-linux -j1 \
+	@$(NIX_CMD) build --no-link --show-trace --system x86_64-linux \
 		".#nixosConfigurations.yuki.config.system.build.toplevel" \
 		".#nixosConfigurations.rika.config.system.build.toplevel"
 	@$(NIX_CMD) run "nixpkgs#home-manager" -- build --no-out-link --show-trace --flake ".#xanadu"
