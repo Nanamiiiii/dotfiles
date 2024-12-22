@@ -50,7 +50,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: install nix
-        uses: cachix/install-nix-action@main
+        uses: cachix/install-nix-action@v30
       - name: GC
         if: matrix.os == 'ubuntu-latest'
         uses: jlumbroso/free-disk-space@v1.3.1
