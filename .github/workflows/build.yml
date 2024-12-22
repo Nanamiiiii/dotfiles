@@ -31,10 +31,12 @@ jobs:
               - overlays/**
               - profiles/**
               - '.github/workflows/build.yml'
+              - 'Makefile'
             notnix:
               - aqua/**
               - sheldon/**
               - '.github/workflows/build.yml'
+              - 'Makefile'
             
   nix-build:
     runs-on: ${{ matrix.os }}
