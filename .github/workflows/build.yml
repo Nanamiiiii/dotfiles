@@ -45,12 +45,12 @@ jobs:
     if: needs.changed-files.outputs.nix-changed == 'true'
     strategy:
       matrix:
-        os: [self-hosted, macos-14]
+        os: [ubuntu-latest, macos-14]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: install nix
-        uses: cachix/install-nix-action@v30
+        uses: cachix/install-nix-action@main
       - name: GC
         if: matrix.os == 'ubuntu-latest'
         uses: jlumbroso/free-disk-space@v1.3.1
@@ -60,7 +60,7 @@ jobs:
           printf "run\tprivate/var/run\n" | sudo tee -a /etc/synthetic.conf
           /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t || true
       - name: Cache setup
-        uses: DeterminateSystems/magic-nix-cache-action@v2
+        uses: DeterminateSystems/magic-nix-cache-action@main
       - name: build
         run: |
           make RUNS_ENV=ci ci-build
