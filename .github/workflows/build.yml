@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Check modified files
     outputs:
-      nix-changed: ${{ steps.changed-files.outputs.nix_any_changed == 'true' }}
+      nixos-changed: ${{ steps.changed-files.outputs.nixos_any_changed == 'true' }}
+      darwin-changed: ${{ steps.changed-files.outputs.darwin_any_changed == 'true' }}
       notnix-changed: ${{ steps.changed-files.outputs.notnix_any_changed == 'true' }}
     steps:
       - name: Checkout
