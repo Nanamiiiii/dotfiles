@@ -7,7 +7,6 @@
 {
   imports = [
     ./packages.nix
-    ./brew.nix
     ./sops.nix
     inputs.sops-nix.darwinModules.sops
   ];
@@ -50,6 +49,4 @@
   time.timeZone = "Asia/Tokyo";
 
   system.stateVersion = 5;
-
-  homebrew.enable = true;
 }

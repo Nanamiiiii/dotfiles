@@ -6,6 +6,19 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.flake-compat.follows = "";
+      inputs.gitignore.follows = "";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,12 +31,19 @@
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
+      inputs.flake-compat.follows = "";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.git-hooks.follows = "git-hooks";
+      inputs.hercules-ci-effects.follows = "";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.pre-commit-hooks-nix.follows = "git-hooks";
     };
 
     wez-flake = {
@@ -45,6 +65,25 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    cachix-deploy-flake = {
+      url = "github:cachix/cachix-deploy-flake";
+      inputs.darwin.follows = "darwin";
+      inputs.home-manager.follows = "home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+      "https://hyprland.cachix.org"
+    ];
+
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+    ];
   };
 
   outputs =
@@ -55,6 +94,7 @@
       darwin,
       home-manager,
       treefmt-nix,
+      cachix-deploy-flake,
       systems,
       ...
     }@inputs:
@@ -68,6 +108,20 @@
       checks = eachSystem (pkgs: {
         formatting = (treefmt-nix.lib.evalModule pkgs treefmtConfig).config.build.check self;
       });
+
+      packages = eachSystem (
+        pkgs:
+        let
+          cachix-deploy-lib = cachix-deploy-flake.lib pkgs;
+        in
+        {
+          cachix-deploy = cachix-deploy-lib.spec {
+            agents = {
+              asu = self.darwinConfigurations.asu.config.system.build.toplevel;
+            };
+          };
+        }
+      );
 
       nixosConfigurations =
         let
