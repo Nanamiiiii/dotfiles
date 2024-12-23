@@ -9,7 +9,7 @@ on:
 jobs:
   changed-files:
     runs-on: ubuntu-latest
-    name: Test changed-files
+    name: Check modified files
     outputs:
       nix-changed: ${{ steps.changed-files.outputs.nix_any_changed == 'true' }}
       notnix-changed: ${{ steps.changed-files.outputs.notnix_any_changed == 'true' }}
@@ -21,13 +21,22 @@ jobs:
         uses: tj-actions/changed-files@v45
         with:
           files_yaml: |
-            nix:
+            nixos:
+              - flake.lock
+              - flake.nix
+              - config/**
+              - home-manager/**
+              - nixos/**
+              - overlays/**
+              - profiles/**
+              - '.github/workflows/build.yml'
+              - 'Makefile'
+            darwin:
               - flake.lock
               - flake.nix
               - config/**
               - home-manager/**
               - nix-darwin/**
-              - nixos/**
               - overlays/**
               - profiles/**
               - '.github/workflows/build.yml'
@@ -38,40 +47,73 @@ jobs:
               - '.github/workflows/build.yml'
               - 'Makefile'
             
-  nix-build:
-    runs-on: ${{ matrix.os }}
-    name: Build Nix Configuration
+  nixos-build:
+    runs-on: [self-hosted, X64, Linux, nix]
+    name: Build NixOS configuration
     needs: changed-files
-    if: needs.changed-files.outputs.nix-changed == 'true'
-    strategy:
-      matrix:
-        os:
-          - [self-hosted, X64, Linux, nix]
-          - [macos-14]
+    if: needs.changed-files.outputs.nixos-changed == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: install nix
-        if: contains(matrix.os, 'macos-14') # skip for self-hosted runner (assumes already installed)
-        uses: cachix/install-nix-action@v30
       - name: Adding Nix PATH
-        if: contains(matrix.os, 'self-hosted') && contains(matrix.os, 'nix')
         run: |
           echo "/nix/var/nix/profiles/default/bin" >> "$GITHUB_PATH"
           echo "$HOME/.nix-profile/bin" >> "$GITHUB_PATH"
       - name: Check nix installation
-        if: contains(matrix.os, 'self-hosted') && contains(matrix.os, 'nix')
         run: |
           make RUNS_ENV=ci test
-      - name: Create /run for darwin
-        if: contains(matrix.os, 'macos-14')
-        run: |
-          printf "run\tprivate/var/run\n" | sudo tee -a /etc/synthetic.conf
-          /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t || true
-      - name: Cache setup
-        if: contains(matrix.os, 'macos-14')
-        uses: DeterminateSystems/magic-nix-cache-action@main
       - name: build
         run: |
           make RUNS_ENV=ci ci-build
           df -h
+
+  darwin-build:
+    runs-on: macos-14
+    name: Build darwin configuration
+    needs: changed-files
+    if: needs.changed-files.outputs.darwin-changed == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install nix
+        uses: cachix/install-nix-action@v30
+      - name: Setup cachix
+        uses: cachix/cachix-action@v15
+        with:
+          name: nanamiiiii 
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: Create /run for darwin
+        run: |
+          printf "run\tprivate/var/run\n" | sudo tee -a /etc/synthetic.conf
+          /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t || true
+      - name: GitHub cache setup
+        uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Build
+        run: |
+          make RUNS_ENV=ci ci-build
+          df -h
+
+  cachix-deploy:
+    runs-on: macos-14
+    name: Deploy darwin configuration
+    needs: darwin-build
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install nix
+        uses: cachix/install-nix-action@v30
+      - name: Setup cachix
+        uses: cachix/cachix-action@v15
+        with:
+          name: nanamiiiii 
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: GitHub cache setup
+        uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Deploy
+        env:
+          CACHIX_ACTIVATE_TOKEN: ${{ secrets.CACHIX_ACTIVATE_TOKEN }}
+        run: |
+          spec=$(nix build ".#cachix-deploy" --accept-flake-config --print-out-paths)
+          cachix push nanamiiiii "$spec"
+          cachix deploy activate "$spec"

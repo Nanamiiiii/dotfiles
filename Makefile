@@ -150,13 +150,13 @@ ifeq ($(RUNS_ENV),ci)
 .PHONY: ci-build
 ifeq ($(SYSTEM),x86_64-linux)
 ci-build:
-	@$(NIX_CMD) build --no-link --show-trace --system x86_64-linux \
+	@$(NIX_CMD) build --no-link --show-trace --system x86_64-linux --accept-flake-config \
 		".#nixosConfigurations.yuki.config.system.build.toplevel" \
 		".#nixosConfigurations.rika.config.system.build.toplevel"
-	@$(NIX_CMD) run "nixpkgs#home-manager" -- build --no-out-link --show-trace --flake ".#xanadu"
+	@$(NIX_CMD) run "nixpkgs#home-manager" -- build --no-out-link --show-trace --accept-flake-config --flake ".#xanadu"
 else ifeq ($(SYSTEM),aarch64-darwin)
 ci-build:
-	@$(NIX_CMD) build --show-trace --no-link --system aarch64-darwin \
+	@$(NIX_CMD) build --show-trace --no-link --system aarch64-darwin --accept-flake-config \
 		".#darwinConfigurations.asu.system" 
 endif
 endif
