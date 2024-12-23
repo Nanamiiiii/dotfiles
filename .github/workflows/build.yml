@@ -45,7 +45,9 @@ jobs:
     if: needs.changed-files.outputs.nix-changed == 'true'
     strategy:
       matrix:
-        os: [self-hosted, macos-14]
+        os:
+          - [self-hosted, X64, Linux, nix]
+          - [macos-14]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
