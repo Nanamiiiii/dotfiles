@@ -52,24 +52,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: install nix
-        if: matrix.os == '[macos-14]' # skip for self-hosted runner (assumes already installed)
+        if: contains(matrix.os, 'macos-14') # skip for self-hosted runner (assumes already installed)
         uses: cachix/install-nix-action@v30
       - name: Adding Nix PATH
-        if: matrix.os == '[self-hosted, X64, Linux, nix]'
+        if: contains(matrix.os, 'self-hosted') && contains(matrix.os, 'nix')
         run: |
           echo "/nix/var/nix/profiles/default/bin" >> "$GITHUB_PATH"
           echo "$HOME/.nix-profile/bin" >> "$GITHUB_PATH"
       - name: Check nix installation
-        if: matrix.os == '[self-hosted, X64, Linux, nix]'
+        if: contains(matrix.os, 'self-hosted') && contains(matrix.os, 'nix')
         run: |
           make RUNS_ENV=ci test
       - name: Create /run for darwin
-        if: matrix.os == '[macos-14]'
+        if: contains(matrix.os, 'macos-14')
         run: |
           printf "run\tprivate/var/run\n" | sudo tee -a /etc/synthetic.conf
           /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t || true
       - name: Cache setup
-        if: matrix.os == '[macos-14]'
+        if: contains(matrix.os, 'macos-14')
         uses: DeterminateSystems/magic-nix-cache-action@main
       - name: build
         run: |
