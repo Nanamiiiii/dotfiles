@@ -1,8 +1,15 @@
-{ pkgs, username, ... }:
+{
+  pkgs,
+  inputs,
+  username,
+  ...
+}:
 {
   imports = [
     ./packages.nix
     ./brew.nix
+    ./sops.nix
+    inputs.sops-nix.darwinModules.sops
   ];
 
   nix.settings.trusted-users = [ username ];
