@@ -13,7 +13,7 @@ jobs:
     outputs:
       nixos-changed: ${{ steps.changed-files.outputs.nixos_any_changed == 'true' }}
       darwin-changed: ${{ steps.changed-files.outputs.darwin_any_changed == 'true' }}
-      notnix-changed: ${{ steps.changed-files.outputs.notnix_any_changed == 'true' }}
+      aqua-changed: ${{ steps.changed-files.outputs.aqua_any_changed == 'true' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -47,6 +47,9 @@ jobs:
               - sheldon/**
               - '.github/workflows/build.yml'
               - 'Makefile'
+            aqua:
+              - aqua/**
+              - '.github/workflows/build.yml'
             
   nixos-build:
     runs-on: [self-hosted, X64, Linux, nix]
@@ -118,3 +121,17 @@ jobs:
           spec=$(nix build ".#cachix-deploy" --accept-flake-config --print-out-paths)
           cachix push nanamiiiii "$spec"
           cachix deploy activate "$spec"
+
+  aqua-checksum-update:
+    needs: changed-files
+    if: needs.changed-files.outputs.aqua-changed == 'true'
+    uses: aquaproj/update-checksum-workflow/.github/workflows/update-checksum.yaml@f367004e7f17e99d30297cd9e89afad30ee1f251 # v1.0.0
+    permissions:
+      contents: read
+    with:
+      aqua_version: v2.40.0
+      working_directory: aqua
+      prune: true
+    secrets:
+      gh_token: ${{secrets.GH_TOKEN}}
+
