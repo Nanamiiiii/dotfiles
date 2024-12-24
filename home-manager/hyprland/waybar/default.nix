@@ -370,6 +370,11 @@ in
       margin-right: 10px;
     }
 
+    #tray menu {
+      font-family: 'Noto Sans CJK JP'; 
+      font-size: 12px;
+    }
+
     #temperature {
       border-radius: 5px;
       /* background-color: #11111b; */

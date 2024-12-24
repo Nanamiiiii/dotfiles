@@ -1,3 +1,4 @@
+{ username, ... }:
 {
   nix = {
     checkConfig = true;
@@ -8,6 +9,7 @@
         "nix-command"
         "flakes"
       ];
+      trusted-users = [ "${username}" ];
     };
 
     gc = {
@@ -15,5 +17,6 @@
       dates = "daily";
       options = "--delete-older-than 3d";
     };
+
   };
 }

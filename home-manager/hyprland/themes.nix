@@ -64,7 +64,7 @@ in
       size = 24;
     };
     font = {
-      name = "IBM Plex Sans JP";
+      name = "Noto Sans CJK JP";
       size = 11;
     };
     iconTheme = {

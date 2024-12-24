@@ -27,7 +27,6 @@
           "Noto Color Emoji"
         ];
         sansSerif = [
-          "IBM Plex Sans JP"
           "Noto Sans CJK JP"
           "Noto Color Emoji"
         ];
