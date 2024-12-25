@@ -65,7 +65,7 @@ in
     };
     font = {
       name = "Noto Sans CJK JP";
-      size = 11;
+      size = 10;
     };
     iconTheme = {
       name = gtkIconTheme;
