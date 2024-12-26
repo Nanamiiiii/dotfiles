@@ -812,7 +812,8 @@
         "sops-nix": "sops-nix",
         "systems": "systems_3",
         "treefmt-nix": "treefmt-nix_3",
-        "wez-flake": "wez-flake"
+        "wez-flake": "wez-flake",
+        "zen-browser": "zen-browser"
       }
     },
     "rust-overlay": {
@@ -1070,6 +1071,26 @@
       "original": {
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735092772,
+        "narHash": "sha256-u9uEmMRE3RR8hwZto4USSDvee7X2FEYeWcSSLf4Jjrs=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "cea051b6f908304f4af6484b14a532c729f0cc34",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     },

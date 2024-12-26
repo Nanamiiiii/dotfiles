@@ -9,8 +9,8 @@
       "$fileManager" = "pcmanfm-qt";
       "$appLauncher" = "wofi --show drun";
       "$cmdLauncher" = "wofi --show run";
-      "$browser" = "firefox-devedition";
-      "$subBrowser" = "zen-browser";
+      "$browser" = "zen";
+      "$subBrowser" = "firefox-devedition";
 
       bind = [
         # Applications

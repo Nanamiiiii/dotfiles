@@ -38,7 +38,7 @@ rec {
     in
     [
       ../profiles/${profile}
-      ../overlays
+      (import ../overlays { inherit inputs system; })
       home-manager
       homeConfig
     ];

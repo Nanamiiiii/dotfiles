@@ -1,7 +1,7 @@
-{ ... }:
+{ inputs, system, ... }:
 {
   nixpkgs.overlays = [
-    (import ./zen-browser-specific.nix)
+    (import ./zen-browser.nix { inherit inputs system; })
     (import ./proton-ge.nix)
   ];
 }

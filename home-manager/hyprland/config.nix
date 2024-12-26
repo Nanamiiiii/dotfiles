@@ -5,7 +5,7 @@
   ...
 }:
 let
-  gtkThemeName = "catppuccin-mocha-lavender-standard+normal,rimless";
+  gtkThemeName = "catppuccin-mocha-blue-standard+normal,rimless";
 in
 {
   wayland.windowManager.hyprland.settings = {

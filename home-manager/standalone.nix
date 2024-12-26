@@ -18,7 +18,7 @@ in
     inherit system;
     config.allowUnfree = true;
     overlays = [
-      (import ../overlays/zen-browser-specific.nix)
+      (import ../overlays/zen-browser.nix { inherit inputs system; })
     ];
   };
   extraSpecialArgs = {

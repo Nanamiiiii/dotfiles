@@ -5,11 +5,11 @@
   ...
 }:
 let
-  gtkThemeName = "catppuccin-mocha-lavender-standard+normal,rimless";
+  gtkThemeName = "catppuccin-mocha-blue-standard+normal,rimless";
   gtkIconTheme = "Papirus-Dark";
-  gtkCursorTheme = "catppuccin-mocha-lavender-cursors";
+  gtkCursorTheme = "catppuccin-mocha-blue-cursors";
   gtkCatppuccin = pkgs.catppuccin-gtk.override {
-    accents = [ "lavender" ];
+    accents = [ "blue" ];
     variant = "mocha";
     size = "standard";
     tweaks = [
@@ -27,9 +27,9 @@ in
     with pkgs;
     [
       catppuccin-papirus-folders
-      catppuccin-cursors.mochaLavender
+      catppuccin-cursors.mochaBlue
       (catppuccin-kvantum.override {
-        accent = "lavender";
+        accent = "blue";
         variant = "mocha";
       })
       gtkCatppuccin
