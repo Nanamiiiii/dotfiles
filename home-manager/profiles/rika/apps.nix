@@ -9,7 +9,7 @@
       rclone
       hwloc
       vlc
-      zoom-us
+      pkgs-stable.zoom-us
       spotify
       plexamp
       pkgs-stable.plex-desktop
