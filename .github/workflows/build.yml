@@ -25,26 +25,21 @@ jobs:
             nixos:
               - flake.lock
               - flake.nix
-              - config/**
-              - home-manager/**
-              - nixos/**
-              - overlays/**
-              - profiles/**
               - '.github/workflows/build.yml'
               - 'Makefile'
             darwin:
               - flake.lock
               - flake.nix
-              - config/**
               - home-manager/**
+              - '!home-manager/linux/**'
+              - '!home-manager/hyprland/**'
+              - '!home-manager/fcitx5/**'
+              - '!home-manager/profiles/rika/**'
+              - '!home-manager/profiles/xanadu/**'
+              - '!home-manager/profiles/yuki/**'
               - nix-darwin/**
-              - overlays/**
-              - profiles/**
-              - '.github/workflows/build.yml'
-              - 'Makefile'
-            notnix:
-              - aqua/**
-              - sheldon/**
+              - profiles/asu/**
+              - secrets/**
               - '.github/workflows/build.yml'
               - 'Makefile'
             aqua:
@@ -120,7 +115,7 @@ jobs:
         run: |
           spec=$(nix build ".#cachix-deploy" --accept-flake-config --print-out-paths)
           cachix push nanamiiiii "$spec"
-          cachix deploy activate "$spec"
+          cachix deploy activate "$spec" --async
 
   aqua-checksum-update:
     needs: changed-files
@@ -134,4 +129,3 @@ jobs:
       prune: true
     secrets:
       gh_token: ${{secrets.GH_TOKEN}}
-
