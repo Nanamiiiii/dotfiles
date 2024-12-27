@@ -9,7 +9,7 @@
       rclone
       hwloc
       vlc
-      zoom-us
+      pkgs-stable.zoom-us
       spotify
       python3Packages.i3ipc
     ]
