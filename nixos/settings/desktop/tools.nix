@@ -59,14 +59,14 @@
 
   desktopThemes = with pkgs; [
     catppuccin-papirus-folders
-    catppuccin-cursors.mochaLavender
+    catppuccin-cursors.mochaBlue
     (catppuccin-kvantum.override {
-      accent = "lavender";
+      accent = "blue";
       variant = "mocha";
     })
     # the repo is archived now ;(
     (catppuccin-gtk.override {
-      accents = [ "lavender" ];
+      accents = [ "blue" ];
       variant = "mocha";
       size = "standard";
       tweaks = [

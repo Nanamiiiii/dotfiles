@@ -2,7 +2,7 @@
 {
   kvantumConf = lib.generators.toINI { } {
     "General" = {
-      theme = "Catppuccin-Mocha-Lavender";
+      theme = "catppuccin-mocha-blue";
     };
   };
 }

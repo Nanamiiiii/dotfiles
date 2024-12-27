@@ -1,8 +1,8 @@
 { pkgs, config, ... }:
 let
-  gtkThemeName = "catppuccin-mocha-lavender-standard+normal,rimless";
+  gtkThemeName = "catppuccin-mocha-blue-standard+normal,rimless";
   gtkIconTheme = "Papirus-Dark";
-  gtkCursorTheme = "catppuccin-mocha-lavender-cursors";
+  gtkCursorTheme = "catppuccin-mocha-blue-cursors";
 in
 {
   programs.regreet = {
@@ -31,7 +31,7 @@ in
     theme = {
       name = gtkThemeName;
       package = pkgs.catppuccin-gtk.override {
-        accents = [ "lavender" ];
+        accents = [ "blue" ];
         variant = "mocha";
         size = "standard";
         tweaks = [
@@ -51,7 +51,7 @@ in
     };
     cursorTheme = {
       name = gtkCursorTheme;
-      package = pkgs.catppuccin-cursors.mochaLavender;
+      package = pkgs.catppuccin-cursors.mochaBlue;
     };
   };
 
