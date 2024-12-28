@@ -12,6 +12,8 @@
       pkgs-stable.zoom-us
       spotify
       python3Packages.i3ipc
+      pkgs-stable.plexamp
+      pkgs-stable.plex-desktop
     ]
     ++ (with kdePackages; [
       ark
