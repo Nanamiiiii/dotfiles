@@ -41,3 +41,4 @@ vim.opt.listchars =
 
 -- mapleader
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"

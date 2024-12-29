@@ -27,6 +27,11 @@ M.markdown = function()
     vim.opt_local.conceallevel = 1
 end
 
+-- nix
+M.nix = function()
+    set_indent(2, true)
+end
+
 return setmetatable(M, {
     __index = function()
         return function()

@@ -3,7 +3,7 @@ add_newline = true
 command_timeout = 5000
 
 format = """
-$username$hostname 🐬 $os $directory $container$git_branch$git_status$rust$cmake$package$status$cmd_duration
+$username$hostname 🐬 $os $directory$nix_shell$container$git_branch$git_status$rust$cmake$package$status$cmd_duration
 $character"""
 
 [directory]
@@ -71,3 +71,10 @@ ssh_only = true
 
 [fill]
 symbol = " "
+
+[nix_shell]
+format = 'via [$symbol $state( \[$name\])]($style) '
+pure_msg = "󱔄"
+impure_msg = "󱔌"
+symbol = " "
+
