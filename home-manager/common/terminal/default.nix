@@ -39,10 +39,6 @@ in
     };
   };
 
-  home.packages = with pkgs; [
-    ghostty
-  ];
-
   xdg.configFile = configFiles.dotConfigs.wezterm // {
     "ghostty/config".text = ghosttyConfig;
   };

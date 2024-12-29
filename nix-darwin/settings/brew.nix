@@ -18,6 +18,7 @@
       "firefox@developer-edition"
       "notchnook"
       "raycast"
+      "nikitabobko/tap/aerospace"
     ];
 
     masApps = {

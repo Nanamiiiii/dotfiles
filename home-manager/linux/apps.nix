@@ -10,6 +10,7 @@ let
     slack
     thunderbird
     betterdiscordctl
+    ghostty
   ];
 
   cliPkgs = with pkgs; [
