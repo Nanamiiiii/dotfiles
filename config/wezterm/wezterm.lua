@@ -86,13 +86,16 @@ config.color_scheme = 'iceberg-dark'
 -- config.color_scheme = "Tokyo Night Moon"
 
 -- Opacity
-config.window_background_opacity = 0.90
-config.text_background_opacity = 0.90
 if is_macos then
     config.macos_window_background_blur = 25
-elseif is_windows then
-    config.window_background_opacity = 0
-    config.win32_system_backdrop = "Mica"
+    config.window_background_opacity = 0.90
+else
+    config.window_background_opacity = 0.90
+    config.text_background_opacity = 0.90
+    if is_windows then
+        config.window_background_opacity = 0
+        config.win32_system_backdrop = "Mica"
+    end
 end
 
 -- background
@@ -103,7 +106,7 @@ config.window_background_image_hsb = {
 }
 
 -- Hide single tab
-config.hide_tab_bar_if_only_one_tab = false
+config.hide_tab_bar_if_only_one_tab = true
 
 -- Tab bar
 config.use_fancy_tab_bar = false
@@ -209,7 +212,7 @@ end)
 
 -- Window setting
 if is_macos then
-    config.window_decorations = "RESIZE | MACOS_FORCE_ENABLE_SHADOW"
+    config.window_decorations = "RESIZE | MACOS_FORCE_DISABLE_SHADOW"
 elseif is_linux then
     if de_name == "i3" or de_name == "sway" or de_name == "Hyprland" then
         config.window_decorations = "NONE"
