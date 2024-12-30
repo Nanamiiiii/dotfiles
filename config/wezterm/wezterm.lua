@@ -82,7 +82,7 @@ else
 end
 
 -- Color Scheme
-config.color_scheme = 'iceberg-dark'
+config.color_scheme = "iceberg-dark"
 -- config.color_scheme = "Tokyo Night Moon"
 
 -- Opacity
