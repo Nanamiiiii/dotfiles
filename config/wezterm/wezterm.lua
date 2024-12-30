@@ -28,7 +28,7 @@ end
 -- Hostname
 local hostname = ""
 if is_linux then
-    local handle = io.popen("/bin/hostname")
+    local handle = io.popen("uname -m")
     if handle ~= nil then
         hostname = string.gsub(handle:read("a"), "[\n\r]", "")
         handle:close()
@@ -82,8 +82,8 @@ else
 end
 
 -- Color Scheme
--- config.color_scheme = 'iceberg-dark'
-config.color_scheme = "Tokyo Night Moon"
+config.color_scheme = 'iceberg-dark'
+-- config.color_scheme = "Tokyo Night Moon"
 
 -- Opacity
 config.window_background_opacity = 0.90
