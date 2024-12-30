@@ -28,6 +28,7 @@ return {
                     { name = "buffer" },
                     { name = "path" },
                     { name = "skkeleton" },
+                    { name = "vimtex" },
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -50,6 +51,7 @@ return {
                             buffer = "[Buf]",
                             path = "[Path]",
                             skkeleton = "[SKK]",
+                            vimtex = "[TeX]",
                         },
                     }),
                 },
