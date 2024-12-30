@@ -74,7 +74,7 @@ config.font = wezterm.font_with_fallback({
 
 -- Font Size
 if is_macos then
-    config.font_size = 18.0
+    config.font_size = 16.0
 elseif hostname == "xanadu" then
     config.font_size = 12.5
 else
