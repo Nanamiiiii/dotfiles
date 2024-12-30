@@ -6,4 +6,6 @@
       options = "ctrl:nocaps";
     };
   };
+
+  programs.ssh.enableAskPassword = false;
 }
