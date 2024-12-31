@@ -48,7 +48,7 @@
 
     wez-flake = {
       url = "github:wez/wezterm/main?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     hyprland = {

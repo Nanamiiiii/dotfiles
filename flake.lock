@@ -1086,7 +1086,7 @@
         "harfbuzz": "harfbuzz",
         "libpng": "libpng",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-stable"
         ],
         "rust-overlay": "rust-overlay_2",
         "zlib": "zlib"
