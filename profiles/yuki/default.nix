@@ -33,6 +33,7 @@ let
     ../../nixos/settings/system/i18n.nix
     ../../nixos/settings/system/tlp.nix
     ../../nixos/settings/system/bluetooth.nix
+    ../../nixos/settings/system/av.nix
   ];
 
   # Graphics
