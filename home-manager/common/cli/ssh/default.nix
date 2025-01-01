@@ -6,6 +6,11 @@ let
       user = "nanami";
       port = 22;
     };
+    "karin" = {
+      hostname = "10.100.27.3";
+      user = "nanami";
+      port = 22;
+    };
   };
 
   tyoHosts = {
