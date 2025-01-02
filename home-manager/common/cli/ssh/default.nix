@@ -7,7 +7,7 @@ let
       port = 22;
     };
     "karin" = {
-      hostname = "10.100.27.3";
+      hostname = "10.60.0.2";
       user = "nanami";
       port = 22;
     };
