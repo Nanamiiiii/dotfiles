@@ -453,11 +453,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1735835762,
-        "narHash": "sha256-yQNPR0PcIMHdDbzgPn/pE42diCE0xi/9B0q61zVP1jM=",
+        "lastModified": 1735838950,
+        "narHash": "sha256-zNb6bch2hJpkrcrXMElEE4OfEfvs8G9Hfcn4cp+fYSA=",
         "ref": "refs/heads/main",
-        "rev": "365caa49ff4e4f87da687adfa237b8f855aee42b",
-        "revCount": 5617,
+        "rev": "4971725b69768d156047289b7606e470c6963f59",
+        "revCount": 5620,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -1066,11 +1066,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735831626,
-        "narHash": "sha256-/W4NFHn/5/a3qD9lR00kYbRTsEf/6k4YIYM8a/Fk7SY=",
+        "lastModified": 1735839277,
+        "narHash": "sha256-1nond419ZbUDj44pf3a3tmq8619fZLLybELfTio5/NU=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "48961f31e992e43203afb2ea9cb1402ad392d94b",
+        "rev": "3b0afa7961c5d1d94bd02e1d6e560bd84af0525b",
         "type": "github"
       },
       "original": {
@@ -1156,11 +1156,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735791650,
-        "narHash": "sha256-2t6v5LcNyJOEMshCqEuCq70WPhJLtCoItbk5K8fqf5A=",
+        "lastModified": 1735838096,
+        "narHash": "sha256-zUOgFKUdwtkCS2JYxqTGMBaOS+T1OyvrTUJY1roWZdA=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "4cbef43b946c0e620fd283b74d505408a28a00d1",
+        "rev": "fd27fb74a435705e0fbe98dc903c50c420ecdc93",
         "type": "github"
       },
       "original": {
