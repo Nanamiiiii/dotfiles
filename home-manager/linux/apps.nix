@@ -7,6 +7,9 @@
 }:
 let
   desktopPkgs = with pkgs; [
+    discord
+    obsidian
+    zotero
     slack
     thunderbird
     betterdiscordctl

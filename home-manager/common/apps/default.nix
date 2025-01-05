@@ -2,17 +2,10 @@
   pkgs,
   pkgs-stable,
   config,
-  desktop,
   hostname,
   ...
 }:
 let
-  desktopPkgs = with pkgs; [
-    discord
-    obsidian
-    zotero
-  ];
-
   cliPkgs = with pkgs; [
     skkDictionaries.l
     skkDictionaries.emoji
@@ -33,7 +26,7 @@ let
   };
 in
 {
-  home.packages = if desktop then desktopPkgs ++ cliPkgs else cliPkgs;
+  home.packages = cliPkgs;
 
   xdg.configFile = with configFiles.dotConfigs; _1password;
 }
