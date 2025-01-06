@@ -60,6 +60,7 @@ setopt EXTENDED_HISTORY
 eval "$(sheldon source)"
 
 # Completions
+autoload -Uz compinit && compinit
 ## Can lazy
 on_demand_completion 'aqua'
 on_demand_completion 'fzf' 'fzf --zsh'
