@@ -9,7 +9,7 @@
       "$fileManager" = "pcmanfm-qt";
       "$appLauncher" = "wofi --show drun";
       "$cmdLauncher" = "wofi --show run";
-      "$browser" = "zen";
+      "$browser" = "microsoft-edge";
       "$subBrowser" = "firefox-devedition";
 
       bind = [
