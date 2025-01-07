@@ -17,6 +17,8 @@ let
       ;
   };
 
+  weztermEnable = if desktop && baseSystem == "linux" then true else false;
+
   ghosttyConfigSpecific = {
     "darwin" = ''
       window-decoration = true
@@ -50,7 +52,7 @@ in
 
   programs = {
     wezterm = {
-      enable = desktop;
+      enable = weztermEnable;
       package = inputs.wez-flake.packages.${pkgs.system}.default;
     };
   };
