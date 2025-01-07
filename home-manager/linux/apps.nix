@@ -48,9 +48,15 @@ in
       pinentryPackage = pkgs.pinentry-curses;
     };
 
-    kdeconnect = {
-      enable = true;
-      indicator = true;
-    };
+    kdeconnect =
+      if desktop then
+        {
+          enable = true;
+          indicator = true;
+        }
+      else
+        {
+          enable = false;
+        };
   };
 }
