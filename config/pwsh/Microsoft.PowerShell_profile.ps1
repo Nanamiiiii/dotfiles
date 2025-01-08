@@ -1,3 +1,9 @@
+# aqua
+Set-Item Env:Path "$Env:LOCALAPPDATA\aquaproj-aqua\bin;$Env:Path"
+$Env:AQUA_GLOBAL_CONFIG="C:\Users\Myuu\dotfiles\aqua\aqua.yaml"
+$Env:AQUA_LOG_LEVEL="fatal"
+$Env:AQUA_PROGRESS_BAR="true"
+
 # posh-git
 Import-Module posh-git
 
@@ -12,9 +18,6 @@ function repo() {
 
 # zoxide
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
-
-# Command Not Found
-Import-Module -Name Microsoft.WinGet.CommandNotFound
 
 # Alias
 function __ls() {
