@@ -1,6 +1,7 @@
 -- Nanamiiiii's wezterm config
 
 local wezterm = require("wezterm")
+local mux = wezterm.mux
 local config = {}
 
 if wezterm.config_builder then
@@ -208,6 +209,12 @@ wezterm.on("format-window-title", function(tab, pane, tabs, panes, config)
     local title = title_mapper(tab_title(tab), false)
 
     return prefix .. " - " .. zoomed .. index .. title
+end)
+
+-- Maximize
+wezterm.on('gui-startup', function(cmd)
+    local tab, pane, window = mux.spawn_window(cmd or {})
+    window:gui_window():maximize()
 end)
 
 -- Window setting
@@ -502,3 +509,4 @@ if is_windows then
 end
 
 return config
+
