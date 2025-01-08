@@ -212,7 +212,7 @@ wezterm.on("format-window-title", function(tab, pane, tabs, panes, config)
 end)
 
 -- Maximize
-wezterm.on('gui-startup', function(cmd)
+wezterm.on("gui-startup", function(cmd)
     local tab, pane, window = mux.spawn_window(cmd or {})
     window:gui_window():maximize()
 end)
@@ -509,4 +509,3 @@ if is_windows then
 end
 
 return config
-
