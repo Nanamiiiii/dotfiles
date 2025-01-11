@@ -48,7 +48,10 @@ let
     nix-direnv
   ];
 
-  typesetTools = with pkgs; [ typst ];
+  typesetTools = with pkgs; [
+    texliveFull
+    typst
+  ];
 
   pythonTools = with pkgs; [
     (python3.withPackages (
