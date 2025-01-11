@@ -1,6 +1,10 @@
 local h = require("utils.helper")
 
-local viewApp = h.os() == "Darwin" and "skim" or "general"
+local viewApp = {
+    Darwin = "skim",
+    Linux = "zathura",
+    Windows_NT = "general",
+}
 
 return {
     {
@@ -10,7 +14,7 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         init = function()
             vim.g.tex_flavor = "latex"
-            vim.g.vimtex_view_method = viewApp
+            vim.g.vimtex_view_method = viewApp[h.os()]
             vim.g.vimtex_compiler_latexmk = {
                 out_dir = "out",
                 continuous = 1,
