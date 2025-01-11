@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  osConfig,
   desktop,
   hostname,
   inputs,
@@ -47,17 +48,20 @@ let
     ''
     + ghosttyConfigSpecific."${baseSystem}";
 in
-{
-  imports = [ ];
+if osConfig.wsl.enable then
+  { }
+else
+  {
+    imports = [ ];
 
-  programs = {
-    wezterm = {
-      enable = weztermEnable;
-      package = inputs.wez-flake.packages.${pkgs.system}.default;
+    programs = {
+      wezterm = {
+        enable = weztermEnable;
+        package = inputs.wez-flake.packages.${pkgs.system}.default;
+      };
     };
-  };
 
-  xdg.configFile = configFiles.dotConfigs.wezterm // {
-    "ghostty/config".text = ghosttyConfig;
-  };
-}
+    xdg.configFile = configFiles.dotConfigs.wezterm // {
+      "ghostty/config".text = ghosttyConfig;
+    };
+  }

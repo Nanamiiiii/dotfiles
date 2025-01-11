@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  osConfig,
   desktop,
   ...
 }:
@@ -12,7 +13,11 @@ let
 
   gpgSshProgram = {
     "darwin" = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-    "linux" = "${pkgs._1password-gui}/share/1password/op-ssh-sign";
+    "linux" =
+      if osConfig.wsl.enable then
+        "/mnt/c/Users/Myuu/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
+      else
+        "${pkgs._1password-gui}/share/1password/op-ssh-sign";
   };
 
   baseSystem = builtins.elemAt (builtins.split "-" pkgs.system) 2;
@@ -26,11 +31,11 @@ in
       # On desktop environment, use ssh key from password manager.
       # On headless environment, use gpg key.
       # FIXME: How to deploy gpg key?
-      key = if desktop then signingKey.sshKeyFingerprint else signingKey.gpgKeyFingerprint;
+      key = if desktop || osConfig.wsl.enable then signingKey.sshKeyFingerprint else signingKey.gpgKeyFingerprint;
     };
     extraConfig = {
       gpg = {
-        format = if desktop then "ssh" else "openpgp";
+        format = if desktop || osConfig.wsl.enable then "ssh" else "openpgp";
         ssh.program = gpgSshProgram."${baseSystem}";
       };
       ghq.root = "~/src";

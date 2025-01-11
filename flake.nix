@@ -15,7 +15,6 @@
       url = "github:cachix/git-hooks.nix";
       inputs.flake-compat.follows = "";
       inputs.gitignore.follows = "";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -83,6 +82,12 @@
       inputs.nixpkgs-unstable.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
+
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "";
+    };
   };
 
   nixConfig = {
@@ -103,6 +108,7 @@
       nixpkgs,
       nixpkgs-stable,
       darwin,
+      nixos-wsl,
       home-manager,
       treefmt-nix,
       cachix-deploy-flake,
@@ -152,6 +158,23 @@
                 desktop
                 ;
             };
+
+          nixWslArgs =
+            {
+              profile,
+              username,
+              system,
+              desktop,
+            }:
+            import ./nix-wsl {
+              inherit
+                inputs
+                profile
+                username
+                system
+                desktop
+                ;
+            };
           inherit (nixpkgs.lib) nixosSystem;
         in
         {
@@ -160,6 +183,13 @@
             username = "nanami";
             system = "x86_64-linux";
             desktop = true;
+          });
+
+          rika-wsl = nixosSystem (nixWslArgs {
+            profile = "rika-wsl";
+            username = "nanami";
+            system = "x86_64-linux";
+            desktop = false;
           });
 
           yuki = nixosSystem (nixosSystemArgs {
