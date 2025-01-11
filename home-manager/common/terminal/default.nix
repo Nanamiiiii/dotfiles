@@ -48,7 +48,7 @@ let
     ''
     + ghosttyConfigSpecific."${baseSystem}";
 in
-if osConfig.wsl.enable then
+if osConfig.wsl.enable or false then
   { }
 else
   {

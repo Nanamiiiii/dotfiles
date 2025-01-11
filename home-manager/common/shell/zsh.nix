@@ -139,7 +139,7 @@ let
 
   hostZshrcExt = {
     rika =
-      if osConfig.wsl.enable then
+      if osConfig.wsl.enable or false then
         ''
           alias ssh="/mnt/c/Windows/System32/OpenSSH/ssh.exe"
         ''
