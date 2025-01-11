@@ -31,7 +31,11 @@ in
       # On desktop environment, use ssh key from password manager.
       # On headless environment, use gpg key.
       # FIXME: How to deploy gpg key?
-      key = if desktop || osConfig.wsl.enable then signingKey.sshKeyFingerprint else signingKey.gpgKeyFingerprint;
+      key =
+        if desktop || osConfig.wsl.enable then
+          signingKey.sshKeyFingerprint
+        else
+          signingKey.gpgKeyFingerprint;
     };
     extraConfig = {
       gpg = {
