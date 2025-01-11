@@ -395,13 +395,11 @@ config.keys = {
 
 -- WSL
 if is_windows then
-    config.wsl_domains = {
-        {
-            name = "WSL:Arch",
-            distribution = "Arch",
-            default_cwd = "~",
-        },
-    }
+    wsl_dist = wezterm.default_wsl_domains()
+    for idx, dom in ipairs(wsl_dist) do
+        dom.default_cwd = "~"
+    end
+    config.wsl_domains = wsl_dist
 else
     config.unix_domains = {
         {
