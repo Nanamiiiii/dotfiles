@@ -486,24 +486,36 @@ if is_macos then
 end
 
 -- Windows Launch Menu
----- Select nu, pwsh, cmd, wsl
 if is_windows then
+    -- pwsh & cmd
     config.launch_menu = {
-        {
-            label = "ArchLinux - WSL",
-            domain = { DomainName = "WSL:Arch" },
-        },
         {
             label = "Powershell",
             domain = { DomainName = "local" },
             args = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-nologo" },
         },
         {
-            label = "CMD",
+            label = "Command Prompt",
             domain = { DomainName = "local" },
             args = { "C:\\Windows\\System32\\cmd.exe" },
         },
     }
+    -- wezterm ssh does not work correctly on windows
+    -- create launcher entry directly executing ssh.exe from ssh domain
+    local ssh_domains = wezterm.default_ssh_domains()
+    local ssh_executable = "C:\\Windows\\System32\\OpenSSH\\ssh.exe"
+    for idx, dom in ipairs(ssh_domains) do
+        if dom.multiplexing == "None" then -- ignore SSHMUX domain
+            table.insert(config.launch_menu, {
+                label = dom.name,
+                domain = { DomainName = "local" },
+                args = {
+                    ssh_executable,
+                    dom.remote_address,
+                },
+            })
+        end
+    end
 end
 
 return config
