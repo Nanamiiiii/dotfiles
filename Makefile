@@ -72,7 +72,7 @@ endif
 # standalone home-manager (build only)
 .PHONY: nix-home-build-%
 nix-home-build-%:
-	@$(NIX_CMD) run "nixpkgs#home-manager" -- build --no-out-link --debug --show-trace --flake ".#"${@:nix-home-%=%}
+	@$(NIX_CMD) run "nixpkgs#home-manager" -- build --no-out-link --debug --show-trace --flake ".#"${@:nix-home-build-%=%}
 
 # standalone home-manager
 .PHONY: nix-home-%

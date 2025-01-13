@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   pkgs-stable,
   desktop,
   inputs,
@@ -13,7 +14,6 @@ let
     slack
     thunderbird
     betterdiscordctl
-    ghostty
   ];
 
   cliPkgs = with pkgs; [
@@ -31,14 +31,10 @@ in
     };
 
     ssh = {
-      extraConfig =
-        if desktop then
-          ''
-            Host *
-                IdentityAgent "~/.1password/agent.sock"
-          ''
-        else
-          "";
+      extraConfig = lib.mkIf desktop ''
+        Host *
+            IdentityAgent "~/.1password/agent.sock"
+      '';
     };
   };
 
@@ -48,15 +44,9 @@ in
       pinentryPackage = pkgs.pinentry-curses;
     };
 
-    kdeconnect =
-      if desktop then
-        {
-          enable = true;
-          indicator = true;
-        }
-      else
-        {
-          enable = false;
-        };
+    kdeconnect = {
+      enable = desktop;
+      indicator = desktop;
+    };
   };
 }

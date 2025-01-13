@@ -239,6 +239,7 @@
               username,
               system,
               desktop,
+              wslhost,
             }:
             import ./home-manager/standalone.nix {
               inherit
@@ -248,6 +249,7 @@
                 username
                 system
                 desktop
+                wslhost
                 ;
             };
           inherit (home-manager.lib) homeManagerConfiguration;
@@ -260,6 +262,7 @@
             username = "nanami";
             system = "x86_64-linux";
             desktop = false;
+            wslhost = false;
           });
         };
     };

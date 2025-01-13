@@ -1,8 +1,8 @@
 {
   pkgs,
   config,
-  osConfig,
   desktop,
+  wslhost,
   ...
 }:
 let
@@ -14,7 +14,7 @@ let
   gpgSshProgram = {
     "darwin" = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
     "linux" =
-      if osConfig.wsl.enable or false then
+      if wslhost then
         "/mnt/c/Users/Myuu/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
       else
         "${pkgs._1password-gui}/share/1password/op-ssh-sign";
@@ -31,15 +31,11 @@ in
       # On desktop environment, use ssh key from password manager.
       # On headless environment, use gpg key.
       # FIXME: How to deploy gpg key?
-      key =
-        if desktop || (osConfig.wsl.enable or false) then
-          signingKey.sshKeyFingerprint
-        else
-          signingKey.gpgKeyFingerprint;
+      key = if desktop || wslhost then signingKey.sshKeyFingerprint else signingKey.gpgKeyFingerprint;
     };
     extraConfig = {
       gpg = {
-        format = if desktop || (osConfig.wsl.enable or false) then "ssh" else "openpgp";
+        format = if desktop || wslhost then "ssh" else "openpgp";
         ssh.program = gpgSshProgram."${baseSystem}";
       };
       ghq.root = "~/src";

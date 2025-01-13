@@ -5,6 +5,7 @@
   username,
   system,
   desktop,
+  wslhost,
   ...
 }:
 let
@@ -29,6 +30,7 @@ in
       desktop
       system
       pkgs-stable
+      wslhost
       ;
   };
   modules = [ ./profiles/${profile} ];

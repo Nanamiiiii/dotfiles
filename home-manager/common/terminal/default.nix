@@ -1,10 +1,11 @@
 {
   pkgs,
+  lib,
   config,
-  osConfig,
   desktop,
   hostname,
   inputs,
+  wslhost,
   ...
 }:
 let
@@ -48,20 +49,15 @@ let
     ''
     + ghosttyConfigSpecific."${baseSystem}";
 in
-if osConfig.wsl.enable or false then
-  { }
-else
-  {
-    imports = [ ];
-
-    programs = {
-      wezterm = {
-        enable = weztermEnable;
-        package = inputs.wez-flake.packages.${pkgs.system}.default;
-      };
+lib.mkIf (!wslhost) {
+  programs = {
+    wezterm = {
+      enable = weztermEnable;
+      package = inputs.wez-flake.packages.${pkgs.system}.default;
     };
+  };
 
-    xdg.configFile = configFiles.dotConfigs.wezterm // {
-      "ghostty/config".text = ghosttyConfig;
-    };
-  }
+  xdg.configFile = configFiles.dotConfigs.wezterm // {
+    "ghostty/config".text = ghosttyConfig;
+  };
+}
