@@ -138,13 +138,9 @@ let
   '';
 
   hostZshrcExt = {
-    rika =
-      if osConfig.wsl.enable or false then
-        ''
-          alias ssh="/mnt/c/Windows/System32/OpenSSH/ssh.exe"
-        ''
-      else
-        "";
+    rika = ''
+      alias ssh="/mnt/c/Windows/System32/OpenSSH/ssh.exe"
+    '';
     yuki = ''
       SSH_AUTH_SOCK=~/.1password/agent.sock
     '';

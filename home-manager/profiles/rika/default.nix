@@ -1,11 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ../../common
     ../../linux
-    ./apps.nix
-    ./desktop.nix
-    ./config.nix
+    ../../wsl
   ];
 
   home.stateVersion = "24.11";

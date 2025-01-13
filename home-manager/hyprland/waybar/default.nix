@@ -41,7 +41,7 @@ let
     "clock"
   ];
   workspace = {
-    rika = {
+    mafu = {
       "DP-3" = [
         1
         2

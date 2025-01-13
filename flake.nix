@@ -178,20 +178,23 @@
           inherit (nixpkgs.lib) nixosSystem;
         in
         {
-          rika = nixosSystem (nixosSystemArgs {
-            profile = "rika";
+          # Workstation
+          mafu = nixosSystem (nixosSystemArgs {
+            profile = "mafu";
             username = "nanami";
             system = "x86_64-linux";
             desktop = true;
           });
 
-          rika-wsl = nixosSystem (nixWslArgs {
-            profile = "rika-wsl";
+          # WSL on mafu
+          rika = nixosSystem (nixWslArgs {
+            profile = "rika";
             username = "nanami";
             system = "x86_64-linux";
             desktop = false;
           });
 
+          # Laptop (Thinkpad X13 Gen5)
           yuki = nixosSystem (nixosSystemArgs {
             profile = "yuki";
             username = "nanami";
@@ -219,6 +222,7 @@
           inherit (darwin.lib) darwinSystem;
         in
         {
+          # MacBook Pro 2021
           asu = darwinSystem (darwinSystemArgs {
             profile = "asu";
             username = "nanami";
@@ -249,6 +253,7 @@
           inherit (home-manager.lib) homeManagerConfiguration;
         in
         {
+          # Lab Workstation
           xanadu = homeManagerConfiguration (homeManagerArgs {
             profile = "xanadu";
             hostname = "xanadu";
