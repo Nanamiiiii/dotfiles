@@ -395,7 +395,7 @@ config.keys = {
 
 -- WSL
 if is_windows then
-    wsl_dist = wezterm.default_wsl_domains()
+    local wsl_dist = wezterm.default_wsl_domains()
     for idx, dom in ipairs(wsl_dist) do
         dom.default_cwd = "~"
     end
