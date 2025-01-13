@@ -152,7 +152,7 @@ ifeq ($(SYSTEM),x86_64-linux)
 ci-build:
 	@$(NIX_CMD) build --no-link --show-trace --system x86_64-linux --accept-flake-config \
 		".#nixosConfigurations.yuki.config.system.build.toplevel" \
-		".#nixosConfigurations.mafu.config.system.build.toplevel"
+		".#nixosConfigurations.mafu.config.system.build.toplevel" \
 		".#nixosConfigurations.rika.config.system.build.toplevel"
 	@$(NIX_CMD) run "nixpkgs#home-manager" -- build --no-out-link --show-trace --flake ".#xanadu"
 else ifeq ($(SYSTEM),aarch64-darwin)
