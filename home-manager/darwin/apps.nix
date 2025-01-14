@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-stable,
+  lib,
   config,
   desktop,
   hostname,
