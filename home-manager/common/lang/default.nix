@@ -61,6 +61,10 @@ let
       ]
     ))
   ];
+
+  dotnetTools = with pkgs; [
+    dotnet-sdk
+  ];
 in
 {
   home.packages =
@@ -75,5 +79,6 @@ in
     ++ haskellTools
     ++ nixTools
     ++ typesetTools
-    ++ pythonTools;
+    ++ pythonTools
+    ++ dotnetTools;
 }
