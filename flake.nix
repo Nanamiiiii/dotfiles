@@ -264,6 +264,16 @@
             desktop = false;
             wslhost = false;
           });
+
+          # Lab Common
+          unyonyo = homeManagerConfiguration (homeManagerArgs {
+            profile = "unyonyo";
+            hostname = "unyonyo"; # Dummy hostname
+            username = "nanami";
+            system = "x86_64-linux";
+            desktop = false;
+            wslhost = false;
+          });
         };
     };
 }
