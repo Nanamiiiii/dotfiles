@@ -201,6 +201,14 @@
             system = "x86_64-linux";
             desktop = true;
           });
+
+          # WSL on yuki
+          saki = nixosSystem (nixWslArgs {
+            profile = "saki";
+            username = "nanami";
+            system = "x86_64-linux";
+            desktop = false;
+          });
         };
 
       darwinConfigurations =

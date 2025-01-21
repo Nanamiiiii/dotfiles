@@ -40,12 +40,12 @@ ifeq ($(SYSTEM), x86_64-linux)
 # nixos (build only)
 .PHONY: nixos-build-%
 nixos-build-%:    
-	@$(NIX_CMD) build ".#nixosConfigurations."${@:nixos-build-%=%}".config.system.build.toplevel" --verbose --show-trace --no-link
+	@$(NIX_CMD) build ".#nixosConfigurations."${@:nixos-build-%=%}".config.system.build.toplevel" --verbose --show-trace --no-link --extra-experimental-features nix-command --extra-experimental-features flakes
 
 # nixos
 .PHONY: nixos-%
 nixos-%:
-	@sudo $(NIXOS_REBUILD) switch --flake ".#"${@:nixos-%=%}
+	@sudo $(NIXOS_REBUILD) switch --flake ".#"${@:nixos-%=%} 
 
 endif
 
