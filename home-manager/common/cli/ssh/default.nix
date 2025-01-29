@@ -39,19 +39,14 @@ let
       user = "nanami";
       port = 22;
     };
+    "shelly" = {
+      hostname = "172.16.1.2";
+      user = "nanami";
+      port = 22;
+    };
   };
 
   ngtHosts = {
-    "konomi" = {
-      hostname = "192.168.1.10";
-      user = "nanami";
-      port = 22;
-    };
-    "konomi-wg" = {
-      hostname = "10.100.27.4";
-      user = "nanami";
-      port = 22;
-    };
   };
 in
 {

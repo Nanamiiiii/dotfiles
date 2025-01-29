@@ -9,6 +9,7 @@
     ./packages.nix
     ./sops.nix
     inputs.sops-nix.darwinModules.sops
+    ./brew.nix
   ];
 
   nix.settings.trusted-users = [ username ];

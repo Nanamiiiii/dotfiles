@@ -92,30 +92,30 @@ jobs:
           make RUNS_ENV=ci ci-build
           df -h
 
-  cachix-deploy:
-    runs-on: macos-14
-    name: Deploy darwin configuration
-    needs: darwin-build
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install nix
-        uses: cachix/install-nix-action@v30
-      - name: Setup cachix
-        uses: cachix/cachix-action@v15
-        with:
-          name: nanamiiiii
-          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-      - name: GitHub cache setup
-        uses: DeterminateSystems/magic-nix-cache-action@main
-      - name: Deploy
-        env:
-          CACHIX_ACTIVATE_TOKEN: ${{ secrets.CACHIX_ACTIVATE_TOKEN }}
-        run: |
-          spec=$(nix build ".#cachix-deploy" --accept-flake-config --print-out-paths)
-          cachix push nanamiiiii "$spec"
-          cachix deploy activate "$spec" --async
+#  cachix-deploy:
+#    runs-on: macos-14
+#    name: Deploy darwin configuration
+#    needs: darwin-build
+#    if: github.ref == 'refs/heads/main'
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#      - name: Install nix
+#        uses: cachix/install-nix-action@v30
+#      - name: Setup cachix
+#        uses: cachix/cachix-action@v15
+#        with:
+#          name: nanamiiiii
+#          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+#      - name: GitHub cache setup
+#        uses: DeterminateSystems/magic-nix-cache-action@main
+#      - name: Deploy
+#        env:
+#          CACHIX_ACTIVATE_TOKEN: ${{ secrets.CACHIX_ACTIVATE_TOKEN }}
+#        run: |
+#          spec=$(nix build ".#cachix-deploy" --accept-flake-config --print-out-paths)
+#          cachix push nanamiiiii "$spec"
+#          cachix deploy activate "$spec" --async
 
   aqua-checksum-update:
     needs: changed-files

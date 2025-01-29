@@ -3,6 +3,7 @@
   imports = [
     ../../nix-darwin/settings
     ./apps.nix
+    ./brew.nix
   ];
 
   users.users.nanami = {
@@ -13,13 +14,13 @@
     hostName = "asu";
   };
 
-  services.cachix-agent = {
-    enable = true;
-    name = "asu";
-    credentialsFile = config.sops.secrets.cachix-agent.path;
-  };
+  #services.cachix-agent = {
+  #  enable = true;
+  #  name = "asu";
+  #  credentialsFile = config.sops.secrets.cachix-agent.path;
+  #};
 
-  sops.secrets.cachix-agent = {
-    sopsFile = ./secrets.yaml;
-  };
+  #sops.secrets.cachix-agent = {
+  #  sopsFile = ./secrets.yaml;
+  #};
 }
