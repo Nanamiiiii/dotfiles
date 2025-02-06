@@ -2,8 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    "github>aquaproj/aqua-renovate-config#2.6.0",
-    "github>aquaproj/aqua-renovate-config:installer-script#2.6.0(Makefile)"
+    "github>aquaproj/aqua-renovate-config#2.7.0",
+    "github>aquaproj/aqua-renovate-config:installer-script#2.7.0(Makefile)"
   ],
   "nix": {
     "enabled": true
