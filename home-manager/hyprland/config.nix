@@ -126,9 +126,5 @@ in
       force_default_wallpaper = -1;
       disable_hyprland_logo = false;
     };
-
-    render = {
-      explicit_sync = 0;
-    };
   };
 }
