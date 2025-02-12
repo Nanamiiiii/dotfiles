@@ -8,7 +8,9 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
-config.enable_wayland = false
+-- Graphics
+config.enable_wayland = true
+config.front_end = "WebGpu"
 
 -- TERM
 config.term = "xterm-256color"
