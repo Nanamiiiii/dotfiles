@@ -22,8 +22,6 @@
 
   programs.zsh.enable = true;
 
-  services.nix-daemon.enable = true;
-
   environment.variables = {
     EDITOR = "nvim";
     LANG = "en_US.UTF-8";
