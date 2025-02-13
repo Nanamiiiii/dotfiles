@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   config,
   nixos-hardware,
   ...
@@ -41,7 +42,14 @@ let
 
   # Display
   displaySettings = [
-    (import ../../nixos/settings/display/greetd.nix { inherit pkgs config; })
+    (import ../../nixos/settings/display/sddm.nix {
+      inherit
+        pkgs
+        lib
+        config
+        ;
+      extraWestonConfig = null;
+    })
     ../../nixos/settings/display/xserver.nix
   ];
 
