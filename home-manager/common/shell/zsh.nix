@@ -57,7 +57,8 @@ let
     xanadu = ''
       # RISC-V Toolchain
       path=(
-          "$HOME/.rv/riscv-toolchain/bin"
+          "/opt/riscv/toolchain/bin"(N-/)
+          "$HOME/.rv/riscv-toolchain/bin"(N-/)
           "$path[@]"
       )
     '';
