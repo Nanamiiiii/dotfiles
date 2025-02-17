@@ -85,6 +85,7 @@ local lsp_setup = function()
             -- Get cross compiler path for query driver
             local cross_compilers = {
                 "riscv64-unknown-linux-gnu-gcc",
+                "riscv64-unknown-linux-gnu-g++",
             }
             local cross_compilers_path = {}
             for _, val in ipairs(cross_compilers) do
