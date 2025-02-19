@@ -17,7 +17,7 @@ end
 
 -- Get binary path
 helper["binary_path"] = function(cmd)
-    local check = io.popen("which " .. cmd)
+    local check = io.popen("command -v " .. cmd)
     if check ~= nil then
         local check_out = check:read("*a")
         local code = check:close()

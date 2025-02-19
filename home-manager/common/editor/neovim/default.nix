@@ -52,7 +52,10 @@ in
 
   xdg.configFile = configFiles.dotConfigs.neovim;
 
-  home.packages = with pkgs; [ wget ];
+  home.packages = with pkgs; [
+    wget
+    unzip
+  ];
 
   home.file.".skkeleton/dict/SKK-JISYO.L" = {
     source = "${pkgs.skkDictionaries.l}/share/skk/SKK-JISYO.L";
