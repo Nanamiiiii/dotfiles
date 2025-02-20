@@ -18,7 +18,9 @@
       "balenaetcher"
     ];
 
-    masApps = { };
+    masApps = {
+      Skitch = 425955336;
+    };
 
     taps = [
       "PlayCover/playcover"
