@@ -165,4 +165,7 @@ return {
             },
         },
     },
+    {
+        "ionide/Ionide-vim",
+    },
 }

@@ -64,7 +64,9 @@ let
   ];
 
   dotnetTools = with pkgs; [
-    dotnet-sdk
+    dotnet-sdk_9
+    dotnet-runtime_9
+    fsautocomplete
   ];
 in
 {

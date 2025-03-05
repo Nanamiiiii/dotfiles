@@ -30,6 +30,7 @@ let
         "$DENO_INSTALL/bin"(N-/)
         "$GOPATH/bin"(N-/)
         "$HOME/.local/go/bin"(N-/)
+        "$HOME/.dotnet/tools"(N-/)
         "$path[@]"
     )
     fpath=(
