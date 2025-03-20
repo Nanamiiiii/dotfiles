@@ -45,16 +45,13 @@ let
       port = 22;
     };
   };
-
-  ngtHosts = {
-  };
 in
 {
   programs.ssh = {
     enable = true;
     forwardAgent = true;
     serverAliveInterval = 60;
-    matchBlocks = cloudHosts // tyoHosts // ngtHosts;
+    matchBlocks = cloudHosts // tyoHosts;
     includes = [
       "${config.home.homeDirectory}/.ssh/conf.d/lab.conf"
     ];

@@ -54,6 +54,12 @@ let
           "$(brew --prefix)/share/zsh/site-functions"
           "$fpath[@]"
       )
+
+      # 1Password SSH Agent
+      SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+    '';
+    yuki = ''
+      SSH_AUTH_SOCK=~/.1password/agent.sock
     '';
     xanadu = ''
       # RISC-V Toolchain
@@ -142,15 +148,9 @@ let
     rika = ''
       alias ssh="/mnt/c/Windows/System32/OpenSSH/ssh.exe"
     '';
-    yuki = ''
-      SSH_AUTH_SOCK=~/.1password/agent.sock
-    '';
     asu = ''
       # sudo prompt
       export SUDO_PROMPT="[sudo] %p's password: "
-
-      # 1Password SSH Agent
-      SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
     '';
     xanadu = ''
       export GPG_TTY=$(tty)
