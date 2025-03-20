@@ -27,10 +27,12 @@
       "nikitabobko/tap/aerospace"
       "microsoft-edge"
       "wezterm"
+      "xpipe-io/tap/xpipe"
     ];
 
     taps = [
       "nikitabobko/tap"
+      "xpipe-io/tap"
     ];
 
     masApps = {
