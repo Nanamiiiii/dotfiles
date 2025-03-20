@@ -21,9 +21,9 @@
 
   wayland.windowManager.hyprland.settings = {
     monitor = [
-      "DP-1, 3840x2160@60, 0x0, 1.25"
-      "DP-2, 2560x1440@165, 3072x144, 1"
-      "DP-3, 3840x2160@60, 5632x0, 1.25"
+      "DP-1, 3840x2160@60, 0x0, 1"
+      "DP-2, 2560x1440@165, 3840x360, 1"
+      "DP-3, 3840x2160@60, 6400x0, 1"
       ",preferred,auto,1"
     ];
 
