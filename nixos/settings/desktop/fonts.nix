@@ -16,6 +16,9 @@
         ];
       })
       nerd-fonts.symbols-only
+      (pkgs.callPackage ../../../packages/sddm-astronaut.nix {
+        theme = "hyprland_kath";
+      })
     ];
 
     fontDir.enable = true;

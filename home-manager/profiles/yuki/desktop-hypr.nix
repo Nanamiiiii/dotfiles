@@ -19,6 +19,10 @@
   ];
 
   wayland.windowManager.hyprland.settings = {
+    env = [
+      "NIXOS_OZONE_WL,1"
+    ];
+
     monitor = [
       "desc:BOE 0x0B86,preferred,auto,1"
       "desc:Dell Inc. DELL U2720QM CV5MY13,3840x2160@60,auto-left,1.25"
