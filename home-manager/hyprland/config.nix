@@ -61,6 +61,7 @@ in
       "float, class:(firefox), initialTitle:^(Picture-in-Picture)$"
       "float, class:(zen-beta), initialTitle:^(Picture-in-Picture)$"
       "float, title:^(Copying — Dolphin)$"
+      "float, title:^(Mount)$"
       "opaque, class:^(discord)$"
       "opaque, class:^(Slack)$"
       "opaque, class:^(zoom)$"
