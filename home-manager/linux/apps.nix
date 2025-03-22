@@ -14,6 +14,7 @@ let
     slack
     thunderbird
     betterdiscordctl
+    (pkgs.callPackage ../../packages/xpipe.nix { })
   ];
 
   cliPkgs = with pkgs; [
