@@ -15,6 +15,7 @@ let
     thunderbird
     betterdiscordctl
     (pkgs.callPackage ../../packages/xpipe.nix { })
+    zathura
   ];
 
   cliPkgs = with pkgs; [
