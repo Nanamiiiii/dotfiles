@@ -16,6 +16,7 @@
       "wireshark"
       "thunderbird"
       "balenaetcher"
+      "grammarly-desktop"
     ];
 
     masApps = {
