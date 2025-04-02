@@ -197,7 +197,7 @@
           # Laptop (Thinkpad X13 Gen5)
           yuki = nixosSystem (nixosSystemArgs {
             profile = "yuki";
-            username = "nanami";
+            username = "myuu";
             system = "x86_64-linux";
             desktop = true;
           });
