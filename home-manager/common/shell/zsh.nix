@@ -2,6 +2,7 @@
   pkgs,
   config,
   hostname,
+  username,
   ...
 }:
 let
@@ -47,7 +48,7 @@ let
       export MANPATH=/opt/local/share/man:$MANPATH
       path=(
           "/opt/local/bin:/opt/local/sbin"
-          "/Users/nanami/Library/Application Support/JetBrains/Toolbox/scripts"
+          "/Users/${username}/Library/Application Support/JetBrains/Toolbox/scripts"
           "$path[@]"
       )
       fpath=(

@@ -6,7 +6,7 @@
     ./brew.nix
   ];
 
-  users.users.nanami = {
+  users.users.${username} = {
     home = "/Users/${username}";
   };
 

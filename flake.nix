@@ -181,7 +181,7 @@
           # Workstation
           mafu = nixosSystem (nixosSystemArgs {
             profile = "mafu";
-            username = "nanami";
+            username = "myuu";
             system = "x86_64-linux";
             desktop = true;
           });
@@ -189,7 +189,7 @@
           # WSL on mafu
           rika = nixosSystem (nixWslArgs {
             profile = "rika";
-            username = "nanami";
+            username = "myuu";
             system = "x86_64-linux";
             desktop = false;
           });
@@ -205,7 +205,7 @@
           # WSL on yuki
           saki = nixosSystem (nixWslArgs {
             profile = "saki";
-            username = "nanami";
+            username = "myuu";
             system = "x86_64-linux";
             desktop = false;
           });
@@ -233,7 +233,7 @@
           # MacBook Pro 2021
           asu = darwinSystem (darwinSystemArgs {
             profile = "asu";
-            username = "nanami";
+            username = "myuu";
             system = "aarch64-darwin";
           });
         };
@@ -267,7 +267,7 @@
           xanadu = homeManagerConfiguration (homeManagerArgs {
             profile = "xanadu";
             hostname = "xanadu";
-            username = "nanami";
+            username = "myuu";
             system = "x86_64-linux";
             desktop = false;
             wslhost = false;
