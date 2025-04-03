@@ -117,7 +117,6 @@ in
     ghq
     tree-sitter
     ranger
-    openssh
     curl
     wget
     sl
