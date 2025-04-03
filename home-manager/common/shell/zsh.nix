@@ -159,6 +159,9 @@ let
     xanadu = ''
       export GPG_TTY=$(tty)
     '';
+    unyonyo = ''
+      export GPG_TTY=$(tty)
+    '';
   };
 in
 {

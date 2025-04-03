@@ -16,11 +16,12 @@ let
 
   gpgSshProgram = {
     "darwin" = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-    "linux" =
+    "linux" = lib.mkIf (desktop || wslhost) (
       if wslhost then
         "/mnt/c/Users/Myuu/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
       else
-        "${pkgs._1password-gui}/share/1password/op-ssh-sign";
+        "${pkgs._1password-gui}/share/1password/op-ssh-sign"
+    );
   };
 
   gpgSigner = {
