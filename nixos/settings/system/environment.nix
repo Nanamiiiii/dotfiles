@@ -9,6 +9,10 @@
       git
       curl
       bash
+      man-pages
+      man-pages-posix
     ];
   };
+
+  documentation.dev.enable = true;
 }

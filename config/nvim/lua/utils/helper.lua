@@ -15,4 +15,20 @@ helper["os"] = function()
     return vim.loop.os_uname().sysname
 end
 
+-- Get binary path
+helper["binary_path"] = function(cmd)
+    local check = io.popen("command -v " .. cmd)
+    if check ~= nil then
+        local check_out = check:read("*a")
+        local code = check:close()
+        if code == true then
+            return string.gsub(check_out, "\n$", "")
+        else
+            return nil
+        end
+    else
+        return nil
+    end
+end
+
 return helper

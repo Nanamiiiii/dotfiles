@@ -39,16 +39,8 @@ let
       user = "nanami";
       port = 22;
     };
-  };
-
-  ngtHosts = {
-    "konomi" = {
-      hostname = "192.168.1.10";
-      user = "nanami";
-      port = 22;
-    };
-    "konomi-wg" = {
-      hostname = "10.100.27.4";
+    "shelly" = {
+      hostname = "172.16.1.2";
       user = "nanami";
       port = 22;
     };
@@ -59,7 +51,7 @@ in
     enable = true;
     forwardAgent = true;
     serverAliveInterval = 60;
-    matchBlocks = cloudHosts // tyoHosts // ngtHosts;
+    matchBlocks = cloudHosts // tyoHosts;
     includes = [
       "${config.home.homeDirectory}/.ssh/conf.d/lab.conf"
     ];

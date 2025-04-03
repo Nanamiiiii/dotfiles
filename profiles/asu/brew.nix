@@ -3,14 +3,25 @@
   # Host specific homebrew formula/casks
   homebrew = {
     brews = [ ];
+
     casks = [
-      # Media Apps
-      "spotify"
       "plex"
       "plexamp"
-      "PlayCover/playcover/playcover-community"
+      "skim"
+      "obsidian"
+      "discord"
+      "betterdiscord-installer"
+      "spotify"
+      "zotero"
+      "wireshark"
+      "thunderbird"
+      "balenaetcher"
+      "grammarly-desktop"
     ];
-    masApps = { };
+
+    masApps = {
+      Skitch = 425955336;
+    };
 
     taps = [
       "PlayCover/playcover"

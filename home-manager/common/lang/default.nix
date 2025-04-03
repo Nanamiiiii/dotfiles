@@ -24,7 +24,8 @@ let
 
   tsjsTools = with pkgs; [
     nodejs_22
-    deno
+    # to avoid denops crashing
+    pkgs-stable.deno
   ];
 
   rubyTools = with pkgs; [ ruby ];
@@ -63,7 +64,9 @@ let
   ];
 
   dotnetTools = with pkgs; [
-    dotnet-sdk
+    dotnet-sdk_9
+    dotnet-runtime_9
+    fsautocomplete
   ];
 in
 {

@@ -26,7 +26,7 @@ in
       "XDG_SESSION_DESKTOP,Hyprland"
       "XDG_CURRENT_DESKTOP,Hyprland"
       "GDK_SCALE,1"
-      "NIXOS_OZONE_WL,1"
+      #"NIXOS_OZONE_WL,1"
     ];
 
     # Exec Once
@@ -61,6 +61,7 @@ in
       "float, class:(firefox), initialTitle:^(Picture-in-Picture)$"
       "float, class:(zen-beta), initialTitle:^(Picture-in-Picture)$"
       "float, title:^(Copying — Dolphin)$"
+      "float, title:^(Mount)$"
       "opaque, class:^(discord)$"
       "opaque, class:^(Slack)$"
       "opaque, class:^(zoom)$"

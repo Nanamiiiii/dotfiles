@@ -8,7 +8,9 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
-config.enable_wayland = false
+-- Graphics
+config.enable_wayland = true
+config.front_end = "WebGpu"
 
 -- TERM
 config.term = "xterm-256color"
@@ -29,7 +31,7 @@ end
 -- Hostname
 local hostname = ""
 if is_linux then
-    local handle = io.popen("uname -m")
+    local handle = io.popen("uname -n")
     if handle ~= nil then
         hostname = string.gsub(handle:read("a"), "[\n\r]", "")
         handle:close()
@@ -40,16 +42,18 @@ end
 local de_name = ""
 local wm_name = ""
 if is_linux then
-    de_name = os.getenv("XDG_CURRENT_DESKTOP")
+    de_name = os.getenv("XDG_CURRENT_DESKTOP") or ""
 elseif is_macos then
     de_name = "aqua"
     local handle = io.popen('/bin/ps -e | grep -o -e "[y]abai" | uniq')
-    local result = string.gsub(handle:read("a"), "[\n\r]", "")
-    handle:close()
-    if result == "yabai" then
-        wm_name = "yabai"
-    else
-        wm_name = "quartz"
+    if handle ~= nil then
+        local result = string.gsub(handle:read("a"), "[\n\r]", "")
+        handle:close()
+        if result == "yabai" then
+            wm_name = "yabai"
+        else
+            wm_name = "quartz"
+        end
     end
 end
 
@@ -517,5 +521,10 @@ if is_windows then
         end
     end
 end
+
+-- Fix for BrokenPipe on Wayland w/ NVIDIA
+--if hostname == "mafu" then
+--    config.enable_wayland = false
+--end
 
 return config

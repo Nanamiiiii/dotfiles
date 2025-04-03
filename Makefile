@@ -40,12 +40,12 @@ ifeq ($(SYSTEM), x86_64-linux)
 # nixos (build only)
 .PHONY: nixos-build-%
 nixos-build-%:    
-	@$(NIX_CMD) build ".#nixosConfigurations."${@:nixos-build-%=%}".config.system.build.toplevel" --verbose --show-trace --no-link
+	@$(NIX_CMD) build ".#nixosConfigurations."${@:nixos-build-%=%}".config.system.build.toplevel" --verbose --show-trace --no-link --extra-experimental-features nix-command --extra-experimental-features flakes
 
 # nixos
 .PHONY: nixos-%
 nixos-%:
-	@sudo $(NIXOS_REBUILD) switch --flake ".#"${@:nixos-%=%}
+	@sudo $(NIXOS_REBUILD) switch --flake ".#"${@:nixos-%=%} 
 
 endif
 
@@ -106,7 +106,7 @@ sheldon-install:
 # Install aqua
 .PHONY: aqua-install
 aqua-install:
-	curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.1.0/aqua-installer | bash
+	curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.1.1/aqua-installer | bash
 
 # Symlink to sheldon configurations
 .PHONY: sheldon-link

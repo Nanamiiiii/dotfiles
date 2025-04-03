@@ -16,6 +16,7 @@
       vivaldi
       krita
       pinta
+      libreoffice-qt6-fresh
     ]
     ++ (with kdePackages; [
       ark

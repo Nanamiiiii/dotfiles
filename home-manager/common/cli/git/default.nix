@@ -7,9 +7,11 @@
   ...
 }:
 let
+  baseSystem = builtins.elemAt (builtins.split "-" pkgs.system) 2;
+
   signingKey = {
-    sshKeyFingerprint = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFDjjJaYz3a6f6QRWh/NK7U3o6Pj1fWKj7hc1VSW8rde";
-    gpgKeyFingerprint = "E79A0A2575F66DA2";
+    "ssh" = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFDjjJaYz3a6f6QRWh/NK7U3o6Pj1fWKj7hc1VSW8rde";
+    "openpgp" = "E79A0A2575F66DA2";
   };
 
   gpgSshProgram = {
@@ -22,7 +24,10 @@ let
     );
   };
 
-  baseSystem = builtins.elemAt (builtins.split "-" pkgs.system) 2;
+  gpgSigner = {
+    "ssh" = gpgSshProgram."${baseSystem}";
+    "openpgp" = lib.getExe config.programs.gpg.package;
+  };
 in
 {
   programs.git = {
@@ -30,18 +35,13 @@ in
     userName = "Akihiro Saiki";
     userEmail = "sk@myuu.dev";
     signing = {
-      # On desktop environment, use ssh key from password manager.
-      # On headless environment, use gpg key.
-      # FIXME: How to deploy gpg key?
-      key = if desktop || wslhost then signingKey.sshKeyFingerprint else signingKey.gpgKeyFingerprint;
+      format = if desktop || wslhost then "ssh" else "openpgp";
+      key = signingKey."${config.programs.git.signing.format}";
+      signer = gpgSigner."${config.programs.git.signing.format}";
+      signByDefault = true;
     };
     extraConfig = {
-      gpg = {
-        format = if desktop || wslhost then "ssh" else "openpgp";
-        ssh.program = gpgSshProgram."${baseSystem}";
-      };
       ghq.root = "~/src";
-      commit.gpgSign = true;
     };
   };
 }

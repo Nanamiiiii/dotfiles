@@ -5,6 +5,11 @@
   extraWestonConfig ? null,
   ...
 }:
+let
+  sddm-astronaut-theme = pkgs.callPackage ../../../packages/sddm-astronaut.nix {
+    theme = "hyprland_kath";
+  };
+in
 {
   services.displayManager.sddm =
     if extraWestonConfig != null then
@@ -15,24 +20,47 @@
           enable = true;
           compositorCommand = "${lib.getExe pkgs.weston} --shell=kiosk -c ${extraWestonConfig}";
         };
-        theme = "catppuccin-macchiato";
+        #theme = "catppuccin-macchiato";
+        theme = "sddm-astronaut-theme";
+        settings = {
+          General = {
+            InputMethod = "qtvirtualkeyboard";
+          };
+        };
+        extraPackages = with pkgs; [
+          kdePackages.qtsvg
+          kdePackages.qtmultimedia
+          kdePackages.qtvirtualkeyboard
+        ];
       }
     else
       {
         enable = true;
         package = pkgs.kdePackages.sddm;
         wayland = {
-          enable = true;
+          enable = false;
         };
-        theme = "catppuccin-macchiato";
+        #theme = "catppuccin-macchiato";
+        theme = "sddm-astronaut-theme";
+        settings = {
+          General = {
+            InputMethod = "qtvirtualkeyboard";
+          };
+        };
+        extraPackages = with pkgs; [
+          kdePackages.qtsvg
+          kdePackages.qtmultimedia
+          kdePackages.qtvirtualkeyboard
+        ];
       };
 
-  environment.systemPackages = with pkgs; [
-    (pkgs.catppuccin-sddm.override {
-      flavor = "macchiato";
-      font = "IBM Plex Sans JP";
-      fontSize = "14";
-    })
+  environment.systemPackages = [
+    #(pkgs.catppuccin-sddm.override {
+    #  flavor = "macchiato";
+    #  font = "IBM Plex Sans JP";
+    #  fontSize = "14";
+    #})
+    sddm-astronaut-theme
   ];
 
   # Setup Avatar

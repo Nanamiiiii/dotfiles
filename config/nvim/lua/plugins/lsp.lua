@@ -1,5 +1,7 @@
 -- plugins/lsp.lua
 
+local h = require("utils.helper")
+
 local lsp_setup = function()
     local nvim_lsp = require("lspconfig")
     local on_attach = function(client, bufnr)
@@ -20,8 +22,8 @@ local lsp_setup = function()
         buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
         buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
         buf_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-        buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-        buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+        buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.jump({count = -1, float=true})<CR>", opts)
+        buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.jump({count = 1, float=true})<CR>", opts)
         buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
         buf_set_keymap("n", "gf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
         -- Set autocommands conditional on server_capabilities
@@ -42,16 +44,16 @@ local lsp_setup = function()
         end
     end
 
-    local signs = {
-        { name = "DiagnosticSignError", text = "" },
-        { name = "DiagnosticSignWarn", text = "" },
-        { name = "DiagnosticSignHint", text = "" },
-        { name = "DiagnosticSignInfo", text = "" },
-    }
-
-    for _, sign in ipairs(signs) do
-        vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-    end
+    vim.diagnostic.config({
+        signs = {
+            text = {
+                [vim.diagnostic.severity.ERROR] = "",
+                [vim.diagnostic.severity.WARN] = "",
+                [vim.diagnostic.severity.INFO] = "",
+                [vim.diagnostic.severity.HINT] = "",
+            },
+        },
+    })
 
     local handlers = {
         ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -66,7 +68,9 @@ local lsp_setup = function()
     }
 
     require("mason").setup()
-    require("mason-lspconfig").setup()
+    require("mason-lspconfig").setup({
+        ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "cmake" },
+    })
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     require("mason-lspconfig").setup_handlers({
@@ -75,6 +79,34 @@ local lsp_setup = function()
                 on_attach = on_attach,
                 capabilities = capabilities,
                 handlers = handlers,
+            })
+        end,
+        ["clangd"] = function()
+            -- Get cross compiler path for query driver
+            local cross_compilers = {
+                "riscv64-unknown-linux-gnu-gcc",
+                "riscv64-unknown-linux-gnu-g++",
+            }
+            local cross_compilers_path = {}
+            for _, val in ipairs(cross_compilers) do
+                local res = h.binary_path(val)
+                if res ~= nil then
+                    table.insert(cross_compilers_path, res)
+                end
+            end
+
+            -- consruct clangd command args
+            local clangd_cmd = { "clangd" }
+            if next(cross_compilers_path) ~= nil then
+                local query_drivers = table.concat(cross_compilers_path, ",")
+                table.insert(clangd_cmd, "--query-driver=" .. query_drivers)
+            end
+
+            require("lspconfig").clangd.setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
+                handlers = handlers,
+                cmd = clangd_cmd,
             })
         end,
     })
@@ -132,5 +164,8 @@ return {
                 mode = "n",
             },
         },
+    },
+    {
+        "ionide/Ionide-vim",
     },
 }

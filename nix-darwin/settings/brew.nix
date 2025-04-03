@@ -1,15 +1,21 @@
 { ... }:
 {
   homebrew = {
+    enable = true;
+
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "uninstall";
+    };
+
     brews = [
-      "mas"
       "displayplacer"
       "pam-reattach"
+      "pinentry"
     ];
 
     casks = [
       "1password" # 1password nixpkg is broken now
-      "zen-browser" # Currently not packaged in nixpkgs
       "macfuse"
       "istat-menus"
       "jordanbaird-ice"
@@ -19,6 +25,14 @@
       "notchnook"
       "raycast"
       "nikitabobko/tap/aerospace"
+      "microsoft-edge"
+      "wezterm"
+      "xpipe-io/tap/xpipe"
+    ];
+
+    taps = [
+      "nikitabobko/tap"
+      "xpipe-io/tap"
     ];
 
     masApps = {

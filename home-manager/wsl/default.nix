@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  imports = [ ./wslg.nix ];
+
   home.packages = with pkgs; [ wslu ];
 
   programs.git = {

@@ -2,6 +2,7 @@
   pkgs,
   config,
   hostname,
+  username,
   ...
 }:
 let
@@ -30,6 +31,7 @@ let
         "$DENO_INSTALL/bin"(N-/)
         "$GOPATH/bin"(N-/)
         "$HOME/.local/go/bin"(N-/)
+        "$HOME/.dotnet/tools"(N-/)
         "$path[@]"
     )
     fpath=(
@@ -46,18 +48,28 @@ let
       export MANPATH=/opt/local/share/man:$MANPATH
       path=(
           "/opt/local/bin:/opt/local/sbin"
-          "/Users/nanami/Library/Application Support/JetBrains/Toolbox/scripts"
+          "/Users/${username}/Library/Application Support/JetBrains/Toolbox/scripts"
           "$path[@]"
       )
       fpath=(
           "$(brew --prefix)/share/zsh/site-functions"
           "$fpath[@]"
       )
+
+      # 1Password SSH Agent
+      export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+    '';
+    yuki = ''
+      export SSH_AUTH_SOCK=~/.1password/agent.sock
+    '';
+    mafu = ''
+      export SSH_AUTH_SOCK=~/.1password/agent.sock
     '';
     xanadu = ''
       # RISC-V Toolchain
       path=(
-          "$HOME/.rv/riscv-toolchain/bin"
+          "/opt/riscv/toolchain/bin"(N-/)
+          "$HOME/.rv/riscv-toolchain/bin"(N-/)
           "$path[@]"
       )
     '';
@@ -140,15 +152,9 @@ let
     rika = ''
       alias ssh="/mnt/c/Windows/System32/OpenSSH/ssh.exe"
     '';
-    yuki = ''
-      SSH_AUTH_SOCK=~/.1password/agent.sock
-    '';
     asu = ''
       # sudo prompt
       export SUDO_PROMPT="[sudo] %p's password: "
-
-      # 1Password SSH Agent
-      SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
     '';
     xanadu = ''
       export GPG_TTY=$(tty)

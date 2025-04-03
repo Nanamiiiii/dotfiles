@@ -130,6 +130,7 @@ in
     imagemagick
     nkf
     mosh
+    felix-fm
   ];
 
   home.file = configFiles.homeScripts;

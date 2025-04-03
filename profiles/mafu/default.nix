@@ -53,16 +53,16 @@ let
     keymap_options=ctrl:nocaps
 
     [output]
+    name=DP-1
+    mode=off
+
+    [output]
     name=DP-2
     mode=off
 
     [output]
     name=DP-3
     mode=3840x2160
-
-    [output]
-    name=DP-4
-    mode=off
   '';
 
   displaySettings = [

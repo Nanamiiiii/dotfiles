@@ -38,7 +38,7 @@
     };
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
+      url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "";
       inputs.flake-parts.follows = "flake-parts";
@@ -126,19 +126,19 @@
         formatting = (treefmt-nix.lib.evalModule pkgs treefmtConfig).config.build.check self;
       });
 
-      packages = eachSystem (
-        pkgs:
-        let
-          cachix-deploy-lib = cachix-deploy-flake.lib pkgs;
-        in
-        {
-          cachix-deploy = cachix-deploy-lib.spec {
-            agents = {
-              asu = self.darwinConfigurations.asu.config.system.build.toplevel;
-            };
-          };
-        }
-      );
+      #packages = eachSystem (
+      #  pkgs:
+      #  let
+      #    cachix-deploy-lib = cachix-deploy-flake.lib pkgs;
+      #  in
+      #  {
+      #    cachix-deploy = cachix-deploy-lib.spec {
+      #      agents = {
+      #        asu = self.darwinConfigurations.asu.config.system.build.toplevel;
+      #      };
+      #    };
+      #  }
+      #);
 
       nixosConfigurations =
         let
@@ -181,7 +181,7 @@
           # Workstation
           mafu = nixosSystem (nixosSystemArgs {
             profile = "mafu";
-            username = "nanami";
+            username = "myuu";
             system = "x86_64-linux";
             desktop = true;
           });
@@ -189,7 +189,7 @@
           # WSL on mafu
           rika = nixosSystem (nixWslArgs {
             profile = "rika";
-            username = "nanami";
+            username = "myuu";
             system = "x86_64-linux";
             desktop = false;
           });
@@ -197,9 +197,17 @@
           # Laptop (Thinkpad X13 Gen5)
           yuki = nixosSystem (nixosSystemArgs {
             profile = "yuki";
-            username = "nanami";
+            username = "myuu";
             system = "x86_64-linux";
             desktop = true;
+          });
+
+          # WSL on yuki
+          saki = nixosSystem (nixWslArgs {
+            profile = "saki";
+            username = "myuu";
+            system = "x86_64-linux";
+            desktop = false;
           });
         };
 
@@ -225,7 +233,7 @@
           # MacBook Pro 2021
           asu = darwinSystem (darwinSystemArgs {
             profile = "asu";
-            username = "nanami";
+            username = "myuu";
             system = "aarch64-darwin";
           });
         };
@@ -259,7 +267,7 @@
           xanadu = homeManagerConfiguration (homeManagerArgs {
             profile = "xanadu";
             hostname = "xanadu";
-            username = "nanami";
+            username = "myuu";
             system = "x86_64-linux";
             desktop = false;
             wslhost = false;

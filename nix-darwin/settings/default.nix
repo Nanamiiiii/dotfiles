@@ -9,6 +9,7 @@
     ./packages.nix
     ./sops.nix
     inputs.sops-nix.darwinModules.sops
+    ./brew.nix
   ];
 
   nix.settings.trusted-users = [ username ];
@@ -20,8 +21,6 @@
   nixpkgs.config.allowUnfree = true;
 
   programs.zsh.enable = true;
-
-  services.nix-daemon.enable = true;
 
   environment.variables = {
     EDITOR = "nvim";
@@ -47,6 +46,8 @@
   };
 
   time.timeZone = "Asia/Tokyo";
+
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   system.stateVersion = 5;
 }
