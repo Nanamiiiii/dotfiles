@@ -54,6 +54,7 @@ in
     matchBlocks = cloudHosts // tyoHosts;
     includes = [
       "${config.home.homeDirectory}/.ssh/conf.d/lab.conf"
+      "${config.home.homeDirectory}/.ssh/conf.d/apal.conf"
     ];
   };
 }
