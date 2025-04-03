@@ -13,6 +13,7 @@ let
     hyprlock
     hypridle
     hyprpaper
+    hyprsysteminfo
     wofi
     gpu-screen-recorder
     grimblast
