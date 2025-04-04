@@ -16,6 +16,7 @@ let
     betterdiscordctl
     (pkgs.callPackage ../../packages/xpipe.nix { })
     zathura
+    termius
   ];
 
   cliPkgs = with pkgs; [
