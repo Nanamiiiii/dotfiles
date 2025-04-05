@@ -24,8 +24,9 @@
     ];
 
     monitor = [
-      "desc:BOE 0x0B86,preferred,auto,1"
-      "desc:Dell Inc. DELL U2720QM CV5MY13,3840x2160@60,auto-left,1.25"
+      "desc:BOE 0x0B86,preferred,auto,1" # built-in
+      "desc:Dell Inc. DELL U2720QM CV5MY13,3840x2160@60,auto-left,1" # Home 4K Sub
+      "desc:BNQ BenQ GW2760 42G02517019,1920x1080@60,auto-left,1" # Lab FHD
       ",preferred,auto,1"
     ];
 

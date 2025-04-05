@@ -59,7 +59,8 @@
 
   desktopThemes = with pkgs; [
     catppuccin-papirus-folders
-    catppuccin-cursors.mochaBlue
+    volantes-cursors
+    #catppuccin-cursors.mochaBlue
     (catppuccin-kvantum.override {
       accent = "blue";
       variant = "mocha";

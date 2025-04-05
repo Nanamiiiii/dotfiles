@@ -38,7 +38,6 @@ let
 
   miscTools = with pkgs; [
     microsoft-edge
-    zen-browser
     playerctl
     emote
     firefox-devedition

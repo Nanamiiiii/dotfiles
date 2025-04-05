@@ -7,7 +7,8 @@
 let
   gtkThemeName = "catppuccin-mocha-blue-standard+normal,rimless";
   gtkIconTheme = "Papirus-Dark";
-  gtkCursorTheme = "catppuccin-mocha-blue-cursors";
+  #gtkCursorTheme = "catppuccin-mocha-blue-cursors";
+  gtkCursorTheme = "volantes_cursors";
   gtkCatppuccin = pkgs.catppuccin-gtk.override {
     accents = [ "blue" ];
     variant = "mocha";
@@ -27,7 +28,8 @@ in
     with pkgs;
     [
       catppuccin-papirus-folders
-      catppuccin-cursors.mochaBlue
+      volantes-cursors
+      #catppuccin-cursors.mochaBlue
       (catppuccin-kvantum.override {
         accent = "blue";
         variant = "mocha";
