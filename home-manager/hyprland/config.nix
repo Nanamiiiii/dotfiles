@@ -77,8 +77,8 @@ in
     general = {
       gaps_in = 5;
       gaps_out = 5;
-      border_size = 2;
-      "col.active_border" = "rgba(7287fdee) rgba(04a5e5ee) 45deg";
+      border_size = 1;
+      "col.active_border" = "rgba(7287fdee)";
       "col.inactive_border" = "rgba(595959aa)";
       resize_on_border = true;
       allow_tearing = false;
@@ -86,7 +86,7 @@ in
     };
 
     decoration = {
-      rounding = 10;
+      rounding = 5;
       active_opacity = 1.0;
       inactive_opacity = 0.9;
       shadow = {
