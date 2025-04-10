@@ -21,7 +21,7 @@ let
     gnutar
     gnused
     coreutils-prefixed # g-prefixed coreutils to avoid duplication
-    wireguard-tools
+    #wireguard-tools # broken now
     pngpaste
   ];
 
