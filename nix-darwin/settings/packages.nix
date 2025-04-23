@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    gcc
-    libclang
-  ];
+  #environment.systemPackages = with pkgs; [
+  #  gcc
+  #  libclang
+  #];
 }

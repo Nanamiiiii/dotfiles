@@ -1,6 +1,8 @@
 after-login-command = []
 
-after-startup-command = []
+after-startup-command = [
+    'exec-and-forget borders'
+]
 
 start-at-login = true
 

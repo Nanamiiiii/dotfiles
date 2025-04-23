@@ -32,7 +32,7 @@ in
 {
   home.packages = cliUtilities ++ desktopUtilities;
 
-  xdg.configFile = with configFiles.darwinConfigs; aerospace // raycast;
+  xdg.configFile = with configFiles.darwinConfigs; aerospace // raycast // borders;
 
   programs = {
     ssh = {

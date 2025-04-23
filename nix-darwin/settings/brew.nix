@@ -12,6 +12,7 @@
       "displayplacer"
       "pam-reattach"
       "pinentry"
+      "FelixKratz/formulae/borders"
     ];
 
     casks = [
@@ -33,6 +34,7 @@
     taps = [
       "nikitabobko/tap"
       "xpipe-io/tap"
+      "FelixKratz/formulae"
     ];
 
     masApps = {

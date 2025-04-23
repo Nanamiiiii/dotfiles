@@ -231,24 +231,30 @@ in
       };
     };
 
-    yabai = {
-      "yabai" = {
-        source = symlink "${configDir}/yabai";
-        recursive = true;
-      };
-    };
+    #yabai = {
+    #  "yabai" = {
+    #    source = symlink "${configDir}/yabai";
+    #    recursive = true;
+    #  };
+    #};
 
-    skhd = {
-      "skhd" = {
-        source = symlink "${configDir}/skhd";
-        recursive = true;
-      };
-    };
+    #skhd = {
+    #  "skhd" = {
+    #    source = symlink "${configDir}/skhd";
+    #    recursive = true;
+    #  };
+    #};
 
     raycast = {
       "raycast-displayplacer" = {
         source = symlink "${configDir}/raycast-displayplacer";
         recursive = true;
+      };
+    };
+
+    borders = {
+      "borders/bordersrc" = {
+        source = symlink "${configDir}/borders/bordersrc";
       };
     };
   };
