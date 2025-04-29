@@ -191,7 +191,7 @@ in
 
       profileExtra = zprofileExt + (hostZprofileExt.${hostname} or "");
 
-      initExtra = zshrcExt + (hostZshrcExt.${hostname} or "");
+      initContent = zshrcExt + (hostZshrcExt.${hostname} or "");
 
       plugins = [
         {
