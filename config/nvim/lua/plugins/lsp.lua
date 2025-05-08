@@ -70,45 +70,37 @@ local lsp_setup = function()
     require("mason").setup()
     require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "cmake" },
+        automatic_enable = true,
     })
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    require("mason-lspconfig").setup_handlers({
-        function(server_name)
-            require("lspconfig")[server_name].setup({
-                on_attach = on_attach,
-                capabilities = capabilities,
-                handlers = handlers,
-            })
-        end,
-        ["clangd"] = function()
-            -- Get cross compiler path for query driver
-            local cross_compilers = {
-                "riscv64-unknown-linux-gnu-gcc",
-                "riscv64-unknown-linux-gnu-g++",
-            }
-            local cross_compilers_path = {}
-            for _, val in ipairs(cross_compilers) do
-                local res = h.binary_path(val)
-                if res ~= nil then
-                    table.insert(cross_compilers_path, res)
-                end
-            end
 
-            -- consruct clangd command args
-            local clangd_cmd = { "clangd" }
-            if next(cross_compilers_path) ~= nil then
-                local query_drivers = table.concat(cross_compilers_path, ",")
-                table.insert(clangd_cmd, "--query-driver=" .. query_drivers)
-            end
+    -- Get cross compiler path for query driver
+    local cross_compilers = {
+        "riscv64-unknown-linux-gnu-gcc",
+        "riscv64-unknown-linux-gnu-g++",
+    }
 
-            require("lspconfig").clangd.setup({
-                on_attach = on_attach,
-                capabilities = capabilities,
-                handlers = handlers,
-                cmd = clangd_cmd,
-            })
-        end,
+    local cross_compilers_path = {}
+    for _, val in ipairs(cross_compilers) do
+        local res = h.binary_path(val)
+        if res ~= nil then
+            table.insert(cross_compilers_path, res)
+        end
+    end
+
+    -- consruct clangd command args
+    local clangd_cmd = { "clangd" }
+    if next(cross_compilers_path) ~= nil then
+        local query_drivers = table.concat(cross_compilers_path, ",")
+        table.insert(clangd_cmd, "--query-driver=" .. query_drivers)
+    end
+
+    vim.lsp.config("clangd", {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        handlers = handlers,
+        cmd = clangd_cmd,
     })
 end
 
