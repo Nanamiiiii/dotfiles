@@ -51,6 +51,14 @@ return {
         "folke/noice.nvim",
         event = "VeryLazy",
         opts = {
+            views = {
+                popup = {
+                    win_options = {
+                        winblend = 10,
+                        winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+                    },
+                },
+            },
             lsp = {
                 override = {
                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,

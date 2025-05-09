@@ -131,5 +131,6 @@ return {
         },
         opts = opts,
         config = true,
+        lazy = false,
     },
 }
