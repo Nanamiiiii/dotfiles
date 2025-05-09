@@ -33,4 +33,7 @@
 
   # lazygit
   lg = "lazygit";
+
+  # tclock AoE
+  aoe = "tclock -c cyan clock -z \"Etc/GMT-12\"";
 }

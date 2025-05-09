@@ -20,6 +20,8 @@ let
       recursive = true;
     };
   };
+
+  clock-tui = pkgs.callPackage ../../../packages/clock-tui.nix { };
 in
 {
   imports = [
@@ -103,34 +105,37 @@ in
     };
   };
 
-  home.packages = with pkgs; [
-    _1password
-    eza
-    procs
-    ripgrep
-    jq
-    bat
-    fd
-    dust
-    fzf
-    duf
-    ghq
-    tree-sitter
-    ranger
-    curl
-    wget
-    sl
-    openssl
-    kdash
-    kubernetes-helm
-    kubectl
-    w3m
-    nmap
-    imagemagick
-    nkf
-    mosh
-    felix-fm
-  ];
+  home.packages =
+    with pkgs;
+    [
+      _1password
+      eza
+      procs
+      ripgrep
+      jq
+      bat
+      fd
+      dust
+      fzf
+      duf
+      ghq
+      tree-sitter
+      ranger
+      curl
+      wget
+      sl
+      openssl
+      kdash
+      kubernetes-helm
+      kubectl
+      w3m
+      nmap
+      imagemagick
+      nkf
+      mosh
+      felix-fm
+    ]
+    ++ [ clock-tui ];
 
   home.file = configFiles.homeScripts;
 
