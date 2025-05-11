@@ -85,8 +85,6 @@ jobs:
         run: |
           printf "run\tprivate/var/run\n" | sudo tee -a /etc/synthetic.conf
           /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t || true
-      - name: GitHub cache setup
-        uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Build
         run: |
           make RUNS_ENV=ci ci-build
@@ -107,8 +105,6 @@ jobs:
 #        with:
 #          name: nanamiiiii
 #          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-#      - name: GitHub cache setup
-#        uses: DeterminateSystems/magic-nix-cache-action@main
 #      - name: Deploy
 #        env:
 #          CACHIX_ACTIVATE_TOKEN: ${{ secrets.CACHIX_ACTIVATE_TOKEN }}
