@@ -44,4 +44,6 @@ in
       ghq.root = "~/src";
     };
   };
+
+  home.packages = with pkgs; [ lazygit ];
 }
