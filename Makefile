@@ -90,9 +90,13 @@ fmt:
 	@$(NIX_CMD) fmt
 
 # Garbage collection
-.PHONY: gc
+.PHONY: clean-store
 clean-store:
 	@$(NIX_STORE_CMD) --gc
+
+.PHONY: clean-oldgen
+clean-oldgen:
+	nix-collect-garbage -d
 
 # Setup Legacy
 .PHONY: legacy-install
