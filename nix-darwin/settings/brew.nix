@@ -29,6 +29,7 @@
       "microsoft-edge"
       "wezterm"
       "xpipe-io/tap/xpipe"
+      "bartender"
     ];
 
     taps = [

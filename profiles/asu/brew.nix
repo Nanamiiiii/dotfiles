@@ -14,17 +14,13 @@
       "spotify"
       "zotero"
       "wireshark"
-      "thunderbird"
       "balenaetcher"
       "grammarly-desktop"
+      "vlc"
     ];
 
     masApps = {
       Skitch = 425955336;
     };
-
-    taps = [
-      "PlayCover/playcover"
-    ];
   };
 }
