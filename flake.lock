@@ -1036,11 +1036,11 @@
       },
       "locked": {
         "dir": "nix",
-        "lastModified": 1747573338,
-        "narHash": "sha256-L5pVi8lvf916b/eQh4iIOK53kz/hgBmiNZSeFImMHHo=",
+        "lastModified": 1748097989,
+        "narHash": "sha256-5i53CqWRUyQZpEWLi848GUon7CcZIM++1k/EiKcd/Qg=",
         "owner": "wez",
         "repo": "wezterm",
-        "rev": "5663e749948df3ed3c2d8ee0bfea6c85226310d9",
+        "rev": "f150ade689a0daae2658c01e3ae91227a1d1fc74",
         "type": "github"
       },
       "original": {
