@@ -12,11 +12,13 @@
     ./brew.nix
   ];
 
-  nix.settings.trusted-users = [ username ];
+  nix = {
+    settings.trusted-users = [ username ];
 
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   nixpkgs.config.allowUnfree = true;
 
@@ -49,5 +51,8 @@
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  system.stateVersion = 5;
+  system = {
+    primaryUser = username;
+    stateVersion = 5;
+  };
 }
