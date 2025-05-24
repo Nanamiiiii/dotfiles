@@ -14,9 +14,9 @@ let
     slack
     thunderbird
     betterdiscordctl
-    (pkgs.callPackage ../../packages/xpipe.nix { })
     zathura
     termius
+    xpipe
   ];
 
   cliPkgs = with pkgs; [

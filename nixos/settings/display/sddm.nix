@@ -5,11 +5,6 @@
   extraWestonConfig ? null,
   ...
 }:
-let
-  sddm-astronaut-theme = pkgs.callPackage ../../../packages/sddm-astronaut.nix {
-    theme = "hyprland_kath";
-  };
-in
 {
   services.displayManager.sddm =
     if extraWestonConfig != null then
@@ -60,7 +55,9 @@ in
     #  font = "IBM Plex Sans JP";
     #  fontSize = "14";
     #})
-    sddm-astronaut-theme
+    (pkgs.sddm-astronaut.override {
+      theme = "hyprland_kath";
+    })
   ];
 
   # Setup Avatar

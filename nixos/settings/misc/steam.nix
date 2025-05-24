@@ -7,5 +7,5 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
-  environment.systemPackages = with pkgs; [ proton-ge ];
+  environment.systemPackages = with pkgs; [ proton-ge-bin ];
 }

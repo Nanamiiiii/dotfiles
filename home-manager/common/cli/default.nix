@@ -20,8 +20,6 @@ let
       recursive = true;
     };
   };
-
-  clock-tui = pkgs.callPackage ../../../packages/clock-tui.nix { };
 in
 {
   imports = [

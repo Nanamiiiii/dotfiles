@@ -18,9 +18,7 @@ in
   pkgs = import inputs.nixpkgs {
     inherit system;
     config.allowUnfree = true;
-    overlays = [
-      (import ../overlays/zen-browser.nix { inherit inputs system; })
-    ];
+    overlays = [ inputs.nur.overlays.default ];
   };
   extraSpecialArgs = {
     inherit

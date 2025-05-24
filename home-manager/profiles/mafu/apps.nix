@@ -26,6 +26,6 @@
     ]);
 
   # Proton GE
-  home.file.".steam/root/compatibilitytools.d/${pkgs.proton-ge.version}".source =
-    "${pkgs.proton-ge}/bin";
+  home.file.".steam/root/compatibilitytools.d/${pkgs.proton-ge-bin.version}".source =
+    "${pkgs.proton-ge-bin}/bin";
 }

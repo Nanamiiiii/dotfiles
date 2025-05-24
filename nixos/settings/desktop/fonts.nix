@@ -16,7 +16,7 @@
         ];
       })
       nerd-fonts.symbols-only
-      (pkgs.callPackage ../../../packages/sddm-astronaut.nix {
+      (sddm-astronaut.override {
         theme = "hyprland_kath";
       })
     ];
