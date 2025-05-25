@@ -122,19 +122,19 @@
         formatting = (treefmt-nix.lib.evalModule pkgs treefmtConfig).config.build.check self;
       });
 
-      #packages = eachSystem (
-      #  pkgs:
-      #  let
-      #    cachix-deploy-lib = cachix-deploy-flake.lib pkgs;
-      #  in
-      #  {
-      #    cachix-deploy = cachix-deploy-lib.spec {
-      #      agents = {
-      #        asu = self.darwinConfigurations.asu.config.system.build.toplevel;
-      #      };
-      #    };
-      #  }
-      #);
+      packages = eachSystem (
+        pkgs:
+        let
+          cachix-deploy-lib = cachix-deploy-flake.lib pkgs;
+        in
+        {
+          cachix-deploy = cachix-deploy-lib.spec {
+            agents = {
+              asu = self.darwinConfigurations.asu.config.system.build.toplevel;
+            };
+          };
+        }
+      );
 
       nixosConfigurations =
         let

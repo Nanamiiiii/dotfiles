@@ -55,7 +55,7 @@ ifeq ($(SYSTEM), aarch64-darwin)
 .PHONY: nix-darwin-init-%
 nix-darwin-init-%:
 	@$(NIX_CMD) build ".#darwinConfigurations."${@:nix-darwin-init-%=%}".system" --verbose --show-trace
-	@$(DARWIN_FIRST_BUILD) switch --flake ".#"${@:nix-darwin-init-%=%}
+	@sudo $(DARWIN_FIRST_BUILD) switch --flake ".#"${@:nix-darwin-init-%=%}
 
 # nix-darwin (build only)
 .PHONY: nix-darwin-build-%
@@ -65,7 +65,7 @@ nix-darwin-build-%:
 # nix-darwin
 .PHONY: nix-darwin-%
 nix-darwin-%:
-	@$(DARWIN_REBUILD) switch --flake ".#"${@:nix-darwin-%=%}
+	@sudo $(DARWIN_REBUILD) switch --flake ".#"${@:nix-darwin-%=%}
 
 endif
 

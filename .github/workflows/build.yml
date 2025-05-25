@@ -25,6 +25,13 @@ jobs:
             nixos:
               - flake.lock
               - flake.nix
+              - home-manager/**
+              - '!home-manager/darwin/**'
+              - '!home-manager/profiles/asu/**'
+              - nixos/**
+              - profiles/**
+              - '!profiles/asu/**'
+              - secrets/**
               - '.github/workflows/build.yml'
               - 'Makefile'
             darwin:
@@ -34,7 +41,10 @@ jobs:
               - '!home-manager/linux/**'
               - '!home-manager/hyprland/**'
               - '!home-manager/fcitx5/**'
+              - '!home-manager/profiles/mafu/**'
               - '!home-manager/profiles/rika/**'
+              - '!home-manager/profiles/saki/**'
+              - '!home-manager/profiles/unyonyo/**'
               - '!home-manager/profiles/xanadu/**'
               - '!home-manager/profiles/yuki/**'
               - nix-darwin/**
@@ -90,28 +100,28 @@ jobs:
           make RUNS_ENV=ci ci-build
           df -h
 
-#  cachix-deploy:
-#    runs-on: macos-14
-#    name: Deploy darwin configuration
-#    needs: darwin-build
-#    if: github.ref == 'refs/heads/main'
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v4
-#      - name: Install nix
-#        uses: cachix/install-nix-action@v30
-#      - name: Setup cachix
-#        uses: cachix/cachix-action@v15
-#        with:
-#          name: nanamiiiii
-#          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-#      - name: Deploy
-#        env:
-#          CACHIX_ACTIVATE_TOKEN: ${{ secrets.CACHIX_ACTIVATE_TOKEN }}
-#        run: |
-#          spec=$(nix build ".#cachix-deploy" --accept-flake-config --print-out-paths)
-#          cachix push nanamiiiii "$spec"
-#          cachix deploy activate "$spec" --async
+  cachix-deploy:
+    runs-on: macos-14
+    name: Deploy darwin configuration
+    needs: darwin-build
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install nix
+        uses: cachix/install-nix-action@v31
+      - name: Setup cachix
+        uses: cachix/cachix-action@v16
+        with:
+          name: nanamiiiii
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: Deploy
+        env:
+          CACHIX_ACTIVATE_TOKEN: ${{ secrets.CACHIX_ACTIVATE_TOKEN }}
+        run: |
+          spec=$(nix build ".#cachix-deploy" --accept-flake-config --print-out-paths)
+          cachix push nanamiiiii "$spec"
+          cachix deploy activate "$spec" --async
 
   aqua-checksum-update:
     needs: changed-files
