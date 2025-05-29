@@ -1,0 +1,11 @@
+#!/bin/bash
+
+OS=$(uname -s)
+
+if [ "$OS" != "Darwin" ]; then
+    echo "ERROR: only for darwin"
+    exit 1
+fi
+
+sudo launchctl kickstart -k system/org.nixos.cachix-agent
+
