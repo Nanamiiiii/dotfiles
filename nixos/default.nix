@@ -27,6 +27,7 @@ rec {
   modules =
     let
       inherit (inputs.home-manager.nixosModules) home-manager;
+      inherit (inputs.disko.nixosModules) disko;
       homeConfig = import ../home-manager {
         inherit
           profile
@@ -38,6 +39,7 @@ rec {
     in
     [
       ../profiles/${profile}
+      disko
       home-manager
       homeConfig
       (import ../overlays { inherit inputs system; })

@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nur = {
@@ -81,6 +81,11 @@
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "";
+    };
+
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -204,6 +209,14 @@
             username = "myuu";
             system = "x86_64-linux";
             desktop = false;
+          });
+
+          # Lab Workstation
+          nacho = nixosSystem (nixosSystemArgs {
+            profile = "nacho";
+            username = "myuu";
+            system = "x86_64-linux";
+            desktop = true;
           });
         };
 
