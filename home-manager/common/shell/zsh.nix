@@ -65,6 +65,9 @@ let
     mafu = ''
       export SSH_AUTH_SOCK=~/.1password/agent.sock
     '';
+    nacho = ''
+      export SSH_AUTH_SOCK=~/.1password/agent.sock
+    '';
     xanadu = ''
       # RISC-V Toolchain
       path=(

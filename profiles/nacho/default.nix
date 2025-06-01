@@ -57,6 +57,7 @@ let
 
   # Misc
   misc = [
+    ./proxy.nix
     ../../nixos/settings/misc/programs.nix
     ../../nixos/settings/misc/virt.nix
     ../../nixos/settings/misc/cups.nix
