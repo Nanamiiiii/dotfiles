@@ -68,7 +68,7 @@ let
     nacho = ''
       if [ -z "$SSH_CLIENT" ] && [ -n "$SSH_TTY" ]; then
         export SSH_AUTH_SOCK=~/.1password/agent.sock
-      endif
+      fi
     '';
     xanadu = ''
       # RISC-V Toolchain
@@ -167,7 +167,7 @@ let
     nacho = ''
       if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
         export GPG_TTY=$(tty)
-      endif
+      fi
     '';
     unyonyo = ''
       export GPG_TTY=$(tty)

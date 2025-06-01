@@ -3,6 +3,7 @@
   inputs,
   hostname,
   lib,
+  config,
   ...
 }:
 let
