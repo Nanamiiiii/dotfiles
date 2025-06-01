@@ -70,6 +70,7 @@ let
     ../../nixos/settings/misc/cups.nix
     ../../nixos/settings/misc/gvfs.nix
     ../../nixos/settings/misc/1password-ext.nix
+    ../../nixos/settings/misc/ssh.nix
   ];
 in
 {
