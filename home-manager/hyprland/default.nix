@@ -4,6 +4,7 @@
   hostname,
   thermalZone,
   laptop,
+  config,
   ...
 }:
 let
@@ -66,6 +67,14 @@ let
       laptop
       ;
   };
+
+  configFiles = import ../../config {
+    inherit
+      pkgs
+      config
+      hostname
+      ;
+  };
 in
 {
   imports = [
@@ -87,6 +96,8 @@ in
   services.gnome-keyring.enable = true;
 
   home.packages = hyprTools ++ configTools ++ miscTools;
+
+  xdg.configFile."microsoft-edge/Default/HubApps" = configFiles.linuxConfigs.microsoft-edge."HubApps";
 
   xdg.configFile."wofi" = {
     source = ./wofi;

@@ -8,10 +8,6 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
--- Graphics
-config.enable_wayland = true
-config.front_end = "WebGpu"
-
 -- TERM
 config.term = "xterm-256color"
 
@@ -36,6 +32,14 @@ if is_linux then
         hostname = string.gsub(handle:read("a"), "[\n\r]", "")
         handle:close()
     end
+end
+
+-- Graphics
+config.enable_wayland = true
+if hostname == "nacho" then
+    config.front_end = "OpenGL"
+else
+    config.front_end = "WebGpu"
 end
 
 -- Detect desktop environment

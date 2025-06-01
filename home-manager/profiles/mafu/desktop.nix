@@ -17,6 +17,7 @@ in
         pkgs
         inputs
         hostname
+        config
         ;
       thermalZone = 1;
       laptop = false;

@@ -21,7 +21,7 @@
     # Lanzaboote config
     lanzaboote = {
       enable = true;
-      pkiBundle = "/etc/secureboot";
+      pkiBundle = "/var/lib/sbctl";
     };
 
     # Use tmpfs

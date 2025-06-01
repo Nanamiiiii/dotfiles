@@ -3,6 +3,7 @@
   inputs,
   hostname,
   lib,
+  config,
   ...
 }:
 {
@@ -12,6 +13,7 @@
         pkgs
         inputs
         hostname
+        config
         ;
       thermalZone = 6;
       laptop = true;

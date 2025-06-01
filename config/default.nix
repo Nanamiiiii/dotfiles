@@ -220,6 +220,12 @@ in
         source = symlink "${configDir}/networkmanager-dmenu/config_wofi.ini";
       };
     };
+
+    microsoft-edge = {
+      "HubApps" = {
+        source = symlink "${configDir}/microsoft-edge/HubApps";
+      };
+    };
   };
 
   # darwin specific
