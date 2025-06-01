@@ -13,7 +13,6 @@
       spotify
       plexamp
       pkgs-stable.plex-desktop
-      vivaldi
       krita
       pinta
       libreoffice-qt6-fresh
