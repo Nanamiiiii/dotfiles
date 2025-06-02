@@ -15,7 +15,7 @@
         hostname
         config
         ;
-      thermalZone = 1;
+      thermalZone = 6;
       laptop = false;
     })
     ../../hyprland/nvidia.nix
