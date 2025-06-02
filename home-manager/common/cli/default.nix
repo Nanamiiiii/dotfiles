@@ -106,7 +106,7 @@ in
   home.packages =
     with pkgs;
     [
-      _1password
+      _1password-cli
       eza
       procs
       ripgrep
