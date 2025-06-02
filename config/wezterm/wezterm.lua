@@ -36,7 +36,7 @@ end
 
 -- Graphics
 config.enable_wayland = true
-if hostname == "nacho" then
+if hostname == "nacho" or not is_linux then
     config.front_end = "OpenGL"
 else
     config.front_end = "WebGpu"
