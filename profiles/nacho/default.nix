@@ -71,6 +71,7 @@ let
     ../../nixos/settings/misc/gvfs.nix
     ../../nixos/settings/misc/1password-ext.nix
     ../../nixos/settings/misc/ssh.nix
+    ../../nixos/settings/misc/dropbox.nix
   ];
 in
 {
