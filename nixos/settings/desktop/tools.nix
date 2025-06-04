@@ -84,6 +84,7 @@
     autotiling
     wl-clipboard
     cliphist
+    xclip
     wob
     imagemagick
     bluez

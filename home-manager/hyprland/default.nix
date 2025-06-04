@@ -45,6 +45,7 @@ let
     autotiling
     wl-clipboard
     cliphist
+    xclip
     wob
     imagemagick
     bluez
@@ -56,8 +57,9 @@ let
     wev
     gnome-keyring
     seahorse
-    lxqt.pcmanfm-qt
-    lxqt.lxqt-sudo
+    #lxqt.pcmanfm-qt
+    #lxqt.lxqt-sudo
+    nemo-with-extensions
   ];
 
   waybarConfig = import ./waybar {
@@ -119,5 +121,26 @@ in
 
   xdg.configFile."swaync/style.css" = {
     source = ./swaync/style.css;
+  };
+
+  xdg.desktopEntries.nemo = {
+    name = "Nemo";
+    exec = "${pkgs.nemo-with-extensions}/bin/nemo";
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = [ "nemo.desktop" ];
+      "application/x-gnome-saved-search" = [ "nemo.desktop" ];
+    };
+  };
+
+  dconf = {
+    settings = {
+      "org/cinnamon/desktop/applications/terminal" = {
+        exec = "wezterm";
+      };
+    };
   };
 }

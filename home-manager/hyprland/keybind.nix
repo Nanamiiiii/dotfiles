@@ -6,7 +6,7 @@
       "$mainMod" = "ALT";
       "$subMod" = "SUPER";
       "$terminal" = "wezterm";
-      "$fileManager" = "pcmanfm-qt";
+      "$fileManager" = "nemo";
       "$appLauncher" = "wofi --show drun";
       "$cmdLauncher" = "wofi --show run";
       "$browser" = "microsoft-edge";

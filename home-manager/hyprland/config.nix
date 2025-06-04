@@ -38,7 +38,7 @@ in
       "plyerctld daemon"
       "1password --silent"
       "emote"
-      "pcmanfm-qt -d"
+      #"pcmanfm-qt -d"
     ];
 
     windowrulev2 = [

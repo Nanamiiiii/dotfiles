@@ -2,14 +2,14 @@
 let
   gtkThemeName = "catppuccin-mocha-blue-standard+normal,rimless";
   gtkIconTheme = "Papirus-Dark";
-  gtkCursorTheme = "catppuccin-mocha-blue-cursors";
+  gtkCursorTheme = "volantes_cursors";
 in
 {
   programs.regreet = {
     enable = true;
     settings = {
       background = {
-        path = "/etc/background-images/nix-wallpaper-nineish.png";
+        path = "/etc/background-images/kawaiiko.png";
         fit = "Fill";
       };
       commands = {
@@ -51,11 +51,11 @@ in
     };
     cursorTheme = {
       name = gtkCursorTheme;
-      package = pkgs.catppuccin-cursors.mochaBlue;
+      package = pkgs.volantes-cursors;
     };
   };
 
-  environment.etc."background-images/nix-wallpaper-nineish.png" = {
-    source = ./bg/nix-wallpaper-nineish.png;
+  environment.etc."background-images/kawaiiko.png" = {
+    source = ./bg/kawaiiko.png;
   };
 }
