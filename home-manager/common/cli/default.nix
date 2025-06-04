@@ -135,7 +135,7 @@ in
     ]
     ++ [ clock-tui ];
 
-  home.file = configFiles.homeScripts;
+  home.file = configFiles.homeScripts // configFiles.dotConfigs.w3m;
 
   xdg.configFile = configFiles.dotConfigs.ranger // btopThemes;
 }

@@ -105,6 +105,12 @@ in
         recursive = true;
       };
     };
+
+    w3m = {
+      ".w3m/config" = {
+        source = symlink "${configDir}/w3m/config";
+      };
+    };
   };
 
   # Linux specific
