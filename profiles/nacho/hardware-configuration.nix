@@ -33,6 +33,12 @@
     fsType = "btrfs";
   };
 
+  fileSystems."/home/.snapshots" = {
+    device = "/dev/disk/by-label/NIXOS_ROOT";
+    fsType = "btrfs";
+    options = [ "subvol=/home/@snapshots" ];
+  };
+
   fileSystems."/mnt/miku" = {
     device = "/dev/disk/by-label/MIKU";
     fsType = "btrfs";
