@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+pxo w3m http://www.apal.cs.waseda.ac.jp/archi/index.php

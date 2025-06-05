@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+DOTCONF="${HOME}/dotfiles/config/proxychains"
+proxychains4 -f ${DOTCONF}/outerlab.conf "$@"
