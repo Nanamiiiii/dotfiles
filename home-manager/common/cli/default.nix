@@ -103,37 +103,36 @@ in
     };
   };
 
-  home.packages =
-    with pkgs;
-    [
-      _1password-cli
-      eza
-      procs
-      ripgrep
-      jq
-      bat
-      fd
-      dust
-      fzf
-      duf
-      ghq
-      tree-sitter
-      ranger
-      curl
-      wget
-      sl
-      openssl
-      kdash
-      kubernetes-helm
-      kubectl
-      w3m
-      nmap
-      imagemagick
-      nkf
-      mosh
-      felix-fm
-    ]
-    ++ [ clock-tui ];
+  home.packages = with pkgs; [
+    _1password-cli
+    eza
+    procs
+    ripgrep
+    jq
+    bat
+    fd
+    dust
+    fzf
+    duf
+    ghq
+    tree-sitter
+    ranger
+    curl
+    wget
+    sl
+    openssl
+    kdash
+    kubernetes-helm
+    kubectl
+    w3m
+    nmap
+    imagemagick
+    nkf
+    mosh
+    felix-fm
+    proxychains-ng
+    clock-tui
+  ];
 
   home.file = configFiles.homeScripts // configFiles.dotConfigs.w3m;
 

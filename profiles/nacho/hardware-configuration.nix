@@ -33,6 +33,11 @@
     fsType = "btrfs";
   };
 
+  fileSystems."/mnt/miku" = {
+    device = "/dev/disk/by-label/MIKU";
+    fsType = "btrfs";
+  };
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/ESP";
     fsType = "vfat";
