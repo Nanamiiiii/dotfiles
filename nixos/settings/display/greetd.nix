@@ -5,6 +5,16 @@ let
   gtkCursorTheme = "volantes_cursors";
 in
 {
+  services.greetd = {
+    enable = true;
+    #settings = {
+    #  default_session = {
+    #    command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions:${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-user-session";
+    #    user = "greeter";
+    #  };
+    #};
+    vt = 2;
+  };
   programs.regreet = {
     enable = true;
     settings = {
@@ -25,8 +35,8 @@ in
     };
     cageArgs = [
       "-s"
-      #"-m"
-      #"last"
+      "-m"
+      "last"
     ];
     theme = {
       name = gtkThemeName;

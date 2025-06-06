@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   virtualisation = {
     docker = {
@@ -12,6 +12,7 @@
     libvirtd = {
       enable = true;
       qemu = {
+        package = pkgs.qemu_kvm;
         swtpm.enable = true;
         ovmf = {
           enable = true;
@@ -22,7 +23,12 @@
             }).fd
           ];
         };
+        vhostUserPackages = [ pkgs.virtiofsd ];
       };
     };
+
+    spiceUSBRedirection.enable = true;
   };
+
+  users.extraGroups.vboxusers.members = [ "${username}" ];
 }

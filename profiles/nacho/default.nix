@@ -35,6 +35,13 @@ let
     ../../nixos/settings/system/bluetooth.nix
     ../../nixos/settings/system/cpupower-performance.nix
     ../../nixos/settings/system/rgb.nix
+    (import ../../nixos/settings/system/vfio.nix {
+      inherit lib;
+      vfioIds = [
+        "10de:1cb6"
+        "10de:0fb9"
+      ];
+    })
   ];
 
   # Graphics
@@ -42,7 +49,14 @@ let
 
   # Display
   displaySettings = [
-    ../../nixos/settings/display/greetd.nix
+    (import ../../nixos/settings/display/sddm.nix {
+      inherit
+        pkgs
+        lib
+        config
+        ;
+      extraWestonConfig = null;
+    })
     ../../nixos/settings/display/xserver.nix
   ];
 
