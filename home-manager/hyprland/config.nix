@@ -38,7 +38,7 @@ in
       "plyerctld daemon"
       "1password --silent"
       "emote"
-      #"pcmanfm-qt -d"
+      "${pkgs.wl-x11-clipsync}/bin/clipsync"
     ];
 
     windowrulev2 = [

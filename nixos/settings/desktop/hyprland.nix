@@ -18,14 +18,4 @@ in
       enable = true;
     };
   };
-
-  # Sync clipboard between wayland and X11
-  systemd.user.services.wl-x11-clipsync = {
-    description = "Clipboard Sync Service";
-    wantedBy = [ "default.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.wl-x11-clipsync}/bin/clipsync";
-      Restart = "on-failure";
-    };
-  };
 }
