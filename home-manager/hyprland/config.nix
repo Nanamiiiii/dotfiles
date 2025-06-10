@@ -37,6 +37,7 @@ in
       "wl-paste --watch cliphist store"
       "plyerctld daemon"
       "1password --silent"
+      "slack --silent"
       "emote"
       "${pkgs.wl-x11-clipsync}/bin/clipsync"
     ];

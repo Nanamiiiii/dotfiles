@@ -15,7 +15,6 @@
           enable = true;
           compositorCommand = "${lib.getExe pkgs.weston} --shell=kiosk -c ${extraWestonConfig}";
         };
-        #theme = "catppuccin-macchiato";
         theme = "sddm-astronaut-theme";
         settings = {
           General = {
@@ -35,7 +34,6 @@
         wayland = {
           enable = false;
         };
-        #theme = "catppuccin-macchiato";
         theme = "sddm-astronaut-theme";
         settings = {
           General = {
@@ -50,11 +48,6 @@
       };
 
   environment.systemPackages = [
-    #(pkgs.catppuccin-sddm.override {
-    #  flavor = "macchiato";
-    #  font = "IBM Plex Sans JP";
-    #  fontSize = "14";
-    #})
     (pkgs.sddm-astronaut.override {
       theme = "hyprland_kath";
     })
