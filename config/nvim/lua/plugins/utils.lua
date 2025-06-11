@@ -31,15 +31,9 @@ return {
         },
     },
     {
-        "Nanamiiiii/vimsence",
-        config = function()
-            vim.g.vimsence_small_text = "neovim"
-            vim.g.vimsence_small_image = "neovim"
-            vim.g.vimsence_editing_details = "Editing: {}"
-            vim.g.vimsence_editing_state = "Working on: {}"
-            vim.g.vimsence_explorer_text = "in Filer"
-            vim.g.vimsence_explorer_details = "Exploring files"
-        end,
+        'vyfor/cord.nvim',
+        build = ':Cord update',
+        -- opts = {}
     },
     { "nvim-tree/nvim-web-devicons", lazy = true },
     {
