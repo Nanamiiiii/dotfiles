@@ -48,6 +48,22 @@ let
   graphics = ../../nixos/settings/graphics/nvidia.nix;
 
   # Display
+  westonConfig = pkgs.writeText "my-weston.ini" ''
+    [libinput]
+    enable-tap=true
+    left-handed=false 
+
+    [keyboard]
+    keymap_model=pc104
+    keymap_layout=us
+    keymap_variant=
+    keymap_options=
+
+    [output]
+    name=DP-2
+    mode=3840x2160
+  '';
+
   displaySettings = [
     (import ../../nixos/settings/display/sddm.nix {
       inherit
@@ -55,7 +71,7 @@ let
         lib
         config
         ;
-      extraWestonConfig = null;
+      extraWestonConfig = westonConfig;
     })
     ../../nixos/settings/display/xserver.nix
   ];
