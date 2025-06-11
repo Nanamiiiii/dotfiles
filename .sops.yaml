@@ -1,14 +1,17 @@
 keys:
   - &admin age1409zj4a4lzupezp4u099sdthkj3k03n0hqksmfll2ls70wgxxs5qkajumd
   - &asu age12l38h8007lakcjl8ztx20mxpy2tcn3wutc8h7jzfn3xuqxxrfvqqayuwaq
+  - &nacho age14jtlt6d6zwtztls8ukh0arzdeaceg9597ez9r58c3cdazl44tehqu3q2tx
 creation_rules:
   - path_regex: secrets/[^/]+\.yaml$
     key_groups:
     - age:
       - *admin
       - *asu
+      - *nacho
   - path_regex: profiles/[^/]+/secrets\.yaml$
     key_groups:
     - age:
       - *admin
       - *asu
+      - *nacho

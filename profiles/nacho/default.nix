@@ -42,6 +42,7 @@ let
         "10de:0fb9"
       ];
     })
+    ../../nixos/settings/system/lab-ldap-host-only.nix
   ];
 
   # Graphics
@@ -95,6 +96,7 @@ let
     ../../nixos/settings/misc/1password-ext.nix
     ../../nixos/settings/misc/ssh.nix
     ../../nixos/settings/misc/dropbox.nix
+    ../../nixos/settings/misc/sops.nix
   ];
 in
 {

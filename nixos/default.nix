@@ -26,8 +26,9 @@ rec {
 
   modules =
     let
-      inherit (inputs.home-manager.nixosModules) home-manager;
       inherit (inputs.disko.nixosModules) disko;
+      inherit (inputs.home-manager.nixosModules) home-manager;
+      inherit (inputs.sops-nix.nixosModules) sops;
       homeConfig = import ../home-manager {
         inherit
           profile
@@ -42,6 +43,7 @@ rec {
       disko
       home-manager
       homeConfig
+      sops
       (import ../overlays { inherit inputs system; })
     ];
 }
