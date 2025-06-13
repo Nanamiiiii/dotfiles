@@ -116,13 +116,6 @@ dns_order 0
 nntpserver 
 nntpmode 
 max_news 50
-use_proxy 1
-http_proxy http://marine-internal.kasahara.cs.waseda.ac.jp:3128
-https_proxy http://marine-internal.kasahara.cs.waseda.ac.jp:3128
-gopher_proxy 
-ftp_proxy http://marine-internal.kasahara.cs.waseda.ac.jp:3128
-no_proxy 127.0.0.1,localhost,.kasahara.cs.waseda.ac.jp,133.9.80.0/26,133.9.80.128/26,192.168.50.0/23
-noproxy_netaddr 1
 no_cache 0
 ssl_forbid_method 2, 3, t, 5
 ssl_min_version 
