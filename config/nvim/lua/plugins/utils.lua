@@ -31,8 +31,8 @@ return {
         },
     },
     {
-        'vyfor/cord.nvim',
-        build = ':Cord update',
+        "vyfor/cord.nvim",
+        build = ":Cord update",
         -- opts = {}
     },
     { "nvim-tree/nvim-web-devicons", lazy = true },

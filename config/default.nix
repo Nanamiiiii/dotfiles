@@ -124,8 +124,7 @@ in
       };
       "sway/daemon.conf" = {
         text = builtins.readFile (
-          pkgs.substituteAll {
-            src = ./sway/daemon.conf;
+          pkgs.replaceVars ./sway/daemon.conf {
             kwallet_pkg = pkgs.kwallet-pam;
             kde_auth_agent_pkg = pkgs.kdePackages.polkit-kde-agent-1;
           }
@@ -168,9 +167,8 @@ in
     qt6ct = {
       "qt6ct/qt6ct.conf" = {
         text = builtins.readFile (
-          pkgs.substituteAll {
-            src = ./qt6ct/qt6ct.conf;
-            qt6ct_pkg = pkgs.qt6Packages.qt6ct;
+          pkgs.replaceVars ./qt6ct/qt6ct.conf {
+            qt6ct_pkg = pkgs.kdePackages.qt6ct;
           }
         );
       };
@@ -179,8 +177,7 @@ in
     qt5ct = {
       "qt5ct/qt5ct.conf" = {
         text = builtins.readFile (
-          pkgs.substituteAll {
-            src = ./qt5ct/qt5ct.conf;
+          pkgs.replaceVars ./qt5ct/qt5ct.conf {
             qt5ct_pkg = pkgs.libsForQt5.qt5ct;
           }
         );
@@ -193,7 +190,7 @@ in
       };
       "wleave/style.css" = {
         text = builtins.readFile (
-          pkgs.substituteAll {
+          pkgs.replaceVars {
             src = ./wleave/style.css;
             wleave_pkg_path = pkgs.wleave;
           }

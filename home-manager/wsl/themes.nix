@@ -7,7 +7,6 @@
 let
   gtkThemeName = "catppuccin-mocha-blue-standard+normal,rimless";
   gtkIconTheme = "Papirus-Dark";
-  #gtkCursorTheme = "catppuccin-mocha-blue-cursors";
   gtkCursorTheme = "volantes_cursors";
   gtkCatppuccin = pkgs.catppuccin-gtk.override {
     accents = [ "blue" ];
@@ -19,8 +18,10 @@ let
     ];
   };
 
-  kv = import ./Kvantum {
-    inherit lib;
+  kvantumConf = lib.generators.toINI { } {
+    "General" = {
+      theme = "catppuccin-mocha-blue";
+    };
   };
 in
 {
@@ -29,7 +30,6 @@ in
     [
       catppuccin-papirus-folders
       volantes-cursors
-      #catppuccin-cursors.mochaBlue
       (catppuccin-kvantum.override {
         accent = "blue";
         variant = "mocha";
@@ -52,12 +52,6 @@ in
       qt5.qtwayland
       qtstyleplugin-kvantum
     ]);
-
-  #qt = {
-  #  enable = true;
-  #  style.name = "kvantum";
-  #  platformTheme.name = "qtct";
-  #};
 
   gtk = {
     enable = true;
@@ -84,14 +78,14 @@ in
   xdg.configFile = {
     "qt6ct/qt6ct.conf" = {
       text = builtins.readFile (
-        pkgs.replaceVars ./qt6ct/qt6ct.conf {
+        pkgs.replaceVars ../../config/qt6ct/qt6ct.conf {
           qt6ct_pkg = pkgs.kdePackages.qt6ct;
         }
       );
     };
     "qt5ct/qt5ct.conf" = {
       text = builtins.readFile (
-        pkgs.replaceVars ./qt5ct/qt5ct.conf {
+        pkgs.replaceVars ../../config/qt5ct/qt5ct.conf {
           qt5ct_pkg = pkgs.libsForQt5.qt5ct;
         }
       );
@@ -106,7 +100,7 @@ in
       source = "${gtkCatppuccin}/share/themes/${gtkThemeName}/gtk-4.0/assets";
     };
     "Kvantum/kvantum.kvconfig" = {
-      text = kv.kvantumConf;
+      text = kvantumConf;
     };
   };
 
@@ -132,5 +126,12 @@ in
       "Xft/HintStyle" = "hintslight";
       "Xft/RGBA" = "rgb";
     };
+  };
+
+  programs.zsh = {
+    envExtra = ''
+      export QT_QPA_PLATFORMTHEME=qt6ct
+      export GTK_THEME=${gtkThemeName}
+    '';
   };
 }

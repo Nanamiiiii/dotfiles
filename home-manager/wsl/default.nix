@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
-  imports = [ ./wslg.nix ];
+  imports = [
+    ./themes.nix
+  ];
 
   home.packages = with pkgs; [ wslu ];
 
