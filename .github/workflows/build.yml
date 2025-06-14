@@ -126,7 +126,7 @@ jobs:
   aqua-checksum-update:
     needs: changed-files
     if: needs.changed-files.outputs.aqua-changed == 'true'
-    uses: aquaproj/update-checksum-workflow/.github/workflows/update-checksum.yaml@6abab9ca6fc57f40a70f66de42be9c7eff899a91
+    uses: aquaproj/update-checksum-workflow/.github/workflows/update-checksum.yaml@21531ca5dac10c688afd55817791e150c7644c32
     permissions:
       contents: read
     with:
