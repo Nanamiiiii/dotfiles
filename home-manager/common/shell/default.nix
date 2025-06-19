@@ -59,5 +59,7 @@ in
     };
   };
 
+  home.packages = with pkgs; [ bc ];
+
   xdg.configFile = with configFiles.dotConfigs; tmux;
 }
