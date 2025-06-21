@@ -6,10 +6,10 @@ checksum:
   enabled: true
 registries:
 - type: standard
-  ref: v4.379.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.379.1 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: starship/starship@v1.23.0
-- name: eza-community/eza@v0.21.4
+- name: eza-community/eza@v0.21.5
 - name: sharkdp/bat@v0.25.0
 - name: junegunn/fzf@v0.62.0
 - name: dalance/procs@v0.14.10
@@ -23,5 +23,5 @@ packages:
 - name: ajeetdsouza/zoxide@v0.9.8
 - name: aristocratos/btop@v1.4.3
 - name: cli/cli@v2.74.2
-- name: fastfetch-cli/fastfetch@2.45.0
+- name: fastfetch-cli/fastfetch@2.46.0
 - name: haskell/ghcup-hs@v0.1.30.0
