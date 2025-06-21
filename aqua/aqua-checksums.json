@@ -126,38 +126,48 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/eza-community/eza/v0.21.4/eza.exe_x86_64-pc-windows-gnu.tar.gz",
-      "checksum": "84C27D57AC0D12A943ABAE475484AEB56379310A754578534D3D0F71497451A6",
+      "id": "github_release/github.com/eza-community/eza/v0.21.5/eza.exe_x86_64-pc-windows-gnu.tar.gz",
+      "checksum": "812CC1FAD539617A51E4A9C510CD42F02B18AAE01D462CAB9C0ADF9719EF25C0",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/eza-community/eza/v0.21.4/eza_aarch64-unknown-linux-gnu.tar.gz",
-      "checksum": "DF458F76662B5AA1E87FCC0D4FF5EB1063905127ACD41E2AEE0E20FC187394DA",
+      "id": "github_release/github.com/eza-community/eza/v0.21.5/eza_aarch64-unknown-linux-gnu.tar.gz",
+      "checksum": "57DDBDC8641AF5F36A68FE8647D3D1611A8556C101C3DBD3EE0AD16BC2DF96BE",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/eza-community/eza/v0.21.4/eza_x86_64-unknown-linux-musl.tar.gz",
-      "checksum": "82E1DDE17D007C4903E88E9EE6E9DBD81F243616D547C71FE55CD3B0FA8739B0",
+      "id": "github_release/github.com/eza-community/eza/v0.21.5/eza_x86_64-unknown-linux-musl.tar.gz",
+      "checksum": "DB2A8704A1C0CC9C515FDCE435E23F9115A338CA5FD9FE3D3A65F3EADD11EA0C",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.45.0/fastfetch-linux-aarch64.tar.gz",
-      "checksum": "45A1AF2AD419A7447CB793FB3C2B75143B76A0F7AA46030F89A5039BD00AC068",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.46.0/fastfetch-linux-aarch64.tar.gz",
+      "checksum": "3B7A015FB2E9DEF4D4E8FD9A6477BA49ECBC2ED1E0C4D47802A869D1E5E05BA8",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.45.0/fastfetch-linux-amd64.tar.gz",
-      "checksum": "8A356B4C582F4D2C80F57594838980CD2149376ABB1E6F14459F1F11CAFA1604",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.46.0/fastfetch-linux-amd64.tar.gz",
+      "checksum": "D256C4FCD5D6677E53C8ED53763F6EB627D32964847925FADA00E9858DF7218C",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.45.0/fastfetch-macos-universal.tar.gz",
-      "checksum": "84C05B5205AA963AD081A12FA5E971B8F3299A6FCA67BBE54FB6CA59C2191178",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.46.0/fastfetch-macos-aarch64.tar.gz",
+      "checksum": "DA7EA0FD820E0ED3AAF4B76043E2BFC85D8D63642BFB2290F86493EE8C9510C7",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.45.0/fastfetch-windows-amd64.zip",
-      "checksum": "AD7562FA97E0E6FEA0E45DFCB577B4DAAF7B41467992E9599F4A007CC255B3C4",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.46.0/fastfetch-macos-amd64.tar.gz",
+      "checksum": "302F91934E254BEFA9B4D757999D7515436C0DF2D58F23AC9B0F5690355FE39B",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.46.0/fastfetch-windows-aarch64.zip",
+      "checksum": "3DBE5A2BF0A8ED64DCF15728BB63A9D2DC09E0272DBA8C147CB059320AE0D865",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.46.0/fastfetch-windows-amd64.zip",
+      "checksum": "A9F089EA29EBC7BBC6F58C6CD3FEEFA9913879BC755CF346A87D5AAC8CE0A2C7",
       "algorithm": "sha256"
     },
     {
@@ -401,8 +411,8 @@
       "algorithm": "sha256"
     },
     {
-      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.379.0/registry.yaml",
-      "checksum": "E244E31650EE3A27997D11E8F9ED7461BEE14E42CE3A2313300CC5FC31CC5FC775A9118A669A3A0DCEDA07FBA90B52C98E73B872ECC457A40D17D6E32731DA74",
+      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.379.1/registry.yaml",
+      "checksum": "34818205F7CFEC4949474C422F324765A50C625BA0CB0F10252BE02E7FB8269A855790187D49B217E9D210BD79EB239C48AACA37557B24D35DF543656E1CD669",
       "algorithm": "sha512"
     }
   ]
