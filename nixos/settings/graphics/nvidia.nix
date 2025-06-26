@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -20,23 +25,16 @@
 
   boot = {
     kernelModules = [
-      "pci_stub"
-      "vfio"
-      "vfio"
-      "vfio_iommu_type1"
-      "vfio_pci"
       "kvm"
       "kvm-intel"
-    ];
-    kernelParams = [
-      "nvidia_drm.modeset=1"
-      "nvidia_drm.fbdev=1"
-    ];
-    initrd.kernelModules = [
       "nvidia"
       "nvidia_modeset"
       "nvidia_drm"
       "nvidia_uvm"
+    ];
+    kernelParams = [
+      "nvidia_drm.modeset=1"
+      "nvidia_drm.fbdev=1"
     ];
   };
 }
