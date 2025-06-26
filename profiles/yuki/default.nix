@@ -48,6 +48,7 @@ let
         lib
         config
         ;
+      wayland = false;
       extraWestonConfig = null;
     })
     ../../nixos/settings/display/xserver.nix

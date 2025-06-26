@@ -68,7 +68,8 @@ let
   displaySettings = [
     (import ../../nixos/settings/display/sddm.nix {
       inherit pkgs lib config;
-      extraWestonConfig = westonConfig;
+      wayland = true;
+      extraWestonConfig = null;
     })
     ../../nixos/settings/display/xserver.nix
   ];
