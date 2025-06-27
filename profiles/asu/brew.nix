@@ -13,7 +13,7 @@
       "betterdiscord-installer"
       "spotify"
       "zotero"
-      "wireshark"
+      "wireshark-app"
       "balenaetcher"
       "grammarly-desktop"
       "vlc"
