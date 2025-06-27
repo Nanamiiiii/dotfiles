@@ -5,7 +5,7 @@
 }:
 {
   boot = {
-    initrd.kernelModules = lib.mkBefore [
+    initrd.kernelModules = [
       "pci_stub"
       "vfio_pci"
       "vfio_iommu_type1"
