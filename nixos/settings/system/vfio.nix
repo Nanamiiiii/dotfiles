@@ -5,12 +5,17 @@
 }:
 {
   boot = {
-    initrd.kernelModules = [
+    initrd.availableKernelModules = [
       "pci_stub"
       "vfio_pci"
       "vfio_iommu_type1"
       "vfio"
     ];
+
+    # fix for module load order
+    extraModprobeConfig = ''
+      softdep nvidia pre: pci_stub vfio vfio_iommu_type1 vfio_pci
+    '';
 
     kernelParams = [
       "intel_iommu=on"
