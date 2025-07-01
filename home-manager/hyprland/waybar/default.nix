@@ -87,7 +87,7 @@ in
     };
     "custom/swaync" = {
       tooltip = false;
-      format = "{icon} {}";
+      format = if laptop then "{icon}" else "{icon} {}";
       format-icons = {
         notification = "<span foreground='#f7768e'><sup></sup></span>";
         none = "<sup> </sup>";
@@ -231,9 +231,9 @@ in
         default =
           if laptop then
             [
-              ""
-              ""
-              ""
+              "󰕿"
+              "󰖀"
+              "󰕾"
             ]
           else
             [
@@ -241,9 +241,9 @@ in
               " "
               " "
             ];
-        headphone = if laptop then "" else " ";
+        headphone = " ";
       };
-      format-muted = if laptop then "{volume}% " else "{volume}%  {format_source}";
+      format-muted = if laptop then "{volume}% 󰖁" else "{volume}%  {format_source}";
       format-source = "{volume}% ";
       format-source-muted = "{volume}% ";
       on-click = "pavucontrol-qt";
