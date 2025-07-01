@@ -3,6 +3,7 @@
   lib,
   config,
   nixos-hardware,
+  username,
   ...
 }:
 let
@@ -87,6 +88,25 @@ in
     ++ misc;
 
   boot.initrd.systemd.enable = true;
+
+  services.snapper = {
+    configs = {
+      root = {
+        SUBVOLUME = "/";
+        ALLOW_USERS = [ "${username}" ];
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
+        FSTYPE = "btrfs";
+      };
+      home = {
+        SUBVOLUME = "/home";
+        ALLOW_USERS = [ "${username}" ];
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
+        FSTYPE = "btrfs";
+      };
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

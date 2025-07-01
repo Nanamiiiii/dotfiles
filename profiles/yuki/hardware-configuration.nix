@@ -67,6 +67,22 @@
     ];
   };
 
+  fileSystems."/.snapshots" = {
+    device = "/dev/disk/by-label/NixOS-ROOT";
+    fsType = "btrfs";
+    options = [
+      "subvol=snapshots"
+    ];
+  };
+
+  fileSystems."/home/.snapshots" = {
+    device = "/dev/disk/by-label/NixOS-ROOT";
+    fsType = "btrfs";
+    options = [
+      "subvol=home-snapshots"
+    ];
+  };
+
   swapDevices = [ { device = "/swap/swapfile"; } ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
