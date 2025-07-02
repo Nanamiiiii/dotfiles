@@ -1,4 +1,4 @@
-{ ... }:
+{ username, ... }:
 {
   services.clamav = {
     daemon = {
@@ -13,7 +13,7 @@
     scanner = {
       enable = true;
       scanDirectories = [
-        "/home"
+        "/home/${username}"
         "/var/lib"
         "/tmp"
         "/etc"
