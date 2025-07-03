@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   inputs,
   hostname,
   thermalZone,
@@ -38,7 +39,7 @@ let
   ];
 
   miscTools = with pkgs; [
-    microsoft-edge
+    pkgs-stable.microsoft-edge
     playerctl
     emote
     firefox-devedition
