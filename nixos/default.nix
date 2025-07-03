@@ -31,6 +31,7 @@ rec {
       inherit (inputs.sops-nix.nixosModules) sops;
       homeConfig = import ../home-manager {
         inherit
+          inputs
           profile
           username
           system

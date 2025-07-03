@@ -72,6 +72,7 @@ let
     ../../nixos/settings/misc/gvfs.nix
     ../../nixos/settings/misc/1password-ext.nix
     ../../nixos/settings/misc/kdeconnect.nix
+    ../../nixos/settings/misc/sops.nix
   ];
 in
 {
