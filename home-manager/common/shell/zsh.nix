@@ -84,6 +84,7 @@ let
   wslZprofileExt = ''
     path=(
       "$USERPROFILE/AppData/Local/1Password/app/8"
+      "$path[@]"
     )
   '';
 
