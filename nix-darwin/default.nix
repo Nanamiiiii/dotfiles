@@ -26,6 +26,7 @@ rec {
       inherit (inputs.home-manager.darwinModules) home-manager;
       homeConfig = import ../home-manager {
         inherit
+          inputs
           profile
           username
           system

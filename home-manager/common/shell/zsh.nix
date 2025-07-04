@@ -3,6 +3,7 @@
   config,
   hostname,
   username,
+  wslhost,
   ...
 }:
 let
@@ -79,6 +80,12 @@ let
       )
     '';
   };
+
+  wslZprofileExt = ''
+    path=(
+      "$USERPROFILE/AppData/Local/1Password/app/8"
+    )
+  '';
 
   zshrcExt = ''
     bindkey "\e[3~" delete-char
@@ -199,7 +206,8 @@ in
 
       envExtra = zshenvExt;
 
-      profileExtra = zprofileExt + (hostZprofileExt.${hostname} or "");
+      profileExtra =
+        zprofileExt + (hostZprofileExt.${hostname} or "") + (if wslhost then wslZprofileExt else "");
 
       initContent = zshrcExt + (hostZshrcExt.${hostname} or "");
 
