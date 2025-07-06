@@ -2,16 +2,28 @@ keys:
   - &admin age1409zj4a4lzupezp4u099sdthkj3k03n0hqksmfll2ls70wgxxs5qkajumd
   - &asu age12l38h8007lakcjl8ztx20mxpy2tcn3wutc8h7jzfn3xuqxxrfvqqayuwaq
   - &nacho age14jtlt6d6zwtztls8ukh0arzdeaceg9597ez9r58c3cdazl44tehqu3q2tx
+  - &yuki age1nws7td0r4hlx6eq8p42dftatt5uu3fyp36ksy4906ax52xmz0f9qnw9php
+  - &myuu age12humzrr8e8g44tpmkldsnjmv2r7xj5hmn8sc3zlkhenw6wfprfds8wee88
 creation_rules:
-  - path_regex: secrets/[^/]+\.yaml$
+  - path_regex: ^secrets/[^/]+\.yaml$
     key_groups:
     - age:
       - *admin
       - *asu
       - *nacho
+      - *yuki
+  - path_regex: ^home-manager/secrets/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin
+      - *asu
+      - *nacho
+      - *yuki
+      - *myuu
   - path_regex: profiles/[^/]+/secrets\.yaml$
     key_groups:
     - age:
       - *admin
       - *asu
       - *nacho
+      - *yuki

@@ -1,10 +1,14 @@
 {
+  inputs,
   profile,
   username,
   system,
   specialArgs,
   ...
 }:
+let
+  inherit (inputs.sops-nix.homeManagerModules) sops;
+in
 { config, ... }:
 {
   home-manager = {
@@ -16,5 +20,6 @@
       wslhost = config.wsl.enable or false;
     };
     backupFileExtension = "hm-bkp";
+    sharedModules = [ sops ];
   };
 }

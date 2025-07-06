@@ -30,6 +30,7 @@ rec {
       wslConfig = import ./wsl.nix { inherit username; };
       homeConfig = import ../home-manager {
         inherit
+          inputs
           profile
           username
           system

@@ -1,6 +1,6 @@
 # aqua
 Set-Item Env:Path "$Env:LOCALAPPDATA\aquaproj-aqua\bin;$Env:Path"
-$Env:AQUA_GLOBAL_CONFIG="C:\Users\Myuu\dotfiles\aqua\aqua.yaml"
+$Env:AQUA_GLOBAL_CONFIG="$Env:USERPROFILE\dotfiles\aqua\aqua.yaml"
 $Env:AQUA_LOG_LEVEL="fatal"
 $Env:AQUA_PROGRESS_BAR="true"
 
@@ -21,13 +21,13 @@ Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 # Alias
 function __ls() {
-    eza --icons --group-directories-first
+    eza --icons --group-directories-first $args
 }
 function __ll() {
-    eza --group-directories-first -alg --header --color-scale --git --icons --time-style=long-iso
+    eza --group-directories-first -alg --header --color-scale --git --icons --time-style=long-iso $args
 }
 function __tree() {
-    eza --group-directories-first -T --icons
+    eza --group-directories-first -T --icons $args
 }
 
 Set-Alias -Name ls -Value __ls

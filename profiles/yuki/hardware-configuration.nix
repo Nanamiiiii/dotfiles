@@ -26,16 +26,40 @@
   # Currently, intagrated Intel Arc GPU not working by default
   boot.kernelParams = [ "i915.force_probe=7d55" ];
 
+  boot.initrd.luks.devices."luks".device = "/dev/disk/by-label/NixOS-LUKS";
+
   fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos";
+    device = "/dev/disk/by-label/NixOS-ROOT";
     fsType = "btrfs";
-    options = [ "subvol=@" ];
+    options = [ "subvol=root" ];
   };
 
-  boot.initrd.luks.devices."nixos-luks".device = "/dev/disk/by-label/nixos-luks";
+  fileSystems."/home" = {
+    device = "/dev/disk/by-label/NixOS-ROOT";
+    fsType = "btrfs";
+    options = [ "subvol=home" ];
+  };
+
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-label/NixOS-ROOT";
+    fsType = "btrfs";
+    options = [
+      "subvol=nix"
+      "noatime"
+    ];
+  };
+
+  fileSystems."/swap" = {
+    device = "/dev/disk/by-label/NixOS-ROOT";
+    fsType = "btrfs";
+    options = [
+      "subvol=swap"
+      "noatime"
+    ];
+  };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-label/EFI_BOOT";
+    device = "/dev/disk/by-label/SYSTEM";
     fsType = "vfat";
     options = [
       "fmask=0077"
@@ -43,7 +67,23 @@
     ];
   };
 
-  swapDevices = [ ];
+  fileSystems."/.snapshots" = {
+    device = "/dev/disk/by-label/NixOS-ROOT";
+    fsType = "btrfs";
+    options = [
+      "subvol=snapshots"
+    ];
+  };
+
+  fileSystems."/home/.snapshots" = {
+    device = "/dev/disk/by-label/NixOS-ROOT";
+    fsType = "btrfs";
+    options = [
+      "subvol=home-snapshots"
+    ];
+  };
+
+  swapDevices = [ { device = "/swap/swapfile"; } ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

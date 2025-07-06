@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   inputs,
   hostname,
   lib,
@@ -16,6 +17,7 @@ in
     (import ../../hyprland {
       inherit
         pkgs
+        pkgs-stable
         inputs
         hostname
         config

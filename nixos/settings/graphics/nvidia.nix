@@ -24,9 +24,7 @@
   };
 
   boot = {
-    kernelModules = [
-      "kvm"
-      "kvm-intel"
+    initrd.kernelModules = [
       "nvidia"
       "nvidia_modeset"
       "nvidia_drm"
