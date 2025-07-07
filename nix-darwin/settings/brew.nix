@@ -30,6 +30,8 @@
       "wezterm"
       "xpipe-io/tap/xpipe"
       "bartender"
+      "fuse-t"
+      "cryptomator"
     ];
 
     taps = [
