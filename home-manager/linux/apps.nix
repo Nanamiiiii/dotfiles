@@ -17,6 +17,7 @@ let
     zathura
     termius
     xpipe
+    cryptomator
   ];
 
   cliPkgs = with pkgs; [
