@@ -18,6 +18,7 @@ let
     termius
     xpipe
     cryptomator
+    protonmail-desktop
   ];
 
   cliPkgs = with pkgs; [
