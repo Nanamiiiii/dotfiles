@@ -32,6 +32,7 @@
       "bartender"
       "fuse-t"
       "cryptomator"
+      "proton-mail"
     ];
 
     taps = [

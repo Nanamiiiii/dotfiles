@@ -23,7 +23,6 @@ let
   cliPkgs = with pkgs; [
     wireguard-tools
     pinentry-curses
-    gocryptfs
   ];
 in
 {

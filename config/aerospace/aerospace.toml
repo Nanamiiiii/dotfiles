@@ -186,6 +186,10 @@ if.app-id = 'com.microsoft.Outlook'
 run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
+if.app-id = 'ch.protonmail.desktop'
+run = 'move-node-to-workspace 8'
+
+[[on-window-detected]]
 if.app-id = 'us.zoom.xos'
 run = ['layout floating', 'move-node-to-workspace 9']
 
