@@ -4,6 +4,7 @@
     ../../common
     ../../linux
     ./apps.nix
+    ./config.nix
   ];
 
   home = {
