@@ -32,7 +32,7 @@ in
       wslhost
       ;
   };
-  modules = [ 
+  modules = [
     sops
     ./profiles/${profile}
   ];

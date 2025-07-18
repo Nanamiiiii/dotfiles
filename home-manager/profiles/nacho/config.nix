@@ -25,4 +25,10 @@ in
       source = symlink "${config.sops.secrets.docker-lab-proxy.path}";
     };
   };
+
+  wayland.windowManager.hyprland.settings = {
+    exec-once = [
+      "dropbox"
+    ];
+  };
 }
