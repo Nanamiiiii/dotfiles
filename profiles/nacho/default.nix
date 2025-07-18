@@ -35,13 +35,13 @@ let
     ../../nixos/settings/system/bluetooth.nix
     ../../nixos/settings/system/cpupower-performance.nix
     ../../nixos/settings/system/rgb.nix
-    (import ../../nixos/settings/system/vfio.nix {
-      inherit lib;
-      vfioIds = [
-        "10de:1cb6"
-        "10de:0fb9"
-      ];
-    })
+    #(import ../../nixos/settings/system/vfio.nix {
+    #  inherit lib;
+    #  vfioIds = [
+    #    "10de:1cb6"
+    #    "10de:0fb9"
+    #  ];
+    #})
     ../../nixos/settings/system/lab-ldap-host-only.nix
   ];
 
