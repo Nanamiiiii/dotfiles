@@ -13,6 +13,7 @@ let
     inherit system;
     config.allowUnfree = true;
   };
+  inherit (inputs.sops-nix.homeManagerModules) sops;
 in
 {
   pkgs = import inputs.nixpkgs {
@@ -31,5 +32,8 @@ in
       wslhost
       ;
   };
-  modules = [ ./profiles/${profile} ];
+  modules = [ 
+    sops
+    ./profiles/${profile}
+  ];
 }

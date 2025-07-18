@@ -3,7 +3,9 @@
   imports = [
     ../../common
     ../../linux
+    ../../sops
     ./apps.nix
+    ./config.nix
   ];
 
   home = {

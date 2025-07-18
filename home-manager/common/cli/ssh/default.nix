@@ -52,9 +52,5 @@ in
     forwardAgent = true;
     serverAliveInterval = 60;
     matchBlocks = cloudHosts // tyoHosts;
-    extraConfig = ''
-      Include ${config.home.homeDirectory}/.ssh/conf.d/lab.conf
-      Include ${config.home.homeDirectory}/.ssh/conf.d/apal.conf
-    '';
   };
 }
