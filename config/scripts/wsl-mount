@@ -6,4 +6,4 @@ if [ "$#" -ne 1 ]; then
 fi
 
 sudo mkdir -p /mnt/"$1"
-sudo mount -t drvfs "$1": /mnt/"$1" -o uid=$(id -u),gid=$(id -g),fmask=113,dmask=022
+sudo mount -t drvfs "$1": /mnt/"$1" -o uid=$(id -u),gid=$(id -g),metadata
