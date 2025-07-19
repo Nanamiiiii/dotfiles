@@ -114,13 +114,18 @@ config.window_background_image_hsb = {
     saturation = 1.0,
 }
 
--- Hide single tab
-config.hide_tab_bar_if_only_one_tab = true
-
--- Tab bar
-config.use_fancy_tab_bar = false
-config.tab_bar_at_bottom = true
+-- Tab Settings
 config.tab_max_width = 20
+
+if is_windows then
+    config.use_fancy_tab_bar = true
+    config.tab_bar_at_bottom = false
+    config.hide_tab_bar_if_only_one_tab = false
+else
+    config.use_fancy_tab_bar = false
+    config.tab_bar_at_bottom = true
+    config.hide_tab_bar_if_only_one_tab = true
+end
 
 -- Tab style
 function tab_title(tab_info)
