@@ -71,6 +71,9 @@ jobs:
       - name: Check nix installation
         run: |
           make RUNS_ENV=ci test
+      - name: Clean Nix Store
+        run: |
+          make RUNS_ENV=ci clean-store
       - name: build
         run: |
           make RUNS_ENV=ci ci-build
