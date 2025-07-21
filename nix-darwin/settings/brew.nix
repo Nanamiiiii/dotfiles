@@ -16,8 +16,7 @@
     ];
 
     casks = [
-      "1password" # 1password nixpkg is broken now
-      "macfuse"
+      "1password"
       "istat-menus"
       "jordanbaird-ice"
       "homerow"
@@ -31,6 +30,7 @@
       "xpipe-io/tap/xpipe"
       "bartender"
       "fuse-t"
+      "macos-fuse-t/homebrew-cask/fuse-t-sshfs"
       "cryptomator"
       "proton-mail"
     ];
@@ -39,6 +39,7 @@
       "nikitabobko/tap"
       "xpipe-io/tap"
       "FelixKratz/formulae"
+      "macos-fuse-t/homebrew-cask"
     ];
 
     masApps = {
