@@ -114,6 +114,7 @@
         pipewire
         gtk3
         gtk4
+        fuse3
       ];
     };
     appimage = {
