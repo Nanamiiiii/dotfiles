@@ -69,16 +69,16 @@ alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-0 = 'workspace 10'
 
-alt-shift-1 = 'move-node-to-workspace 1'
-alt-shift-2 = 'move-node-to-workspace 2'
-alt-shift-3 = 'move-node-to-workspace 3'
-alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-5 = 'move-node-to-workspace 5'
-alt-shift-6 = 'move-node-to-workspace 6'
-alt-shift-7 = 'move-node-to-workspace 7'
-alt-shift-8 = 'move-node-to-workspace 8'
-alt-shift-9 = 'move-node-to-workspace 9'
-alt-shift-0 = 'move-node-to-workspace 10'
+alt-shift-1 = [ 'move-node-to-workspace 1', 'workspace 1' ]
+alt-shift-2 = [ 'move-node-to-workspace 2', 'workspace 2' ]
+alt-shift-3 = [ 'move-node-to-workspace 3', 'workspace 3' ]
+alt-shift-4 = [ 'move-node-to-workspace 4', 'workspace 4' ]
+alt-shift-5 = [ 'move-node-to-workspace 5', 'workspace 5' ]
+alt-shift-6 = [ 'move-node-to-workspace 6', 'workspace 6' ]
+alt-shift-7 = [ 'move-node-to-workspace 7', 'workspace 7' ]
+alt-shift-8 = [ 'move-node-to-workspace 8', 'workspace 8' ]
+alt-shift-9 = [ 'move-node-to-workspace 9', 'workspace 9' ]
+alt-shift-0 = [ 'move-node-to-workspace 10', 'workspace 10' ]
 
 alt-shift-n = 'move-node-to-monitor next'
 alt-shift-p = 'move-node-to-monitor prev'
@@ -131,67 +131,69 @@ PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 if.app-id = 'com.apple.systempreferences'
 run = 'layout floating'
 
-[[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm'
-run = 'move-node-to-workspace 1'
-
-[[on-window-detected]]
-if.app-id = 'com.neovide.neovide'
-run = 'move-node-to-workspace 1'
-
-[[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
-run = 'move-node-to-workspace 2'
-
-[[on-window-detected]]
-if.app-id = 'org.mozilla.com.zen.browser'
-run = 'move-node-to-workspace 2'
+#[[on-window-detected]]
+#if.app-id = 'com.github.wez.wezterm'
+#run = 'move-node-to-workspace 1'
+#
+#[[on-window-detected]]
+#if.app-id = 'com.neovide.neovide'
+#run = 'move-node-to-workspace 1'
+#
+#[[on-window-detected]]
+#if.app-id = 'company.thebrowser.Browser'
+#run = 'move-node-to-workspace 2'
+#
+#[[on-window-detected]]
+#if.app-id = 'org.mozilla.com.zen.browser'
+#run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.com.zen.browser'
 if.window-title-regex-substring = '^Picture-in-Picture$'
 run = 'layout floating'
 
-[[on-window-detected]]
-if.app-id = 'com.microsoft.edgemac'
-run = 'move-node-to-workspace 2'
-
-[[on-window-detected]]
-if.app-id = 'md.obsidian'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'com.hnc.Discord'
-run = 'move-node-to-workspace 7'
+#[[on-window-detected]]
+#if.app-id = 'com.microsoft.edgemac'
+#run = 'move-node-to-workspace 2'
+#
+#[[on-window-detected]]
+#if.app-id = 'md.obsidian'
+#run = 'move-node-to-workspace 3'
+#
+#[[on-window-detected]]
+#if.app-id = 'com.hnc.Discord'
+#run = 'move-node-to-workspace 7'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
 if.window-title-regex-substring = '^Discord Updater$'
-run = ['layout floating', 'move-node-to-workspace 7']
+#run = ['layout floating', 'move-node-to-workspace 7']
+run = ['layout floating']
 
-[[on-window-detected]]
-if.app-id = 'com.tinyspeck.slackmacgap'
-run = 'move-node-to-workspace 7'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.mail'
-run = 'move-node-to-workspace 8'
-
-[[on-window-detected]]
-if.app-id = 'org.mozilla.thunderbird'
-run = 'move-node-to-workspace 8'
-
-[[on-window-detected]]
-if.app-id = 'com.microsoft.Outlook'
-run = 'move-node-to-workspace 8'
-
-[[on-window-detected]]
-if.app-id = 'ch.protonmail.desktop'
-run = 'move-node-to-workspace 8'
+#[[on-window-detected]]
+#if.app-id = 'com.tinyspeck.slackmacgap'
+#run = 'move-node-to-workspace 7'
+#
+#[[on-window-detected]]
+#if.app-id = 'com.apple.mail'
+#run = 'move-node-to-workspace 8'
+#
+#[[on-window-detected]]
+#if.app-id = 'org.mozilla.thunderbird'
+#run = 'move-node-to-workspace 8'
+#
+#[[on-window-detected]]
+#if.app-id = 'com.microsoft.Outlook'
+#run = 'move-node-to-workspace 8'
+#
+#[[on-window-detected]]
+#if.app-id = 'ch.protonmail.desktop'
+#run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
-run = ['layout floating', 'move-node-to-workspace 9']
+#run = ['layout floating', 'move-node-to-workspace 9']
+run = ['layout floating']
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
