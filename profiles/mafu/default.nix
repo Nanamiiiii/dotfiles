@@ -95,17 +95,16 @@ let
   ];
 in
 {
-  imports =
-    [
-      graphics
-    ]
-    ++ boot
-    ++ hardwareSettings
-    ++ nixSettings
-    ++ systemSettings
-    ++ displaySettings
-    ++ desktopSettings
-    ++ misc;
+  imports = [
+    graphics
+  ]
+  ++ boot
+  ++ hardwareSettings
+  ++ nixSettings
+  ++ systemSettings
+  ++ displaySettings
+  ++ desktopSettings
+  ++ misc;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

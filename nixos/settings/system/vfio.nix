@@ -20,6 +20,7 @@
     kernelParams = [
       "intel_iommu=on"
       "iommu=pt"
-    ] ++ lib.optional (vfioIds != null) ("vfio_pci.ids=" + lib.concatStringsSep "," vfioIds);
+    ]
+    ++ lib.optional (vfioIds != null) ("vfio_pci.ids=" + lib.concatStringsSep "," vfioIds);
   };
 }

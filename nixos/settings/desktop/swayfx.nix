@@ -32,11 +32,12 @@ in
     ];
   };
 
-  environment.systemPackages =
-    [ lxqt.pcmanfm-qt ]
-    ++ tools.swayTools
-    ++ tools.configTools
-    ++ tools.guiFramework
-    ++ tools.desktopThemes
-    ++ tools.miscTools;
+  environment.systemPackages = [
+    lxqt.pcmanfm-qt
+  ]
+  ++ tools.swayTools
+  ++ tools.configTools
+  ++ tools.guiFramework
+  ++ tools.desktopThemes
+  ++ tools.miscTools;
 }

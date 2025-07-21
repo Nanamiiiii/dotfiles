@@ -101,17 +101,16 @@ let
   ];
 in
 {
-  imports =
-    [
-      graphics
-    ]
-    ++ boot
-    ++ hardwareSettings
-    ++ nixSettings
-    ++ systemSettings
-    ++ displaySettings
-    ++ desktopSettings
-    ++ misc;
+  imports = [
+    graphics
+  ]
+  ++ boot
+  ++ hardwareSettings
+  ++ nixSettings
+  ++ systemSettings
+  ++ displaySettings
+  ++ desktopSettings
+  ++ misc;
 
   services.snapper = {
     configs = {
