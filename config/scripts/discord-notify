@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+CMDS=$@
+HOSTNAME=$(hostname)
+USERNAME=$(id -nu)
+MENTION="251614842203537408"
+
+if [ -r "$XDG_CONFIG_HOME/discord-notify/url" ]; then
+    DISCORD_WH_URL=$(cat $XDG_CONFIG_HOME/discord-notify/url)
+fi
+
+if [ -z "$DISCORD_WH_URL" ]; then
+    echo "error: DISCORD_WH_URL is not set"
+    exit 1
+fi
+
+START=$(date +%s)
+
+eval $@
+EXIT_CODE=$?
+
+END=$(date +%s)
+
+EXEC_TIME=$((END - START))
+
+if [ $EXIT_CODE -eq 0 ]; then
+    MSG="Execution Finished Successfully"
+    COLOR="60176"
+else
+    MSG="Execution Failed"
+    COLOR="16711680"
+fi
+
+JSON=$(cat <<EOF
+{
+  "username": "Notify.sh",
+  "content": "<@${MENTION}>",
+  "embeds": [
+    {
+      "title": "${MSG}",
+      "description": "",
+      "color": ${COLOR},
+      "url": "",
+      "author": {
+        "name": "Notify.sh",
+        "url": "",
+        "icon_url": ""
+      },
+      "footer": {
+        "text": "Notify.sh",
+        "icon_url": ""
+      },
+      "timestamp": "$(date --iso-8601=seconds)",
+      "fields": [
+        {
+          "name": "Host",
+          "value": "${HOSTNAME}",
+          "inline": true
+        },
+        {
+          "name": "User",
+          "value": "${USERNAME}",
+          "inline": true
+        },
+        {
+          "name": "Command",
+          "value": "\`${CMDS}\`",
+          "inline": false
+        },
+        {
+          "name": "Exit Code",
+          "value": "${EXIT_CODE}",
+          "inline": true
+        },
+        {
+          "name": "Execution Time",
+          "value": "${EXEC_TIME} sec.",
+          "inline": true
+        }
+      ]
+    }
+  ]
+}
+EOF
+)
+
+curl -X POST -H "Content-Type: application/json" -d "${JSON}" "${DISCORD_WH_URL}"
