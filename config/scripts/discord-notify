@@ -2,6 +2,7 @@
 CMDS=$@
 HOSTNAME=$(hostname)
 USERNAME=$(id -nu)
+WORKDIR=$(pwd)
 MENTION="251614842203537408"
 
 if [ -r "$XDG_CONFIG_HOME/discord-notify/url" ]; then
@@ -53,13 +54,18 @@ JSON=$(cat <<EOF
       "fields": [
         {
           "name": "Host",
-          "value": "${HOSTNAME}",
+          "value": "\`${HOSTNAME}\`",
           "inline": true
         },
         {
           "name": "User",
-          "value": "${USERNAME}",
+          "value": "\`${USERNAME}\`",
           "inline": true
+        },
+        {
+          "name": "Working Dir",
+          "value": "\`${WORKDIR}\`",
+          "inline": false
         },
         {
           "name": "Command",
@@ -68,12 +74,12 @@ JSON=$(cat <<EOF
         },
         {
           "name": "Exit Code",
-          "value": "${EXIT_CODE}",
+          "value": "\`${EXIT_CODE}\`",
           "inline": true
         },
         {
           "name": "Execution Time",
-          "value": "${EXEC_TIME} sec.",
+          "value": "\`${EXEC_TIME} sec.\`",
           "inline": true
         }
       ]
