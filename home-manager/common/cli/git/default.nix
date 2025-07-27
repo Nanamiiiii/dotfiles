@@ -11,7 +11,7 @@ let
 
   signingKey = {
     "ssh" = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFDjjJaYz3a6f6QRWh/NK7U3o6Pj1fWKj7hc1VSW8rde";
-    "openpgp" = "E79A0A2575F66DA2";
+    "openpgp" = "C72536FDEEBF9178";
   };
 
   gpgSshProgram = {
