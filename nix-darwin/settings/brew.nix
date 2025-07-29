@@ -33,6 +33,7 @@
       "macos-fuse-t/homebrew-cask/fuse-t-sshfs"
       "cryptomator"
       "proton-mail"
+      "proton-mail-bridge"
     ];
 
     taps = [
