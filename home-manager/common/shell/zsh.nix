@@ -186,7 +186,7 @@ in
   programs = {
     zsh = {
       enable = true;
-      dotDir = ".zsh";
+      dotDir = "${config.home.homeDirectory}/.zsh";
 
       autocd = true;
       enableCompletion = true;

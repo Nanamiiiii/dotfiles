@@ -42,7 +42,8 @@ let
     #    "10de:0fb9"
     #  ];
     #})
-    ../../nixos/settings/system/lab-ldap-host-only.nix
+    ../../nixos/settings/system/sssd-lab.nix
+    ../../nixos/settings/system/autofs.nix
   ];
 
   # Graphics
@@ -98,6 +99,7 @@ let
     ../../nixos/settings/misc/ssh.nix
     ../../nixos/settings/misc/dropbox.nix
     ../../nixos/settings/misc/sops.nix
+    ../../nixos/settings/misc/nfs.nix
   ];
 in
 {
@@ -123,6 +125,24 @@ in
       };
     };
   };
+
+  # Use sssd for resolving host and mountmap
+  environment.etc."nsswitch.conf".text = lib.mkOverride 100 ''
+    passwd:    ${lib.concatStringsSep " " config.system.nssDatabases.passwd}
+    group:     ${lib.concatStringsSep " " config.system.nssDatabases.group}
+    shadow:    ${lib.concatStringsSep " " config.system.nssDatabases.shadow}
+    sudoers:   ${lib.concatStringsSep " " config.system.nssDatabases.sudoers}
+
+    hosts:     ${lib.concatStringsSep " " config.system.nssDatabases.hosts} sss
+    networks:  files
+
+    ethers:    files
+    services:  ${lib.concatStringsSep " " config.system.nssDatabases.services}
+    protocols: files
+    rpc:       files
+
+    automount: sss
+  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
