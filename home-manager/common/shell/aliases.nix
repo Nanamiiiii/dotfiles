@@ -10,7 +10,7 @@
   # eza
   ls = "eza --icons --group-directories-first";
   la = "eza --icons --group-directories-first -a";
-  ll = "eza --group-directories-first -al --header --color-scale --git --icons --time-style=long-iso";
+  ll = "eza --group-directories-first -aalg --header --color-scale --git --icons --time-style=long-iso";
   tree = "eza --group-directories-first -T --icons";
 
   # bat
