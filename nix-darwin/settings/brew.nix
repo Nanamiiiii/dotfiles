@@ -34,6 +34,7 @@
       "cryptomator"
       "proton-mail"
       "proton-mail-bridge"
+      "proton-pass"
     ];
 
     taps = [
