@@ -22,14 +22,6 @@
     gnome.gnome-keyring.enable = true;
   };
 
-  programs = {
-    _1password.enable = true;
-    _1password-gui = {
-      enable = desktop;
-      polkitPolicyOwners = [ "${username}" ];
-    };
-  };
-
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
     enable = desktop;
     description = "polkit authentication gnome agent";

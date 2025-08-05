@@ -33,13 +33,4 @@ in
   home.packages = cliUtilities ++ desktopUtilities;
 
   xdg.configFile = with configFiles.darwinConfigs; aerospace // raycast // borders;
-
-  programs = {
-    ssh = {
-      extraConfig = lib.mkIf desktop ''
-        Host *
-            IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-      '';
-    };
-  };
 }

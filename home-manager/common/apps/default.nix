@@ -27,6 +27,4 @@ let
 in
 {
   home.packages = cliPkgs;
-
-  xdg.configFile = with configFiles.dotConfigs; _1password;
 }

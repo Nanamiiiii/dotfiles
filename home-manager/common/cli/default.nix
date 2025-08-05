@@ -25,6 +25,7 @@ in
   imports = [
     ./git
     ./ssh
+    ./gpg
   ];
 
   # CLI Tools
@@ -127,7 +128,6 @@ in
   };
 
   home.packages = with pkgs; [
-    _1password-cli
     eza
     procs
     ripgrep

@@ -95,9 +95,7 @@ let
     ../../nixos/settings/misc/virt.nix
     ../../nixos/settings/misc/cups.nix
     ../../nixos/settings/misc/gvfs.nix
-    ../../nixos/settings/misc/1password-ext.nix
     ../../nixos/settings/misc/ssh.nix
-    ../../nixos/settings/misc/dropbox.nix
     ../../nixos/settings/misc/sops.nix
     ../../nixos/settings/misc/nfs.nix
   ];

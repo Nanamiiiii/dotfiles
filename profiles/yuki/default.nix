@@ -70,7 +70,6 @@ let
     ../../nixos/settings/misc/virt.nix
     ../../nixos/settings/misc/cups.nix
     ../../nixos/settings/misc/gvfs.nix
-    ../../nixos/settings/misc/1password-ext.nix
     ../../nixos/settings/misc/kdeconnect.nix
     ../../nixos/settings/misc/sops.nix
   ];

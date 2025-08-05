@@ -56,21 +56,10 @@ let
           "$(brew --prefix)/share/zsh/site-functions"
           "$fpath[@]"
       )
-
-      # 1Password SSH Agent
-      export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
     '';
-    yuki = ''
-      export SSH_AUTH_SOCK=~/.1password/agent.sock
-    '';
-    mafu = ''
-      export SSH_AUTH_SOCK=~/.1password/agent.sock
-    '';
-    nacho = ''
-      if [ -z "$SSH_CLIENT" ] && [ -n "$SSH_TTY" ]; then
-        export SSH_AUTH_SOCK=~/.1password/agent.sock
-      fi
-    '';
+    yuki = '''';
+    mafu = '''';
+    nacho = '''';
     xanadu = ''
       # RISC-V Toolchain
       path=(
@@ -83,7 +72,6 @@ let
 
   wslZprofileExt = ''
     path=(
-      "$USERPROFILE/AppData/Local/1Password/app/8"
       "$path[@]"
     )
   '';

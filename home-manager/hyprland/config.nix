@@ -36,7 +36,6 @@ in
       "swaync"
       "wl-paste --watch cliphist store"
       "plyerctld daemon"
-      #"1password --silent"
       "slack -u -s"
       "emote"
       "${pkgs.wl-x11-clipsync}/bin/clipsync"

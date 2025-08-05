@@ -34,21 +34,9 @@ in
     gpg = {
       enable = true;
     };
-
-    ssh = {
-      extraConfig = lib.mkIf desktop ''
-        Host *
-            IdentityAgent "~/.1password/agent.sock"
-      '';
-    };
   };
 
   services = {
-    gpg-agent = {
-      enable = true;
-      pinentry.package = pkgs.pinentry-curses;
-    };
-
     kdeconnect = {
       enable = desktop;
       indicator = desktop;

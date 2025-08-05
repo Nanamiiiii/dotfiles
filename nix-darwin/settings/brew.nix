@@ -10,13 +10,13 @@
 
     brews = [
       "displayplacer"
+      "FelixKratz/formulae/borders"
+      "openssh" # builtin openssh misses fido related libs
       "pam-reattach"
       "pinentry"
-      "FelixKratz/formulae/borders"
     ];
 
     casks = [
-      "1password"
       "istat-menus"
       "jordanbaird-ice"
       "homerow"
@@ -36,6 +36,8 @@
       "proton-mail-bridge"
       "proton-pass"
       "protonvpn"
+      "proton-drive"
+      "google-drive"
     ];
 
     taps = [
