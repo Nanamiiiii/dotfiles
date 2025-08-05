@@ -35,6 +35,7 @@
       "proton-mail"
       "proton-mail-bridge"
       "proton-pass"
+      "protonvpn"
     ];
 
     taps = [
