@@ -35,6 +35,8 @@ let
     ../../nixos/settings/system/bluetooth.nix
     ../../nixos/settings/system/cpupower-performance.nix
     ../../nixos/settings/system/rgb.nix
+    ../../nixos/settings/system/yubikey.nix
+    ../../nixos/settings/system/gpg.nix
   ];
 
   # Graphics

@@ -1,10 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   baseSystem = builtins.elemAt (builtins.split "-" pkgs.system) 2;
-  pinentry = {
-    "linux" = pkgs.pinentry-curses;
-    "darwin" = null;
-  };
 in
 {
   home.packages = with pkgs; [
@@ -18,15 +14,18 @@ in
       settings = {
         no-autostart = if baseSystem == "linux" then true else false;
       };
+      scdaemonSettings = lib.mkIf (baseSystem == "linux") {
+        disable-ccid = true;
+      };
     };
   };
 
   services = {
     gpg-agent = {
-      enable = true;
+      enable = if baseSystem == "darwin" then true else false;
       enableSshSupport = true;
       enableExtraSocket = true;
-      pinentry.package = pinentry.${baseSystem};
+      pinentry.package = null;
       extraConfig = ''
         pinentry-program /opt/homebrew/bin/pinentry-mac
       '';

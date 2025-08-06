@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if [ $# -ne 1 ]; then
+    echo "invalid args"
+    exit 1
+fi
+
+TARGET_HOST=$1
+TARGET_SOCK_LOCATION=$(ssh ${TARGET_HOST} gpgconf --list-dirs agent-socket)
+SOURCE_SOCK_LOCATION=$(gpgconf --list-dirs agent-extra-socket)
+
+ssh "${TARGET_HOST}" gpgconf --kill all
+ssh -R "${TARGET_SOCK_LOCATION}:${SOURCE_SOCK_LOCATION}" "${TARGET_HOST}"
+

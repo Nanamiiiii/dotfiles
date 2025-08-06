@@ -7,6 +7,7 @@
       extraGroups = [
         "wheel"
         "uucp"
+        "kvm"
       ];
     };
   };

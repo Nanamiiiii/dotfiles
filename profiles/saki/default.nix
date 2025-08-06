@@ -24,6 +24,8 @@ let
     ../../nixos/settings/system/environment.nix
     ../../nixos/settings/system/time.nix
     ../../nixos/settings/system/i18n.nix
+    ../../nixos/settings/system/yubikey.nix
+    ../../nixos/settings/system/gpg.nix
   ];
 
   # Misc

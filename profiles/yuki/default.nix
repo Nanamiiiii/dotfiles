@@ -36,6 +36,8 @@ let
     ../../nixos/settings/system/tlp.nix
     ../../nixos/settings/system/bluetooth.nix
     ../../nixos/settings/system/av.nix
+    ../../nixos/settings/system/yubikey.nix
+    ../../nixos/settings/system/gpg.nix
   ];
 
   # Graphics

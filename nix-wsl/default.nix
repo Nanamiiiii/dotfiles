@@ -27,6 +27,7 @@ rec {
     let
       inherit (inputs.nixos-wsl.nixosModules) wsl;
       inherit (inputs.home-manager.nixosModules) home-manager;
+      inherit (inputs.sops-nix.nixosModules) sops;
       wslConfig = import ./wsl.nix { inherit username; };
       homeConfig = import ../home-manager {
         inherit
@@ -46,5 +47,6 @@ rec {
       home-manager
       homeConfig
       overlays
+      sops
     ];
 }
