@@ -3,7 +3,7 @@ let
   baseSystem = builtins.elemAt (builtins.split "-" pkgs.system) 2;
   pinentry = {
     "linux" = pkgs.pinentry-curses;
-    "darwin" = pkgs.pinentry_mac;
+    "darwin" = null;
   };
 in
 {
@@ -27,6 +27,9 @@ in
       enableSshSupport = true;
       enableExtraSocket = true;
       pinentry.package = pinentry.${baseSystem};
+      extraConfig = ''
+        pinentry-program /opt/homebrew/bin/pinentry-mac
+      '';
     };
   };
 }

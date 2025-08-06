@@ -13,7 +13,7 @@
       "FelixKratz/formulae/borders"
       "openssh" # builtin openssh misses fido related libs
       "pam-reattach"
-      "pinentry"
+      "pinentry-mac"
     ];
 
     casks = [
@@ -21,7 +21,6 @@
       "jordanbaird-ice"
       "homerow"
       "karabiner-elements"
-      "firefox@developer-edition"
       "notchnook"
       "raycast"
       "nikitabobko/tap/aerospace"
