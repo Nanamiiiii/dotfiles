@@ -36,7 +36,4 @@
 
   # tclock AoE
   aoe = "tclock -c cyan clock -z \"Etc/GMT-12\"";
-
-  # git on headless sign
-  git-headless = ''git -c gpg.format="openpgp" -c user.signingKey="C72536FDEEBF9178"'';
 }

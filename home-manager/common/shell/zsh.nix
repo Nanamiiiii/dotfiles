@@ -150,23 +150,8 @@ let
   '';
 
   hostZshrcExt = {
-    rika = ''
-      alias ssh="/mnt/c/Windows/System32/OpenSSH/ssh.exe"
-    '';
     asu = ''
-      # sudo prompt
       export SUDO_PROMPT="[sudo] %p's password: "
-    '';
-    xanadu = ''
-      export GPG_TTY=$(tty)
-    '';
-    nacho = ''
-      if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-        export GPG_TTY=$(tty)
-      fi
-    '';
-    unyonyo = ''
-      export GPG_TTY=$(tty)
     '';
   };
 in
