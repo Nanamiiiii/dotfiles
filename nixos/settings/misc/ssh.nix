@@ -2,6 +2,9 @@
 {
   services.openssh = {
     enable = true;
+    extraConfig = ''
+      StreamLocalBindUnlink yes
+    '';
   };
 
   users.users.${username}.openssh = {

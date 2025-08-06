@@ -30,12 +30,6 @@ in
 {
   home.packages = if desktop then desktopPkgs ++ cliPkgs else cliPkgs;
 
-  programs = {
-    gpg = {
-      enable = true;
-    };
-  };
-
   services = {
     kdeconnect = {
       enable = desktop;
