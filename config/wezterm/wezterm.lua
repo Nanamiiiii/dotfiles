@@ -36,11 +36,7 @@ end
 
 -- Graphics
 config.enable_wayland = true
-if hostname == "nacho" or not is_linux then
-    config.front_end = "OpenGL"
-else
-    config.front_end = "WebGpu"
-end
+config.front_end = "OpenGL"
 
 -- Detect desktop environment
 local de_name = ""
