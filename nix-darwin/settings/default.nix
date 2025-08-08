@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   username,
   ...
@@ -10,6 +11,7 @@
     ./sops.nix
     inputs.sops-nix.darwinModules.sops
     ./brew.nix
+    ./security.nix
   ];
 
   nix = {
@@ -50,8 +52,6 @@
   };
 
   time.timeZone = "Asia/Tokyo";
-
-  security.pam.services.sudo_local.touchIdAuth = true;
 
   system = {
     primaryUser = username;

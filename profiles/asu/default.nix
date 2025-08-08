@@ -4,6 +4,7 @@
     ../../nix-darwin/settings
     ./apps.nix
     ./brew.nix
+    ./security.nix
   ];
 
   users.users.${username} = {
