@@ -12,7 +12,6 @@
       "displayplacer"
       "FelixKratz/formulae/borders"
       "openssh" # builtin openssh misses fido related libs
-      "pam-reattach"
       "pinentry-mac"
     ];
 
