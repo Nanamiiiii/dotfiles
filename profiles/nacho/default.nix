@@ -127,11 +127,11 @@ in
   };
 
   # Use sssd for resolving host and mountmap
-  environment.etc."nsswitch.conf".text = lib.mkOverride 100 ''
-    passwd:    ${lib.concatStringsSep " " config.system.nssDatabases.passwd}
-    group:     ${lib.concatStringsSep " " config.system.nssDatabases.group}
-    shadow:    ${lib.concatStringsSep " " config.system.nssDatabases.shadow}
-    sudoers:   ${lib.concatStringsSep " " config.system.nssDatabases.sudoers}
+  environment.etc."nsswitch.conf".text = lib.mkForce ''
+    passwd:    ${lib.concatStringsSep " " (lib.lists.remove "sss" config.system.nssDatabases.passwd)}
+    group:     ${lib.concatStringsSep " " (lib.lists.remove "sss" config.system.nssDatabases.group)}
+    shadow:    ${lib.concatStringsSep " " (lib.lists.remove "sss" config.system.nssDatabases.shadow)}
+    sudoers:   ${lib.concatStringsSep " " (config.system.nssDatabases.sudoers)}
 
     hosts:     ${lib.concatStringsSep " " config.system.nssDatabases.hosts} sss
     networks:  files
