@@ -25,7 +25,8 @@ lib.mkIf (!wslhost) {
   programs = {
     wezterm = {
       enable = weztermEnable;
-      package = inputs.wez-flake.packages.${pkgs.system}.default;
+      #package = inputs.wez-flake.packages.${pkgs.system}.default;
+      package = pkgs.wezterm;
     };
   };
 
