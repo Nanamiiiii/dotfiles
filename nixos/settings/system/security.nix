@@ -9,10 +9,15 @@
     rtkit.enable = true;
     polkit.enable = true;
     tpm2.enable = true;
-    pam.services = {
-      login = {
-        enableGnomeKeyring = true;
-        gnupg.enable = true;
+    pam = {
+      u2f = {
+        enable = true;
+      };
+      services = {
+        login = {
+          enableGnomeKeyring = true;
+          gnupg.enable = true;
+        };
       };
     };
   };

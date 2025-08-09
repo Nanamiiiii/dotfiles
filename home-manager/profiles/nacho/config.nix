@@ -14,6 +14,9 @@ in
   };
 
   sops.secrets.ssh-hosts-apal = { };
+  sops.secrets.pam-u2f = {
+    sopsFile = ../../secrets/nacho.yaml;
+  };
   #sops.secrets.docker-lab-proxy = { };
 
   # Docker Proxy Settings
@@ -24,5 +27,9 @@ in
     #".docker/config.json" = {
     #  source = symlink "${config.sops.secrets.docker-lab-proxy.path}";
     #};
+  };
+
+  xdg.configFile."Yubico/u2f_keys" = {
+    source = symlink "${config.sops.secrets.pam-u2f.path}";
   };
 }
