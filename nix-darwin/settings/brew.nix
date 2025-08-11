@@ -36,6 +36,7 @@
       "protonvpn"
       "proton-drive"
       "google-drive"
+      "steam"
     ];
 
     taps = [
