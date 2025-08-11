@@ -16,7 +16,7 @@ jobs:
       aqua-changed: ${{ steps.changed-files.outputs.aqua_any_changed == 'true' }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Get all changed files
         id: changed-files
         uses: tj-actions/changed-files@v46
@@ -63,7 +63,7 @@ jobs:
     if: needs.changed-files.outputs.nixos-changed == 'true'
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Adding Nix PATH
         run: |
           echo "/nix/var/nix/profiles/default/bin" >> "$GITHUB_PATH"
@@ -86,7 +86,7 @@ jobs:
     if: needs.changed-files.outputs.darwin-changed == 'true'
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Install nix
         uses: cachix/install-nix-action@v31
       - name: Setup cachix
@@ -110,7 +110,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Install nix
         uses: cachix/install-nix-action@v31
       - name: Setup cachix
