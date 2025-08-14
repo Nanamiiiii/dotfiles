@@ -37,6 +37,7 @@
       "proton-drive"
       "google-drive"
       "steam"
+      "badgeify"
     ];
 
     taps = [
