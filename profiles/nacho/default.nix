@@ -52,32 +52,33 @@ let
   graphics = ../../nixos/settings/graphics/nvidia.nix;
 
   # Display
-  westonConfig = pkgs.writeText "my-weston.ini" ''
-    [libinput]
-    enable-tap=true
-    left-handed=false 
+  #westonConfig = pkgs.writeText "my-weston.ini" ''
+  #  [libinput]
+  #  enable-tap=true
+  #  left-handed=false
 
-    [keyboard]
-    keymap_model=pc104
-    keymap_layout=us
-    keymap_variant=
-    keymap_options=
+  #  [keyboard]
+  #  keymap_model=pc104
+  #  keymap_layout=us
+  #  keymap_variant=
+  #  keymap_options=
 
-    [output]
-    name=DP-2
-    mode=3840x2160
-  '';
+  #  [output]
+  #  name=DP-2
+  #  mode=3840x2160
+  #'';
 
   displaySettings = [
-    (import ../../nixos/settings/display/sddm.nix {
-      inherit
-        pkgs
-        lib
-        config
-        ;
-      wayland = true;
-      extraWestonConfig = null;
-    })
+    #(import ../../nixos/settings/display/sddm.nix {
+    #  inherit
+    #    pkgs
+    #    lib
+    #    config
+    #    ;
+    #  wayland = true;
+    #  extraWestonConfig = null;
+    #})
+    ../../nixos/settings/display/ly.nix
     ../../nixos/settings/display/xserver.nix
   ];
 
