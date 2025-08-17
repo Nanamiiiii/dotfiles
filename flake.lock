@@ -240,11 +240,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1754416808,
-        "narHash": "sha256-c6yg0EQ9xVESx6HGDOCMcyRSjaTpNJP10ef+6fRcofA=",
+        "lastModified": 1755446520,
+        "narHash": "sha256-I0Ok1OGDwc1jPd8cs2VvAYZsHriUVFGIUqW+7uSsOUM=",
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "9c52372878df6911f9afc1e2a1391f55e4dfc864",
+        "rev": "4b04db83821b819bbbe32ed0a025b31e7971f22e",
         "type": "github"
       },
       "original": {
@@ -299,11 +299,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755313937,
-        "narHash": "sha256-pQb7bNcolxYGRiylUCrTddiF+qW2wsUiM9+eRIDUrVU=",
+        "lastModified": 1755442500,
+        "narHash": "sha256-RHK4H6SWzkAtW/5WBHsyugaXJX25yr5y7FAZznxcBJs=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2a749f4790a14f7168be67cdf6e548ef1c944e10",
+        "rev": "d2ffdedfc39c591367b1ddf22b4ce107f029dcc3",
         "type": "github"
       },
       "original": {
@@ -388,11 +388,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1755355960,
-        "narHash": "sha256-nvgWWYHAgSIaz0LQ/q1JPJf+eu6x0hWFakCT28QJJ3E=",
+        "lastModified": 1755447269,
+        "narHash": "sha256-8IZMFIngat2DeZy+RUzG1UFQJ52gn4I6X2ao+FnXiH8=",
         "ref": "refs/heads/main",
-        "rev": "78c9e2080c800e9da0792b73ca436ef49384bfb7",
-        "revCount": 6368,
+        "rev": "0840103ae06e9d6ab4a8692ff18dc45e2e95e5c9",
+        "revCount": 6371,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -639,11 +639,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1755248222,
-        "narHash": "sha256-jFchbJjsVUF8kKlLHRrucG23T2iu+920PwWFMfvtksE=",
+        "lastModified": 1755439635,
+        "narHash": "sha256-c7GDrCNRC+2Kgty6pTAdgxDp2mDUoBCI77J3JhH0nss=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "73fca33ad4ddc8fe41192e23dae9af0544798653",
+        "rev": "8a97ada3e7c4d8105f4525ba0fe7fdda19bf497f",
         "type": "github"
       },
       "original": {
@@ -655,11 +655,11 @@
     "neovim-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1755213444,
-        "narHash": "sha256-phbfQOUazngOSVscRUPZclPk0Cn+G4XHodbtef9ZT8M=",
+        "lastModified": 1755380888,
+        "narHash": "sha256-BTPhH335sUyQE8XvrmvtiOpsdDsDMzcKaCiV+sjeGAY=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "7afcfb6c9ac53cb4192974934d6cdc360f4bebc7",
+        "rev": "5f8d4a248a97b7beb26a097811dce92f1b18e260",
         "type": "github"
       },
       "original": {
