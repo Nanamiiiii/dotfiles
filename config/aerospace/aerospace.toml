@@ -16,12 +16,12 @@ default-root-container-orientation = 'auto'
 automatically-unhide-macos-hidden-apps = false
 
 [gaps]
-inner.horizontal = 5
-inner.vertical =   5
-outer.left =       5
-outer.bottom =     5
-outer.top =        8
-outer.right =      5
+inner.horizontal = 3
+inner.vertical =   3
+outer.left =       3
+outer.bottom =     3
+outer.top =        3
+outer.right =      3
 
 [mode.main.binding]
 alt-enter = 'exec-and-forget open -a "WezTerm"'
@@ -112,7 +112,6 @@ esc = 'mode main'
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
-#s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
@@ -131,68 +130,18 @@ PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 if.app-id = 'com.apple.systempreferences'
 run = 'layout floating'
 
-#[[on-window-detected]]
-#if.app-id = 'com.github.wez.wezterm'
-#run = 'move-node-to-workspace 1'
-#
-#[[on-window-detected]]
-#if.app-id = 'com.neovide.neovide'
-#run = 'move-node-to-workspace 1'
-#
-#[[on-window-detected]]
-#if.app-id = 'company.thebrowser.Browser'
-#run = 'move-node-to-workspace 2'
-#
-#[[on-window-detected]]
-#if.app-id = 'org.mozilla.com.zen.browser'
-#run = 'move-node-to-workspace 2'
-
 [[on-window-detected]]
 if.app-id = 'org.mozilla.com.zen.browser'
 if.window-title-regex-substring = '^Picture-in-Picture$'
 run = 'layout floating'
 
-#[[on-window-detected]]
-#if.app-id = 'com.microsoft.edgemac'
-#run = 'move-node-to-workspace 2'
-#
-#[[on-window-detected]]
-#if.app-id = 'md.obsidian'
-#run = 'move-node-to-workspace 3'
-#
-#[[on-window-detected]]
-#if.app-id = 'com.hnc.Discord'
-#run = 'move-node-to-workspace 7'
-
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
 if.window-title-regex-substring = '^Discord Updater$'
-#run = ['layout floating', 'move-node-to-workspace 7']
 run = ['layout floating']
-
-#[[on-window-detected]]
-#if.app-id = 'com.tinyspeck.slackmacgap'
-#run = 'move-node-to-workspace 7'
-#
-#[[on-window-detected]]
-#if.app-id = 'com.apple.mail'
-#run = 'move-node-to-workspace 8'
-#
-#[[on-window-detected]]
-#if.app-id = 'org.mozilla.thunderbird'
-#run = 'move-node-to-workspace 8'
-#
-#[[on-window-detected]]
-#if.app-id = 'com.microsoft.Outlook'
-#run = 'move-node-to-workspace 8'
-#
-#[[on-window-detected]]
-#if.app-id = 'ch.protonmail.desktop'
-#run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
-#run = ['layout floating', 'move-node-to-workspace 9']
 run = ['layout floating']
 
 [[on-window-detected]]
