@@ -3,7 +3,7 @@ add_newline = true
 command_timeout = 5000
 
 format = """
-$username$hostname 🐬 $os $directory$nix_shell$container$git_branch$git_status$rust$cmake$package$status$cmd_duration
+$username$hostname $os $directory$nix_shell$container$git_branch$git_status$rust$cmake$package$status$cmd_duration
 $character"""
 
 [directory]
@@ -26,25 +26,22 @@ NixOS = " "
 format = '[$symbol ]($style) '
 
 [git_branch]
-symbol = '🌱 '
+symbol = '󰘬 '
 format = '[$symbol$branch(:$remote_branch)]($style) '
-truncation_length = 4
-truncation_symbol = ''
-ignore_branches = ['master', 'main']
 
 [git_status]
 format = '([$all_status$ahead_behind]($style) )'
-conflicted = '🏳 '
-ahead = '🏎💨 '
-behind = '😰 '
-diverged = '😵 '
-up_to_date = '✓ '
-untracked = '🤷 '
-stashed = '📦 '
-modified = '📝 '
-staged = '[++\($count\)](green) '
-renamed = '👅 '
-deleted = '🗑 '
+up_to_date = '[](cyan) '
+staged = '[󰐕\($count\)](green) '
+ahead = '⇡${count} '
+diverged = '⇕⇡${ahead_count}⇣${behind_count} '
+behind = '⇣${count} '
+stashed = ' '
+conflicted = ' '
+deleted = '󰮘 '
+renamed = '󰪹 '
+modified = '󱇧 '
+untracked = '󰝒 '
 
 [time]
 format = "[$time]($style) "
