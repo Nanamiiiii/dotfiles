@@ -23,6 +23,7 @@ let
   boot = [
     ../../nixos/settings/boot/secureboot.nix
     ../../nixos/settings/boot/zen.nix
+    (import ../../nixos/settings/boot/luks-fido2.nix { luksName = "luks"; })
   ];
 
   # System
@@ -45,15 +46,7 @@ let
 
   # Display
   displaySettings = [
-    (import ../../nixos/settings/display/sddm.nix {
-      inherit
-        pkgs
-        lib
-        config
-        ;
-      wayland = false;
-      extraWestonConfig = null;
-    })
+    ../../nixos/settings/display/ly.nix
     ../../nixos/settings/display/xserver.nix
   ];
 

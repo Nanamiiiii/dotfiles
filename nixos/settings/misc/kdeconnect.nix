@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.kdeconnect = {
     enable = true;
-    package = pkgs.kdePackages.kdeconnect-kde;
+    package = lib.mkDefault pkgs.kdePackages.kdeconnect-kde;
   };
 }
