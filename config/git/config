@@ -1,0 +1,16 @@
+[commit]
+        gpgSign = true
+
+[ghq]
+        root = "~/src"
+
+[gpg]
+        format = "openpgp"
+
+[tag]
+        gpgSign = true
+
+[user]
+        email = "sk@myuu.dev"
+        name = "Akihiro Saiki"
+        signingKey = "C72536FDEEBF9178"
