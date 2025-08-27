@@ -100,7 +100,7 @@ clean-oldgen:
 
 # Setup Legacy
 .PHONY: legacy-install
-legacy-install: sheldon-install aqua-install sheldon-link aqua-link legacy-shell tmux-install
+legacy-install: sheldon-install aqua-install sheldon-link aqua-link legacy-shell tmux-install scripts-link
 
 # Install Sheldon
 .PHONY: sheldon-install
@@ -125,7 +125,7 @@ aqua-link:
 # Symlink to zshrc
 .PHONY: lagacy-shell
 legacy-shell:
-	mkdir -p $(HOME)/.zsh
+	mkdir -p $(HOME)/.zsh/.zsh_functions
 	echo 'source $$HOME/.zsh/.zshenv' > $(HOME)/.zshenv
 	ln -sf $(CURDIR)/config/zsh/.zshenv $(HOME)/.zsh/.zshenv
 	ln -sf $(CURDIR)/config/zsh/.zprofile $(HOME)/.zsh/.zprofile
