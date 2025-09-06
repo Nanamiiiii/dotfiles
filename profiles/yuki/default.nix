@@ -9,7 +9,7 @@
 let
   # Hardware
   hardwareSettings = [
-    nixos-hardware.nixosModules.lenovo-thinkpad-x13
+    nixos-hardware.nixosModules.lenovo-thinkpad-x13-intel
     ./hardware-configuration.nix
   ];
 
