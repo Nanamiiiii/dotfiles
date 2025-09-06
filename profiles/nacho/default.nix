@@ -46,6 +46,7 @@ let
     ../../nixos/settings/system/autofs.nix
     ../../nixos/settings/system/yubikey.nix
     ../../nixos/settings/system/gpg.nix
+    ../../nixos/settings/system/fwupd.nix
   ];
 
   # Graphics
