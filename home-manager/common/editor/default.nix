@@ -5,7 +5,7 @@
   programs = {
     # activated from 24.11
     zed-editor = {
-      enable = desktop;
+      enable = false;
       userSettings = {
         vim_mode = true;
         ui_font_size = 16;
