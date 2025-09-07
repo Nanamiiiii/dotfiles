@@ -16,6 +16,8 @@
     ];
 
     casks = [
+      "1password"
+      "1password-cli"
       "istat-menus"
       "jordanbaird-ice"
       "homerow"
@@ -32,12 +34,10 @@
       "cryptomator"
       "proton-mail"
       "proton-mail-bridge"
-      "proton-pass"
-      "protonvpn"
-      "proton-drive"
       "google-drive"
       "steam"
       "badgeify"
+      "nextcloud-vfs"
     ];
 
     taps = [

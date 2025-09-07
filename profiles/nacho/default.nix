@@ -101,6 +101,7 @@ let
     ../../nixos/settings/misc/ssh.nix
     ../../nixos/settings/misc/sops.nix
     ../../nixos/settings/misc/nfs.nix
+    (import ../../nixos/settings/misc/1password.nix { inherit username; })
   ];
 in
 {
