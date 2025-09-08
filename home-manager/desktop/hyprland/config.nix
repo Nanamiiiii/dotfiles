@@ -39,7 +39,7 @@ in
       "slack -u -s"
       "emote"
       "${pkgs.wl-x11-clipsync}/bin/clipsync"
-      "proton-pass"
+      "1password --silent"
     ];
 
     windowrulev2 = [

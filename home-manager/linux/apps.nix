@@ -19,7 +19,6 @@ let
     xpipe
     cryptomator
     protonmail-desktop
-    proton-pass
   ];
 
   cliPkgs = with pkgs; [

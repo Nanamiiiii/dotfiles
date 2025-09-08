@@ -9,7 +9,7 @@
 }:
 {
   imports = [
-    (import ../../hyprland {
+    (import ../../desktop/hyprland {
       inherit
         pkgs
         pkgs-stable
