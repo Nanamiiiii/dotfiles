@@ -15,7 +15,7 @@ let
     thunderbird
     betterdiscordctl
     zathura
-    termius
+    #termius
     xpipe
     cryptomator
     protonmail-desktop

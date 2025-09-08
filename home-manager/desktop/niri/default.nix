@@ -17,7 +17,6 @@ let
     hyprpaper
     wofi
     gpu-screen-recorder
-    grimshot
     swappy
     zenity
     pamixer
@@ -27,6 +26,9 @@ let
     networkmanager_dmenu
     libnotify
     wl-x11-clipsync
+    xwayland-satellite
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-gnome
   ];
 
   configTools = with pkgs; [
@@ -82,6 +84,7 @@ in
   imports = [
     ./hyprlock.nix
     ./hypridle.nix
+    ./hyprpaper.nix
     ./themes.nix
   ];
 

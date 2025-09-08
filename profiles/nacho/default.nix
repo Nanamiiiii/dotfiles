@@ -85,7 +85,7 @@ let
 
   # Desktop
   desktopSettings = [
-    ../../nixos/settings/desktop/hyprland.nix
+    ../../nixos/settings/desktop/niri.nix
     ../../nixos/settings/desktop/gui.nix
     ../../nixos/settings/desktop/fonts.nix
     ../../nixos/settings/desktop/pipewire.nix
@@ -101,6 +101,7 @@ let
     ../../nixos/settings/misc/ssh.nix
     ../../nixos/settings/misc/sops.nix
     ../../nixos/settings/misc/nfs.nix
+    (import ../../nixos/settings/misc/1password.nix { inherit username; })
   ];
 in
 {
