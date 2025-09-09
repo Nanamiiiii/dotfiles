@@ -20,7 +20,7 @@
     #  thermalZone = 6;
     #  laptop = false;
     #})
-    (import ../../hyprland {
+    (import ../../desktop/hyprland {
       inherit
         pkgs
         pkgs-stable
@@ -31,23 +31,23 @@
       thermalZone = 6;
       laptop = false;
     })
-    ../../hyprland/nvidia.nix
+    ../../desktop/hyprland/nvidia.nix
   ];
 
-  xdg.configFile."niri/config.kdl".source = ./config.kdl;
+  #xdg.configFile."niri/config.kdl".source = ./config.kdl;
 
-  #wayland.windowManager.hyprland.settings = {
-  #  monitor = [
-  #    ",preferred,auto,1"
-  #  ];
+  wayland.windowManager.hyprland.settings = {
+    monitor = [
+      ",preferred,auto,1"
+    ];
 
-  #  input = {
-  #    kb_layout = "us";
-  #    follow_mouse = 1;
-  #    sensitivity = lib.mkForce 0.05;
-  #    accel_profile = "flat";
-  #  };
+    input = {
+      kb_layout = "us";
+      follow_mouse = 1;
+      sensitivity = lib.mkForce 0.05;
+      accel_profile = "flat";
+    };
 
-  #  workspace = [ ];
-  #};
+    workspace = [ ];
+  };
 }

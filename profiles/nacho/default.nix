@@ -85,7 +85,7 @@ let
 
   # Desktop
   desktopSettings = [
-    ../../nixos/settings/desktop/niri.nix
+    ../../nixos/settings/desktop/hyprland.nix
     ../../nixos/settings/desktop/gui.nix
     ../../nixos/settings/desktop/fonts.nix
     ../../nixos/settings/desktop/pipewire.nix
