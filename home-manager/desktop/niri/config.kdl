@@ -131,6 +131,11 @@ window-rule {
 }
 
 window-rule {
+    match app-id=r#"com\.nextcloud\.desktopclient\.nextcloud"#
+    open-floating true
+}
+
+window-rule {
     match app-id=r#"1Password$"#
     block-out-from "screen-capture"
 }
