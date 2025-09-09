@@ -9,18 +9,7 @@
 }:
 {
   imports = [
-    (import ../../desktop/niri {
-      inherit
-        pkgs
-        pkgs-stable
-        inputs
-        hostname
-        config
-        ;
-      thermalZone = 6;
-      laptop = false;
-    })
-    #(import ../../hyprland {
+    #(import ../../desktop/niri {
     #  inherit
     #    pkgs
     #    pkgs-stable
@@ -31,7 +20,18 @@
     #  thermalZone = 6;
     #  laptop = false;
     #})
-    #../../hyprland/nvidia.nix
+    (import ../../hyprland {
+      inherit
+        pkgs
+        pkgs-stable
+        inputs
+        hostname
+        config
+        ;
+      thermalZone = 6;
+      laptop = false;
+    })
+    ../../hyprland/nvidia.nix
   ];
 
   xdg.configFile."niri/config.kdl".source = ./config.kdl;

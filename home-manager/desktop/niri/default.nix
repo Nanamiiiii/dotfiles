@@ -12,8 +12,6 @@ let
   desktopTools = with pkgs; [
     waybar
     swaynotificationcenter
-    hyprlock
-    hypridle
     hyprpaper
     wofi
     gpu-screen-recorder
@@ -43,12 +41,9 @@ let
     pkgs-stable.microsoft-edge
     playerctl
     emote
-    firefox-devedition
-    autotiling
     wl-clipboard
     cliphist
     xclip
-    wob
     imagemagick
     bluez
     bluez-tools
@@ -59,12 +54,10 @@ let
     wev
     gnome-keyring
     seahorse
-    #lxqt.pcmanfm-qt
-    #lxqt.lxqt-sudo
     nemo-with-extensions
   ];
 
-  waybarConfig = import ../waybar {
+  waybarConfig = import ./waybar {
     inherit
       hostname
       thermalZone
@@ -133,6 +126,9 @@ in
     settings = {
       "org/cinnamon/desktop/applications/terminal" = {
         exec = "wezterm";
+      };
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
       };
     };
   };

@@ -46,13 +46,13 @@ let
 
   # Display
   displaySettings = [
-    ../../nixos/settings/display/ly.nix
+    ../../nixos/settings/display/gdm.nix
     ../../nixos/settings/display/xserver.nix
   ];
 
   # Desktop
   desktopSettings = [
-    ../../nixos/settings/desktop/hyprland.nix
+    ../../nixos/settings/desktop/niri.nix
     ../../nixos/settings/desktop/gui.nix
     ../../nixos/settings/desktop/fonts.nix
     ../../nixos/settings/desktop/pipewire.nix

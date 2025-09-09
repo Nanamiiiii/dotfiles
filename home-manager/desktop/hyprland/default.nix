@@ -71,7 +71,7 @@ let
       ;
   };
 
-  configFiles = import ../../config {
+  configFiles = import ../../../config {
     inherit
       pkgs
       config
