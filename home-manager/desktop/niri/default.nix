@@ -6,9 +6,12 @@
   thermalZone,
   laptop,
   config,
+  configByHost,
   ...
 }:
 let
+  niriCommonConf = builtins.readFile ./config.kdl;
+
   desktopTools = with pkgs; [
     waybar
     swaynotificationcenter
@@ -25,8 +28,8 @@ let
     libnotify
     wl-x11-clipsync
     xwayland-satellite
-    xdg-desktop-portal-gtk
     xdg-desktop-portal-gnome
+    xdg-desktop-portal-gtk
   ];
 
   configTools = with pkgs; [
@@ -55,6 +58,7 @@ let
     gnome-keyring
     seahorse
     nemo-with-extensions
+    nautilus
   ];
 
   waybarConfig = import ./waybar {
@@ -84,6 +88,8 @@ in
   services.gnome-keyring.enable = true;
 
   home.packages = desktopTools ++ configTools ++ miscTools;
+
+  xdg.configFile."niri/config.kdl".text = niriCommonConf + configByHost;
 
   xdg.configFile."microsoft-edge/Default/HubApps" = configFiles.linuxConfigs.microsoft-edge."HubApps";
 

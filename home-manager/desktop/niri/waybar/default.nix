@@ -5,14 +5,12 @@
 }:
 let
   modulesLeftLaptop = [
-    "custom/nix"
+    "niri/workspaces"
     "mpris"
-    "niri/window"
   ];
   modulesLeftDesktop = [
-    "custom/nix"
+    "niri/workspaces"
     "mpris"
-    "niri/window"
   ];
   modulesRightLaptop = [
     "tray"
@@ -31,13 +29,13 @@ let
     "memory"
     "cpu"
     "pulseaudio"
+    "network"
     "custom/swaync"
     "clock"
   ];
 in
 {
   waybarConfig = builtins.toJSON {
-    margin = 5;
     "custom/nix" = {
       format = "󱄅";
       tooltip = false;
@@ -151,7 +149,7 @@ in
       format = "{}% ";
       interval = 5;
     };
-    modules-center = [ "niri/workspaces" ];
+    modules-center = [ "niri/window" ];
     modules-left = if laptop then modulesLeftLaptop else modulesLeftDesktop;
     modules-right = if laptop then modulesRightLaptop else modulesRightDesktop;
     mpris = {
@@ -218,11 +216,7 @@ in
     };
     "niri/workspaces" = {
       all-outputs = false;
-      format = "{icon}";
-      format-icons = {
-        "active" = "";
-        "default" = "";
-      };
+      format = "{value}";
     };
     temperature = {
       critical-threshold = 75;
@@ -249,7 +243,7 @@ in
       font-family: 'PlemolJP HS', 'PlemolJP35 Console NF', 'Symbols Nerd Font Mono';
       font-size: 16px;
       font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
-      min-height: 28px;
+      min-height: 24px;
     }
 
     window#waybar {
@@ -257,7 +251,7 @@ in
       color: #f2d8e9;
       transition-property: background-color;
       transition-duration: 0.5s;
-      border-radius: 5px;
+      border-radius: 0px;
     }
 
     window#waybar.left {
@@ -269,7 +263,7 @@ in
     }
 
     #custom-nix {
-      border-radius: 5px;
+      border-radius: 3px;
       margin: 5px 0; 
       margin-left: 5px;
       margin-right: 5px;
@@ -285,7 +279,7 @@ in
       padding: 0 5px;
       /* padding-left: 10px; */
       /* padding-right: 10px; */
-      border-radius: 5px;
+      border-radius: 3px;
       color: #b4befe;
     }
 
@@ -295,7 +289,7 @@ in
       padding-right: 10px;
       color: #b4befe;
       background-color: #39568f;
-      border-radius: 5px;
+      border-radius: 3px;
     }
 
     #submap {
@@ -304,7 +298,7 @@ in
       margin-right: 10px;
       padding-left: 10px;
       padding-right: 10px;
-      border-radius: 5px;
+      border-radius: 3px;
       background-color: #11111b;
       color: #b4befe;
     }
@@ -312,12 +306,12 @@ in
     #workspaces button {
       padding-top: 0;
       padding-bottom: 0;
-      padding-left: 2px;
-      padding-right: 7px;
+      padding-left: 5px;
+      padding-right: 5px;
       margin-top: 0;
       margin-bottom: 0;
-      margin-left: 2px;
-      margin-right: 7px;
+      margin-left: 5px;
+      margin-right: 5px;
       background: #11111b;
       color: #b4befe;
       background-color: transparent;
@@ -329,12 +323,12 @@ in
 
     #workspaces {
       margin: 5px 5px;
-      /* border-radius: 5px; */
+      /* border-radius: 3px; */
     }
 
     #tray {
       margin: 5px 0px;
-      border-radius: 5px;
+      border-radius: 3px;
       background-color: transparent;
       color: #b4befe;
       margin-right: 10px;
@@ -346,7 +340,7 @@ in
     }
 
     #temperature {
-      border-radius: 5px;
+      border-radius: 3px;
       /* background-color: #11111b; */
       /* background-color: #edb695; */
       background-color: #7aa2f7;
@@ -359,7 +353,7 @@ in
     }
 
     #memory {
-      border-radius: 5px;
+      border-radius: 3px;
       /* background-color: #11111b; */
       /* background-color: #dbbe93; */
       background-color: #7aa2f7;
@@ -372,7 +366,7 @@ in
     }
 
     #cpu {
-      border-radius: 5px;
+      border-radius: 3px;
       /* background-color: #11111b; */
       /* background-color: #b9db93; */
       background-color: #7aa2f7;
@@ -385,7 +379,7 @@ in
     }
 
     #pulseaudio {
-      border-radius: 5px;
+      border-radius: 3px;
       /* background-color: #11111b; */
       /* background-color: #73daca; */
       background-color: #7aa2f7;
@@ -398,7 +392,7 @@ in
     }
 
     #backlight {
-      border-radius: 5px;
+      border-radius: 3px;
       /* background-color: #11111b; */
       /* background-color: #6bc6d6; */
       background-color: #7aa2f7;
@@ -411,7 +405,7 @@ in
     }
 
     #bluetooth {
-      border-radius: 5px;
+      border-radius: 3px;
       /* background-color: #11111b; */
       /* background-color: #7dcfff; */
       background-color: #7aa2f7;
@@ -424,7 +418,7 @@ in
     }
 
     #network {
-      border-radius: 5px;
+      border-radius: 3px;
       /* background-color: #11111b; */
       /* background-color: #7aa2f7; */
       background-color: #7aa2f7;
@@ -437,7 +431,7 @@ in
     }
 
     #battery {
-      border-radius: 5px;
+      border-radius: 3px;
       /* background-color: #11111b; */
       /* background-color: #baa7db; */
       background-color: #7aa2f7;
@@ -450,21 +444,21 @@ in
     }
 
     #custom-swaync {
-      border-radius: 5px;
+      /* border-radius: 3px; */
       margin: 5px 0; 
       margin-left: 5px;
-      background-color: #11111b; 
+      /* background-color: #11111b; */
       color: #b4befe;
       padding-left: 10px;
       padding-right: 10px;
     }
 
     #clock {
-      border-radius: 5px;
+      /* border-radius: 3px; */
       margin: 5px 0; 
       margin-left: 5px;
       margin-right: 5px;
-      background-color: #11111b; 
+      /* background-color: #11111b; */
       color: #b4befe;
       padding-left: 10px;
       padding-right: 10px;

@@ -37,6 +37,9 @@ end
 -- Graphics
 config.enable_wayland = true
 config.front_end = "OpenGL"
+if hostname == "mafu" then
+    config.front_end = "WebGpu"
+end
 
 -- Detect desktop environment
 local de_name = ""

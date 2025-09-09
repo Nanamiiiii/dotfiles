@@ -1,0 +1,40 @@
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            options "ctrl:nocaps"
+        }
+        numlock
+    }
+
+    mouse {
+        accel-profile "flat"
+        scroll-factor 0.5
+    }
+
+    warp-mouse-to-focus
+
+    mod-key "Alt"
+    mod-key-nested "Super"
+}
+
+output "ASUSTek COMPUTER INC PA279CRV R7LMSB000093" {
+    mode "3840x2160@60.000"
+    scale 1.25
+    transform "normal"
+    position x=0 y=0
+}
+
+output "Dell Inc. DELL U2720QM CV5MY13" {
+    mode "3840x2160@59.997"
+    scale 1.25
+    transform "normal"
+    position x=0 y=-1728
+}
+
+output "HP Inc. OMEN 27i IPS 6CM0381LDD" {
+    mode "2560x1440@164.834"
+    scale 1
+    transform "normal"
+    position x=3072 y=144
+}

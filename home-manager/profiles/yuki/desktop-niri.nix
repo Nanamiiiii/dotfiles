@@ -7,6 +7,9 @@
   config,
   ...
 }:
+let
+  niriByHost = builtins.readFile ./config.kdl;
+in
 {
   imports = [
     (import ../../desktop/niri {
@@ -19,8 +22,7 @@
         ;
       thermalZone = 6;
       laptop = true;
+      configByHost = niriByHost;
     })
   ];
-
-  xdg.configFile."niri/config.kdl".source = ./config.kdl;
 }

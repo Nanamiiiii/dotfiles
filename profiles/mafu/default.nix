@@ -43,42 +43,44 @@ let
   graphics = ../../nixos/settings/graphics/nvidia.nix;
 
   # Display
-  westonConfig = pkgs.writeText "my-weston.ini" ''
-    [libinput]
-    enable-tap=true
-    left-handed=false 
+  # westonConfig = pkgs.writeText "my-weston.ini" ''
+  #   [libinput]
+  #   enable-tap=true
+  #   left-handed=false
 
-    [keyboard]
-    keymap_model=pc104
-    keymap_layout=us
-    keymap_variant=
-    keymap_options=ctrl:nocaps
+  #   [keyboard]
+  #   keymap_model=pc104
+  #   keymap_layout=us
+  #   keymap_variant=
+  #   keymap_options=ctrl:nocaps
 
-    [output]
-    name=DP-1
-    mode=off
+  #   [output]
+  #   name=DP-1
+  #   mode=off
 
-    [output]
-    name=DP-2
-    mode=off
+  #   [output]
+  #   name=DP-2
+  #   mode=off
 
-    [output]
-    name=DP-3
-    mode=3840x2160
-  '';
+  #   [output]
+  #   name=DP-3
+  #   mode=3840x2160
+  # '';
 
   displaySettings = [
-    (import ../../nixos/settings/display/sddm.nix {
-      inherit pkgs lib config;
-      wayland = true;
-      extraWestonConfig = null;
-    })
+    # (import ../../nixos/settings/display/sddm.nix {
+    #   inherit pkgs lib config;
+    #   wayland = true;
+    #   extraWestonConfig = null;
+    # })
+    ../../nixos/settings/display/gdm.nix
     ../../nixos/settings/display/xserver.nix
   ];
 
   # Desktop
   desktopSettings = [
-    ../../nixos/settings/desktop/hyprland.nix
+    #../../nixos/settings/desktop/hyprland.nix
+    ../../nixos/settings/desktop/niri.nix
     ../../nixos/settings/desktop/gui.nix
     ../../nixos/settings/desktop/fonts.nix
     ../../nixos/settings/desktop/pipewire.nix
@@ -114,5 +116,5 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }
