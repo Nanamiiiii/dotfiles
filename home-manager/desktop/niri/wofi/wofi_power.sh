@@ -6,7 +6,7 @@ selected=$(echo -e $entries|wofi --conf ~/.config/wofi/powermenu.conf --dmenu --
 
 case $selected in
   logout)
-    exec hyprctl dispatch exit;;
+    exec niri msg action quit;;
   suspend)
     exec systemctl suspend;;
   reboot)

@@ -94,7 +94,7 @@ in
   xdg.configFile."microsoft-edge/Default/HubApps" = configFiles.linuxConfigs.microsoft-edge."HubApps";
 
   xdg.configFile."wofi" = {
-    source = ../wofi;
+    source = ./wofi;
     recursive = true;
   };
 
