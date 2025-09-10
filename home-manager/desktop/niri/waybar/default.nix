@@ -287,9 +287,19 @@ in
       margin: 5px 5px; 
       padding-left: 10px;
       padding-right: 10px;
-      color: #b4befe;
-      background-color: #39568f;
+      /* color: #b4befe; */
+      /* color: rgb(57, 86, 114); */
+      /* background-color: rgba(57, 86, 144, 0.8); */
+      color: #5277C3;
       border-radius: 3px;
+    }
+
+    #mpris.spotify_player {
+      color: #38A863;
+    }
+
+    #mpris.spotify {
+      color: #38A863;
     }
 
     #submap {
@@ -343,9 +353,9 @@ in
       border-radius: 3px;
       /* background-color: #11111b; */
       /* background-color: #edb695; */
-      background-color: #7aa2f7;
+      color: rgb(122, 162, 247);
       /* color: #b4befe; */
-      color: #11111b;
+      /* color: #11111b; */
       margin: 5px 0; 
       padding-left: 10px;
       padding-right: 10px;
@@ -356,9 +366,9 @@ in
       border-radius: 3px;
       /* background-color: #11111b; */
       /* background-color: #dbbe93; */
-      background-color: #7aa2f7;
+      color: rgb(122, 162, 247);
       /* color: #b4befe; */
-      color: #11111b;
+      /* color: #11111b; */
       margin: 5px 0; 
       padding-left: 10px;
       padding-right: 15px;
@@ -369,9 +379,9 @@ in
       border-radius: 3px;
       /* background-color: #11111b; */
       /* background-color: #b9db93; */
-      background-color: #7aa2f7;
+      color: rgb(122, 162, 247);
       /* color: #b4befe; */
-      color: #11111b;
+      /* color: #11111b; */
       margin: 5px 0; 
       padding-left: 10px;
       padding-right: 15px;
@@ -382,9 +392,9 @@ in
       border-radius: 3px;
       /* background-color: #11111b; */
       /* background-color: #73daca; */
-      background-color: #7aa2f7;
+      color: rgb(122, 162, 247);
       /* color: #b4befe; */
-      color: #11111b;
+      /* color: #11111b; */
       margin: 5px 0; 
       padding-left: 10px;
       padding-right: 10px;
@@ -395,9 +405,9 @@ in
       border-radius: 3px;
       /* background-color: #11111b; */
       /* background-color: #6bc6d6; */
-      background-color: #7aa2f7;
+      color: rgb(122, 162, 247);
       /* color: #b4befe; */
-      color: #11111b;
+      /* color: #11111b; */
       margin: 5px 0; 
       padding-left: 10px;
       padding-right: 15px;
@@ -408,9 +418,9 @@ in
       border-radius: 3px;
       /* background-color: #11111b; */
       /* background-color: #7dcfff; */
-      background-color: #7aa2f7;
+      color: rgb(122, 162, 247);
       /* color: #b4befe; */
-      color: #11111b;
+      /* color: #11111b; */
       margin: 5px 0; 
       padding-left: 10px;
       padding-right: 10px;
@@ -420,10 +430,10 @@ in
     #network {
       border-radius: 3px;
       /* background-color: #11111b; */
-      /* background-color: #7aa2f7; */
-      background-color: #7aa2f7;
+      /* color: rgb(122, 162, 247); */
+      color: rgb(122, 162, 247);
       /* color: #b4befe; */
-      color: #11111b;
+      /* color: #11111b; */
       margin: 5px 0; 
       padding-left: 10px;
       padding-right: 15px;
@@ -434,9 +444,9 @@ in
       border-radius: 3px;
       /* background-color: #11111b; */
       /* background-color: #baa7db; */
-      background-color: #7aa2f7;
+      color: rgb(122, 162, 247);
       /* color: #b4befe; */
-      color: #11111b;
+      /* color: #11111b; */
       margin: 5px 0; 
       padding-left: 10px;
       padding-right: 10px;

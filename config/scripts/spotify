@@ -1,5 +1,0 @@
-#!/bin/bash
-
-pgrep spotifyd > /dev/null || (eval $(op signin) && spotifyd)
-spt
-
