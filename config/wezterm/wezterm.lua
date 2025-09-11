@@ -37,7 +37,7 @@ end
 -- Graphics
 config.enable_wayland = true
 config.front_end = "OpenGL"
-if hostname == "mafu" then
+if hostname == "mafu" or hostname == "nacho" then
     config.front_end = "WebGpu"
 end
 
@@ -90,7 +90,7 @@ else
 end
 
 -- Color Scheme
-config.color_scheme = "tokyonight-storm"
+config.color_scheme = "tokyonight"
 -- config.color_scheme = "iceberg-dark"
 -- config.color_scheme = "Tokyo Night Moon"
 

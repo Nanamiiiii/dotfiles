@@ -2,6 +2,7 @@
 {
   users = {
     users.${username} = {
+      description = "Akihiro Saiki";
       isNormalUser = true;
       shell = pkgs.zsh;
       extraGroups = [

@@ -29,6 +29,7 @@ let
     (import ../../nixos/settings/system/networking.nix { hostName = "nacho"; })
     ../../nixos/settings/system/security.nix
     ../../nixos/settings/system/user.nix
+    ../../nixos/settings/system/lab-ldap-user.nix
     ../../nixos/settings/system/environment.nix
     ../../nixos/settings/system/time.nix
     ../../nixos/settings/system/i18n.nix
@@ -79,13 +80,15 @@ let
     #  wayland = true;
     #  extraWestonConfig = null;
     #})
-    ../../nixos/settings/display/ly.nix
+    #../../nixos/settings/display/ly.nix
+    ../../nixos/settings/display/gdm.nix
     ../../nixos/settings/display/xserver.nix
   ];
 
   # Desktop
   desktopSettings = [
-    ../../nixos/settings/desktop/hyprland.nix
+    #../../nixos/settings/desktop/hyprland.nix
+    ../../nixos/settings/desktop/niri.nix
     ../../nixos/settings/desktop/gui.nix
     ../../nixos/settings/desktop/fonts.nix
     ../../nixos/settings/desktop/pipewire.nix
