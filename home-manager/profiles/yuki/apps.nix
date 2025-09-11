@@ -1,5 +1,6 @@
 { pkgs, pkgs-stable, ... }:
 {
+  imports = [ ../../services/nextcloud ];
   home.packages =
     with pkgs;
     [
