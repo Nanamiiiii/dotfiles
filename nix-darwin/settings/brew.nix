@@ -26,7 +26,7 @@
       "raycast"
       "nikitabobko/tap/aerospace"
       "microsoft-edge"
-      "wezterm"
+      "wezterm@nightly"
       "xpipe-io/tap/xpipe"
       "bartender"
       "fuse-t"
