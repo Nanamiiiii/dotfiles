@@ -288,3 +288,6 @@ binds {
 
     Mod+Shift+P { power-off-monitors; }
 }
+
+prefer-no-csd
+
