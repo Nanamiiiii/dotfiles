@@ -19,6 +19,7 @@ let
     xpipe
     cryptomator
     protonmail-desktop
+    celeste
   ];
 
   cliPkgs = with pkgs; [
