@@ -19,7 +19,8 @@ let
     xpipe
     cryptomator
     protonmail-desktop
-    celeste
+    insync
+    insync-nautilus
   ];
 
   cliPkgs = with pkgs; [
