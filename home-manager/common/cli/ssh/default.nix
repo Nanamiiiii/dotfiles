@@ -54,8 +54,14 @@ in
 {
   programs.ssh = {
     enable = true;
-    forwardAgent = true;
-    serverAliveInterval = 60;
-    matchBlocks = cloudHosts // tyoHosts;
+    matchBlocks =
+      cloudHosts
+      // tyoHosts
+      // {
+        "*" = {
+          forwardAgent = true;
+          serverAliveInterval = 60;
+        };
+      };
   };
 }
