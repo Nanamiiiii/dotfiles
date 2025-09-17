@@ -13,7 +13,6 @@
       "FelixKratz/formulae/borders"
       "openssh" # builtin openssh misses fido related libs
       "pinentry-mac"
-      "spice-gtk"
     ];
 
     casks = [
@@ -39,7 +38,6 @@
       "steam"
       "badgeify"
       "nextcloud-vfs"
-      "remoteviewer"
     ];
 
     taps = [
