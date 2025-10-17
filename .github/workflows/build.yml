@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - main
+permissions: {}
 jobs:
   changed-files:
     runs-on: ubuntu-latest
@@ -130,12 +131,19 @@ jobs:
   aqua-checksum-update:
     needs: changed-files
     if: needs.changed-files.outputs.aqua-changed == 'true'
-    uses: aquaproj/update-checksum-workflow/.github/workflows/update-checksum.yaml@6793041d2e12f179d9be1c45670d5683ed0eaeeb
-    permissions:
-      contents: read
-    with:
-      aqua_version: v2.55.0
-      working_directory: aqua
-      prune: true
-    secrets:
-      gh_token: ${{secrets.GH_TOKEN}}
+    runs-on: ubuntu-latest
+    permissions: {}
+    timeout-minutes: 15
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: Install aqua
+        uses: aquaproj/aqua-installer@ea518c135a02fc11ff8024364510c181a5c6b342 # v4.0.3
+        with:
+          aqua_version: v2.43.0
+      - name: Fix aqua-checksums.json
+        run: aqua upc -prune
+      - name: Run autofix.ci
+        uses: autofix-ci/action@635ffb0c9798bd160680f18fd73371e355b85f27 # v1.3.2
