@@ -18,7 +18,7 @@ packages:
 - name: sharkdp/fd@v10.3.0
 - name: muesli/duf@v0.9.1
 - name: jesseduffield/lazygit@v0.55.1
-- name: BurntSushi/ripgrep@14.1.1
+- name: BurntSushi/ripgrep@15.0.0
 - name: jqlang/jq@jq-1.8.1
 - name: ajeetdsouza/zoxide@v0.9.8
 - name: aristocratos/btop@v1.4.5
