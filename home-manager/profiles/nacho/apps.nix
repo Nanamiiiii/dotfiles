@@ -14,6 +14,7 @@
       krita
       pinta
       libreoffice-qt6-fresh
+      spotify
     ]
     ++ (with kdePackages; [
       ark
