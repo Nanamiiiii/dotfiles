@@ -9,7 +9,7 @@
   ...
 }:
 let
-  baseSystem = builtins.elemAt (builtins.split "-" pkgs.system) 2;
+  baseSystem = builtins.elemAt (builtins.split "-" pkgs.stdenv.hostPlatform.system) 2;
 
   configFiles = import ../../../config {
     inherit
@@ -25,7 +25,6 @@ lib.mkIf (!wslhost) {
   programs = {
     wezterm = {
       enable = weztermEnable;
-      #package = inputs.wez-flake.packages.${pkgs.system}.default;
       package = pkgs.wezterm;
     };
   };
