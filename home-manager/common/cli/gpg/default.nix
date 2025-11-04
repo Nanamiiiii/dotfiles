@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 let
-  baseSystem = builtins.elemAt (builtins.split "-" pkgs.system) 2;
+  baseSystem = builtins.elemAt (builtins.split "-" pkgs.stdenv.hostPlatform.system) 2;
 in
 {
   home.packages = with pkgs; [

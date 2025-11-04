@@ -20,7 +20,7 @@ in
   programs = {
     neovim = {
       enable = true;
-      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+      package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
     };
 
     neovide = {
@@ -30,7 +30,7 @@ in
         frame = "full";
         idle = true;
         maximized = false;
-        neovim-bin = "${inputs.neovim-nightly-overlay.packages.${pkgs.system}.default}/bin/nvim";
+        neovim-bin = "${inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/nvim";
         no-multigrid = false;
         srgb = false;
         tabs = true;

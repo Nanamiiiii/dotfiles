@@ -93,7 +93,7 @@ in
     enable = true;
     xwayland.enable = true;
     plugins = [ ];
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
   };
 
   services.gnome-keyring.enable = true;
