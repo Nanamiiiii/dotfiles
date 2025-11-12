@@ -14,12 +14,8 @@ let
   ];
   modulesRightLaptop = [
     "tray"
-    "temperature"
-    "memory"
-    "cpu"
-    "pulseaudio"
-    "backlight"
-    "battery"
+    "group/group-status"
+    "group/group-powervol"
     "custom/swaync"
     "clock"
   ];
@@ -234,6 +230,33 @@ in
       icon-size = 18;
       show-passive-items = true;
       spacing = 10;
+    };
+    "group/group-status" = {
+      orientation = "inherit";
+      drawer = {
+        transition-duration = 300;
+        children-class = "status-child";
+        transition-left-to-right = false;
+      };
+      modules = [
+        "cpu"
+        "memory"
+        "temperature"
+      ];
+    };
+    "group/group-powervol" = {
+      orientation = "inherit";
+      drawer = {
+        transition-duration = 300;
+        children-class = "powervol-child";
+        transition-left-to-right = false;
+      };
+      modules = [
+        "battery"
+        "backlight"
+        "pulseaudio"
+        "network"
+      ];
     };
   };
 

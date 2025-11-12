@@ -30,7 +30,9 @@ in
         frame = "full";
         idle = true;
         maximized = false;
-        neovim-bin = "${inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/nvim";
+        neovim-bin = "${
+          inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default
+        }/bin/nvim";
         no-multigrid = false;
         srgb = false;
         tabs = true;
