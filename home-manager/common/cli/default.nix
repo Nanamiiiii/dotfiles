@@ -155,6 +155,7 @@ in
     felix-fm
     proxychains-ng
     clock-tui
+    gemini-cli
   ];
 
   home.file = configFiles.homeScripts;
