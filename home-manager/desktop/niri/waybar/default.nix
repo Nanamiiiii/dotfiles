@@ -15,6 +15,7 @@ let
   modulesRightLaptop = [
     "tray"
     "group/group-status"
+    "network"
     "group/group-powervol"
     "custom/swaync"
     "clock"
@@ -177,7 +178,7 @@ in
       tooltip-format-wifi = "{essid} - {ipaddr}/{cidr}\n{frequency} GHz / {signaldBm} dBm\n{bandwidthDownBits} bps / {bandwidthUpBits} bps";
     };
     pulseaudio = {
-      format = if laptop then "{volume}% {icon}" else "{volume}% {icon} {format_source}";
+      format = "{volume}% {icon} {format_source}";
       format-icons = {
         default =
           if laptop then
@@ -194,7 +195,7 @@ in
             ];
         headphone = " ";
       };
-      format-muted = if laptop then "{volume}% 󰖁" else "{volume}%   {format_source}";
+      format-muted = "{volume}%   {format_source}";
       format-source = "{volume}% ";
       format-source-muted = "{volume}% ";
       on-click = "pavucontrol-qt";
@@ -255,7 +256,6 @@ in
         "battery"
         "backlight"
         "pulseaudio"
-        "network"
       ];
     };
   };
