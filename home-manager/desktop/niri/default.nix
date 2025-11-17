@@ -41,7 +41,6 @@ let
   ];
 
   miscTools = with pkgs; [
-    pkgs-stable.microsoft-edge
     playerctl
     emote
     wl-clipboard
@@ -90,8 +89,6 @@ in
   home.packages = desktopTools ++ configTools ++ miscTools;
 
   xdg.configFile."niri/config.kdl".text = niriCommonConf + configByHost;
-
-  xdg.configFile."microsoft-edge/Default/HubApps" = configFiles.linuxConfigs.microsoft-edge."HubApps";
 
   xdg.configFile."wofi" = {
     source = ./wofi;

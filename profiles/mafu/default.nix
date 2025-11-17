@@ -68,20 +68,21 @@ let
   # '';
 
   displaySettings = [
-    # (import ../../nixos/settings/display/sddm.nix {
-    #   inherit pkgs lib config;
-    #   wayland = true;
-    #   extraWestonConfig = null;
-    # })
-    ../../nixos/settings/display/gdm.nix
+    (import ../../nixos/settings/display/sddm.nix {
+      inherit pkgs lib config;
+      wayland = true;
+      extraWestonConfig = null;
+    })
+    #../../nixos/settings/display/gdm.nix
     ../../nixos/settings/display/xserver.nix
   ];
 
   # Desktop
   desktopSettings = [
     #../../nixos/settings/desktop/hyprland.nix
-    ../../nixos/settings/desktop/niri.nix
-    ../../nixos/settings/desktop/gui.nix
+    #../../nixos/settings/desktop/niri.nix
+    ../../nixos/settings/desktop/plasma.nix
+    #../../nixos/settings/desktop/gui.nix
     ../../nixos/settings/desktop/fonts.nix
     ../../nixos/settings/desktop/pipewire.nix
     ../../nixos/settings/desktop/xdg.nix
@@ -93,7 +94,7 @@ let
     ../../nixos/settings/misc/virt.nix
     ../../nixos/settings/misc/cups.nix
     ../../nixos/settings/misc/gvfs.nix
-    ../../nixos/settings/misc/kdeconnect.nix
+    #../../nixos/settings/misc/kdeconnect.nix
     ../../nixos/settings/misc/steam.nix
     (import ../../nixos/settings/misc/1password.nix { inherit username; })
   ];

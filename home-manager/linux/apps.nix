@@ -4,10 +4,14 @@
   pkgs-stable,
   desktop,
   inputs,
+  config,
+  hostname,
   ...
 }:
 let
   desktopPkgs = with pkgs; [
+    pkgs-stable.microsoft-edge
+    firefox-devedition
     discord
     obsidian
     zotero
@@ -18,7 +22,6 @@ let
     #termius
     xpipe
     cryptomator
-    protonmail-desktop
     insync
     insync-nautilus
   ];
@@ -27,9 +30,19 @@ let
     wireguard-tools
     pinentry-curses
   ];
+
+  configFiles = import ../../config {
+    inherit
+      pkgs
+      config
+      hostname
+      ;
+  };
 in
 {
   home.packages = if desktop then desktopPkgs ++ cliPkgs else cliPkgs;
+
+  xdg.configFile."microsoft-edge/Default/HubApps" = configFiles.linuxConfigs.microsoft-edge."HubApps";
 
   services = {
     kdeconnect = {

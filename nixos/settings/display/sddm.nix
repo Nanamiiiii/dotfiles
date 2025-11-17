@@ -13,7 +13,7 @@
         if extraWestonConfig != null then
           {
             enable = true;
-            package = pkgs.kdePackages.sddm;
+            package = lib.mkForce pkgs.kdePackages.sddm;
             wayland = {
               enable = true;
               compositorCommand = "${lib.getExe pkgs.weston} --shell=kiosk -c ${extraWestonConfig}";
@@ -33,7 +33,7 @@
         else
           {
             enable = true;
-            package = pkgs.kdePackages.sddm;
+            package = lib.mkForce pkgs.kdePackages.sddm;
             wayland = {
               enable = true;
               compositor = "kwin";
@@ -54,7 +54,7 @@
     else
       {
         enable = true;
-        package = pkgs.kdePackages.sddm;
+        package = lib.mkForce pkgs.kdePackages.sddm;
         wayland = {
           enable = false;
         };

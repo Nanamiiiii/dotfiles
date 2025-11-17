@@ -39,10 +39,8 @@ let
   ];
 
   miscTools = with pkgs; [
-    pkgs-stable.microsoft-edge
     playerctl
     emote
-    firefox-devedition
     autotiling
     wl-clipboard
     cliphist
@@ -99,8 +97,6 @@ in
   services.gnome-keyring.enable = true;
 
   home.packages = hyprTools ++ configTools ++ miscTools;
-
-  xdg.configFile."microsoft-edge/Default/HubApps" = configFiles.linuxConfigs.microsoft-edge."HubApps";
 
   xdg.configFile."wofi" = {
     source = ./wofi;
