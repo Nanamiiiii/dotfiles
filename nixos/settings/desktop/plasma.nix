@@ -1,7 +1,16 @@
-{ config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   services = {
     desktopManager.plasma6.enable = true;
     power-profiles-daemon.enable = lib.mkForce (!config.services.tlp.enable);
   };
+
+  environment.systemPackages = with pkgs.kdePackages; [
+    filelight
+  ];
 }
