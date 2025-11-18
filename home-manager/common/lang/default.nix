@@ -1,10 +1,5 @@
 { pkgs, pkgs-stable, ... }:
 let
-  cTools = with pkgs; [
-    gcc
-    libclang
-  ];
-
   buildTools = with pkgs; [
     cmake
     gnumake
@@ -47,6 +42,8 @@ let
     nix-search-cli
     devenv
     nix-direnv
+    nil
+    nixfmt
   ];
 
   typesetTools = with pkgs; [
@@ -71,8 +68,6 @@ let
 in
 {
   home.packages =
-    # prefer system native c/c++ toolchain for correct dependencies
-    # cTools
     buildTools
     ++ rustTools
     ++ golangTools

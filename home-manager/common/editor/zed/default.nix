@@ -10,12 +10,30 @@
         };
         Nix = {
           tab_size = 2;
+          language_servers = [
+            "nil"
+            "!nixd"
+          ];
         };
         Markdown = {
           tab_size = 2;
         };
         CMake = {
           tab_size = 2;
+        };
+      };
+      lsp = {
+        nil = {
+          initialization_options = {
+            formatting = {
+              command = [ "nixfmt" ];
+            };
+            nix = {
+              flake = {
+                autoArchive = true;
+              };
+            };
+          };
         };
       };
       relative_line_numbers = true;
@@ -51,36 +69,16 @@
         context = "Editor && vim_mode == insert";
         bindings = {
           "j j" = "vim::NormalBefore";
-        };
-      }
-      {
-        context = "(Editor && vim_mode == insert)";
-        bindings = {
           ctrl-f = "vim::Right";
         };
       }
       {
         context = "((VimControl && !menu) || (!Editor && !Terminal))";
         bindings = {
-          ctrl-l = "workspace::MovePaneRight";
-        };
-      }
-      {
-        context = "((VimControl && !menu) || (!Editor && !Terminal))";
-        bindings = {
-          ctrl-k = "workspace::MovePaneUp";
-        };
-      }
-      {
-        context = "((VimControl && !menu) || (!Editor && !Terminal))";
-        bindings = {
-          ctrl-j = "workspace::MovePaneDown";
-        };
-      }
-      {
-        context = "((VimControl && !menu) || (!Editor && !Terminal))";
-        bindings = {
-          ctrl-h = "workspace::MovePaneLeft";
+          ctrl-l = "workspace::ActivatePaneRight";
+          ctrl-k = "workspace::ActivatePaneUp";
+          ctrl-j = "workspace::ActivatePaneDown";
+          ctrl-h = "workspace::ActivatePaneLeft";
         };
       }
       {
