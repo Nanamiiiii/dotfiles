@@ -18,7 +18,7 @@
           tab_size = 2;
         };
       };
-      relative_line_numbers = "enabled";
+      relative_line_numbers = true;
       vertical_scroll_margin = 5.0;
       buffer_font_family = "PlemolJP Console NF";
       minimap = {
@@ -38,11 +38,11 @@
       {
         context = "Workspace";
         bindings = {
-          "shift shift" = "file_finder:Toggle";
+          "shift shift" = "file_finder::Toggle";
         };
       }
       {
-        context = "Workspace";
+        context = "((Editor && vim_mode == normal) || Terminal)";
         bindings = {
           ctrl-o = "terminal_panel::Toggle";
         };
