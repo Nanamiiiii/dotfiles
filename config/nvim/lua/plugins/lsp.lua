@@ -48,6 +48,8 @@ return {
                     "gopls",
                     "eslint",
                     "jsonls",
+                    "nil_ls",
+                    "nixfmt"
                 },
                 automatic_enable = true,
             })
