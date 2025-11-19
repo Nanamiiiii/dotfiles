@@ -49,6 +49,11 @@ let
       user = "nanami";
       port = 22;
     };
+    "mailserver" = {
+      hostname = "172.27.20.5";
+      user = "myuu";
+      port = 22;
+    };
   };
 in
 {
