@@ -49,7 +49,7 @@ return {
                     "eslint",
                     "jsonls",
                     "nil_ls",
-                    "nixfmt"
+                    "nixfmt",
                 },
                 automatic_enable = true,
             })
