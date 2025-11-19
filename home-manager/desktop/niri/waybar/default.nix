@@ -6,17 +6,24 @@
 let
   modulesLeftLaptop = [
     "niri/workspaces"
+    "niri/window"
     "mpris"
   ];
   modulesLeftDesktop = [
     "niri/workspaces"
     "mpris"
   ];
+  modulesCenterLaptop = [ ];
+  modulesCenterDesktop = [
+    "niri/window"
+  ];
   modulesRightLaptop = [
-    "tray"
-    "group/group-status"
+    "memory"
+    "temperature"
+    "cpu"
+    "pulseaudio"
     "network"
-    "group/group-powervol"
+    "battery"
     "custom/swaync"
     "clock"
   ];
@@ -30,6 +37,8 @@ let
     "custom/swaync"
     "clock"
   ];
+  fontSize = if laptop then "14" else "16";
+  barHeight = if laptop then "20" else "24";
 in
 {
   waybarConfig = builtins.toJSON {
@@ -132,7 +141,7 @@ in
         mode = "month";
         on-scroll = 1;
       };
-      format = if laptop then "󰥔 {:%H:%M}" else "󰥔 {:%Y-%m-%d %H:%M:%S}";
+      format = if laptop then "󰥔 {:%m/%d %H:%M}" else "󰥔 {:%Y-%m-%d %H:%M:%S}";
       interval = 1;
       tooltip-format = "<tt><small>{calendar}</small></tt>";
     };
@@ -146,7 +155,7 @@ in
       format = "{}% ";
       interval = 5;
     };
-    modules-center = [ "niri/window" ];
+    modules-center = if laptop then modulesCenterLaptop else modulesCenterDesktop;
     modules-left = if laptop then modulesLeftLaptop else modulesLeftDesktop;
     modules-right = if laptop then modulesRightLaptop else modulesRightDesktop;
     mpris = {
@@ -264,9 +273,9 @@ in
     * {
       border: none;
       font-family: 'PlemolJP HS', 'PlemolJP35 Console NF', 'Symbols Nerd Font Mono';
-      font-size: 16px;
+      font-size: ${fontSize}px;
       font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
-      min-height: 24px;
+      min-height: ${barHeight}px;
     }
 
     window#waybar {
@@ -343,8 +352,8 @@ in
       padding-right: 5px;
       margin-top: 0;
       margin-bottom: 0;
-      margin-left: 5px;
-      margin-right: 5px;
+      margin-left: 0px;
+      margin-right: 0px;
       background: #11111b;
       color: #b4befe;
       background-color: transparent;

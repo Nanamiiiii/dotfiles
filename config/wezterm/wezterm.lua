@@ -85,6 +85,8 @@ if is_macos then
     config.font_size = 16.0
 elseif hostname == "xanadu" then
     config.font_size = 12.5
+elseif hostname == "yuki" then
+    config.font_size = 13
 else
     config.font_size = 14.0
 end
