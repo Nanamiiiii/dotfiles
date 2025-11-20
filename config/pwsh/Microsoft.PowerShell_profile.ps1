@@ -4,6 +4,10 @@ $Env:AQUA_GLOBAL_CONFIG="$Env:USERPROFILE\dotfiles\aqua\aqua.yaml"
 $Env:AQUA_LOG_LEVEL="fatal"
 $Env:AQUA_PROGRESS_BAR="true"
 
+# Override SSH Agent Socket
+# To avoid overriding of wezterm
+$Env:SSH_AUTH_SOCK="\\.\pipe\openssh-ssh-agent"
+
 # Starship
 $Env:STARSHIP_CONFIG="$Env:USERPROFILE\dotfiles\config\starship\starship.toml"
 
@@ -78,7 +82,7 @@ Invoke-Expression (&starship init powershell)
 # Be aware that if you are missing these lines from your profile, tab completion
 # for `choco` will not function.
 # See https://ch0.co/tab-completion for details.
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-  Import-Module "$ChocolateyProfile"
-}
+#$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+#if (Test-Path($ChocolateyProfile)) {
+#  Import-Module "$ChocolateyProfile"
+#}

@@ -15,9 +15,9 @@ config.term = "xterm-256color"
 config.use_ime = false
 
 -- Detect OS
-local is_macos = wezterm.target_triple:find("darwin") -- macos
+local is_macos = wezterm.target_triple:find("darwin")    -- macos
 local is_windows = wezterm.target_triple:find("windows") -- windows
-local is_linux = wezterm.target_triple:find("linux") -- linux
+local is_linux = wezterm.target_triple:find("linux")     -- linux
 
 -- Default Shell
 if is_windows then
@@ -539,14 +539,16 @@ end
 --end
 
 -- SSH Agent
-local SSH_AUTH_SOCK = os.getenv("SSH_AUTH_SOCK")
-local gpg_ssh_sock = string.format("%s/gnupg/S.gpg-agent.ssh", os.getenv("XDG_RUNTIME_DIR"))
-local gpg_ssh_sock_alt = string.format("%s/.gnupg/S.gpg-agent.ssh", os.getenv("HOME"))
-if SSH_AUTH_SOCK ~= gpg_ssh_sock and SSH_AUTH_SOCK ~= gpg_ssh_sock_alt then
-    if #wezterm.glob(gpg_ssh_sock) == 1 then
-        config.default_ssh_auth_sock = gpg_ssh_sock
-    elseif #wezterm.glob(gpg_ssh_sock_alt) == 1 then
-        config.default_ssh_auth_sock = gpg_ssh_sock_alt
+if not is_windows then
+    local SSH_AUTH_SOCK = os.getenv("SSH_AUTH_SOCK")
+    local gpg_ssh_sock = string.format("%s/gnupg/S.gpg-agent.ssh", os.getenv("XDG_RUNTIME_DIR"))
+    local gpg_ssh_sock_alt = string.format("%s/.gnupg/S.gpg-agent.ssh", os.getenv("HOME"))
+    if SSH_AUTH_SOCK ~= gpg_ssh_sock and SSH_AUTH_SOCK ~= gpg_ssh_sock_alt then
+        if #wezterm.glob(gpg_ssh_sock) == 1 then
+            config.default_ssh_auth_sock = gpg_ssh_sock
+        elseif #wezterm.glob(gpg_ssh_sock_alt) == 1 then
+            config.default_ssh_auth_sock = gpg_ssh_sock_alt
+        end
     end
 end
 

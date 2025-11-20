@@ -57,6 +57,7 @@ function distribute_config {
         $gpgpath = (Get-Command gpg).Source
         Copy-Item -Path $gitconfig -Destination "$Env:USERPROFILE\.gitconfig" -Force
         git config --global gpg.program $gpgpath
+        git config --global core.sshCommand "C:/Windows/System32/OpenSSH/ssh.exe"
 
         # wezterm
         New-SymLink -TargetPath $wezterm -LinkPath "$Env:USERPROFILE\.wezterm.lua" -Force
