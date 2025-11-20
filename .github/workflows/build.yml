@@ -16,7 +16,7 @@ jobs:
       darwin-changed: ${{ steps.changed-files.outputs.darwin_any_changed == 'true' }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Get all changed files
         id: changed-files
         uses: tj-actions/changed-files@v47
@@ -61,7 +61,7 @@ jobs:
     if: needs.changed-files.outputs.nixos-changed == 'true'
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Adding Nix PATH
         run: |
           echo "/nix/var/nix/profiles/default/bin" >> "$GITHUB_PATH"
@@ -84,7 +84,7 @@ jobs:
     if: needs.changed-files.outputs.darwin-changed == 'true'
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Install nix
         uses: cachix/install-nix-action@v31
       - name: Setup cachix
@@ -108,7 +108,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Install nix
         uses: cachix/install-nix-action@v31
       - name: Setup cachix
