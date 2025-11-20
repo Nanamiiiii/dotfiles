@@ -144,27 +144,31 @@ title_map["zsh"] = {
     title = "Zsh",
     symbol = "󰞷 ",
 }
-title_map["nu.exe"] = {
+title_map["bash"] = {
+    title = "Bash",
+    symbol = "󰞷 ",
+}
+title_map["ssh"] = {
+    title = "SSH",
+    symbol = " ",
+}
+title_map["nu"] = {
     title = "Nu",
     symbol = "󰞷 ",
 }
-title_map["pwsh.exe"] = {
-    title = "Pwsh",
-    symbol = "󰞷 ",
-}
-title_map["nvim.exe"] = {
-    title = "neovim",
-    symbol = " ",
+title_map["pwsh"] = {
+    title = "PowerShell",
+    symbol = "󰨊 ",
 }
 title_map["nvim"] = {
     title = "neovim",
     symbol = " ",
 }
-title_map["wslhost.exe"] = {
+title_map["wslhost"] = {
     title = "WSL",
     symbol = "󰣇 ",
 }
-title_map["wsl.exe"] = {
+title_map["wsl"] = {
     title = "WSL",
     symbol = "󰣇 ",
 }
@@ -172,11 +176,16 @@ title_map["tmux"] = {
     title = "tmux",
     symbol = " ",
 }
+title_map["git"] = {
+    title = "git",
+    symbol = "󰊢 ",
+}
 -- add new mappings here
 
 function title_mapper(title, symbol)
-    if title_map[title] ~= nil then
-        local items = title_map[title]
+    local binName = string.match(title, "([^/\\]+)%.[^.]*$")
+    if title_map[binName] ~= nil then
+        local items = title_map[binName]
         local mapped_title = ""
         if items["symbol"] ~= nil and symbol then
             mapped_title = mapped_title .. items["symbol"]
