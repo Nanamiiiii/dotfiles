@@ -22,6 +22,7 @@ let
     "temperature"
     "cpu"
     "pulseaudio"
+    "backlight"
     "network"
     "battery"
     "custom/swaync"
