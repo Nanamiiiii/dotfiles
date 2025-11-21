@@ -46,12 +46,11 @@ function distribute_config {
             New-Item -ItemType Directory -Path $pwshdir -Force | Out-Null
             Write-Host "[Created] Directory: $pwshdir" -ForegroundColor Green
         }
-        New-SymLink -TargetPath $pwsh_profile -LinkPath "$pwshdir\persistent_profile.ps1" -Force
         if (-not (Test-Path -Path "$pwshdir\Microsoft.PowerShell_profile.ps1" -PathType Leaf)) {
             New-Item -ItemType File -Path "$pwshdir\Microsoft.PowerShell_profile.ps1" -Force | Out-Null
             Write-Host "[Created] File: $pwshdir\Microsoft.PowerShell_profile.ps1" -ForegroundColor Green
         }
-        Add-Content -Value ". $pwshdir\persistent_profile.ps1" -Path "$pwshdir\Microsoft.PowerShell_profile.ps1"
+        Add-Content -Value '. "$Env:USERPROFILE\dotfiles\config\pwsh\Microsoft.PowerShell_profile.ps1"' -Path "$pwshdir\Microsoft.PowerShell_profile.ps1"
 
         # .gitconfig
         $gpgpath = (Get-Command gpg).Source
