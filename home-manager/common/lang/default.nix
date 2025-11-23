@@ -2,6 +2,7 @@
 let
   buildTools = with pkgs; [
     cmake
+    cmake-language-server
     gnumake
     bear
     ninja
@@ -15,10 +16,14 @@ let
     cargo-hf2
   ];
 
-  golangTools = with pkgs; [ go ];
+  golangTools = with pkgs; [
+    go
+    gopls
+  ];
 
   tsjsTools = with pkgs; [
-    nodejs_22
+    nodejs
+    typescript-language-server
     # to avoid denops crashing
     pkgs-stable.deno
   ];
@@ -26,7 +31,9 @@ let
   rubyTools = with pkgs; [ ruby ];
 
   luaTools = with pkgs; [
+    luajit
     luajitPackages.luarocks
+    lua-language-server
     stylua
   ];
 
@@ -56,14 +63,22 @@ let
       python-pkgs: with python-pkgs; [
         wheel
         pip
+        python-lsp-server
       ]
     ))
   ];
 
   dotnetTools = with pkgs; [
-    dotnet-sdk_9
-    dotnet-runtime_9
+    dotnet-sdk_10
     fsautocomplete
+  ];
+
+  shellTools = with pkgs; [
+    bash-language-server
+  ];
+
+  yamlTools = with pkgs; [
+    yaml-language-server
   ];
 in
 {
@@ -78,5 +93,7 @@ in
     ++ nixTools
     ++ typesetTools
     ++ pythonTools
-    ++ dotnetTools;
+    ++ dotnetTools
+    ++ shellTools
+    ++ yamlTools;
 }
