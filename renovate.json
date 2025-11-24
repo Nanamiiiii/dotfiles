@@ -1,63 +1,63 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    "github>aquaproj/aqua-renovate-config#2.9.0",
-    "github>aquaproj/aqua-renovate-config:installer-script#2.9.0(Makefile)"
-  ],
-  "nix": {
-    "enabled": true
-  },
-  "lockFileMaintenance": {
-    "enabled": true,
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
-      "schedule:daily"
+        "config:recommended",
+        "github>aquaproj/aqua-renovate-config#2.9.0",
+        "github>aquaproj/aqua-renovate-config:installer-script#2.9.0(Makefile)"
     ],
-    "automerge": true,
-    "automergeStrategy": "rebase"
-  },
-  "packageRules": [
-    {
-      "matchPackageNames": [
-        "aquaproj/aqua-registry"
-      ],
-      "extends": [
-        "schedule:earlyMondays"
-      ],
-      "automerge": true
+    "nix": {
+        "enabled": true
     },
-    {
-      "matchFileNames": [
-        "aqua/aqua.yaml"
-      ],
-      "groupName": "aqua cli varsion manager",
-      "automerge": true
+    "lockFileMaintenance": {
+        "enabled": true,
+        "schedule": [
+            "0 6 * * 0"
+        ],
+        "automerge": true,
+        "automergeStrategy": "rebase"
     },
-    {
-      "matchFileNames": [
-        "renovate.json"
-      ],
-      "groupName": "renovate configuration",
-      "automerge": true
-    },
-    {
-      "matchManagers": [
-        "custom.regex"
-      ],
-      "matchFileNames": [
-        "Makefile"
-      ],
-      "groupName": "aqua installer",
-      "automerge": true
-    },
-    {
-      "matchManagers": [
-        "github-actions"
-      ],
-      "groupName": "GitHub Actions manifest",
-      "automerge": true
-    }
-  ],
-  "timezone": "Asia/Tokyo",
-  "dependencyDashboard": true
+    "packageRules": [
+        {
+            "matchPackageNames": [
+                "aquaproj/aqua-registry"
+            ],
+            "extends": [
+                "schedule:earlyMondays"
+            ],
+            "automerge": true
+        },
+        {
+            "matchFileNames": [
+                "aqua/aqua.yaml"
+            ],
+            "groupName": "aqua cli varsion manager",
+            "automerge": true
+        },
+        {
+            "matchFileNames": [
+                "renovate.json"
+            ],
+            "groupName": "renovate configuration",
+            "automerge": true
+        },
+        {
+            "matchManagers": [
+                "custom.regex"
+            ],
+            "matchFileNames": [
+                "Makefile"
+            ],
+            "groupName": "aqua installer",
+            "automerge": true
+        },
+        {
+            "matchManagers": [
+                "github-actions"
+            ],
+            "groupName": "GitHub Actions manifest",
+            "automerge": true
+        }
+    ],
+    "timezone": "Asia/Tokyo",
+    "dependencyDashboard": true
 }

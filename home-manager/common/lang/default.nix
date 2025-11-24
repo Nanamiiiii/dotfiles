@@ -77,7 +77,8 @@ let
     bash-language-server
   ];
 
-  yamlTools = with pkgs; [
+  dataObjectLs = with pkgs; [
+    vscode-json-languageserver
     yaml-language-server
   ];
 in
@@ -95,5 +96,5 @@ in
     ++ pythonTools
     ++ dotnetTools
     ++ shellTools
-    ++ yamlTools;
+    ++ dataObjectLs;
 }
