@@ -20,7 +20,7 @@ let
 
   # Boot Settings
   boot = [
-    ../../nixos/settings/boot/secureboot.nix
+    ../../nixos/settings/boot/default.nix
     ../../nixos/settings/boot/zen.nix
   ];
 
@@ -40,49 +40,17 @@ let
   ];
 
   # Graphics
-  graphics = ../../nixos/settings/graphics/nvidia.nix;
+  graphics = ../../nixos/settings/graphics/intel.nix;
 
   # Display
-  # westonConfig = pkgs.writeText "my-weston.ini" ''
-  #   [libinput]
-  #   enable-tap=true
-  #   left-handed=false
-
-  #   [keyboard]
-  #   keymap_model=pc104
-  #   keymap_layout=us
-  #   keymap_variant=
-  #   keymap_options=ctrl:nocaps
-
-  #   [output]
-  #   name=DP-1
-  #   mode=off
-
-  #   [output]
-  #   name=DP-2
-  #   mode=off
-
-  #   [output]
-  #   name=DP-3
-  #   mode=3840x2160
-  # '';
-
   displaySettings = [
-    (import ../../nixos/settings/display/sddm.nix {
-      inherit pkgs lib config;
-      wayland = true;
-      extraWestonConfig = null;
-    })
-    #../../nixos/settings/display/gdm.nix
+    ../../nixos/settings/display/gdm.nix
     ../../nixos/settings/display/xserver.nix
   ];
 
   # Desktop
   desktopSettings = [
-    #../../nixos/settings/desktop/hyprland.nix
-    #../../nixos/settings/desktop/niri.nix
-    ../../nixos/settings/desktop/plasma.nix
-    #../../nixos/settings/desktop/gui.nix
+    ../../nixos/settings/desktop/niri.nix
     ../../nixos/settings/desktop/fonts.nix
     ../../nixos/settings/desktop/pipewire.nix
     ../../nixos/settings/desktop/xdg.nix
@@ -94,8 +62,7 @@ let
     ../../nixos/settings/misc/virt.nix
     ../../nixos/settings/misc/cups.nix
     ../../nixos/settings/misc/gvfs.nix
-    #../../nixos/settings/misc/kdeconnect.nix
-    ../../nixos/settings/misc/steam.nix
+    ../../nixos/settings/misc/kdeconnect.nix
     (import ../../nixos/settings/misc/1password.nix { inherit username; })
   ];
 in
@@ -110,6 +77,25 @@ in
   ++ displaySettings
   ++ desktopSettings
   ++ misc;
+
+  services.snapper = {
+    configs = {
+      root = {
+        SUBVOLUME = "/";
+        ALLOW_USERS = [ "${username}" ];
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
+        FSTYPE = "btrfs";
+      };
+      home = {
+        SUBVOLUME = "/home";
+        ALLOW_USERS = [ "${username}" ];
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
+        FSTYPE = "btrfs";
+      };
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

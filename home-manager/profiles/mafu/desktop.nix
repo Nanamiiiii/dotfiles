@@ -24,18 +24,18 @@ in
     #   laptop = false;
     # })
     # ../../desktop/hyprland/nvidia.nix
-    #(import ../../desktop/niri {
-    #  inherit
-    #    pkgs
-    #    pkgs-stable
-    #    inputs
-    #    hostname
-    #    config
-    #    ;
-    #  thermalZone = 1;
-    #  laptop = false;
-    #  configByHost = niriByHost;
-    #})
+    (import ../../desktop/niri {
+      inherit
+        pkgs
+        pkgs-stable
+        inputs
+        hostname
+        config
+        ;
+      thermalZone = 4;
+      laptop = false;
+      configByHost = niriByHost;
+    })
   ];
 
   # wayland.windowManager.hyprland.settings = {
