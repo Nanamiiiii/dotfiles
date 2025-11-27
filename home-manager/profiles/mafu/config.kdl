@@ -17,3 +17,10 @@ input {
     mod-key-nested "Super"
 }
 
+output "DP-2" {
+    mode "3840x2160@60.000"
+    scale 1.5
+    transform "normal"
+    position x=0 y=0
+}
+
