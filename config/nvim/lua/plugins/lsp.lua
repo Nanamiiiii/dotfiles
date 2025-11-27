@@ -1,6 +1,4 @@
 -- plugins/lsp.lua
-local lsp_configuration = function() end
-
 return {
     {
         "neovim/nvim-lspconfig",
@@ -23,6 +21,7 @@ return {
                 "bashls",
                 "taplo",
                 "ts_ls",
+                "tinymist",
             }
 
             local attach_callback = function(ctx)

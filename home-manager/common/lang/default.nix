@@ -56,6 +56,7 @@ let
   typesetTools = with pkgs; [
     texliveFull
     typst
+    tinymist
   ];
 
   pythonTools = with pkgs; [
