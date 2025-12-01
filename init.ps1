@@ -129,3 +129,5 @@ if (check_dotdir) {
 }
 
 distribute_config
+
+Pause
