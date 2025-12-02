@@ -16,6 +16,7 @@
   # bat
   cat = "bat --style=plain --paging=never";
   less = "bat --style=plain";
+  bat-light = "bat --theme=GitHub";
 
   # fd
   find = "fd";
