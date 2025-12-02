@@ -15,9 +15,9 @@ config.term = "xterm-256color"
 config.use_ime = false
 
 -- Detect OS
-local is_macos = wezterm.target_triple:find("darwin") -- macos
+local is_macos = wezterm.target_triple:find("darwin")    -- macos
 local is_windows = wezterm.target_triple:find("windows") -- windows
-local is_linux = wezterm.target_triple:find("linux") -- linux
+local is_linux = wezterm.target_triple:find("linux")     -- linux
 
 -- Default Shell
 if is_windows then
@@ -92,7 +92,12 @@ else
 end
 
 -- Color Scheme
-config.color_scheme = "tokyonight"
+local appearance = wezterm.gui.get_appearance()
+if appearance:find("Dark") then
+    config.color_scheme = "tokyonight"
+else
+    config.color_scheme = "tokyonight-day"
+end
 -- config.color_scheme = "iceberg-dark"
 -- config.color_scheme = "Tokyo Night Moon"
 
@@ -105,7 +110,7 @@ else
     config.text_background_opacity = 0.90
     if is_windows then
         config.window_background_opacity = 0
-        config.win32_system_backdrop = "Mica"
+        config.win32_system_backdrop = "Tabbed"
     end
 end
 
@@ -120,8 +125,8 @@ config.window_background_image_hsb = {
 config.tab_max_width = 20
 
 if is_windows then
-    config.use_fancy_tab_bar = true
-    config.tab_bar_at_bottom = false
+    config.use_fancy_tab_bar = false
+    config.tab_bar_at_bottom = true
     config.hide_tab_bar_if_only_one_tab = false
 else
     config.use_fancy_tab_bar = false

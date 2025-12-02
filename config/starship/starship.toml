@@ -7,12 +7,12 @@ $username$hostname $os $directory$nix_shell$container$git_branch$git_status$rust
 $character"""
 
 [directory]
-truncation_length = 2 
-style = "#526c9d italic"
+truncation_length = 2
+style = "fg:4 italic"
 
 [os]
-format = "[on](fg:#e2e2e5) [$symbol]($style)"
-style = "fg:#4484b4 bold"
+format = "[on](fg:244) [$symbol]($style)"
+style = "fg:12 bold"
 disabled = false
 
 [os.symbols]
@@ -51,19 +51,19 @@ disabled = false
 
 [cmd_duration]
 format = "[$duration]($style) "
-style = "fg:#9ED2C6 bold"
+style = "fg:14 bold"
 
 [username]
 format = "[$user]($style)"
-style_user = "fg:#71a6d2 bold"
+style_user = "fg:12 bold"
 show_always = true
 
 [status]
 disabled = false
 
 [hostname]
-format = "[@](fg:#e2e2e5)[$hostname]($style)"
-style = "fg:#1b5e98 bold"
+format = "[@](fg:245)[$hostname]($style)"
+style = "fg:8 bold"
 ssh_only = true
 
 [fill]
@@ -74,4 +74,3 @@ format = 'via [$symbol $state( \[$name\])]($style) '
 pure_msg = "󱔄"
 impure_msg = "󱔌"
 symbol = " "
-
