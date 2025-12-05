@@ -57,21 +57,23 @@ jobs:
   nixos-build:
     runs-on: [self-hosted, X64, Linux, nix]
     name: Build NixOS configuration for nacho
+    container:
+      image: ubuntu:24.04
     needs: changed-files
     if: needs.changed-files.outputs.nixos-changed == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Adding Nix PATH
-        run: |
-          echo "/nix/var/nix/profiles/default/bin" >> "$GITHUB_PATH"
-          echo "$HOME/.nix-profile/bin" >> "$GITHUB_PATH"
+      - name: Install nix
+        uses: cachix/install-nix-action@v31
+      - name: Setup cachix
+        uses: cachix/cachix-action@v16
+        with:
+          name: nanamiiiii
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Check nix installation
         run: |
           make RUNS_ENV=ci test
-      - name: Clean Nix Store
-        run: |
-          make RUNS_ENV=ci clean-store
       - name: build
         run: |
           make RUNS_ENV=ci ci-build
