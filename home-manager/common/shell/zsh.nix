@@ -72,8 +72,11 @@ let
 
   wslZprofileExt = ''
     path=(
+      "/mnt/c/Windows/System32/OpenSSH"
       "$path[@]"
     )
+
+    export WSLENV=$WSLENV:SSH_AUTH_SOCK
   '';
 
   zshrcExt = ''

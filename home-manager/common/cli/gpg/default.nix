@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  wslhost,
+  ...
+}:
 let
   baseSystem = builtins.elemAt (builtins.split "-" pkgs.stdenv.hostPlatform.system) 2;
 in
@@ -19,9 +24,15 @@ in
       };
     };
     zsh = lib.mkIf (baseSystem == "linux") {
-      envExtra = ''
-        export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh
-      '';
+      envExtra =
+        if !wslhost then
+          ''
+            export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh
+          ''
+        else
+          ''
+            export SSH_AUTH_SOCK='\\.\pipe\openssh-ssh-agent'
+          '';
     };
   };
 

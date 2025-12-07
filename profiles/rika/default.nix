@@ -10,6 +10,7 @@ let
     (import ../../nix-wsl/settings/system/networking.nix { hostName = "rika"; })
     ../../nix-wsl/settings/system/graphics.nix
     ../../nix-wsl/settings/system/fonts.nix
+    ../../nix-wsl/settings/system/docker.nix
     ../../nix-wsl/settings/apps
   ];
 

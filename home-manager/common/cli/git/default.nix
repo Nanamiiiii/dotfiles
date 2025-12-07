@@ -16,11 +16,19 @@ let
   gpgSigner = {
     "openpgp" = lib.getExe config.programs.gpg.package;
   };
+
+  winGpgPath = "/mnt/c/Program Files (x86)/gnupg/bin/gpg.exe";
+
+  sshPath = lib.getExe config.programs.ssh.package;
+  winSshPath = "/mnt/c/Windows/System32/OpenSSH/ssh.exe";
 in
 {
   programs.git = {
     enable = true;
     settings = {
+      core = {
+        sshCommand = if wslhost then winSshPath else sshPath;
+      };
       user = {
         name = "Akihiro Saiki";
         email = "sk@myuu.dev";
@@ -30,7 +38,7 @@ in
     signing = {
       format = "openpgp";
       key = signingKey."${config.programs.git.signing.format}";
-      signer = gpgSigner."${config.programs.git.signing.format}";
+      signer = if wslhost then winGpgPath else gpgSigner."${config.programs.git.signing.format}";
       signByDefault = true;
     };
   };

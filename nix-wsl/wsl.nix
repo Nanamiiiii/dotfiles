@@ -22,7 +22,7 @@
       enable = true;
     };
     docker-desktop = {
-      enable = true;
+      enable = false;
     };
   };
 }
