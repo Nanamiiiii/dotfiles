@@ -58,10 +58,18 @@ jobs:
     runs-on: [self-hosted, X64, Linux, nix]
     name: Build NixOS configuration for nacho
     container:
-        image: ghcr.io/nanamiiiii/nix-dot-builder:latest
+        image: ubuntu:24.04
     needs: changed-files
     if: needs.changed-files.outputs.nixos-changed == 'true'
     steps:
+      - name: Install deps
+        run: |
+          apt update
+          apt install -y sudo git make build-essential curl ca-certificates
+      - name: Install nix
+        uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
       - name: Checkout
         uses: actions/checkout@v6
       - name: Setup cachix
