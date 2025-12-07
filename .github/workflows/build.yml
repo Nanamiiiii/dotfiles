@@ -61,8 +61,6 @@ jobs:
     needs: changed-files
     if: needs.changed-files.outputs.nixos-changed == 'true'
     steps:
-      - name: Fix directory permissions
-        run: chown -R root:root /github/home
       - name: Checkout
         uses: actions/checkout@v6
       - name: Build docker image
