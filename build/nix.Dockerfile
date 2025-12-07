@@ -1,10 +1,12 @@
-FROM ubuntu:24.04
+FROM nixos/nix:latest
 
-RUN apt update && apt install -y sudo build-essential make git curl ca-certificates
+RUN nix-channel --update
 
-RUN curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install linux \
-  --extra-conf "sandbox = false" \
-  --init none \
-  --no-confirm
+RUN nix-env -iA nixpkgs.gnumake
 
-ENV PATH="${PATH}:/nix/var/nix/profiles/default/bin"
+RUN echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
+
+WORKDIR /work
+
+COPY . .
+

@@ -34,6 +34,7 @@ jobs:
               - secrets/**
               - '.github/workflows/build.yml'
               - 'Makefile'
+              - build/**
             darwin:
               - flake.lock
               - flake.nix
@@ -53,14 +54,10 @@ jobs:
               - secrets/**
               - '.github/workflows/build.yml'
               - 'Makefile'
-            
+
   nixos-build:
     runs-on: [self-hosted, X64, Linux, nix]
     name: Build NixOS configuration for nacho
-    container:
-        image: ghcr.io/nanamiiiii/ubuntu-with-nix:24.04
-    env:
-      USER: root
     needs: changed-files
     if: needs.changed-files.outputs.nixos-changed == 'true'
     steps:
@@ -68,18 +65,21 @@ jobs:
         run: chown -R root:root /github/home
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Setup cachix
-        uses: cachix/cachix-action@v16
-        with:
-          name: nanamiiiii
-          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: Build docker image
+        run: docker build -f build/nix.Dockerfile -t nix-builder:${github.sha} .
+      - name: Start builder container
+        run: docker run -dit --name nix-builder-${github.sha} nix-builder:${github.sha}
       - name: Check nix installation
         run: |
-          make RUNS_ENV=ci test
-      - name: build
+          docker exec -e RUNS_ENV=ci nix-builder-${github.sha} make test
+      - name: Build
         run: |
-          make RUNS_ENV=ci ci-build
-          df -h
+          docker exec -e RUNS_ENV=ci nix-builder-${github.sha} make ci-build
+      - name: Cleanup
+        run: |
+          docker stop nix-builder-${github.sha}
+          docker rm nix-builder-${github.sha}
+          docker rmi nix-builder:${github.sha}
 
   darwin-build:
     runs-on: macos-26
