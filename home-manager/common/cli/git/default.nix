@@ -19,7 +19,6 @@ let
 
   winGpgPath = "/mnt/c/Program Files (x86)/gnupg/bin/gpg.exe";
 
-  sshPath = lib.getExe config.programs.ssh.package;
   winSshPath = "/mnt/c/Windows/System32/OpenSSH/ssh.exe";
 in
 {
@@ -27,7 +26,7 @@ in
     enable = true;
     settings = {
       core = {
-        sshCommand = if wslhost then winSshPath else sshPath;
+        sshCommand = lib.mkIf (wslhost) winSshPath;
       };
       user = {
         name = "Akihiro Saiki";
