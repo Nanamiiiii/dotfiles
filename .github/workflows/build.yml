@@ -64,20 +64,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Build docker image
-        run: docker build -f build/nix.Dockerfile -t nix-builder:${github.sha} .
+        run: docker build -f build/nix.Dockerfile -t nix-builder:${{ github.sha }} .
       - name: Start builder container
-        run: docker run -dit --name nix-builder-${github.sha} nix-builder:${github.sha}
+        run: docker run -dit --name nix-builder-${{ github.sha }} nix-builder:${{ github.sha }}
       - name: Check nix installation
         run: |
-          docker exec -e RUNS_ENV=ci nix-builder-${github.sha} make test
+          docker exec -e RUNS_ENV=ci nix-builder-${{ github.sha }} make test
       - name: Build
         run: |
-          docker exec -e RUNS_ENV=ci nix-builder-${github.sha} make ci-build
+          docker exec -e RUNS_ENV=ci nix-builder-${{ github.sha }} make ci-build
       - name: Cleanup
         run: |
-          docker stop nix-builder-${github.sha}
-          docker rm nix-builder-${github.sha}
-          docker rmi nix-builder:${github.sha}
+          docker stop nix-builder-${{ github.sha }}
+          docker rm nix-builder-${{ github.sha }}
+          docker rmi nix-builder:${{ github.sha }}
 
   darwin-build:
     runs-on: macos-26
