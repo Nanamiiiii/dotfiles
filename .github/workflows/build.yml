@@ -67,7 +67,7 @@ jobs:
         run: docker build -f build/nix.Dockerfile -t nix-builder:${{ github.sha }} .
       - name: Build
         run: |
-          docker run --rm -e RUNS_ENV=ci nix-builder-${{ github.sha }} make ci-build
+          docker run --rm -e RUNS_ENV=ci nix-builder:${{ github.sha }} make ci-build
       - name: Cleanup
         run: |
           docker rmi nix-builder:${{ github.sha }}
