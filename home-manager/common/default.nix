@@ -7,6 +7,7 @@
     ./lang
     ./shell
     ./terminal
+    ./nix
   ];
 
   programs.home-manager.enable = true;
