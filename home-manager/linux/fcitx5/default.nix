@@ -12,12 +12,6 @@
     fcitx5.waylandFrontend = true;
   };
 
-  #home.file.".xprofile".text = ''
-  #  export GTK_IM_MODULE=fcitx
-  #  export QT_IM_MODULE=fcitx
-  #  export XMODIFIERS=@im=fcitx
-  #'';
-
   xdg.configFile."fcitx5/config".source = ./config;
   xdg.configFile."fcitx5/profile" = {
     source = ./profile;

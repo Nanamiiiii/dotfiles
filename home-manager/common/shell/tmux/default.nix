@@ -5,7 +5,7 @@
   ...
 }:
 let
-  configFiles = import ../../../config {
+  configFiles = import ../../../../config {
     inherit
       pkgs
       config
@@ -14,13 +14,7 @@ let
   };
 in
 {
-  imports = [ ./zsh.nix ];
-
   programs = {
-    starship = {
-      enable = true;
-      settings = builtins.fromTOML (builtins.readFile ../../../config/starship/starship.toml);
-    };
     tmux = {
       enable = true;
       shell = "${pkgs.zsh}/bin/zsh";
