@@ -120,6 +120,13 @@ in
 
   services.snapper = {
     configs = {
+      root = {
+        SUBVOLUME = "/";
+        ALLOW_USERS = [ "${username}" ];
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
+        FSTYPE = "btrfs";
+      };
       home = {
         SUBVOLUME = "/home";
         ALLOW_USERS = [ "${username}" ];
