@@ -1,16 +1,74 @@
-{ username, ... }:
 {
-  imports = [
+  pkgs,
+  lib,
+  config,
+  wslhost,
+  username,
+  ...
+}:
+let
+  commonConfigs = [
     ../../common
-    ../../linux
-    ../../sops
-    ./apps.nix
-    ./config.nix
+    ../../common/nix
+    ../../common/cli
+    (import ../../common/cli/git {
+      inherit
+        pkgs
+        lib
+        config
+        wslhost
+        ;
+      signMethod = "ssh";
+    })
+    ../../common/cli/gpg
+    ../../common/cli/ssh
+    ../../common/apps/skk
+    ../../common/editor/neovim
+    ../../common/editor/zed
+    ../../common/editor/code
+    ../../common/lang
+    ../../common/shell/zsh
+    ../../common/shell/tmux
+    ../../common/shell/starship
+    ../../common/terminal
   ];
+
+  linuxConfigs = [
+    ../../linux/apps
+  ];
+
+  sopsConfigs = [
+    ../../sops
+  ];
+
+  symlink = config.lib.file.mkOutOfStoreSymlink;
+in
+{
+  imports = commonConfigs ++ linuxConfigs ++ sopsConfigs;
+
+  programs.ssh = {
+    extraConfig = ''
+      Include ${config.home.homeDirectory}/.ssh/conf.d/lab.conf
+      Include ${config.home.homeDirectory}/.ssh/conf.d/apal.conf
+    '';
+  };
+
+  sops.secrets = {
+    ssh-hosts-kasalab = { };
+    ssh-hosts-apal = { };
+  };
 
   home = {
     inherit username;
+    file = {
+      ".ssh/conf.d/lab.conf" = {
+        source = symlink "${config.sops.secrets.ssh-hosts-kasalab.path}";
+      };
+      ".ssh/conf.d/apal.conf" = {
+        source = symlink "${config.sops.secrets.ssh-hosts-apal.path}";
+      };
+    };
     homeDirectory = "/home/${username}";
-    stateVersion = "24.11";
+    stateVersion = "25.11";
   };
 }

@@ -1,13 +1,122 @@
-{ ... }:
 {
-  imports = [
+  pkgs,
+  pkgs-stable,
+  lib,
+  inputs,
+  hostname,
+  config,
+  wslhost,
+  ...
+}:
+let
+  commonConfigs = [
     ../../common
-    ../../linux
-    ../../sops
-    ./config.nix
-    ./apps.nix
-    ./desktop-niri.nix
+    ../../common/nix
+    ../../common/cli
+    (import ../../common/cli/git {
+      inherit
+        pkgs
+        lib
+        config
+        wslhost
+        ;
+      signMethod = "openpgp";
+    })
+    ../../common/cli/gpg
+    ../../common/cli/ssh
+    ../../common/apps/skk
+    ../../common/editor/neovim
+    ../../common/editor/zed
+    ../../common/editor/code
+    ../../common/lang
+    ../../common/shell/zsh
+    ../../common/shell/tmux
+    ../../common/shell/starship
+    ../../common/terminal
   ];
 
-  home.stateVersion = "25.05";
+  linuxConfigs = [
+    ../../linux/apps
+    ../../linux/fcitx5
+    ../../linux/kdeconnect
+  ];
+
+  serviceConfigs = [
+    ../../services/nextcloud
+  ];
+
+  sopsConfigs = [
+    ../../sops
+  ];
+
+  niriConfigHost = builtins.readFile ./config.kdl;
+
+  niriConfig = import ../../desktop/niri {
+    inherit
+      pkgs
+      pkgs-stable
+      inputs
+      hostname
+      config
+      ;
+    thermalZone = 6;
+    laptop = true;
+    configByHost = niriConfigHost;
+  };
+
+  symlink = config.lib.file.mkOutOfStoreSymlink;
+in
+{
+  imports = [
+    niriConfig
+  ]
+  ++ commonConfigs
+  ++ linuxConfigs
+  ++ serviceConfigs
+  ++ sopsConfigs;
+
+  home.packages =
+    with pkgs;
+    [
+      virt-manager
+      inkscape
+      drawio
+      rclone
+      hwloc
+      vlc
+      pkgs-stable.zoom-us
+      spotify
+      python3Packages.i3ipc
+      pkgs-stable.plexamp
+      pkgs-stable.plex-desktop
+    ]
+    ++ (with kdePackages; [
+      ark
+      kcalc
+      okular
+      gwenview
+    ]);
+
+  programs.ssh = {
+    extraConfig = ''
+      Include ${config.home.homeDirectory}/.ssh/conf.d/lab.conf
+      Include ${config.home.homeDirectory}/.ssh/conf.d/apal.conf
+    '';
+  };
+
+  sops.secrets = {
+    ssh-hosts-kasalab = { };
+    ssh-hosts-apal = { };
+  };
+
+  home.file = {
+    ".ssh/conf.d/lab.conf" = {
+      source = symlink "${config.sops.secrets.ssh-hosts-kasalab.path}";
+    };
+    ".ssh/conf.d/apal.conf" = {
+      source = symlink "${config.sops.secrets.ssh-hosts-apal.path}";
+    };
+  };
+
+  home.stateVersion = "25.11";
 }

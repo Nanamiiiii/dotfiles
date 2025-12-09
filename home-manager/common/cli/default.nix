@@ -22,12 +22,6 @@ let
   };
 in
 {
-  imports = [
-    ./git
-    ./ssh
-    ./gpg
-  ];
-
   # CLI Tools
   programs = {
     bat = {

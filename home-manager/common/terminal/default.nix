@@ -4,7 +4,6 @@
   config,
   desktop,
   hostname,
-  inputs,
   wslhost,
   ...
 }:

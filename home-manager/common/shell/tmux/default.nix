@@ -5,7 +5,7 @@
   ...
 }:
 let
-  configFiles = import ../../../config {
+  configFiles = import ../../../../config {
     inherit
       pkgs
       config
@@ -14,13 +14,7 @@ let
   };
 in
 {
-  imports = [ ./zsh.nix ];
-
   programs = {
-    starship = {
-      enable = true;
-      settings = builtins.fromTOML (builtins.readFile ../../../config/starship/starship.toml);
-    };
     tmux = {
       enable = true;
       shell = "${pkgs.zsh}/bin/zsh";
@@ -49,7 +43,7 @@ in
         set-option -g focus-events on
         set-window-option -g aggressive-resize on
       ''
-      + builtins.readFile ../../../config/tmux/tmux-style.conf
+      + builtins.readFile ../../../../config/tmux/tmux-style.conf
       + ''
         run-shell ${pkgs.tmuxPlugins.cpu.rtp}
         run-shell ${pkgs.tmuxPlugins.pain-control.rtp}

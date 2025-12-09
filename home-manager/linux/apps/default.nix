@@ -1,9 +1,7 @@
 {
   pkgs,
-  lib,
   pkgs-stable,
   desktop,
-  inputs,
   config,
   hostname,
   ...
@@ -31,7 +29,7 @@ let
     pinentry-curses
   ];
 
-  configFiles = import ../../config {
+  configFiles = import ../../../config {
     inherit
       pkgs
       config
@@ -43,11 +41,4 @@ in
   home.packages = if desktop then desktopPkgs ++ cliPkgs else cliPkgs;
 
   xdg.configFile."microsoft-edge/Default/HubApps" = configFiles.linuxConfigs.microsoft-edge."HubApps";
-
-  services = {
-    kdeconnect = {
-      enable = desktop;
-      indicator = desktop;
-    };
-  };
 }

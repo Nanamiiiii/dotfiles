@@ -67,14 +67,6 @@ let
       laptop
       ;
   };
-
-  configFiles = import ../../../config {
-    inherit
-      pkgs
-      config
-      hostname
-      ;
-  };
 in
 {
   imports = [
