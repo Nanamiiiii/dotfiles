@@ -36,10 +36,6 @@ let
     ../../darwin/apps
   ];
 
-  securityConfigs = [
-    ../../security/yubikey
-  ];
-
   sopsConfigs = [
     ../../sops
   ];
@@ -47,7 +43,7 @@ let
   symlink = config.lib.file.mkOutOfStoreSymlink;
 in
 {
-  imports = commonConfigs ++ darwinConfigs ++ securityConfigs ++ sopsConfigs;
+  imports = commonConfigs ++ darwinConfigs ++ sopsConfigs;
 
   programs.ssh = {
     extraConfig = ''
@@ -70,5 +66,5 @@ in
     };
   };
 
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 }
