@@ -44,7 +44,7 @@ let
     #  ];
     #})
     ../../nixos/settings/system/sssd-lab.nix
-    ../../nixos/settings/system/autofs.nix
+    #../../nixos/settings/system/autofs.nix
     ../../nixos/settings/system/yubikey.nix
     ../../nixos/settings/system/gpg.nix
     ../../nixos/settings/system/fwupd.nix
@@ -135,6 +135,20 @@ in
         FSTYPE = "btrfs";
       };
     };
+  };
+
+  services.autofs = {
+    enable = true;
+    autoMaster =
+      let
+        mapConf = pkgs.writeText "auto" ''
+          backup  -fstype=ext4,rw :/dev/disk/by-label/EXT_BACKUP
+        '';
+      in
+      ''
+        /mnt/auto ${mapConf}
+        +auto.master
+      '';
   };
 
   # Use sssd for resolving host and mountmap
