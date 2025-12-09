@@ -43,7 +43,7 @@ in
         set-option -g focus-events on
         set-window-option -g aggressive-resize on
       ''
-      + builtins.readFile ../../../config/tmux/tmux-style.conf
+      + builtins.readFile ../../../../config/tmux/tmux-style.conf
       + ''
         run-shell ${pkgs.tmuxPlugins.cpu.rtp}
         run-shell ${pkgs.tmuxPlugins.pain-control.rtp}

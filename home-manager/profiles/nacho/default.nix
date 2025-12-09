@@ -1,9 +1,11 @@
 {
   pkgs,
   pkgs-stable,
+  lib,
   inputs,
   hostname,
   config,
+  wslhost,
   ...
 }:
 let
@@ -11,7 +13,15 @@ let
     ../../common
     ../../common/nix
     ../../common/cli
-    ../../common/cli/git
+    (import ../../common/cli/git {
+      inherit
+        pkgs
+        lib
+        config
+        wslhost
+        ;
+      signMethod = "ssh";
+    })
     ../../common/cli/gpg
     ../../common/cli/ssh
     ../../common/apps/skk
@@ -32,7 +42,7 @@ let
   ];
 
   securityConfigs = [
-    ../../security
+    ../../security/yubikey
   ];
 
   serviceConfigs = [

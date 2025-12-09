@@ -2,24 +2,28 @@
   pkgs,
   lib,
   config,
-  desktop,
   wslhost,
+  signMethod ? "openpgp",
   ...
 }:
 let
-  baseSystem = builtins.elemAt (builtins.split "-" pkgs.stdenv.hostPlatform.system) 2;
-
   signingKey = {
     "openpgp" = "C72536FDEEBF9178";
+    "ssh" = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGnGV/atyJQmQQfuWCh0ADW9xv2HXe1i7regLWNDhKdf";
   };
 
   gpgSigner = {
     "openpgp" = lib.getExe config.programs.gpg.package;
+    "ssh" = lib.getExe' pkgs.openssh "ssh-keygen";
   };
 
   winGpgPath = "/mnt/c/Program Files (x86)/gnupg/bin/gpg.exe";
 
   winSshPath = "/mnt/c/Windows/System32/OpenSSH/ssh.exe";
+
+  allowedSigners = pkgs.writeText "allowed_signers" ''
+    ${config.programs.git.settings.user.email} ${signingKey.ssh}
+  '';
 in
 {
   programs.git = {
@@ -32,10 +36,13 @@ in
         name = "Akihiro Saiki";
         email = "sk@myuu.dev";
       };
+      gpg.ssh = {
+        allowedSignersFile = lib.mkIf (signMethod == "ssh") "${allowedSigners}";
+      };
       ghq.root = "~/src";
     };
     signing = {
-      format = "openpgp";
+      format = if wslhost then "openpgp" else signMethod;
       key = signingKey."${config.programs.git.signing.format}";
       signer = if wslhost then winGpgPath else gpgSigner."${config.programs.git.signing.format}";
       signByDefault = true;

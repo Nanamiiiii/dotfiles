@@ -1,10 +1,24 @@
-{ config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  wslhost,
+  ...
+}:
 let
   commonConfigs = [
     ../../common
     ../../common/nix
     ../../common/cli
-    ../../common/cli/git
+    (import ../../common/cli/git {
+      inherit
+        pkgs
+        lib
+        config
+        wslhost
+        ;
+      signMethod = "openpgp";
+    })
     ../../common/cli/gpg
     ../../common/cli/ssh
     ../../common/apps/skk
@@ -23,7 +37,7 @@ let
   ];
 
   securityConfigs = [
-    ../../security
+    ../../security/yubikey
   ];
 
   sopsConfigs = [
