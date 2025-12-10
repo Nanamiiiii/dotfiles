@@ -32,6 +32,15 @@ M.nix = function()
     set_indent(2, true)
 end
 
+-- typescript
+M.typescript = function()
+    set_indent(2, true)
+end
+
+M.typescriptreact = function()
+    set_indent(2, true)
+end
+
 return setmetatable(M, {
     __index = function()
         return function()
