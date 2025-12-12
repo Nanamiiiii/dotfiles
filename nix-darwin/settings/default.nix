@@ -9,9 +9,9 @@
   imports = [
     ./packages.nix
     ./sops.nix
-    inputs.sops-nix.darwinModules.sops
     ./brew.nix
     ./security.nix
+    inputs.sops-nix.darwinModules.sops
   ];
 
   nix = {
@@ -55,6 +55,20 @@
 
   system = {
     primaryUser = username;
+    defaults = {
+      NSGlobalDomain.AppleShowAllExtensions = true;
+      finder = {
+        AppleShowAllExtensions = true;
+        AppleShowAllFiles = true;
+        CreateDesktop = false;
+        NewWindowTarget = "Home";
+      };
+      dock = {
+        autohide = false;
+        show-recents = false;
+        orientation = "right";
+      };
+    };
     stateVersion = 5;
   };
 }

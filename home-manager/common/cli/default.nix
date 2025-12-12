@@ -24,6 +24,12 @@ in
 {
   # CLI Tools
   programs = {
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
     bat = {
       enable = true;
       config = {
@@ -150,6 +156,7 @@ in
     proxychains-ng
     clock-tui
     gemini-cli
+    devenv
   ];
 
   home.file = configFiles.homeScripts;

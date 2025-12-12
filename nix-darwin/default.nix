@@ -5,10 +5,6 @@
   system,
   ...
 }:
-let
-  # Pick base system string
-  baseSystem = builtins.elemAt (builtins.split "-" system) 2;
-in
 rec {
   inherit system;
 
