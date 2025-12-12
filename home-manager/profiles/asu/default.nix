@@ -32,6 +32,10 @@ let
     ../../common/terminal
   ];
 
+  desktopConfigs = [
+    ../../desktop/aerospace
+  ];
+
   darwinConfigs = [
     ../../darwin/apps
   ];
@@ -43,7 +47,7 @@ let
   symlink = config.lib.file.mkOutOfStoreSymlink;
 in
 {
-  imports = commonConfigs ++ darwinConfigs ++ sopsConfigs;
+  imports = commonConfigs ++ desktopConfigs ++ darwinConfigs ++ sopsConfigs;
 
   programs.ssh = {
     extraConfig = ''
