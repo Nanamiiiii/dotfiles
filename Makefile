@@ -79,6 +79,19 @@ nix-home-build-%:
 nix-home-%:
 	@$(NIX_CMD) run "nixpkgs#home-manager" -- -b hm-bkp switch --flake ".#"${@:nix-home-%=%}
 
+# Only evaluation
+.PHONY: nixos-eval-%
+nixos-eval-%:    
+	@$(NIX_CMD) eval ".#nixosConfigurations."${@:nixos-eval-%=%}".config.system.build.toplevel" --verbose --show-trace --extra-experimental-features nix-command --extra-experimental-features flakes
+
+.PHONY: nix-darwin-eval-%
+nix-darwin-eval-%:
+	@$(NIX_CMD) eval ".#darwinConfigurations."${@:nix-darwin-eval-%=%}".system" --verbose --show-trace --extra-experimental-features nix-command --extra-experimental-features flake
+
+.PHONY: nix-home-eval-%
+nix-home-eval-%:
+	@$(NIX_CMD) eval ".#homeConfigurations."${@:nix-home-eval-%=%}".activationPackage.drvPath" --verbose --show-trace --extra-experimental-features nix-command --extra-experimental-features flake
+
 # Update
 .PHONY: update
 update:
