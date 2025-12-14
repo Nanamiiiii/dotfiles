@@ -1,12 +1,17 @@
 return {
-    "epwalsh/obsidian.nvim",
+    "obsidian-nvim/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
     ft = "markdown",
-    event = {
-        "BufReadPre " .. vim.fn.expand("~") .. "Documents/Nanami Lab/*.md",
-        "BufNewFile " .. vim.fn.expand("~") .. "Documents/Nanami Lab/*.md",
-    },
+    cond = function()
+        local obsidian_dir = ".obsidian"
+        local stat = vim.loop.fs_stat(vim.fn.getcwd() .. "/" .. obsidian_dir)
+        if stat and stat.type == "directory" then
+            return true
+        else
+            return false
+        end
+    end,
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
