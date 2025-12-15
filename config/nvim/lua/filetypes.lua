@@ -24,7 +24,6 @@ end
 -- markdown
 M.markdown = function()
     set_indent(4, true)
-    vim.opt_local.conceallevel = 1
 end
 
 -- nix

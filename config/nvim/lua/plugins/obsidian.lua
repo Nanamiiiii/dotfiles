@@ -16,6 +16,7 @@ return {
         "nvim-lua/plenary.nvim",
     },
     opts = {
+        legacy_commands = false,
         workspaces = {
             {
                 name = "Nanami Lab",
@@ -72,21 +73,26 @@ return {
                 end,
             },
         },
-        ---@return table
-        note_frontmatter_func = function(note)
-            if note.title then
-                note:add_alias(note.title)
-            end
-
-            local out = { id = note.id, aliases = note.aliases, tags = note.tags }
-
-            if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-                for k, v in pairs(note.metadata) do
-                    out[k] = v
+        frontmatter = {
+            ---@return table
+            func = function(note)
+                if note.title then
+                    note:add_alias(note.title)
                 end
-            end
 
-            return out
-        end,
+                local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+
+                if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+                    for k, v in pairs(note.metadata) do
+                        out[k] = v
+                    end
+                end
+
+                return out
+            end,
+        },
     },
+    init = function()
+        vim.opt_local.conceallevel = 1
+    end,
 }
