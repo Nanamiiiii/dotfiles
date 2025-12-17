@@ -34,14 +34,14 @@
       # Style
       gaps = {
         inner = {
-          horizontal = 3;
-          vertical = 3;
+          horizontal = 5;
+          vertical = 5;
         };
         outer = {
-          bottom = 3;
-          left = 3;
-          right = 3;
-          top = 3;
+          bottom = 5;
+          left = 5;
+          right = 5;
+          top = 5;
         };
       };
 
@@ -78,7 +78,7 @@
               end tell'
             '';
             alt-h = "focus left";
-            alt-i = "exec-and-forget open -a \"Neovide\"";
+            alt-i = "exec-and-forget open -a \"Zed\"";
             alt-j = "focus down";
             alt-k = "focus up";
             alt-l = "focus right";
@@ -277,8 +277,8 @@
       style = "round";
       width = 6.0;
       hidpi = "on";
-      active_color = "0xff80c9fc";
-      inactive_color = "0x00000000";
+      active_color = "0x8880c9fc";
+      inactive_color = "0x88424242";
     };
   };
 }

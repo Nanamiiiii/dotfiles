@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   inputs,
   username,
   ...
@@ -64,7 +63,7 @@
         NewWindowTarget = "Home";
       };
       dock = {
-        autohide = false;
+        autohide = true;
         show-recents = false;
         orientation = "right";
       };

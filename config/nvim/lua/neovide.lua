@@ -1,7 +1,7 @@
 -- neovide.lua
 
 -- Font
-vim.o.guifont = "PlemolJP Console NF,Symbols Nerd Font:h16"
+vim.o.guifont = "PlemolJP Console NF,Symbols Nerd Font:h18"
 
 -- Linespace
 vim.opt.linespace = 0
@@ -11,5 +11,5 @@ vim.opt.linespace = 0
 vim.g.neovide_input_ime = false
 
 -- Display
-vim.g.neovide_transparency = 0.95
+vim.g.neovide_opacity = 0.95
 vim.g.neovide_window_blurred = true
