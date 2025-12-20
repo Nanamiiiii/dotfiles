@@ -27,7 +27,9 @@ in
       envExtra =
         if !wslhost then
           ''
-            export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh
+            if [[ -z "$SSH_CONNECTION" ]]; then
+              export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh
+            fi
           ''
         else
           ''
