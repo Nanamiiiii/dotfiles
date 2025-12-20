@@ -31,8 +31,8 @@ local opts = {
         "git_status",
     },
     source_selector = {
-        winbar = false, -- toggle to show selector on winbar
-        statusline = true, -- toggle to show selector on statusline
+        winbar = true, -- toggle to show selector on winbar
+        statusline = false, -- toggle to show selector on statusline
         show_scrolled_off_parent_node = false, -- this will replace the tabs with the parent path
         -- of the top visible node when scrolled down.
         sources = {
@@ -46,7 +46,7 @@ local opts = {
         tabs_min_width = nil, -- nil | int: if int padding is added based on `content_layout`
         tabs_max_width = nil, -- this will truncate text even if `text_trunc_to_fit = false`
         padding = 0, -- can be int or table
-        separator = { left = "▏", right = "▕" },
+        separator = { left = "", right = "" },
         separator_active = nil, -- set separators around the active tab. nil falls back to `source_selector.separator`
         show_separator_on_edge = false,
         highlight_tab = "NeoTreeTabInactive",
@@ -114,9 +114,9 @@ local opts = {
         },
     },
     window = {
-        position = "float",
+        position = "current",
     },
-    popup_border_style = "rounded",
+    popup_border_style = "",
 }
 
 return {
@@ -125,9 +125,20 @@ return {
         version = "3.*",
         dependencies = deps,
         keys = {
-            { "<leader>ft", "<CMD>Neotree toggle<CR>", desc = "NeoTree", silent = true },
-            { "<leader>bf", "<CMD>Neotree toggle source=buffers<CR>", desc = "NeoTree Buffers", silent = true },
-            { "<leader>gt", "<CMD>Neotree toggle source=git_status<CR>", desc = "NeoTree Git", silent = true },
+            { "<leader>ft", "<CMD>Neotree toggle position=float<CR>", desc = "NeoTree Floating", silent = true },
+            {
+                "<leader>bf",
+                "<CMD>Neotree toggle source=buffers position=float<CR>",
+                desc = "NeoTree Buffers",
+                silent = true,
+            },
+            {
+                "<leader>gt",
+                "<CMD>Neotree toggle source=git_status position=float<CR>",
+                desc = "NeoTree Git",
+                silent = true,
+            },
+            { "<leader>fl", "<CMD>Neotree toggle<CR>", desc = "NeoTree", silent = true },
         },
         opts = opts,
         config = true,

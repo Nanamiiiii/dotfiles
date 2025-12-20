@@ -4,16 +4,20 @@ return {
     {
         "akinsho/bufferline.nvim",
         branch = "main",
-        dependencies = "nvim-tree/nvim-web-devicons",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+            "catppuccin/nvim",
+        },
         config = function()
             require("bufferline").setup({
                 options = {
                     indicator = {
-                        style = "underline",
+                        style = "icon",
                     },
                     offsets = {},
-                    separator_style = "slant",
+                    separator_style = "thin",
                 },
+                highlights = require("catppuccin.special.bufferline").get_theme(),
             })
 
             local opts = { silent = true, noremap = true }
@@ -45,6 +49,12 @@ return {
             "VimResized",
             "WinEnter",
             "WinScrolled",
+        },
+    },
+    {
+        "rcarriga/nvim-notify",
+        opts = {
+            background_colour = "#000000",
         },
     },
     {

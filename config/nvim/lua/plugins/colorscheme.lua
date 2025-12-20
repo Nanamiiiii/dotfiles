@@ -2,16 +2,26 @@
 
 return {
     {
-        "zenbones-theme/zenbones.nvim",
-        dependencies = "rktjmp/lush.nvim",
-        lazy = false,
+        "catppuccin/nvim",
+        name = "catppuccin",
         priority = 1000,
+        lazy = false,
         config = function()
-            vim.cmd.colorscheme("tokyobones")
-            vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" }) -- fix for neo-tree's mismatched border
-            -- For invisible chars
-            vim.api.nvim_set_hl(0, "NonText", { fg = "#2f3145" })
-            vim.api.nvim_set_hl(0, "SpecialKey", { fg = "#2f3145" })
+            require("catppuccin").setup({
+                flavour = "auto",
+                background = {
+                    light = "latte",
+                    dark = "mocha",
+                },
+                transparent_background = true,
+                float = {
+                    transparent = true,
+                },
+                neotree = true,
+                noice = true,
+                notify = true,
+            })
+            vim.cmd.colorscheme("catppuccin")
         end,
     },
 }
