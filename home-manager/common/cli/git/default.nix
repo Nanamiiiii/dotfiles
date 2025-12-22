@@ -6,9 +6,11 @@
   ...
 }:
 let
+  openpgpSshPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGnGV/atyJQmQQfuWCh0ADW9xv2HXe1i7regLWNDhKdf";
+
   signingKey = {
     "openpgp" = "C72536FDEEBF9178";
-    "ssh" = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGnGV/atyJQmQQfuWCh0ADW9xv2HXe1i7regLWNDhKdf";
+    "ssh" = "key::${openpgpSshPubkey}";
   };
 
   gpgSigner = {
@@ -21,7 +23,7 @@ let
   winSshPath = "/mnt/c/Windows/System32/OpenSSH/ssh.exe";
 
   allowedSigners = pkgs.writeText "allowed_signers" ''
-    ${config.programs.git.settings.user.email} ${signingKey.ssh}
+    ${config.programs.git.settings.user.email} ${openpgpSshPubkey}
   '';
 in
 {
