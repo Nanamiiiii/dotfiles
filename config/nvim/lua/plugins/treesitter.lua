@@ -4,6 +4,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         version = false,
+        branch = "master",
         event = { "BufReadPost", "BufNewFile", "BufWritePre", "VeryLazy" },
         build = ":TSUpdate",
         init = function(plugin)
