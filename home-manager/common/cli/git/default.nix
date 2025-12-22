@@ -3,7 +3,6 @@
   lib,
   config,
   wslhost,
-  signMethod ? "openpgp",
   ...
 }:
 let
@@ -36,18 +35,37 @@ in
         name = "Akihiro Saiki";
         email = "sk@myuu.dev";
       };
-      gpg.ssh = {
-        allowedSignersFile = lib.mkIf (signMethod == "ssh") "${allowedSigners}";
-      };
       ghq.root = "~/src";
     };
     signing = {
-      format = if wslhost then "openpgp" else signMethod;
-      key = signingKey."${config.programs.git.signing.format}";
-      signer = if wslhost then winGpgPath else gpgSigner."${config.programs.git.signing.format}";
+      format = "openpgp";
+      key = signingKey.openpgp;
+      signer = if wslhost then winGpgPath else gpgSigner.openpgp;
       signByDefault = true;
     };
   };
 
   home.packages = with pkgs; [ lazygit ];
+
+  programs.zsh.initContent = ''
+    if [[ -n "$SSH_CONNECTION" ]] || [[ -n "$SSH_CLIENT" ]]; then
+      export GIT_CONFIG_COUNT=4
+
+      GIT_CONFIG_KEY_0=gpg.format
+      GIT_CONFIG_VALUE_0=ssh
+      export GIT_CONFIG_KEY_0 GIT_CONFIG_VALUE_0
+
+      GIT_CONFIG_KEY_1=gpg.ssh.allowedSignersFile
+      GIT_CONFIG_VALUE_1="${allowedSigners}"
+      export GIT_CONFIG_KEY_1 GIT_CONFIG_VALUE_1
+
+      GIT_CONFIG_KEY_2=gpg.ssh.program
+      GIT_CONFIG_VALUE_2="${gpgSigner.ssh}"
+      export GIT_CONFIG_KEY_2 GIT_CONFIG_VALUE_2
+
+      GIT_CONFIG_KEY_3=user.signingKey
+      GIT_CONFIG_VALUE_3="${signingKey.ssh}"
+      export GIT_CONFIG_KEY_3 GIT_CONFIG_VALUE_3
+    fi
+  '';
 }

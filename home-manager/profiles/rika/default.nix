@@ -10,15 +10,7 @@ let
     ../../common
     ../../common/nix
     ../../common/cli
-    (import ../../common/cli/git {
-      inherit
-        pkgs
-        lib
-        config
-        wslhost
-        ;
-      signMethod = "openpgp";
-    })
+    ../../common/cli/git
     ../../common/cli/gpg
     ../../common/cli/ssh
     ../../common/apps/skk
