@@ -3,7 +3,6 @@
 local options = {
     encoding = "utf-8",
     fileencoding = "utf-8",
-    clipboard = "unnamedplus",
     hlsearch = true,
     ignorecase = true,
     smartcase = true,
@@ -42,3 +41,24 @@ vim.opt.listchars =
 -- mapleader
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+
+-- clipboard
+local osc52 = require("vim.ui.clipboard.osc52")
+local paste = function()
+    return {
+        vim.split(vim.fn.getreg(""), "\n"),
+        vim.fn.getregtype(""),
+    }
+end
+vim.opt.clipboard = "unnamedplus"
+vim.g.clipboard = {
+    name = "osc52-write-only",
+    copy = {
+        ["+"] = osc52.copy("+"),
+        ["*"] = osc52.copy("*"),
+    },
+    paste = {
+        ["+"] = paste,
+        ["*"] = paste,
+    },
+}
