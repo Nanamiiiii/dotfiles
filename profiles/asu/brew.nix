@@ -18,9 +18,5 @@
       "grammarly-desktop"
       "vlc"
     ];
-
-    masApps = {
-      Skitch = 425955336;
-    };
   };
 }

@@ -41,11 +41,5 @@
       "FelixKratz/formulae"
       "macos-fuse-t/homebrew-cask"
     ];
-
-    masApps = {
-      WireGuard = 1451685025;
-      Slack = 803453959;
-      Xcode = 497799835;
-    };
   };
 }
