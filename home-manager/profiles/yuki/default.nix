@@ -24,6 +24,7 @@ let
     ../../common/shell/zsh
     ../../common/shell/tmux
     ../../common/shell/starship
+    ../../common/shell/zellij
     ../../common/terminal
   ];
 
