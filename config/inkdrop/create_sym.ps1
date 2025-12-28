@@ -1,2 +1,0 @@
-New-Item -Value "${PWD}/styles.less" -Path "${HOME}/AppData/Roaming/inkdrop" -Name "styles.less" -ItemType SymbolicLink
-New-Item -Value "${PWD}/keymap.cson" -Path "${HOME}/AppData/Roaming/inkdrop" -Name "keymap.cson" -ItemType SymbolicLink

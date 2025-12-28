@@ -1,9 +1,0 @@
-configuration {
-    font: "PlemolJP35 Console NF 14";
-    icon-theme: "Fluent-dark";
-    modi: "combi,drun,run,window";
-    combi-modi: "drun,run,window";
-    show-icons: true;
-}
-@theme "nanami"
-

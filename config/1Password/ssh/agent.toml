@@ -1,7 +1,0 @@
-[[ssh-keys]]
-item = "SSH Private Key - Asu - ED25519"
-vault = "Identity"
-
-[[ssh-keys]]
-item = "SSH Private Key - Rika - ED25519"
-vault = "Identity"
