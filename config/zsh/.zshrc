@@ -77,6 +77,9 @@ on_demand_completion 'gh' 'gh completion -s zsh'
 [[ ! -f "${ZDOTDIR}/.zsh_functions/_dust" ]] && curl "https://raw.githubusercontent.com/bootandy/dust/refs/heads/master/completions/_dust" > "${ZDOTDIR}/.zsh_functions/_dust"
 [[ ! -f "${ZDOTDIR}/.zsh_functions/_fastfetch" ]] && curl "https://raw.githubusercontent.com/fastfetch-cli/fastfetch/refs/heads/dev/completions/fastfetch.zsh" > "${ZDOTDIR}/.zsh_functions/_fastfetch"
 
+# fix for paste
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
 
 # Starship
 if ( $(command -v starship > /dev/null) )
@@ -159,6 +162,23 @@ alias -- rm='rm -i'
 alias -- tree='eza --group-directories-first -T --icons'
 alias -- vi=nvim
 alias -- vim=nvim
+
+# Git Settings
+if [[ -n "$SSH_CONNECTION" ]] || [[ -n "$SSH_CLIENT" ]]; then
+  export GIT_CONFIG_COUNT=3
+
+  GIT_CONFIG_KEY_0=gpg.format
+  GIT_CONFIG_VALUE_0=ssh
+  export GIT_CONFIG_KEY_0 GIT_CONFIG_VALUE_0
+
+  GIT_CONFIG_KEY_1=gpg.ssh.allowedSignersFile
+  GIT_CONFIG_VALUE_1="$XDG_CONFIG_HOME/git/allowed_signers"
+  export GIT_CONFIG_KEY_1 GIT_CONFIG_VALUE_1
+
+  GIT_CONFIG_KEY_2=user.signingKey
+  GIT_CONFIG_VALUE_2="key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGnGV/atyJQmQQfuWCh0ADW9xv2HXe1i7regLWNDhKdf"
+  export GIT_CONFIG_KEY_2 GIT_CONFIG_VALUE_2
+fi
 
 # local rc
 [[ -f "${ZDOTDIR}/.zshrc.local" ]] && source "${ZDOTDIR}/.zshrc.local"

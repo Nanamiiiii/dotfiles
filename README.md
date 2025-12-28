@@ -112,7 +112,7 @@ make nvim-install
 
 ### Windows
 ```
-pwsh -f .\init.ps1
+pwsh -f .\scripts\init.ps1
 ```
 - Run `init.ps1` on PowerShell.
 - The script will request administrator privilege to create symbolic links.

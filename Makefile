@@ -113,7 +113,7 @@ clean-oldgen:
 
 # Setup Legacy
 .PHONY: legacy-install
-legacy-install: sheldon-install aqua-install sheldon-link aqua-link legacy-shell tmux-install scripts-link
+legacy-install: sheldon-install aqua-install sheldon-link aqua-link legacy-shell tmux-install scripts-link git-setup
 
 # Install Sheldon
 .PHONY: sheldon-install
@@ -161,6 +161,12 @@ nvim-install: nvim-build
 .PHONY: nvim-build
 nvim-build:
 	@./config/scripts/build_neovim
+
+.PHONY: git-setup
+git-setup:
+	mkdir -p $(HOME)/.config/git
+	cp $(CURDIR)/config/git/config $(HOME)/.config/git/config
+	cp $(CURDIR)/config/git/allowed_signers $(HOME)/.config/git/allowed_signers
 
 # For CI
 ifeq ($(RUNS_ENV),ci)
