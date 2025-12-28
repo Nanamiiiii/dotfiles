@@ -32,6 +32,7 @@ let
     ../../linux/apps
     ../../linux/fcitx5
     ../../linux/kdeconnect
+    ../../linux/avatar
   ];
 
   serviceConfigs = [

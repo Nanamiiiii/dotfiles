@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  nixos-hardware,
   username,
   ...
 }:
@@ -36,58 +35,26 @@ let
     ../../nixos/settings/system/bluetooth.nix
     ../../nixos/settings/system/cpupower-performance.nix
     ../../nixos/settings/system/rgb.nix
-    #(import ../../nixos/settings/system/vfio.nix {
-    #  inherit lib;
-    #  vfioIds = [
-    #    "10de:1cb6"
-    #    "10de:0fb9"
-    #  ];
-    #})
     ../../nixos/settings/system/sssd-lab.nix
-    #../../nixos/settings/system/autofs.nix
     ../../nixos/settings/system/yubikey.nix
     ../../nixos/settings/system/gpg.nix
     ../../nixos/settings/system/fwupd.nix
+    (import ../../nixos/settings/system/accountsservice.nix {
+      inherit username;
+      avatar = ../../assets/avatar.png;
+    })
   ];
 
   # Graphics
   graphics = ../../nixos/settings/graphics/nvidia.nix;
 
-  # Display
-  #westonConfig = pkgs.writeText "my-weston.ini" ''
-  #  [libinput]
-  #  enable-tap=true
-  #  left-handed=false
-
-  #  [keyboard]
-  #  keymap_model=pc104
-  #  keymap_layout=us
-  #  keymap_variant=
-  #  keymap_options=
-
-  #  [output]
-  #  name=DP-2
-  #  mode=3840x2160
-  #'';
-
   displaySettings = [
-    #(import ../../nixos/settings/display/sddm.nix {
-    #  inherit
-    #    pkgs
-    #    lib
-    #    config
-    #    ;
-    #  wayland = true;
-    #  extraWestonConfig = null;
-    #})
-    #../../nixos/settings/display/ly.nix
     ../../nixos/settings/display/gdm.nix
     ../../nixos/settings/display/xserver.nix
   ];
 
   # Desktop
   desktopSettings = [
-    #../../nixos/settings/desktop/hyprland.nix
     ../../nixos/settings/desktop/niri.nix
     ../../nixos/settings/desktop/fonts.nix
     ../../nixos/settings/desktop/pipewire.nix
@@ -175,5 +142,5 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 }
