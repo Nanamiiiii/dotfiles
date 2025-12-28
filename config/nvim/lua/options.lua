@@ -82,6 +82,10 @@ if not h.is_ssh() then
         paste["+"] = { "xsel", "-o", "-b" }
         paste["*"] = { "xsel", "-o", "-p" }
         provider = "osc52-copy-xsel"
+    else
+        paste["+"] = paste_unnamed
+        paste["*"] = paste_unnamed
+        provider = "osc52-copy-internal-paste"
     end
 else
     paste["+"] = paste_unnamed
