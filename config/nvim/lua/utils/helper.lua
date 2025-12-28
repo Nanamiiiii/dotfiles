@@ -31,4 +31,9 @@ helper["binary_path"] = function(cmd)
     end
 end
 
+-- Detect SSH Connection
+helper["is_ssh"] = function()
+    return os.getenv("SSH_CLIENT") ~= nil or os.getenv("SSH_TTY") ~= nil or os.getenv("SSH_CONNECTION") ~= nil
+end
+
 return helper
