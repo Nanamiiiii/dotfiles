@@ -3,7 +3,7 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local ft = require("filetypes")
 
-augroup("rc", {})
+local augroup_rc = augroup("myuu.rc", {})
 -- auto ft detection
 --autocmd({ "FileReadPost", "BufAdd", "BufEnter", "BufNew", "BufNewFile", "BufRead" }, {
 --    group = "rc",
@@ -13,7 +13,7 @@ augroup("rc", {})
 
 -- ft specific settings
 autocmd("Filetype", {
-    group = "rc",
+    group = augroup_rc,
     pattern = "*",
     callback = function(args)
         ft[args.match]()
@@ -21,9 +21,9 @@ autocmd("Filetype", {
 })
 
 -- Lazy.nvim auto update check
-augroup("lazynvim_autoupd", { clear = true })
+local augroup_lazy = augroup("myuu.lazynvim_autoupd", { clear = true })
 autocmd("VimEnter", {
-    group = "lazynvim_autoupd",
+    group = augroup_lazy,
     callback = function()
         if require("lazy.status").has_updates then
             require("lazy").update({ show = false })

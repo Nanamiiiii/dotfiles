@@ -1,50 +1,83 @@
 -- plugins/treesitter.lua
-
-local augroup = vim.api.nvim_create_augroup("plugins.nvim-treesitter", {})
+local augroup = vim.api.nvim_create_augroup("myuu.plugins.nvim-treesitter", {})
 
 return {
     {
         "nvim-treesitter/nvim-treesitter",
         lazy = true,
         branch = "main",
-        build = function()
-            -- refs: https://github.com/atusy/dotfiles/blob/9884146c26cb76692723758306f2f191cd6d47e4/dot_config/nvim/lua/plugins/nvim-treesitter.lua
-            local ok, err = pcall(function()
-                local treesitter = require("nvim-treesitter")
-                treesitter.update():await(function()
-                    local installed = treesitter.get_installed()
-                    local missing = vim.tbl_filter(function(lang)
-                        return not vim.tbl_contains(installed, lang)
-                    end, treesitter.get_available())
-                    treesitter.install(missing)
-                end)
-            end)
-            if not ok then
-                vim.notify(err or "failed to update parsers", vim.log.levels.ERROR, { title = "nvim-treesitter" })
-            end
-        end,
+        build = ":TSUpdate",
         config = function()
-            require("nvim-treesitter").setup({
+            local treesitter = require("nvim-treesitter")
+            treesitter.setup({
                 install_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "/nvim-treesitter"),
             })
+
+            -- refs: https://github.com/atusy/dotfiles/blob/9884146c26cb76692723758306f2f191cd6d47e4/dot_config/nvim/lua/plugins/nvim-treesitter.lua
+            local ok, err = pcall(function()
+                local installed = treesitter.get_installed()
+                local ensure_installed = {
+                    "c",
+                    "rust",
+                    "go",
+                    "lua",
+                    "python",
+                    "cpp",
+                    "yaml",
+                    "json",
+                    "bash",
+                    "dockerfile",
+                    "vim",
+                    "vimdoc",
+                    "make",
+                    "cmake",
+                    "bash",
+                    "diff",
+                    "html",
+                    "javascript",
+                    "jsdoc",
+                    "jsonc",
+                    "lua",
+                    "luadoc",
+                    "luap",
+                    "markdown",
+                    "markdown_inline",
+                    "query",
+                    "regex",
+                    "toml",
+                    "tsx",
+                    "typescript",
+                    "xml",
+                }
+                local missing = vim.tbl_filter(function(lang)
+                    return not vim.tbl_contains(installed, lang)
+                end, ensure_installed)
+                treesitter.install(missing)
+            end)
+            if not ok then
+                vim.notify(
+                    err or "failed to install required parsers",
+                    vim.log.levels.ERROR,
+                    { title = "nvim-treesitter" }
+                )
+            end
         end,
         init = function(plugin)
             require("lazy.core.loader").add_to_rtp(plugin)
-
             -- refs: https://github.com/atusy/dotfiles/blob/9884146c26cb76692723758306f2f191cd6d47e4/dot_config/nvim/lua/plugins/nvim-treesitter.lua
             vim.api.nvim_create_autocmd("FileType", {
                 group = augroup,
                 callback = function(ctx)
                     local filetype = ctx.match
 
-                    require("nvim-treesitter")
+                    local treesitter = require("nvim-treesitter")
                     local ok = pcall(vim.treesitter.start, ctx.buf)
                     if ok then
                         return
                     end
 
                     local lang = vim.treesitter.language.get_lang(filetype)
-                    require("nvim-treesitter").install({ lang }):await(function(err)
+                    treesitter.install({ lang }):await(function(err)
                         if err then
                             vim.notify(err, vim.log.levels.ERROR, { title = "nvim-treesitter" })
                         end
