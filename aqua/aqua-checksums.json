@@ -366,6 +366,36 @@
       "algorithm": "sha256"
     },
     {
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.3/tree-sitter-linux-arm64.gz",
+      "checksum": "456D880B2C81E3E1905C8CBD93BEBD3F7F47EFB743FACEF729070E71FB648C71",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.3/tree-sitter-linux-x64.gz",
+      "checksum": "4F65C8D9BA32A3E37198302569B3306F037F12D8313E3F28CDF1B80C9F2B3A3A",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.3/tree-sitter-macos-arm64.gz",
+      "checksum": "04A056504077C1531EBEBC4193C389BBFE086A3B590692500B6EFD81871F17D1",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.3/tree-sitter-macos-x64.gz",
+      "checksum": "9C43A86C196D64C5671CA7B8B470EF08BB6644348A070EAC072A341CBC671B19",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.3/tree-sitter-windows-arm64.gz",
+      "checksum": "78237498F162C4E82AB7AA7E06BBB950E6175DEF33476163E4FF23C3E30780AF",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.3/tree-sitter-windows-x64.gz",
+      "checksum": "B242C795F6E87749212ED764C1C63AFC853E56EAB61CBAD015244B23182E4317",
+      "algorithm": "sha256"
+    },
+    {
       "id": "github_release/github.com/x-motemen/ghq/v1.8.0/ghq_darwin_amd64.zip",
       "checksum": "742A64C85B7C01A1399AE286E886CFFC4649EE38891FB01CD32F31394610EA80",
       "algorithm": "sha256"
