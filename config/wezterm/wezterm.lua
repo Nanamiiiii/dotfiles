@@ -15,9 +15,9 @@ config.term = "xterm-256color"
 config.use_ime = false
 
 -- Detect OS
-local is_macos = wezterm.target_triple:find("darwin")    -- macos
+local is_macos = wezterm.target_triple:find("darwin") -- macos
 local is_windows = wezterm.target_triple:find("windows") -- windows
-local is_linux = wezterm.target_triple:find("linux")     -- linux
+local is_linux = wezterm.target_triple:find("linux") -- linux
 
 -- Default Shell
 if is_windows then
@@ -93,13 +93,20 @@ end
 
 -- Color Scheme
 local appearance = wezterm.gui.get_appearance()
+local dim = nil
+local highlight = nil
+local overlay = nil
 if appearance:find("Dark") then
     config.color_scheme = "tokyonight"
+    dim = wezterm.color.get_builtin_schemes()["tokyonight"]["selection_bg"]
+    highlight = wezterm.color.get_builtin_schemes()["tokyonight"]["brights"][5]
+    overlay = "#0f172a"
 else
     config.color_scheme = "tokyonight-day"
+    dim = wezterm.color.get_builtin_schemes()["tokyonight-day"]["selection_bg"]
+    highlight = wezterm.color.get_builtin_schemes()["tokyonight-day"]["brights"][5]
+    overlay = "#cbd5e1"
 end
--- config.color_scheme = "iceberg-dark"
--- config.color_scheme = "Tokyo Night Moon"
 
 -- Opacity
 if is_macos then
@@ -122,20 +129,84 @@ config.window_background_image_hsb = {
 }
 
 -- Tab Settings
-config.tab_max_width = 20
+config.tab_max_width = 50
+config.use_fancy_tab_bar = true
+config.tab_bar_at_bottom = true
+config.hide_tab_bar_if_only_one_tab = true
+config.show_tabs_in_tab_bar = true
+config.show_close_tab_button_in_tabs = false
+config.colors = {
+    tab_bar = {
+        inactive_tab_edge = "none",
+    },
+}
 
-if is_windows then
-    config.use_fancy_tab_bar = false
-    config.tab_bar_at_bottom = true
-    config.hide_tab_bar_if_only_one_tab = false
-else
-    config.use_fancy_tab_bar = false
-    config.tab_bar_at_bottom = true
-    config.hide_tab_bar_if_only_one_tab = true
-end
+config.colors = {
+    tab_bar = {
+        background = "none",
+        new_tab = { bg_color = "none", fg_color = dim },
+        new_tab_hover = { bg_color = "none", fg_color = highlight },
+        inactive_tab = { bg_color = "none", fg_color = dim },
+        inactive_tab_hover = {
+            bg_color = "none",
+            fg_color = wezterm.color
+                .parse(wezterm.color.get_builtin_schemes()[config.color_scheme]["selection_bg"])
+                :lighten(0.3),
+        },
+        active_tab = { bg_color = "none", fg_color = highlight, intensity = "Bold" },
+        inactive_tab_edge = "none",
+    },
+}
 
 -- Tab style
-function tab_title(tab_info)
+config.window_frame = {
+    font = config.font,
+    active_titlebar_bg = "none",
+    inactive_titlebar_bg = "none",
+    font_size = config.font_size,
+}
+
+-- Title table
+local title_map = {}
+title_map["zsh"] = {
+    symbol = "󰞷 ",
+}
+title_map["bash"] = {
+    symbol = "󰞷 ",
+}
+title_map["ssh"] = {
+    symbol = " ",
+}
+title_map["nu"] = {
+    symbol = "󰞷 ",
+}
+title_map["pwsh"] = {
+    symbol = "󰨊 ",
+}
+title_map["vim"] = {
+    symbol = " ",
+}
+title_map["nvim"] = {
+    symbol = " ",
+}
+title_map["wslhost"] = {
+    symbol = "󰣇 ",
+}
+title_map["wsl"] = {
+    symbol = "󰣇 ",
+}
+title_map["tmux"] = {
+    symbol = " ",
+}
+title_map["zellij"] = {
+    symbol = " ",
+}
+title_map["git"] = {
+    symbol = "󰊢 ",
+}
+-- add new mappings here
+
+local function tab_title(tab_info)
     local title = tab_info.tab_title
     if title and #title > 0 then
         return title
@@ -143,83 +214,23 @@ function tab_title(tab_info)
     return tab_info.active_pane.title
 end
 
--- Title table
-local title_map = {}
-title_map["zsh"] = {
-    title = "Zsh",
-    symbol = "󰞷 ",
-}
-title_map["bash"] = {
-    title = "Bash",
-    symbol = "󰞷 ",
-}
-title_map["ssh"] = {
-    title = "SSH",
-    symbol = " ",
-}
-title_map["nu"] = {
-    title = "Nu",
-    symbol = "󰞷 ",
-}
-title_map["pwsh"] = {
-    title = "PowerShell",
-    symbol = "󰨊 ",
-}
-title_map["nvim"] = {
-    title = "neovim",
-    symbol = " ",
-}
-title_map["wslhost"] = {
-    title = "WSL",
-    symbol = "󰣇 ",
-}
-title_map["wsl"] = {
-    title = "WSL",
-    symbol = "󰣇 ",
-}
-title_map["tmux"] = {
-    title = "tmux",
-    symbol = " ",
-}
-title_map["git"] = {
-    title = "git",
-    symbol = "󰊢 ",
-}
--- add new mappings here
-
-function title_mapper(title, symbol)
+local function title_mapper(title)
     local binName = string.match(title, "([^/\\]+)%.[^.]*$")
-    if title_map[binName] ~= nil then
-        local items = title_map[binName]
-        local mapped_title = ""
-        if items["symbol"] ~= nil and symbol then
-            mapped_title = mapped_title .. items["symbol"]
-        end
-        if items["title"] ~= nil then
-            mapped_title = mapped_title .. items["title"]
-        else
-            mapped_title = mapped_title .. title
-        end
-        return mapped_title
-    elseif string.match(title, "^.*@.*$") then
-        local shell_symbol = ""
-        if symbol then
-            shell_symbol = "󰞷 "
-        end
-        return shell_symbol .. title
-    else
-        return title
+    if binName ~= nil then
+        title = binName
     end
+    local items = title_map[title]
+    if items ~= nil and items.symbol ~= nil then
+        return items.symbol .. title
+    end
+    return "󰞷 " .. title
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-    local title = title_mapper(tab_title(tab), true)
-    if tab.is_active then
-        return {
-            { Text = " " .. title .. " " },
-        }
-    end
-    return " " .. title .. " "
+    local title = title_mapper(tab_title(tab))
+    return {
+        { Text = " " .. title .. " " },
+    }
 end)
 
 -- Window title

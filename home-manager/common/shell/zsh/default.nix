@@ -85,7 +85,7 @@ let
     # Title
     autoload -Uz add-zsh-hook
     function _set_title() {
-        echo -ne "\033]0;''${USER}@''${HOST}\007"
+        print -Pn "\033]0;%n@%m:%1~\007"
     }
     function _set_cmd_title() {
         cmd=$(echo ''${2} | awk '{print $1}')

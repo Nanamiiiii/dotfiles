@@ -169,6 +169,7 @@
               }
           }
           shared_except "locked" {
+              bind "Ctrl g" { Write 7; SwitchToMode "locked"; }
               bind "Ctrl Alt left" { MoveFocusOrTab "left"; }
               bind "Ctrl Alt down" { MoveFocus "down"; }
               bind "Ctrl Alt up" { MoveFocus "up"; }
@@ -179,7 +180,6 @@
               bind "Ctrl Alt [" { PreviousSwapLayout; }
               bind "Ctrl Alt ]" { NextSwapLayout; }
               bind "Ctrl Alt f" { ToggleFloatingPanes; }
-              bind "Ctrl g" { SwitchToMode "locked"; }
               bind "Ctrl Alt h" { MoveFocusOrTab "left"; }
               bind "Ctrl Alt i" { MoveTab "left"; }
               bind "Ctrl Alt j" { MoveFocus "down"; }
