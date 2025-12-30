@@ -37,7 +37,6 @@ let
     ../../nixos/settings/system/rgb.nix
     ../../nixos/settings/system/sssd-lab.nix
     ../../nixos/settings/system/yubikey.nix
-    ../../nixos/settings/system/gpg.nix
     ../../nixos/settings/system/fwupd.nix
     (import ../../nixos/settings/system/accountsservice.nix {
       inherit username;

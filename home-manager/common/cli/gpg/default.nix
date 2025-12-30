@@ -1,11 +1,24 @@
 {
   pkgs,
   lib,
-  wslhost,
+  enableAgent ? false,
+  pinentryVariant ? null,
   ...
 }:
 let
   baseSystem = builtins.elemAt (builtins.split "-" pkgs.stdenv.hostPlatform.system) 2;
+
+  pinentryPackage = {
+    linux = pkgs.pinentry-all;
+    darwin = null;
+  };
+
+  pinentryProgram = {
+    gnome3 = "pinentry-gnome3";
+    qt = "pinentry-qt";
+    tui = "pinentry-curses";
+    darwin = null;
+  };
 in
 {
   home.packages = with pkgs; [
@@ -23,30 +36,26 @@ in
         disable-ccid = true;
       };
     };
-    zsh = lib.mkIf (baseSystem == "linux") {
-      envExtra =
-        if !wslhost then
-          ''
-            if [[ -z "$SSH_CONNECTION" ]]; then
-              export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh
-            fi
-          ''
-        else
-          ''
-            export SSH_AUTH_SOCK='\\.\pipe\openssh-ssh-agent'
-          '';
-    };
   };
 
   services = {
-    gpg-agent = {
-      enable = if baseSystem == "darwin" then true else false;
-      enableSshSupport = true;
-      enableExtraSocket = true;
-      pinentry.package = null;
-      extraConfig = ''
-        pinentry-program /opt/homebrew/bin/pinentry-mac
-      '';
-    };
+    gpg-agent = lib.mkMerge [
+      {
+        enable = enableAgent;
+        enableSshSupport = true;
+        enableExtraSocket = true;
+        enableZshIntegration = true;
+        pinentry = lib.mkIf enableAgent {
+          package = pinentryPackage."${baseSystem}";
+          program = pinentryProgram."${pinentryVariant}";
+        };
+      }
+      (lib.mkIf (baseSystem == "darwin") {
+        # Use homebrew pientry-mac package because nixpkgs has little old version
+        extraConfig = ''
+          pinentry-program /opt/homebrew/bin/pinentry-mac
+        '';
+      })
+    ];
   };
 }

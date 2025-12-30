@@ -5,7 +5,6 @@
   inputs,
   hostname,
   config,
-  wslhost,
   ...
 }:
 let
@@ -14,7 +13,11 @@ let
     ../../common/nix
     ../../common/cli
     ../../common/cli/git
-    ../../common/cli/gpg
+    (import ../../common/cli/gpg {
+      inherit pkgs lib;
+      enableAgent = true;
+      pinentryVariant = "gnome3";
+    })
     ../../common/cli/ssh
     ../../common/apps/skk
     ../../common/editor/neovim

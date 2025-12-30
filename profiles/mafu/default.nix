@@ -32,7 +32,6 @@ let
     ../../nixos/settings/system/cpupower-performance.nix
     ../../nixos/settings/system/rgb.nix
     ../../nixos/settings/system/yubikey.nix
-    ../../nixos/settings/system/gpg.nix
     (import ../../nixos/settings/system/accountsservice.nix {
       inherit username;
       avatar = ../../assets/avatar.png;

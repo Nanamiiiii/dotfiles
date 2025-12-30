@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ lib, wslhost, ... }:
 let
   cloudHosts = {
     "yuina" = {
@@ -69,5 +69,12 @@ in
           serverAliveInterval = 60;
         };
       };
+  };
+
+  programs.zsh = lib.mkIf wslhost {
+    # On WSL, use Windows-side SSH agent
+    envExtra = ''
+      export SSH_AUTH_SOCK='\\.\pipe\openssh-ssh-agent'
+    '';
   };
 }

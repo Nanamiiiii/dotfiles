@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  wslhost,
   username,
   ...
 }:
@@ -12,7 +11,11 @@ let
     ../../common/nix
     ../../common/cli
     ../../common/cli/git
-    ../../common/cli/gpg
+    (import ../../common/cli/gpg {
+      inherit pkgs lib;
+      enableAgent = false;
+      pinentryVariant = null;
+    })
     ../../common/cli/ssh
     ../../common/apps/skk
     ../../common/editor/neovim
