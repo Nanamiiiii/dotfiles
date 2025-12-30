@@ -223,7 +223,11 @@ local function title_mapper(title)
     if items ~= nil and items.symbol ~= nil then
         return items.symbol .. title
     end
-    return "󰞷 " .. title
+    local match_user_host = string.match(title, "^.*@.*:.*$")
+    if match_user_host ~= nil then
+        return "󰞷 " .. match_user_host
+    end
+    return " " .. title
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
