@@ -17,7 +17,7 @@ show=drun
 #mode=MODE
       #Identical to show.
 
-width=35%
+width=50%
       #Specifies the menu width in pixels or percent  of  screen  size,  default  is  50%. Pixels are used unless the number ends with a %.
 
 height=50%
