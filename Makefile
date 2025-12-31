@@ -113,7 +113,7 @@ clean-oldgen:
 
 # Setup Legacy
 .PHONY: legacy-install
-legacy-install: sheldon-install aqua-install sheldon-link aqua-link legacy-shell tmux-install scripts-link git-setup
+legacy-install: sheldon-install aqua-install sheldon-link aqua-link legacy-shell tmux-install zellij-install scripts-link git-setup
 
 # Install Sheldon
 .PHONY: sheldon-install
@@ -149,6 +149,11 @@ legacy-shell:
 tmux-install:
 	ln -sf $(CURDIR)/config/tmux $(HOME)/.config/
 	git clone https://github.com/tmux-plugins/tpm $(HOME)/.config/tmux/plugins/tpm
+
+.PHONY: zellij-install
+zellij-install:
+	mkdir -p $(HOME)/config/zellij/config.kdl
+	ln -sf $(CURDIR)/config/zellij/config.kdl $(HOME)/.config/zellij/
 
 .PHONY: scripts-link
 scripts-link:

@@ -426,6 +426,26 @@
       "algorithm": "sha256"
     },
     {
+      "id": "github_release/github.com/zellij-org/zellij/v0.43.1/zellij-aarch64-apple-darwin.tar.gz",
+      "checksum": "A09EA51F3D98427253DE2B889BB04F1AA0850FBB034911C7A01B8F0194EDBA66",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/zellij-org/zellij/v0.43.1/zellij-aarch64-unknown-linux-musl.tar.gz",
+      "checksum": "32321AD5F61C2C62D156162D1DF95DC823666F84E4A0D7CD79B0FEF02930B165",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/zellij-org/zellij/v0.43.1/zellij-x86_64-apple-darwin.tar.gz",
+      "checksum": "7B0C1A9C2591EADF506EC58D62EF5F6D9C93D089A3603142AF3DCCA5FA575D44",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/zellij-org/zellij/v0.43.1/zellij-x86_64-unknown-linux-musl.tar.gz",
+      "checksum": "541D98EFEF5558293EF85AD9ACD29E4D920B6E881513B9E77255D8207020D75A",
+      "algorithm": "sha256"
+    },
+    {
       "id": "http/downloads.haskell.org/~ghcup/0.1.30.0/aarch64-apple-darwin-ghcup-0.1.30.0",
       "checksum": "2C81486494136A2A105ECD8CADC13965395A48489D9BF5A0027BAA40C5FAF5FB",
       "algorithm": "sha256"

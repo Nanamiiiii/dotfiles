@@ -26,3 +26,4 @@ packages:
 - name: fastfetch-cli/fastfetch@2.54.0
 - name: haskell/ghcup-hs@v0.1.30.0
 - name: tree-sitter/tree-sitter@v0.26.3
+- name: zellij-org/zellij@v0.43.1
