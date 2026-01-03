@@ -36,7 +36,7 @@ return {
             return string.format("Pasted image %s.png", os.time())
         end,
         attachments = {
-            img_folder = "_assets",
+            folder = "_assets",
             ---@param client obsidian.Client
             ---@param path obsidian.Path the absolute path to the image file
             ---@return string
@@ -93,6 +93,6 @@ return {
         },
     },
     init = function()
-        vim.opt_local.conceallevel = 1
+        vim.o.conceallevel = 2
     end,
 }
