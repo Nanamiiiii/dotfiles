@@ -36,7 +36,6 @@ return {
                     "html",
                     "javascript",
                     "jsdoc",
-                    "jsonc",
                     "lua",
                     "luadoc",
                     "luap",
@@ -69,7 +68,6 @@ return {
                 group = augroup,
                 callback = function(ctx)
                     local filetype = ctx.match
-
                     local treesitter = require("nvim-treesitter")
                     local ok = pcall(vim.treesitter.start, ctx.buf)
                     if ok then
@@ -77,6 +75,11 @@ return {
                     end
 
                     local lang = vim.treesitter.language.get_lang(filetype)
+                    local available = treesitter.get_available()
+                    if not vim.tbl_contains(available, lang) then
+                        return
+                    end
+
                     treesitter.install({ lang }):await(function(err)
                         if err then
                             vim.notify(err, vim.log.levels.ERROR, { title = "nvim-treesitter" })
