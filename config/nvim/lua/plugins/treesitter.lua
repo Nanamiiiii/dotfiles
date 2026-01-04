@@ -1,10 +1,9 @@
 -- plugins/treesitter.lua
-local augroup = vim.api.nvim_create_augroup("myuu.plugins.nvim-treesitter", {})
 
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        lazy = true,
+        lazy = false,
         branch = "main",
         build = ":TSUpdate",
         config = function()
@@ -15,8 +14,7 @@ return {
 
             -- refs: https://github.com/atusy/dotfiles/blob/9884146c26cb76692723758306f2f191cd6d47e4/dot_config/nvim/lua/plugins/nvim-treesitter.lua
             local ok, err = pcall(function()
-                local installed = treesitter.get_installed()
-                local ensure_installed = {
+                local enabled_list = {
                     "c",
                     "rust",
                     "go",
@@ -47,10 +45,12 @@ return {
                     "tsx",
                     "typescript",
                     "xml",
+                    "nix",
                 }
+                local installed = treesitter.get_installed()
                 local missing = vim.tbl_filter(function(lang)
                     return not vim.tbl_contains(installed, lang)
-                end, ensure_installed)
+                end, enabled_list)
                 treesitter.install(missing)
             end)
             if not ok then
@@ -63,6 +63,7 @@ return {
         end,
         init = function(plugin)
             require("lazy.core.loader").add_to_rtp(plugin)
+            local augroup = vim.api.nvim_create_augroup("myuu.plugins.nvim-treesitter.init", { clear = true })
             -- refs: https://github.com/atusy/dotfiles/blob/9884146c26cb76692723758306f2f191cd6d47e4/dot_config/nvim/lua/plugins/nvim-treesitter.lua
             vim.api.nvim_create_autocmd("FileType", {
                 group = augroup,

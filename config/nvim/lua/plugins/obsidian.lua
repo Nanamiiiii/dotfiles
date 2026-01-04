@@ -33,7 +33,7 @@ return {
         },
         ---@return string
         image_name_func = function()
-            return string.format("Pasted image %s.png", os.time())
+            return string.format("attached_image_%s.png", os.time())
         end,
         attachments = {
             folder = "_assets",
