@@ -47,45 +47,50 @@ return {
             confirm_img_paste = false,
         },
         templates = {
-            folder = "_config/Template",
+            folder = "_config/VimTemplate",
             date_format = "%Y-%m-%d",
             time_format = "%H:%M:%S",
             substitutions = {
                 ---@return string
                 yesterday = function()
-                    return os.date("%Y-%m-%d", os.time() - 86400)
+                    return tostring(os.date("%Y-%m-%d", os.time() - 86400))
                 end,
                 ---@return string
                 before_week = function()
-                    return os.date("%Y-%m-%d", os.time() - (86400 * 7))
+                    return tostring(os.date("%Y-%m-%d", os.time() - (86400 * 7)))
                 end,
                 ---@return string
                 tomorrow = function()
-                    return os.date("%Y-%m-%d", os.time() + 86400)
+                    return tostring(os.date("%Y-%m-%d", os.time() + 86400))
                 end,
                 ---@return string
                 after_week = function()
-                    return os.date("%Y-%m-%d", os.time() + (86400 * 7))
+                    return tostring(os.date("%Y-%m-%d", os.time() + (86400 * 7)))
                 end,
                 ---@return string
                 full_datetime = function()
-                    return os.date("%Y-%m-%dT%H:%M:%S+09:00")
+                    local time, _ = tostring(os.date("%Y-%m-%dT%H:%M:%S%z")):gsub("(%d%d)$", ":%1")
+                    return time
                 end,
             },
         },
         frontmatter = {
+            enabled = true,
             ---@return table
             func = function(note)
                 local out = { id = note.id, aliases = note.aliases, tags = note.tags }
 
                 -- Set title
-                if note.title and note.title ~= "" then
-                    out.title = note.title
-                else
-                    out.title = note.id
-                end
+                out.title = note.id
 
                 if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+                    -- Set created/updated time
+                    local curtime, _ = tostring(os.date("%Y-%m-%dT%H:%M:%S%z")):gsub("(%d%d)$", ":%1")
+                    if note.metadata["created"] == nil then
+                        note.metadata["created"] = curtime
+                    end
+                    note.metadata["updated"] = curtime
+
                     for k, v in pairs(note.metadata) do
                         out[k] = v
                     end
@@ -93,6 +98,7 @@ return {
 
                 return out
             end,
+            sort = { "id", "title", "aliases", "tags" },
         },
     },
     init = function()
