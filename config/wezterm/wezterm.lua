@@ -255,6 +255,11 @@ wezterm.on("format-window-title", function(tab, pane, tabs, panes, config)
     return prefix .. " - " .. zoomed .. index .. title
 end)
 
+-- Reload notification
+wezterm.on("window-config-reloaded", function(window, pane)
+    window:toast_notification("wezterm", "Configuration file was reloaded.", nil, 4000)
+end)
+
 -- Maximize
 wezterm.on("gui-startup", function(cmd)
     local tab, pane, window = mux.spawn_window(cmd or {})
@@ -435,6 +440,11 @@ config.keys = {
         mods = "LEADER",
         action = act.ActivateCommandPalette,
     },
+    {
+        key = "r",
+        mods = "CMD|SHIFT",
+        action = wezterm.action.ReloadConfiguration,
+    },
 }
 
 -- WSL
@@ -452,112 +462,122 @@ else
     }
 end
 
--- Linux Launch Menu
-if is_linux then
-    config.launch_menu = {
-        {
-            label = "zsh",
-            args = { "zsh", "-l" },
-        },
-        {
-            label = "bash",
-            args = { "bash", "-l" },
-        },
-        {
-            label = "nvim",
-            args = { "nvim" },
-            cwd = "~/",
-        },
-        {
-            label = "ranger",
-            args = { "ranger" },
-            cwd = "~/",
-        },
-        {
-            label = "btop",
-            args = { "btop" },
-        },
-        {
-            label = "spotify",
-            args = { "spotify_player" },
-        },
-    }
+-- Load external launch menu config if exists
+local status, launcher = pcall(require, "launcher")
+if status then
+    config.launch_menu = launcher.menu
+else
+    -- Linux Launch Menu
+    if is_linux then
+        config.launch_menu = {
+            {
+                label = "zsh",
+                args = { "zsh", "-l" },
+            },
+            {
+                label = "bash",
+                args = { "bash", "-l" },
+            },
+            {
+                label = "Zellij",
+                args = { "zellij", "a", "--create", "main" },
+            },
+            {
+                label = "Neovim",
+                args = { "nvim" },
+                cwd = "~/",
+            },
+            {
+                label = "ranger",
+                args = { "ranger" },
+                cwd = "~/",
+            },
+            {
+                label = "btop",
+                args = { "btop" },
+            },
+            {
+                label = "spotify",
+                args = { "spotify_player" },
+            },
+        }
 
-    config.serial_ports = {
-        {
-            name = "USB Serial 1",
-            port = "/dev/ttyUSB0",
-            baud = 115200,
-        },
-        {
-            name = "USB Serial 2",
-            port = "/dev/ttyUSB1",
-            baud = 115200,
-        },
-    }
-end
+        config.serial_ports = {
+            {
+                name = "USB Serial 1",
+                port = "/dev/ttyUSB0",
+                baud = 115200,
+            },
+            {
+                name = "USB Serial 2",
+                port = "/dev/ttyUSB1",
+                baud = 115200,
+            },
+        }
+    end
 
--- macOS Launch Menu
-if is_macos then
-    config.launch_menu = {
-        {
-            label = "zsh",
-            args = { "zsh", "-l" },
-        },
-        {
-            label = "bash",
-            args = { "bash", "-l" },
-        },
-        {
-            label = "nvim",
-            args = { "nvim" },
-            cwd = "~/",
-        },
-        {
-            label = "ranger",
-            args = { "ranger" },
-            cwd = "~/",
-        },
-        {
-            label = "btop",
-            args = { "btop" },
-        },
-        {
-            label = "spotify",
-            args = { "spotify_player" },
-        },
-    }
-end
+    -- macOS Launch Menu
+    if is_macos then
+        config.launch_menu = {
+            {
+                label = "zsh",
+                args = { "zsh", "-l" },
+            },
+            {
+                label = "Zellij",
+                args = { "zellij", "a", "--create", "main" },
+            },
+            {
+                label = "Neovim",
+                args = { "nvim" },
+                cwd = "~/",
+            },
+            {
+                label = "ranger",
+                args = { "ranger" },
+                cwd = "~/",
+            },
+            {
+                label = "btop",
+                args = { "btop" },
+            },
+            {
+                label = "spotify",
+                args = { "spotify_player" },
+            },
+        }
+    end
 
--- Windows Launch Menu
-if is_windows then
-    -- pwsh & cmd
-    config.launch_menu = {
-        {
-            label = "Powershell",
-            domain = { DomainName = "local" },
-            args = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-nologo" },
-        },
-        {
-            label = "Command Prompt",
-            domain = { DomainName = "local" },
-            args = { "C:\\Windows\\System32\\cmd.exe" },
-        },
-    }
-    -- wezterm ssh does not work correctly on windows
-    -- create launcher entry directly executing ssh.exe from ssh domain
-    local ssh_domains = wezterm.default_ssh_domains()
-    local ssh_executable = "C:\\Windows\\System32\\OpenSSH\\ssh.exe"
-    for idx, dom in ipairs(ssh_domains) do
-        if dom.multiplexing == "None" then -- ignore SSHMUX domain
-            table.insert(config.launch_menu, {
-                label = dom.name,
+    -- Windows Launch Menu
+    if is_windows then
+        -- pwsh & cmd
+        config.launch_menu = {
+            {
+                label = "Powershell",
                 domain = { DomainName = "local" },
-                args = {
-                    ssh_executable,
-                    dom.remote_address,
-                },
-            })
+                args = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-nologo" },
+            },
+            {
+                label = "Command Prompt",
+                domain = { DomainName = "local" },
+                args = { "C:\\Windows\\System32\\cmd.exe" },
+            },
+        }
+        -- wezterm ssh does not work correctly on windows
+        -- create launcher entry directly executing ssh.exe from ssh domain
+        local ssh_domains = wezterm.default_ssh_domains()
+        local ssh_executable = "C:\\Windows\\System32\\OpenSSH\\ssh.exe"
+        for idx, dom in ipairs(ssh_domains) do
+            if dom.multiplexing == "None" then -- ignore SSHMUX domain
+                table.insert(config.launch_menu, {
+                    label = dom.name,
+                    domain = { DomainName = "local" },
+                    args = {
+                        ssh_executable,
+                        dom.remote_address,
+                    },
+                })
+            end
         end
     end
 end

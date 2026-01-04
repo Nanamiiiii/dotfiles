@@ -10,7 +10,6 @@
       "skim"
       "obsidian"
       "discord"
-      "betterdiscord-installer"
       "spotify"
       "zotero"
       "wireshark-app"
