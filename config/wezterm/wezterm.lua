@@ -255,11 +255,6 @@ wezterm.on("format-window-title", function(tab, pane, tabs, panes, config)
     return prefix .. " - " .. zoomed .. index .. title
 end)
 
--- Reload notification
-wezterm.on("window-config-reloaded", function(window, pane)
-    window:toast_notification("wezterm", "Configuration file was reloaded.", nil, 4000)
-end)
-
 -- Maximize
 wezterm.on("gui-startup", function(cmd)
     local tab, pane, window = mux.spawn_window(cmd or {})
@@ -479,11 +474,11 @@ else
                 args = { "bash", "-l" },
             },
             {
-                label = "Zellij",
+                label = "zellij",
                 args = { "zellij", "a", "--create", "main" },
             },
             {
-                label = "Neovim",
+                label = "neovim",
                 args = { "nvim" },
                 cwd = "~/",
             },
@@ -524,11 +519,11 @@ else
                 args = { "zsh", "-l" },
             },
             {
-                label = "Zellij",
+                label = "zellij",
                 args = { "zellij", "a", "--create", "main" },
             },
             {
-                label = "Neovim",
+                label = "neovim",
                 args = { "nvim" },
                 cwd = "~/",
             },
@@ -553,7 +548,7 @@ else
         -- pwsh & cmd
         config.launch_menu = {
             {
-                label = "Powershell",
+                label = "PowerShell",
                 domain = { DomainName = "local" },
                 args = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-nologo" },
             },
