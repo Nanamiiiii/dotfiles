@@ -78,14 +78,14 @@ in
   xdg.configFile = {
     "qt6ct/qt6ct.conf" = {
       text = builtins.readFile (
-        pkgs.replaceVars ../../config/qt6ct/qt6ct.conf {
+        pkgs.replaceVars ../desktop/qt6ct/qt6ct.conf {
           qt6ct_pkg = pkgs.kdePackages.qt6ct;
         }
       );
     };
     "qt5ct/qt5ct.conf" = {
       text = builtins.readFile (
-        pkgs.replaceVars ../../config/qt5ct/qt5ct.conf {
+        pkgs.replaceVars ../desktop/qt5ct/qt5ct.conf {
           qt5ct_pkg = pkgs.libsForQt5.qt5ct;
         }
       );
