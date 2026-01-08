@@ -84,17 +84,17 @@ return {
                 out.title = note.id
 
                 if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-                    -- Set created/updated time
-                    local curtime, _ = tostring(os.date("%Y-%m-%dT%H:%M:%S%z")):gsub("(%d%d)$", ":%1")
-                    if note.metadata["created"] == nil then
-                        note.metadata["created"] = curtime
-                    end
-                    note.metadata["updated"] = curtime
-
                     for k, v in pairs(note.metadata) do
                         out[k] = v
                     end
                 end
+
+                -- Set created/updated time
+                local curtime, _ = tostring(os.date("%Y-%m-%dT%H:%M:%S%z")):gsub("(%d%d)$", ":%1")
+                if out["created"] == nil then
+                    out["created"] = curtime
+                end
+                out["updated"] = curtime
 
                 return out
             end,
