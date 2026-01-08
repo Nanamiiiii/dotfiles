@@ -144,7 +144,7 @@ in
     wget
     sl
     openssl
-    kdash
+    #kdash
     kubernetes-helm
     kubectl
     w3m
