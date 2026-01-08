@@ -4,5 +4,6 @@
     #gnupg
     #yubikey-manager
     pam_u2f
+    openssh
   ];
 }

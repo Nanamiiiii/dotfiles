@@ -9,8 +9,6 @@
   ...
 }:
 let
-  baseSystem = builtins.elemAt (builtins.split "-" pkgs.stdenv.hostPlatform.system) 2;
-
   configFiles = import ../../../config {
     inherit
       pkgs
@@ -19,12 +17,11 @@ let
       ;
   };
 
-  weztermEnable = if desktop && baseSystem == "linux" then true else false;
 in
 lib.mkIf (!wslhost) {
   programs = {
     wezterm = {
-      enable = weztermEnable;
+      enable = desktop;
       package = pkgs.wezterm;
     };
   };

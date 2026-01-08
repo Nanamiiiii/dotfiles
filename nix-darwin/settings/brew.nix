@@ -10,7 +10,6 @@
 
     brews = [
       "displayplacer"
-      "openssh" # builtin openssh misses fido related libs
       "pinentry-mac"
     ];
 
@@ -18,14 +17,11 @@
       "1password"
       "1password-cli"
       "istat-menus"
-      "jordanbaird-ice"
       "homerow"
       "karabiner-elements"
       "notchnook"
       "raycast"
       "microsoft-edge"
-      "wezterm@nightly"
-      "xpipe-io/tap/xpipe"
       "fuse-t"
       "macos-fuse-t/homebrew-cask/fuse-t-sshfs"
       "cryptomator"
