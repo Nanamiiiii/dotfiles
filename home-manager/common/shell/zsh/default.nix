@@ -57,9 +57,9 @@ let
           "$fpath[@]"
       )
     '';
-    yuki = '''';
-    mafu = '''';
-    nacho = '''';
+    yuki = "";
+    mafu = "";
+    nacho = "";
     xanadu = ''
       # RISC-V Toolchain
       path=(
