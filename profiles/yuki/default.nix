@@ -35,6 +35,7 @@ let
     ../../nixos/settings/system/bluetooth.nix
     ../../nixos/settings/system/av.nix
     ../../nixos/settings/system/yubikey.nix
+    ../../nixos/settings/system/fwupd.nix
     (import ../../nixos/settings/system/accountsservice.nix {
       inherit username;
       avatar = ../../assets/avatar.png;
