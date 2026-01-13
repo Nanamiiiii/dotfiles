@@ -46,8 +46,8 @@ layout {
     }
 }
 
-spawn-at-startup "hyprpaper"
 spawn-at-startup "waybar"
+spawn-sh-at-startup "swaybg -m fill -i ~/.wallpaper.png"
 spawn-at-startup "swaync"
 spawn-sh-at-startup "wl-paste --watch cliphist store"
 spawn-sh-at-startup "playerctld daemon"
@@ -60,7 +60,7 @@ hotkey-overlay {
     skip-at-startup
 }
 
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/Screenshot_%Y-%m-%d_%H-%M-%S.png"
 
 animations {
     // Slow down all animations by this factor. Values below 1 speed them up instead.

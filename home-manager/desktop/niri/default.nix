@@ -1,11 +1,8 @@
 {
   pkgs,
-  pkgs-stable,
-  inputs,
   hostname,
   thermalZone,
   laptop,
-  config,
   configByHost,
   ...
 }:
@@ -15,7 +12,7 @@ let
   desktopTools = with pkgs; [
     waybar
     swaynotificationcenter
-    hyprpaper
+    swaybg
     wofi
     gpu-screen-recorder
     swappy
@@ -72,7 +69,6 @@ in
   imports = [
     ./hyprlock.nix
     ./hypridle.nix
-    ./hyprpaper.nix
     ./themes.nix
   ];
 
