@@ -14,11 +14,8 @@
       enable = true;
       scanDirectories = [
         "/home/${username}"
-        "/var/lib"
-        "/tmp"
-        "/etc"
         "/var/tmp"
-        "/opt"
+        "/tmp"
       ];
     };
   };
