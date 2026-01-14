@@ -29,6 +29,7 @@
       "steam"
       "badgeify"
       "nextcloud-vfs"
+      "orion"
     ];
 
     taps = [
