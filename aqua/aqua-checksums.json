@@ -66,53 +66,53 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/bootandy/dust/v1.2.3/dust-v1.2.3-aarch64-unknown-linux-musl.tar.gz",
-      "checksum": "02B6DB1FCA7FBB2137F961619F2B1498B26CB3B3CBD3EC3CC3CF23907A354C18",
+      "id": "github_release/github.com/bootandy/dust/v1.2.4/dust-v1.2.4-aarch64-unknown-linux-musl.tar.gz",
+      "checksum": "E09B0D24B5DA0FA06AECF1561849C13AE41EF055C1CE7077E35E9A46744B16AF",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/bootandy/dust/v1.2.3/dust-v1.2.3-x86_64-apple-darwin.tar.gz",
-      "checksum": "6F49A9A56EFA3C215924073A8CA7E2DA3FDFB6DDB9DFB818336B2DA753E95750",
+      "id": "github_release/github.com/bootandy/dust/v1.2.4/dust-v1.2.4-x86_64-apple-darwin.tar.gz",
+      "checksum": "BF84D3FF7F58E325D3EB5BB7696DF6B22EF1E01FEC80C2D8F7C9D3E611BE66F4",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/bootandy/dust/v1.2.3/dust-v1.2.3-x86_64-pc-windows-msvc.zip",
-      "checksum": "3B02F46312B65E06DC9525AB35F02C0DEF26099712503F139FCB07AC69963927",
+      "id": "github_release/github.com/bootandy/dust/v1.2.4/dust-v1.2.4-x86_64-pc-windows-msvc.zip",
+      "checksum": "EB08D642F016787BB9FC918A4DC5F34665463657FDDF83A40F2441CBF020FB4C",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/bootandy/dust/v1.2.3/dust-v1.2.3-x86_64-unknown-linux-musl.tar.gz",
-      "checksum": "2767E53A07A6F887C95D80DC7B976FBB0F85C24FA19E83704639FF5D67EBFBF4",
+      "id": "github_release/github.com/bootandy/dust/v1.2.4/dust-v1.2.4-x86_64-unknown-linux-musl.tar.gz",
+      "checksum": "4E313F9F854017E58A2ADA4C0D1774677B8CF53D63AB55A991D5871D5F504452",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/cli/cli/v2.83.2/gh_2.83.2_linux_amd64.tar.gz",
-      "checksum": "CA6E7641214FBD0E21429CEC4B64A7BA626FD946D8F9D6D191467545B092015E",
+      "id": "github_release/github.com/cli/cli/v2.85.0/gh_2.85.0_linux_amd64.tar.gz",
+      "checksum": "5DCC4E282B9C22C0D31C217805976448C966CFC56C20157C78385A8A62C93CF0",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/cli/cli/v2.83.2/gh_2.83.2_linux_arm64.tar.gz",
-      "checksum": "B1A0C0A0FCF18524E36996CADDC92A062355ED014DEFC836203FE20FBA75A38E",
+      "id": "github_release/github.com/cli/cli/v2.85.0/gh_2.85.0_linux_arm64.tar.gz",
+      "checksum": "C554878F62506C88464EF94474322D899DFB30468BB234F23E2355E8E1613CB2",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/cli/cli/v2.83.2/gh_2.83.2_macOS_amd64.zip",
-      "checksum": "6F1712519CCC768946791DC97DA407BF188582345B73FEF3D604D050EBF6F614",
+      "id": "github_release/github.com/cli/cli/v2.85.0/gh_2.85.0_macOS_amd64.zip",
+      "checksum": "E58BDB7DA9CF4C5254F6B847198D18AF7C07C486C2A3AF94AD957A48C1051C1C",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/cli/cli/v2.83.2/gh_2.83.2_macOS_arm64.zip",
-      "checksum": "BA3E0396EBBC8DA17256144DDDA503E4E79C8B502166335569F8390D6B75FA8D",
+      "id": "github_release/github.com/cli/cli/v2.85.0/gh_2.85.0_macOS_arm64.zip",
+      "checksum": "3D6999B85FA1E63AADEC49B65986280578E8094C394A3776C24C789F0CC73CEF",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/cli/cli/v2.83.2/gh_2.83.2_windows_amd64.zip",
-      "checksum": "B95BF2D953E3BF497BB2C0AED97FFCC5ED8471B80F0920D663A92A6111F05135",
+      "id": "github_release/github.com/cli/cli/v2.85.0/gh_2.85.0_windows_amd64.zip",
+      "checksum": "DEF347C8BBB22C79109DC546D1C083753512E54FD48DECA41AAD73B9BEEF9277",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/cli/cli/v2.83.2/gh_2.83.2_windows_arm64.zip",
-      "checksum": "A341BF9E1074A1586C2CE3E0E46685C1722B4C99A4699B34A906E3A47E3885E5",
+      "id": "github_release/github.com/cli/cli/v2.85.0/gh_2.85.0_windows_arm64.zip",
+      "checksum": "A7B2717867C443870B131AC7240D47AD7A029224071562C644E621D37F20BF73",
       "algorithm": "sha256"
     },
     {
@@ -146,63 +146,63 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.56.1/fastfetch-linux-aarch64.tar.gz",
-      "checksum": "E9961B019D4C5788C70C0396751872F62869549E8173D0EBA249F360870AEF59",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.57.1/fastfetch-linux-aarch64.tar.gz",
+      "checksum": "B50D06915CDEA0E53B6D710C0DF6DD4A023F6805AD6C3F0F2C8EC7000FB4CCDB",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.56.1/fastfetch-linux-amd64.tar.gz",
-      "checksum": "A302617C180C980A63F3E89AA5D82E791C751409A7D552FB57CBD04E3D61D4FA",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.57.1/fastfetch-linux-amd64.tar.gz",
+      "checksum": "67B8EE1BB18BC0703590499AABF894FA389CCC761364856C4F417DC97B90A270",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.56.1/fastfetch-macos-aarch64.tar.gz",
-      "checksum": "4880416674D6CEDBED1656C91AAF105A8E23388F4C9498FDD87CD5D0B2E4E6AE",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.57.1/fastfetch-macos-aarch64.tar.gz",
+      "checksum": "717004957A71E2B681A764F1A3DDCD14D76957519DF6C96A9045106D4AC36E61",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.56.1/fastfetch-macos-amd64.tar.gz",
-      "checksum": "9FE23F69D07651C572F829E6C3B744201A3A6E380086AA7CB3532BD9840E9664",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.57.1/fastfetch-macos-amd64.tar.gz",
+      "checksum": "D66CA2D5B69F616973FB64971912766885B307DA767362865EF4B0E12D13D3DD",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.56.1/fastfetch-windows-aarch64.zip",
-      "checksum": "01DCC9FCE2F1230990B72BC33D7B9A6D6E46E1A9060C42AD8366ED8F828DEBE6",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.57.1/fastfetch-windows-aarch64.zip",
+      "checksum": "39D838A2499715C201FF1E1484248EEBA69D57802711C2194D3A406D09D284D5",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.56.1/fastfetch-windows-amd64.zip",
-      "checksum": "E8BE5DD22F96B4D23AB8FCD64396F40114DBD7AA0A1A0C4DCC7442A63EFAC7E6",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.57.1/fastfetch-windows-amd64.zip",
+      "checksum": "9BB3DB37CEDC3F0B66A030BAAA0C192C2DEDABC8E3E5F6C2C0A9969CFAF68D12",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.58.0/lazygit_0.58.0_darwin_arm64.tar.gz",
-      "checksum": "7E6C4794F18FBAE11CCB75131A71F0216846847A772F702E4F78D26EB2137D35",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.58.1/lazygit_0.58.1_darwin_arm64.tar.gz",
+      "checksum": "D93A8A217A51F26D0A643A97BD31E3FABCB2E3A78CDBF1F1E533B9CD8BC881CE",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.58.0/lazygit_0.58.0_darwin_x86_64.tar.gz",
-      "checksum": "22A16C6A6DB258A448EDE340D81E32B56AB3A6D51FFDFA763F5C9AF27188B4EE",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.58.1/lazygit_0.58.1_darwin_x86_64.tar.gz",
+      "checksum": "9F824298C8DBB3EFAF6BF93A2E3BE8A31FD53213BD3E759B7BD49D7BC7F8E3D0",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.58.0/lazygit_0.58.0_linux_arm64.tar.gz",
-      "checksum": "0E3BF5AE9688763198A63E4BC3D0306FA0199E74A28C7CCB42A8B316CD69529C",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.58.1/lazygit_0.58.1_linux_arm64.tar.gz",
+      "checksum": "C0571542A3DF894748AFC8820FCD2AC16DF0970DF2DDB429280DFEF47B1F2D1E",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.58.0/lazygit_0.58.0_linux_x86_64.tar.gz",
-      "checksum": "6161FA717CD07D133F7F1C53FE6E49DE97D718DBB4B9E1481604DCA6F3B8C647",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.58.1/lazygit_0.58.1_linux_x86_64.tar.gz",
+      "checksum": "61B6B839390C193466FB692F75DF4E75EF5E9CED2BF5E0CA8B3848902F0ADEA9",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.58.0/lazygit_0.58.0_windows_arm64.zip",
-      "checksum": "5A00649CF1627E0795591A37CABFA20BE89E331C590E064A3EE09AA45C4B9778",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.58.1/lazygit_0.58.1_windows_arm64.zip",
+      "checksum": "256BB4840185A2E693CD3058BB79F782144FC227998753F5489D9B99C56DCC3D",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.58.0/lazygit_0.58.0_windows_x86_64.zip",
-      "checksum": "DD7C87030D4E4E7D1D1A5F72B6193BE6BBE5D03D4409EEC32DE85B9F57DEE5BB",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.58.1/lazygit_0.58.1_windows_x86_64.zip",
+      "checksum": "81F6F925E7EB97B32F89DD9C3597FED245F26FE81C7162A2470D501051F996DD",
       "algorithm": "sha256"
     },
     {
@@ -471,8 +471,8 @@
       "algorithm": "sha256"
     },
     {
-      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.451.1/registry.yaml",
-      "checksum": "915D61B78C467C1C2ABBD626BA1F2A63B3AA736580E9D8AACB16D3D1AC046CCEA8B2C0733903FFF79529239E0D2454629669B1121437208A0765B9993A168FB8",
+      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.457.0/registry.yaml",
+      "checksum": "1053AC328B885E2789F3932918643E8FE6972A629D419596A0D8D5A7ADE8ADA9C61BF155EAA41B9469115F6DC8D5E885DFC413B48EC9E2E5ADCC1AEB7A1AC6B4",
       "algorithm": "sha512"
     }
   ]
