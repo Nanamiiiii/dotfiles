@@ -8,5 +8,8 @@
       ];
     };
   };
-  environment.systemPackages = with pkgs; [ libGL ];
+  environment.systemPackages = with pkgs; [
+    libGL
+    intel-gpu-tools
+  ];
 }
