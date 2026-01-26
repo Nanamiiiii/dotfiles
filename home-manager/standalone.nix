@@ -14,6 +14,7 @@ let
     config.allowUnfree = true;
   };
   inherit (inputs.sops-nix.homeManagerModules) sops;
+  inherit (inputs.nix-index-database.homeModules) nix-index;
 in
 {
   pkgs = import inputs.nixpkgs {
@@ -33,7 +34,8 @@ in
       ;
   };
   modules = [
-    sops
     ./profiles/${profile}
+    sops
+    nix-index
   ];
 }

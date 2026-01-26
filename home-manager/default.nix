@@ -8,6 +8,7 @@
 }:
 let
   inherit (inputs.sops-nix.homeManagerModules) sops;
+  inherit (inputs.nix-index-database.homeModules) nix-index;
 in
 { config, ... }:
 {
@@ -20,6 +21,9 @@ in
       wslhost = config.wsl.enable or false;
     };
     backupFileExtension = "hm-bkp";
-    sharedModules = [ sops ];
+    sharedModules = [
+      sops
+      nix-index
+    ];
   };
 }
