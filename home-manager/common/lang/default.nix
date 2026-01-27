@@ -95,7 +95,7 @@ in
     ++ nixTools
     ++ typesetTools
     ++ pythonTools
-    ++ dotnetTools
+    #++ dotnetTools
     ++ shellTools
     ++ dataObjectLs;
 }
