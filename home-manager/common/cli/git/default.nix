@@ -38,6 +38,7 @@ in
         email = "sk@myuu.dev";
       };
       ghq.root = "~/src";
+      credential.helper = "${pkgs.git-credential-1password}/bin/git-credential-1password --vault=Git";
     };
     signing = {
       format = "openpgp";
