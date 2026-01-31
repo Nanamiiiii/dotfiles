@@ -18,7 +18,7 @@ let
     "ssh" = lib.getExe' pkgs.openssh "ssh-keygen";
   };
 
-  winGpgPath = "/mnt/c/Program Files (x86)/gnupg/bin/gpg.exe";
+  winGpgPath = "/mnt/c/Program Files/GnuPG/bin/gpg.exe";
 
   winSshPath = "/mnt/c/Windows/System32/OpenSSH/ssh.exe";
 
@@ -48,7 +48,10 @@ in
     };
   };
 
-  home.packages = with pkgs; [ lazygit ];
+  home.packages = with pkgs; [
+    lazygit
+    _1password-cli
+  ];
 
   programs.zsh.initContent = ''
     if [[ -n "$SSH_CONNECTION" ]] || [[ -n "$SSH_CLIENT" ]]; then
