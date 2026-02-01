@@ -25,6 +25,8 @@ let
   allowedSigners = pkgs.writeText "allowed_signers" ''
     ${config.programs.git.settings.user.email} ${openpgpSshPubkey}
   '';
+
+  baseSystem = builtins.elemAt (builtins.split "-" pkgs.stdenv.hostPlatform.system) 2;
 in
 {
   programs.git = {
@@ -38,7 +40,11 @@ in
         email = "sk@myuu.dev";
       };
       ghq.root = "~/src";
-      credential.helper = "${pkgs.git-credential-1password}/bin/git-credential-1password --vault=Git";
+      credential.helper =
+        if baseSystem == "darwin" then
+          "osxkeychain"
+        else
+          "${pkgs.git-credential-1password}/bin/git-credential-1password --vault=Git";
     };
     signing = {
       format = "openpgp";
