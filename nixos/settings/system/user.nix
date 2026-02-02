@@ -13,6 +13,7 @@
         "uucp"
         "dialout"
         "lp"
+        "video"
       ];
     };
   };
