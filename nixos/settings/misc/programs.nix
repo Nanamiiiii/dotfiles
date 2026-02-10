@@ -6,33 +6,33 @@
       enable = true;
       libraries = with pkgs; [
         desktop-file-utils
-        xorg.libXcomposite
-        xorg.libXtst
-        xorg.libXrandr
-        xorg.libXext
-        xorg.libX11
-        xorg.libXfixes
+        libxcomposite
+        libxtst
+        libxrandr
+        libxext
+        libx11
+        libxfixes
         libGL
         gst_all_1.gstreamer
         gst_all_1.gst-plugins-ugly
         gst_all_1.gst-plugins-base
         libdrm
-        xorg.xkeyboardconfig
-        xorg.libpciaccess
+        xkeyboard-config
+        libpciaccess
         glib
         gtk2
         bzip2
         zlib
         gdk-pixbuf
-        xorg.libXinerama
-        xorg.libXdamage
-        xorg.libXcursor
-        xorg.libXrender
-        xorg.libXScrnSaver
-        xorg.libXxf86vm
-        xorg.libXi
-        xorg.libSM
-        xorg.libICE
+        libxinerama
+        libxdamage
+        libxcursor
+        libxrender
+        libxscrnsaver
+        libxxf86vm
+        libxi
+        libsm
+        libice
         freetype
         curlWithGnuTls
         nspr
@@ -51,21 +51,21 @@
         atk
         at-spi2-atk
         libudev0-shim
-        xorg.libXt
-        xorg.libXmu
-        xorg.libxcb
-        xorg.xcbutil
-        xorg.xcbutilwm
-        xorg.xcbutilimage
-        xorg.xcbutilkeysyms
-        xorg.xcbutilrenderutil
+        libxt
+        libxmu
+        libxcb
+        libxcb-util
+        libxcb-wm
+        libxcb-image
+        libxcb-keysyms
+        libxcb-render-util
         libGLU
         libuuid
         libogg
         libvorbis
         SDL
         SDL2_image
-        glew110
+        glew_1_10
         openssl
         libidn
         tbb
@@ -96,7 +96,7 @@
         libgcrypt
         libvpx
         librsvg
-        xorg.libXft
+        libxft
         libvdpau
         alsa-lib
         harfbuzz
@@ -108,7 +108,7 @@
         p11-kit
         gmp
         libtool.lib
-        xorg.libxshmfence
+        libxshmfence
         at-spi2-core
         pciutils
         pipewire
