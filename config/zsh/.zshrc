@@ -56,6 +56,11 @@ export SAVEHIST=100000
 setopt hist_ignore_dups
 setopt EXTENDED_HISTORY
 
+# spaceship
+for section_file in ${XDG_CONFIG_HOME}/spaceship/sections/*.zsh(N); do
+  source "$section_file"
+done
+
 # Sheldon
 eval "$(sheldon source)"
 
@@ -82,10 +87,10 @@ autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
 
 # Starship
-if ( $(command -v starship > /dev/null) )
-then
-    eval "$(starship init zsh)"
-fi
+#if ( $(command -v starship > /dev/null) )
+#then
+#    eval "$(starship init zsh)"
+#fi
 
 # Keymap & functions
 ## ghq & fzf

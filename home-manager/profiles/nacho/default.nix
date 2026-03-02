@@ -26,7 +26,8 @@ let
     ../../common/lang
     ../../common/shell/zsh
     ../../common/shell/tmux
-    ../../common/shell/starship
+    #../../common/shell/starship
+    ../../common/shell/spaceship
     ../../common/shell/zellij
     ../../common/terminal
   ];

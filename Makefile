@@ -143,7 +143,7 @@ legacy-shell:
 	ln -sf $(CURDIR)/config/zsh/.zshenv $(HOME)/.zsh/.zshenv
 	ln -sf $(CURDIR)/config/zsh/.zprofile $(HOME)/.zsh/.zprofile
 	ln -sf $(CURDIR)/config/zsh/.zshrc $(HOME)/.zsh/.zshrc
-	ln -sf $(CURDIR)/config/starship/starship.toml $(HOME)/.config/starship.toml
+	ln -sf $(CURDIR)/config/spaceship $(HOME)/.config/spaceship
 
 .PHONY: tmux-install
 tmux-install:

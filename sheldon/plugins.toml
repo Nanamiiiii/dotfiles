@@ -28,3 +28,6 @@ apply = ['defer']
 github = "Aloxaf/fzf-tab"
 apply = ['defer']
 
+[plugins.spaceship]
+github = "spaceship-prompt/spaceship-prompt"
+

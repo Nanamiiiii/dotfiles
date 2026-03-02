@@ -8,7 +8,6 @@ registries:
 - type: standard
   ref: v4.451.1 # renovate: depName=aquaproj/aqua-registry
 packages:
-- name: starship/starship@v1.24.2
 - name: eza-community/eza@v0.23.4
 - name: sharkdp/bat@v0.26.1
 - name: junegunn/fzf@v0.67.0
