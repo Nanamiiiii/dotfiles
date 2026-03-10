@@ -17,6 +17,8 @@
       "microsoft-teams"
       "slack"
       "zoom"
+      "logi-options+"
+      "claude"
     ];
   };
 }
