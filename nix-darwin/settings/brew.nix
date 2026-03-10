@@ -25,11 +25,10 @@
       "fuse-t"
       "macos-fuse-t/homebrew-cask/fuse-t-sshfs"
       "cryptomator"
-      "google-drive"
       "steam"
       "badgeify"
       "nextcloud-vfs"
-      "orion"
+      "onedrive"
     ];
 
     taps = [

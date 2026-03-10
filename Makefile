@@ -188,7 +188,7 @@ ci-home-%:
 else ifeq ($(SYSTEM),aarch64-darwin)
 ci-build:
 	@$(NIX_CMD) build --show-trace --no-link --system aarch64-darwin --accept-flake-config \
-		".#darwinConfigurations.asu.system" 
+		".#darwinConfigurations.suisui.system" 
 endif
 endif
 

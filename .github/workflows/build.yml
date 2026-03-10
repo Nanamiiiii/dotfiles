@@ -27,10 +27,10 @@ jobs:
               - flake.nix
               - home-manager/**
               - '!home-manager/darwin/**'
-              - '!home-manager/profiles/asu/**'
+              - '!home-manager/profiles/suisui/**'
               - nixos/**
               - profiles/**
-              - '!profiles/asu/**'
+              - '!profiles/suisui/**'
               - secrets/**
               - '.github/workflows/build.yml'
               - 'Makefile'
@@ -50,7 +50,7 @@ jobs:
               - '!home-manager/profiles/xanadu/**'
               - '!home-manager/profiles/yuki/**'
               - nix-darwin/**
-              - profiles/asu/**
+              - profiles/suisui/**
               - secrets/**
               - '.github/workflows/build.yml'
               - 'Makefile'

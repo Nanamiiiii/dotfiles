@@ -44,7 +44,7 @@ let
   '';
 
   hostZprofileExt = {
-    asu = ''
+    suisui = ''
       eval $(/opt/homebrew/bin/brew shellenv)
       export MANPATH=/opt/local/share/man:$MANPATH
       path=(
@@ -153,7 +153,7 @@ let
   '';
 
   hostZshrcExt = {
-    asu = ''
+    suisui = ''
       export SUDO_PROMPT="[sudo] %p's password: "
     '';
   };

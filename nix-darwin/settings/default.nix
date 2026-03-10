@@ -47,6 +47,7 @@
           "NotoSansSymbols2"
         ];
       })
+      biz-ud-gothic
     ];
   };
 

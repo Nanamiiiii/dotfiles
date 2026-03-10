@@ -12,12 +12,12 @@
   };
 
   networking = {
-    hostName = "asu";
+    hostName = "suisui";
   };
 
   services.cachix-agent = {
     enable = true;
-    name = "asu";
+    name = "suisui";
     credentialsFile = config.sops.secrets.cachix-agent.path;
   };
 

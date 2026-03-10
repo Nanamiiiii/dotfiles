@@ -137,7 +137,7 @@
         {
           cachix-deploy = cachix-deploy-lib.spec {
             agents = {
-              asu = self.darwinConfigurations.asu.config.system.build.toplevel;
+              suisui = self.darwinConfigurations.suisui.config.system.build.toplevel;
             };
           };
         }
@@ -242,8 +242,8 @@
         in
         {
           # MacBook Pro 2021
-          asu = darwinSystem (darwinSystemArgs {
-            profile = "asu";
+          suisui = darwinSystem (darwinSystemArgs {
+            profile = "suisui";
             username = "myuu";
             system = "aarch64-darwin";
           });

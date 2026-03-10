@@ -5,8 +5,6 @@
     brews = [ ];
 
     casks = [
-      "plex"
-      "plexamp"
       "skim"
       "obsidian"
       "discord"
@@ -16,6 +14,9 @@
       "balenaetcher"
       "grammarly-desktop"
       "vlc"
+      "microsoft-teams"
+      "slack"
+      "zoom"
     ];
   };
 }

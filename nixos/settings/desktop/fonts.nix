@@ -19,6 +19,7 @@
       (sddm-astronaut.override {
         theme = "hyprland_kath";
       })
+      biz-ud-gothic
     ];
 
     fontDir.enable = true;
