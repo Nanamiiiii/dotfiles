@@ -164,7 +164,8 @@ binds {
     Mod+Space repeat=false hotkey-overlay-title="App Launcher: wofi" { spawn-sh "wofi --show drun"; }
     Mod+D repeat=false hotkey-overlay-title="Command Runner: wofi" { spawn-sh "wofi --show run"; }
     Mod+G repeat=false hotkey-overlay-title="File Manager: nemo" { spawn "nemo"; }
-    Mod+B repeat=false hotkey-overlay-title="Browser: microsoft-edge" { spawn "microsoft-edge"; }
+    Mod+B repeat=false hotkey-overlay-title="Microsoft Edge" { spawn "microsoft-edge"; }
+    Super+B repeat=false hotkey-overlay-title="Firefox" { spawn "firefox"; }
     Mod+N repeat=false hotkey-overlay-title="Network Selector" { spawn "networkmanager_dmenu"; }
     Mod+V repeat=false hotkey-overlay-title="Show Clipboard" { spawn-sh "cliphist list | wofi -d -p clipboard | cliphist decode | wl-copy"; }
     Mod+Shift+Q repeat=false hotkey-overlay-title="Powermenu" { spawn-sh "bash ~/.config/wofi/wofi_power.sh"; }

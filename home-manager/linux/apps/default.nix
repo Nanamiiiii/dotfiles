@@ -9,7 +9,7 @@
 let
   desktopPkgs = with pkgs; [
     pkgs-stable.microsoft-edge
-    firefox-devedition
+    firefox
     discord
     obsidian
     zotero
