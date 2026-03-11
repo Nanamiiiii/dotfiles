@@ -20,8 +20,8 @@ let
     #termius
     xpipe
     cryptomator
-    insync
-    insync-nautilus
+    #insync
+    #insync-nautilus
   ];
 
   cliPkgs = with pkgs; [

@@ -106,6 +106,39 @@ in
     '';
   };
 
+  programs.onedrive = {
+    enable = true;
+    settings = {
+      sync_dir = "/mnt/miku/cloud/OneDrive/Personal";
+      skip_size = "0";
+      skip_dotfiles = "false";
+      monitor_interval = "300";
+      log_dir = "/tmp/";
+    };
+  };
+
+  xdg.configFile."onedrive/sync_list".text = ''
+    Books
+    Capture
+    Documents
+    Lab
+    Research
+    Univ Student
+  '';
+
+  systemd.user.services.onedrive = {
+    Unit = {
+      Description = "OneDrive sync daemon";
+      After = [ "network-online.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.onedrive}/bin/onedrive --monitor";
+      Restart = "on-failure";
+      RestartSec = "30s";
+    };
+    Install.WantedBy = [ "default.target" ];
+  };
+
   sops.secrets = {
     ssh-hosts-apal = { };
     pam-u2f = {
