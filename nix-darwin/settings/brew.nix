@@ -29,6 +29,7 @@
       "badgeify"
       "nextcloud-vfs"
       "onedrive"
+      "firefox"
     ];
 
     taps = [
