@@ -66,7 +66,7 @@
             alt-8 = "workspace 8";
             alt-9 = "workspace 9";
             alt-0 = "workspace 10";
-            alt-b = "exec-and-forget open -a \"Microsoft Edge\"";
+            alt-b = "exec-and-forget open -a \"Firefox\"";
             alt-e = "layout tiles horizontal vertical";
             alt-enter = "exec-and-forget open -a \"WezTerm\"";
             alt-f = "fullscreen";
