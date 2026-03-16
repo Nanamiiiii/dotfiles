@@ -19,6 +19,7 @@
       "zoom"
       "logi-options+"
       "claude"
+      "adobe-creative-cloud"
     ];
   };
 }
