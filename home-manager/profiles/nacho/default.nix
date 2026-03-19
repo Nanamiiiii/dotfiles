@@ -110,7 +110,6 @@ in
     enable = true;
     settings = {
       sync_dir = "/mnt/miku/cloud/OneDrive/Personal";
-      skip_size = "0";
       skip_dotfiles = "false";
       monitor_interval = "300";
       log_dir = "/tmp/";
