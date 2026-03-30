@@ -26,7 +26,6 @@ local options = {
     conceallevel = 0,
     mouse = "nv",
     clipboard = "unnamedplus",
-    winborder = "rounded",
 }
 
 for k, v in pairs(options) do
