@@ -28,27 +28,54 @@ return {
                 local opts = { noremap = true, silent = true, buffer = true }
                 local set_keymap = vim.keymap.set
 
-                set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-                set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-                set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-                set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-                set_keymap("n", "<C-y>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-                set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-                set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-                set_keymap(
-                    "n",
-                    "<space>wl",
-                    "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
-                    opts
-                )
-                set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-                set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-                set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-                set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-                set_keymap("n", "[d", "<cmd>lua vim.diagnostic.jump({count = -1, float=true})<CR>", opts)
-                set_keymap("n", "]d", "<cmd>lua vim.diagnostic.jump({count = 1, float=true})<CR>", opts)
-                set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-                set_keymap("n", "gf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+                set_keymap("n", "gD", function()
+                    vim.lsp.buf.declaration()
+                end, opts)
+                set_keymap("n", "gd", function()
+                    vim.lsp.buf.definition()
+                end, opts)
+                set_keymap("n", "K", function()
+                    vim.lsp.buf.hover()
+                end, opts)
+                set_keymap("n", "gi", function()
+                    vim.lsp.buf.implementation()
+                end, opts)
+                set_keymap("n", "<C-y>", function()
+                    vim.lsp.buf.signature_help()
+                end, opts)
+                set_keymap("n", "<space>wa", function()
+                    vim.lsp.buf.add_workspace_folder()
+                end, opts)
+                set_keymap("n", "<space>wr", function()
+                    vim.lsp.buf.remove_workspace_folder()
+                end, opts)
+                set_keymap("n", "<space>wl", function()
+                    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                end, opts)
+                set_keymap("n", "<space>D", function()
+                    vim.lsp.buf.type_definition()
+                end, opts)
+                set_keymap("n", "<space>rn", function()
+                    vim.lsp.buf.rename()
+                end, opts)
+                set_keymap("n", "gr", function()
+                    vim.lsp.buf.references()
+                end, opts)
+                set_keymap("n", "<space>e", function()
+                    vim.diagnostic.open_float()
+                end, opts)
+                set_keymap("n", "[d", function()
+                    vim.diagnostic.jump({ count = -1, float = true })
+                end, opts)
+                set_keymap("n", "]d", function()
+                    vim.diagnostic.jump({ count = 1, float = true })
+                end, opts)
+                set_keymap("n", "<space>q", function()
+                    vim.lsp.diagnostic.set_loclist()
+                end, opts)
+                set_keymap("n", "gf", function()
+                    vim.lsp.buf.format()
+                end, opts)
             end
 
             local on_attach_func = function(client, bufnr)
@@ -72,18 +99,6 @@ return {
 
             local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-            local lsp_handlers = {
-                ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-                    virtual_text = false,
-                }),
-                ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-                    border = "rounded",
-                }),
-                ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-                    border = "rounded",
-                }),
-            }
-
             vim.api.nvim_create_autocmd("LspAttach", {
                 callback = attach_callback,
             })
@@ -91,7 +106,6 @@ return {
             vim.lsp.config("*", {
                 on_attach = on_attach_func,
                 capabilities = cmp_capabilities,
-                handlers = lsp_handlers,
             })
 
             vim.diagnostic.config({
