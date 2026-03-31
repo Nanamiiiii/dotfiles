@@ -72,6 +72,7 @@ let
     (import ../../nixos/settings/misc/1password.nix { inherit username; })
     ../../nixos/settings/misc/1password-ext.nix
     ../../nixos/settings/misc/steam.nix
+    #../../nixos/settings/misc/virtualbox.nix
   ];
 in
 {
