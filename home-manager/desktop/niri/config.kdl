@@ -53,7 +53,6 @@ spawn-sh-at-startup "wl-paste --watch cliphist store"
 spawn-sh-at-startup "playerctld daemon"
 spawn-sh-at-startup "slack -u -s"
 spawn-at-startup "emote"
-spawn-sh-at-startup "1password --silent"
 spawn-at-startup "clipsync"
 
 hotkey-overlay {
@@ -160,16 +159,16 @@ layer-rule {
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Return repeat=false hotkey-overlay-title="Terminal: wezterm" { spawn "wezterm"; }
-    Mod+Space repeat=false hotkey-overlay-title="App Launcher: wofi" { spawn-sh "wofi --show drun"; }
-    Mod+D repeat=false hotkey-overlay-title="Command Runner: wofi" { spawn-sh "wofi --show run"; }
-    Mod+G repeat=false hotkey-overlay-title="File Manager: nemo" { spawn "nemo"; }
-    Mod+B repeat=false hotkey-overlay-title="Microsoft Edge" { spawn "microsoft-edge"; }
-    Super+B repeat=false hotkey-overlay-title="Firefox" { spawn "firefox"; }
+    Mod+Return repeat=false hotkey-overlay-title="Terminal" { spawn "wezterm"; }
+    Mod+Space repeat=false hotkey-overlay-title="App Launcher" { spawn-sh "wofi --show drun"; }
+    Mod+D repeat=false hotkey-overlay-title="Command Runner" { spawn-sh "wofi --show run"; }
+    Mod+G repeat=false hotkey-overlay-title="File Manager" { spawn "nemo"; }
+    Mod+B repeat=false hotkey-overlay-title="Firefox" { spawn "firefox"; }
+    Super+B repeat=false hotkey-overlay-title="Microsoft Edge" { spawn "microsoft-edge"; }
     Mod+N repeat=false hotkey-overlay-title="Network Selector" { spawn "networkmanager_dmenu"; }
     Mod+V repeat=false hotkey-overlay-title="Show Clipboard" { spawn-sh "cliphist list | wofi -d -p clipboard | cliphist decode | wl-copy"; }
-    Mod+Shift+Q repeat=false hotkey-overlay-title="Powermenu" { spawn-sh "bash ~/.config/wofi/wofi_power.sh"; }
-    Super+Alt+L repeat=false hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
+    Mod+Shift+Q repeat=false hotkey-overlay-title="Power Menu" { spawn-sh "bash ~/.config/wofi/wofi_power.sh"; }
+    Super+Alt+L repeat=false hotkey-overlay-title="Lock the Screen" { spawn "hyprlock"; }
 
     Mod+Shift+B repeat=false { spawn-sh "pkill waybar && exec waybar"; }
 
