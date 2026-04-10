@@ -145,7 +145,6 @@ in
     wget
     sl
     openssl
-    #kdash
     kubernetes-helm
     kubectl
     w3m
@@ -158,6 +157,7 @@ in
     clock-tui
     gemini-cli
     devenv
+    obsidian-headless
   ];
 
   home.file = configFiles.homeScripts;
