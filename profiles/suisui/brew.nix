@@ -20,6 +20,8 @@
       "logi-options+"
       "claude"
       "adobe-creative-cloud"
+      "box-drive"
+      "box-tools"
     ];
   };
 }
