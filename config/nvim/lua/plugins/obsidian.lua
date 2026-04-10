@@ -23,7 +23,9 @@ return {
                 path = "~/Documents/Nanami Lab",
             },
         },
-        preferred_link_style = "wiki",
+        link = {
+            style = "wiki",
+        },
         daily_notes = {
             folder = "Daily Notes",
             date_format = "%Y-%m-%d",
