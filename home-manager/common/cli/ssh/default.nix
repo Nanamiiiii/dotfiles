@@ -70,11 +70,4 @@ in
         };
       };
   };
-
-  programs.zsh = lib.mkIf wslhost {
-    # On WSL, use Windows-side SSH agent
-    envExtra = ''
-      export SSH_AUTH_SOCK='\\.\pipe\openssh-ssh-agent'
-    '';
-  };
 }

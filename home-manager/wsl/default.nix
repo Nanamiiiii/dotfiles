@@ -2,5 +2,6 @@
 {
   imports = [
     ./themes.nix
+    ./winssh.nix
   ];
 }

@@ -892,11 +892,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1775827304,
-        "narHash": "sha256-2Qf2dwC4P/oJZfnYqde30YtI09RkrDQ5KNt2UEqbDGA=",
+        "lastModified": 1775970778,
+        "narHash": "sha256-hNAGam2M4fFg0Sox1byTE2L1RtRwcn13t4fTuYaF4ec=",
         "owner": "Nanamiiiii",
         "repo": "nur",
-        "rev": "e371a04416dd73c5e293febdffa826df9a7c32dd",
+        "rev": "07edb177f244de63009030718a2d08978ea5bd36",
         "type": "github"
       },
       "original": {
