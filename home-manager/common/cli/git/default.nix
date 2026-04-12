@@ -20,8 +20,6 @@ let
 
   winGpgPath = "/mnt/c/Program Files/GnuPG/bin/gpg.exe";
 
-  winSshPath = "/mnt/c/Windows/System32/OpenSSH/ssh.exe";
-
   allowedSigners = pkgs.writeText "allowed_signers" ''
     ${config.programs.git.settings.user.email} ${openpgpSshPubkey}
   '';
@@ -32,9 +30,6 @@ in
   programs.git = {
     enable = true;
     settings = {
-      core = {
-        sshCommand = lib.mkIf (wslhost) winSshPath;
-      };
       user = {
         name = "Akihiro Saiki";
         email = "sk@myuu.dev";
