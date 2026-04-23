@@ -22,6 +22,8 @@
       "adobe-creative-cloud"
       "box-drive"
       "box-tools"
+      "steam"
+      "fastmail"
     ];
   };
 }

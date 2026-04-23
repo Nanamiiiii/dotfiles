@@ -25,8 +25,6 @@
       "fuse-t"
       "macos-fuse-t/homebrew-cask/fuse-t-sshfs"
       "cryptomator"
-      "steam"
-      "badgeify"
       "nextcloud-vfs"
       "onedrive"
       "firefox"
