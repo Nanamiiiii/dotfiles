@@ -22,6 +22,7 @@ let
     cryptomator
     #insync
     #insync-nautilus
+    fastmail-desktop
   ];
 
   cliPkgs = with pkgs; [
