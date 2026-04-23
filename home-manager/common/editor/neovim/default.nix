@@ -7,6 +7,8 @@
   ...
 }:
 let
+  neovim-nightly = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
   configFiles = import ../../../../config {
     inherit
       pkgs
@@ -18,11 +20,6 @@ let
 in
 {
   programs = {
-    neovim = {
-      enable = true;
-      package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    };
-
     neovide = {
       enable = desktop;
       settings = {
@@ -30,9 +27,7 @@ in
         frame = "full";
         idle = true;
         maximized = false;
-        neovim-bin = "${
-          inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default
-        }/bin/nvim";
+        neovim-bin = "${neovim-nightly}/bin/nvim";
         no-multigrid = false;
         srgb = false;
         tabs = true;
@@ -54,10 +49,15 @@ in
 
   xdg.configFile = configFiles.dotConfigs.neovim;
 
-  home.packages = with pkgs; [
-    wget
-    unzip
-  ];
+  home.packages =
+    with pkgs;
+    [
+      wget
+      unzip
+    ]
+    ++ [
+      neovim-nightly
+    ];
 
   home.file.".skkeleton/dict/SKK-JISYO.L" = {
     source = "${pkgs.skkDictionaries.l}/share/skk/SKK-JISYO.L";
