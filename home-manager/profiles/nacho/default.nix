@@ -122,7 +122,7 @@ in
     Documents
     Lab
     Research
-    Univ Student
+    Univ
   '';
 
   systemd.user.services.onedrive = {
