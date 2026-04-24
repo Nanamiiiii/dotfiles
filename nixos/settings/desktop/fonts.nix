@@ -20,6 +20,15 @@
     fontDir.enable = true;
 
     fontconfig = {
+      hinting = {
+        enable = true;
+        style = "slight";
+        autohint = false;
+      };
+      subpixel = {
+        rgba = "rgb";
+        lcdfilter = "default";
+      };
       defaultFonts = {
         serif = [
           "Noto Serif"

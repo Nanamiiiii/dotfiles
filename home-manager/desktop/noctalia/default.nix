@@ -3,6 +3,7 @@
   inputs,
   lib,
   username,
+  config,
   ...
 }:
 {
@@ -18,7 +19,7 @@
         barType = "simple";
         position = "top";
         monitors = [ ];
-        density = "comfortable";
+        density = "default";
         showOutline = false;
         showCapsule = true;
         capsuleOpacity = 1;
@@ -64,7 +65,7 @@
             {
               id = "Workspace";
               labelMode = "none";
-              pillSize = 0.5;
+              pillSize = 0.4;
             }
           ];
           right = [
@@ -143,7 +144,7 @@
         screenOverrides = [ ];
       };
       general = {
-        avatarImage = "";
+        avatarImage = "${config.home.homeDirectory}/.face.icon";
         dimmerOpacity = 0.2;
         showScreenCorners = false;
         forceBlackScreenCorners = false;
