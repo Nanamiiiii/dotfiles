@@ -17,7 +17,7 @@ input {
     mod-key-nested "Super"
 }
 
-output "DP-2" {
+output "LG Electronics LG ULTRAFINE 502NTFA3N395" {
     mode "3840x2160@60.000"
     scale 1.25
     transform "normal"

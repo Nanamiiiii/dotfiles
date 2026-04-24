@@ -56,7 +56,6 @@ let
       hostname
       config
       ;
-    thermalZone = 6;
     laptop = true;
     configByHost = niriConfigHost;
   };
@@ -66,6 +65,7 @@ in
 {
   imports = [
     niriConfig
+    ../../desktop/noctalia
   ]
   ++ commonConfigs
   ++ linuxConfigs
@@ -83,9 +83,6 @@ in
       vlc
       pkgs-stable.zoom-us
       spotify
-      python3Packages.i3ipc
-      pkgs-stable.plexamp
-      pkgs-stable.plex-desktop
     ]
     ++ (with kdePackages; [
       ark

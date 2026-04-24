@@ -1,5 +1,8 @@
 {
   pkgs,
+  hostname,
+  thermalZone,
+  laptop,
   configByHost,
   ...
 }:
@@ -7,12 +10,18 @@ let
   niriCommonConf = builtins.readFile ./config.kdl;
 
   desktopTools = with pkgs; [
+    waybar
+    swaynotificationcenter
+    swaybg
+    wofi
     gpu-screen-recorder
     swappy
     zenity
     pamixer
     polkit_gnome
     libsecret
+    networkmanagerapplet
+    networkmanager_dmenu
     libnotify
     wl-x11-clipsync
     xwayland-satellite
@@ -22,9 +31,10 @@ let
 
   configTools = with pkgs; [
     brightnessctl
-    pwvucontrol
+    lxqt.pavucontrol-qt
     nwg-look
     nwg-displays
+    xsettingsd
   ];
 
   miscTools = with pkgs; [
@@ -36,6 +46,7 @@ let
     imagemagick
     bluez
     bluez-tools
+    blueman
     wireplumber
     wf-recorder
     wayvnc
@@ -43,11 +54,21 @@ let
     gnome-keyring
     seahorse
     nemo-with-extensions
-    mission-center
+    nautilus
   ];
+
+  waybarConfig = import ./waybar {
+    inherit
+      hostname
+      thermalZone
+      laptop
+      ;
+  };
 in
 {
   imports = [
+    ./hyprlock.nix
+    ./hypridle.nix
     ./themes.nix
   ];
 
@@ -56,6 +77,28 @@ in
   home.packages = desktopTools ++ configTools ++ miscTools;
 
   xdg.configFile."niri/config.kdl".text = niriCommonConf + configByHost;
+
+  xdg.configFile."wofi" = {
+    source = ./wofi;
+    recursive = true;
+  };
+
+  xdg.configFile."networkmanager-dmenu" = {
+    source = ../networkmanager-dmenu;
+    recursive = true;
+  };
+
+  xdg.configFile."waybar/style.css" = {
+    text = waybarConfig.waybarStyle;
+  };
+
+  xdg.configFile."waybar/config" = {
+    text = waybarConfig.waybarConfig;
+  };
+
+  xdg.configFile."swaync/style.css" = {
+    source = ../swaync/style.css;
+  };
 
   xdg.desktopEntries.nemo = {
     name = "Nemo";

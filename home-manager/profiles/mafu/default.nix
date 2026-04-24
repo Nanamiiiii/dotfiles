@@ -56,7 +56,6 @@ let
       hostname
       config
       ;
-    thermalZone = 4;
     laptop = false;
     configByHost = niriConfigHost;
   };
@@ -66,6 +65,7 @@ in
 {
   imports = [
     niriConfig
+    ../../desktop/noctalia
   ]
   ++ commonConfigs
   ++ linuxConfigs

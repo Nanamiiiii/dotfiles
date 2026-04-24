@@ -2,16 +2,13 @@ environment {
     X_CURSOR_SIZE "24"
     QT_QPA_PLATFORM "wayland"
     QT_QPA_PLATFORMTHEME "qt6ct"
+    GTK_THEME "catppuccin-mocha-blue-standard+normal,rimless"
     GDK_SCALE "1"
     NIXOS_OZONE_WL "1"
 }
 
-debug {
-    honor-xdg-activation-with-invalid-serial
-}
-
 layout {
-    gaps 7
+    gaps 5
     center-focused-column "on-overflow"
     preset-column-widths {
         proportion 0.33333
@@ -49,13 +46,14 @@ layout {
     }
 }
 
-spawn-at-startup "noctalia-shell"
+spawn-at-startup "waybar"
+spawn-sh-at-startup "swaybg -m fill -i ~/.wallpaper.png"
+spawn-at-startup "swaync"
+spawn-sh-at-startup "wl-paste --watch cliphist store"
 spawn-sh-at-startup "playerctld daemon"
 spawn-sh-at-startup "slack -u -s"
-spawn-sh-at-startup "1password --silent"
 spawn-at-startup "emote"
 spawn-at-startup "clipsync"
-spawn-at-startup "discord"
 
 hotkey-overlay {
     skip-at-startup
@@ -64,6 +62,8 @@ hotkey-overlay {
 screenshot-path "~/Pictures/Screenshots/Screenshot_%Y-%m-%d_%H-%M-%S.png"
 
 animations {
+    // Slow down all animations by this factor. Values below 1 speed them up instead.
+    // slowdown 3.0
     workspace-switch {
         spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
     }
@@ -152,57 +152,33 @@ window-rule {
 }
 
 layer-rule {
-    match namespace="^noctalia-overview*"
-    place-within-backdrop true
+    match namespace="wofi"
+    opacity 0.95
 }
 
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Return repeat=false hotkey-overlay-title="Wezterm" { spawn "wezterm"; }
-    Mod+G repeat=false hotkey-overlay-title="Nemo" { spawn "nemo"; }
+    Mod+Return repeat=false hotkey-overlay-title="Terminal" { spawn "wezterm"; }
+    Mod+Space repeat=false hotkey-overlay-title="App Launcher" { spawn-sh "wofi --show drun"; }
+    Mod+D repeat=false hotkey-overlay-title="Command Runner" { spawn-sh "wofi --show run"; }
+    Mod+G repeat=false hotkey-overlay-title="File Manager" { spawn "nemo"; }
     Mod+B repeat=false hotkey-overlay-title="Firefox" { spawn "firefox"; }
     Super+B repeat=false hotkey-overlay-title="Microsoft Edge" { spawn "microsoft-edge"; }
+    Mod+N repeat=false hotkey-overlay-title="Network Selector" { spawn "networkmanager_dmenu"; }
+    Mod+V repeat=false hotkey-overlay-title="Show Clipboard" { spawn-sh "cliphist list | wofi -d -p clipboard | cliphist decode | wl-copy"; }
+    Mod+Shift+Q repeat=false hotkey-overlay-title="Power Menu" { spawn-sh "bash ~/.config/wofi/wofi_power.sh"; }
+    Super+Alt+L repeat=false hotkey-overlay-title="Lock the Screen" { spawn "hyprlock"; }
 
-    // ---- Noctalia IPC ----
-    Mod+Space repeat=false hotkey-overlay-title="App Launcher" {
-        spawn "noctalia-shell" "ipc" "call" "launcher" "toggle";
-    }
-    Mod+D repeat=false hotkey-overlay-title="Command Runner" {
-        spawn "noctalia-shell" "ipc" "call" "launcher" "command";
-    }
-    Mod+V repeat=false hotkey-overlay-title="Clipboard History" {
-        spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard";
-    }
-    Mod+N repeat=false hotkey-overlay-title="Network Panel" {
-        spawn "noctalia-shell" "ipc" "call" "network" "togglePanel";
-    }
-    Mod+Shift+Q repeat=false hotkey-overlay-title="Session Menu" {
-        spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle";
-    }
-    Super+Alt+L repeat=false hotkey-overlay-title="Lock the Screen" {
-        spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock";
-    }
+    Mod+Shift+B repeat=false { spawn-sh "pkill waybar && exec waybar"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true {
-        spawn "noctalia-shell" "ipc" "call" "volume" "increase";
-    }
-    XF86AudioLowerVolume allow-when-locked=true {
-        spawn "noctalia-shell" "ipc" "call" "volume" "decrease";
-    }
-    XF86AudioMute allow-when-locked=true {
-        spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput";
-    }
-    XF86AudioMicMute allow-when-locked=true {
-        spawn "noctalia-shell" "ipc" "call" "volume" "muteInput";
-    }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
-    XF86MonBrightnessUp allow-when-locked=true {
-        spawn "noctalia-shell" "ipc" "call" "brightness" "increase";
-    }
-    XF86MonBrightnessDown allow-when-locked=true {
-        spawn "noctalia-shell" "ipc" "call" "brightness" "decrease";
-    }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
     Mod+O repeat=false { toggle-overview; }
 
@@ -321,3 +297,4 @@ binds {
 }
 
 prefer-no-csd
+

@@ -2,6 +2,7 @@
 {
   programs.niri = {
     enable = true;
+    useNautilus = false;
   };
 
   xdg.portal = {

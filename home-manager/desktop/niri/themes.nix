@@ -5,50 +5,26 @@
   ...
 }:
 let
-  gtkThemeName = "catppuccin-mocha-blue-standard+normal,rimless";
+  gtkTheme = "adw-gtk3";
   gtkIconTheme = "Papirus-Dark";
   gtkCursorTheme = "volantes_cursors";
-  gtkCatppuccin = pkgs.catppuccin-gtk.override {
-    accents = [ "blue" ];
-    variant = "mocha";
-    size = "standard";
-    tweaks = [
-      "normal"
-      "rimless"
-    ];
-  };
-
-  kv = import ../Kvantum {
-    inherit lib;
-  };
 in
 {
   home.packages =
     with pkgs;
     [
-      catppuccin-papirus-folders
+      adw-gtk3
+      papirus-icon-theme
       volantes-cursors
-      (catppuccin-kvantum.override {
-        accent = "blue";
-        variant = "mocha";
-      })
-      gtkCatppuccin
-      gtk4
-      gtk3
-      themechanger
       glib
+      gtk3
+      gtk4
     ]
     ++ (with pkgs.kdePackages; [
       qt6ct
       qtbase
-      qtstyleplugin-kvantum
       qtwayland
-    ])
-    ++ (with pkgs.libsForQt5; [
-      qt5ct
-      qt5.qtbase
-      qt5.qtwayland
-      qtstyleplugin-kvantum
+      # qt6ct-kde
     ]);
 
   gtk = {
@@ -58,51 +34,56 @@ in
       size = 24;
     };
     font = {
-      name = "Noto Sans CJK JP";
+      name = "Noto Sans";
       size = 10;
     };
     iconTheme = {
       name = gtkIconTheme;
     };
     theme = {
-      name = gtkThemeName;
+      name = gtkTheme;
     };
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;
     };
-    gtk4 = {
-      theme = config.gtk.theme;
-      extraConfig = config.gtk.gtk3.extraConfig;
-    };
+    gtk4.theme = null;
   };
 
   xdg.configFile = {
-    "qt6ct/qt6ct.conf" = {
-      text = builtins.readFile (
-        pkgs.replaceVars ../qt6ct/qt6ct.conf {
-          qt6ct_pkg = pkgs.kdePackages.qt6ct;
-        }
-      );
-    };
-    "qt5ct/qt5ct.conf" = {
-      text = builtins.readFile (
-        pkgs.replaceVars ../qt5ct/qt5ct.conf {
-          qt5ct_pkg = pkgs.libsForQt5.qt5ct;
-        }
-      );
-    };
-    "gtk-4.0/gtk.css" = {
-      source = "${gtkCatppuccin}/share/themes/${gtkThemeName}/gtk-4.0/gtk.css";
-    };
-    "gtk-4.0/gtk-dark.css" = {
-      source = "${gtkCatppuccin}/share/themes/${gtkThemeName}/gtk-4.0/gtk-dark.css";
-    };
-    "gtk-4.0/assets" = {
-      source = "${gtkCatppuccin}/share/themes/${gtkThemeName}/gtk-4.0/assets";
-    };
-    "Kvantum/kvantum.kvconfig" = {
-      text = kv.kvantumConf;
-    };
+    "qt6ct/qt6ct.conf".text = ''
+      [Appearance]
+      style=Fusion
+      color_scheme_path=${config.home.homeDirectory}/.config/qt6ct/colors/noctalia.conf
+      custom_palette=true
+      icon_theme=${gtkIconTheme}
+      standard_dialogs=default
+
+      [Fonts]
+      fixed="PlemolJP HS,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular"
+      general="Noto Sans,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular"
+
+      [Interface]
+      activate_item_on_single_click=1
+      buttonbox_layout=0
+      cursor_flash_time=1000
+      dialog_buttons_have_icons=1
+      double_click_interval=400
+      gui_effects=@Invalid()
+      keyboard_scheme=2
+      menus_have_icons=true
+      show_shortcuts_in_context_menus=true
+      stylesheets=@Invalid()
+      toolbutton_style=4
+      underline_shortcut=1
+      wheel_scroll_lines=3
+
+      [SettingsWindow]
+      geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x3\0\0\0\0\0\0\0\0\0\0\0\0\x3\xae\0\0\x4s\0\0\0\0\0\0\0\0\0\0\x3\xae\0\0\x4s\0\0\0\0\0\0\0\0\a\x80\0\0\0\0\0\0\0\0\0\0\x3\xae\0\0\x4s)
+
+      [Troubleshooting]
+      force_raster_widgets=1
+      ignored_applications=@Invalid()
+    '';
   };
 
   home.file.".icons/default/index.theme" = {
@@ -117,7 +98,7 @@ in
   services.xsettingsd = {
     enable = true;
     settings = {
-      "Net/ThemeName" = gtkThemeName;
+      "Net/ThemeName" = gtkTheme;
       "Net/IconThemeName" = gtkIconTheme;
       "Gtk/CursorThemeName" = gtkCursorTheme;
       "Net/EnableEventSounds" = 1;
