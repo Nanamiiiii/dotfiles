@@ -214,24 +214,33 @@ local function tab_title(tab_info)
     return tab_info.active_pane.title
 end
 
-local function title_mapper(title)
+local function title_mapper(title, icon)
     local binName = string.match(title, "([^/\\]+)%.[^.]*$")
     if binName ~= nil then
         title = binName
     end
     local items = title_map[title]
     if items ~= nil and items.symbol ~= nil then
-        return items.symbol .. title
+        if icon then
+            return items.symbol .. title
+        end
     end
     local match_user_host = string.match(title, "^.*@.*:.*$")
     if match_user_host ~= nil then
-        return "󰞷 " .. match_user_host
+        if icon then
+            return "󰞷 " .. match_user_host
+        else
+            return match_user_host
+        end
     end
-    return " " .. title
+    if icon then
+        return " " .. title
+    end
+    return title
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-    local title = title_mapper(tab_title(tab))
+    local title = title_mapper(tab_title(tab), true)
     return {
         { Text = " " .. title .. " " },
     }
