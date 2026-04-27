@@ -41,6 +41,11 @@ let
     )
 
     export EDITOR="nvim"
+
+    function zvm_config() {
+      ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
+      ZVM_ESCAPE_KEYTIMEOUT=0.4
+    }
   '';
 
   hostZprofileExt = {
