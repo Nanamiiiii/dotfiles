@@ -25,10 +25,15 @@ in
   # CLI Tools
   programs = {
     direnv = {
+      package = pkgs.direnv.overrideAttrs (_: {
+        doCheck = !pkgs.stdenv.hostPlatform.isDarwin;
+      });
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
-      nix-direnv.enable = true;
+      nix-direnv = {
+        enable = true;
+      };
     };
     bat = {
       enable = true;
