@@ -90,10 +90,6 @@
               displayMode = "onhover";
             }
             {
-              id = "VPN";
-              displayMode = "onhover";
-            }
-            {
               id = "Network";
               displayMode = "onhover";
             }

@@ -42,6 +42,8 @@ let
       inherit username;
       avatar = ../../assets/avatar.png;
     })
+    ../../nixos/settings/system/tailscale.nix
+    ../../nixos/settings/system/upower.nix
   ];
 
   # Graphics
