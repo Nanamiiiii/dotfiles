@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   config,
   hostname,
@@ -7,6 +8,13 @@
   ...
 }:
 let
+  baseSystem = builtins.elemAt (builtins.split "-" pkgs.stdenv.hostPlatform.system) 2;
+
+  opSshSock = {
+    darwin = "$HOME/Library/Group\\ Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+    linux = "$HOME/.1password/agent.sock";
+  };
+
   zshenvExt = ''
     # xdg
     export XDG_CONFIG_HOME="$HOME/.config"
@@ -19,6 +27,9 @@ let
     export RUSTUP_HOME="$HOME/.rustup"
     export DENO_INSTALL="$HOME/.deno"
     export GOPATH="$HOME/.go"
+
+    # for ssh agent
+    export OP_SSH_AUTH_SOCK=${opSshSock.${baseSystem}}
   '';
 
   zprofileExt = ''
@@ -41,11 +52,6 @@ let
     )
 
     export EDITOR="nvim"
-
-    function zvm_config() {
-      ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
-      ZVM_ESCAPE_KEYTIMEOUT=0.4
-    }
   '';
 
   hostZprofileExt = {
@@ -81,78 +87,86 @@ let
     )
   '';
 
-  zshrcExt = ''
-    bindkey "\e[3~" delete-char
+  zshrcExt = lib.mkMerge [
+    (lib.mkBefore ''
+      function zvm_config() {
+        ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
+        ZVM_ESCAPE_KEYTIMEOUT=0.4
+      }
+    '')
+    (lib.mkAfter ''
+      bindkey "\e[3~" delete-char
 
-    # Title
-    autoload -Uz add-zsh-hook
-    function _set_title() {
-        print -Pn "\033]0;%n@%m:%1~\007"
-    }
-    function _set_cmd_title() {
-        cmd=$(echo ''${2} | awk '{print $1}')
-        echo -ne "\033]0;''${cmd}\007"
-    }
-    add-zsh-hook precmd _set_title
-    add-zsh-hook preexec _set_cmd_title
+      # Title
+      autoload -Uz add-zsh-hook
+      function _set_title() {
+          print -Pn "\033]0;%n@%m:%1~\007"
+      }
+      function _set_cmd_title() {
+          cmd=$(echo ''${2} | awk '{print $1}')
+          echo -ne "\033]0;''${cmd}\007"
+      }
+      add-zsh-hook precmd _set_title
+      add-zsh-hook preexec _set_cmd_title
 
-    # Keymap & functions
-    ## ghq & fzf
-    ## refs: https://gist.github.com/sheepla/d680f1480d8c36c4290d6aabebf1abc6
-    function _fzf_cd_ghq() {
-        FZF_DEFAULT_OPTS="''${FZF_DEFAULT_OPTS} --reverse --height=50%"
-        local root="$(ghq root)"
-        local repo="$(ghq list | fzf --preview="ls -AF --color=always ''${root}/{1}")"
-        local dir="''${root}/''${repo}"
-        [ -n "''${dir}" ] && __zoxide_z "''${dir}" # Use zoxide instead of cd
-        zle accept-line
-        zle reset-prompt
-    }
+      # Keymap & functions
+      ## ghq & fzf
+      ## refs: https://gist.github.com/sheepla/d680f1480d8c36c4290d6aabebf1abc6
+      function _fzf_cd_ghq() {
+          FZF_DEFAULT_OPTS="''${FZF_DEFAULT_OPTS} --reverse --height=50%"
+          local root="$(ghq root)"
+          local repo="$(ghq list | fzf --preview="ls -AF --color=always ''${root}/{1}")"
+          local dir="''${root}/''${repo}"
+          [ -n "''${dir}" ] && __zoxide_z "''${dir}" # Use zoxide instead of cd
+          zle accept-line
+          zle reset-prompt
+      }
 
-    zle -N _fzf_cd_ghq
-    bindkey -M viins "^g" _fzf_cd_ghq
+      zle -N _fzf_cd_ghq
+      bindkey -M viins "^g" _fzf_cd_ghq
 
-    ## Fuzzy find history
-    function _fzf_select_history(){
-        BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER")
-        CURSOR=$#BUFFER
-        zle reset-prompt
-    }
+      ## Fuzzy find history
+      function _fzf_select_history(){
+          BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER")
+          CURSOR=$#BUFFER
+          zle reset-prompt
+      }
 
-    zle -N _fzf_select_history
+      zle -N _fzf_select_history
 
-    function zvm_after_init() {
-        bindkey -M viins "^R" _fzf_select_history
-    }
+      function zvm_after_init() {
+          bindkey -M viins "^R" _fzf_select_history
+      }
 
-    ## Random Generator
-    function rand_str() {
-        if [ $# -eq 0 ]; then
-            RAND_LEN=16
-        else
-            RAND_LEN=$1
-        fi
-        LC_ALL=C tr -dc 'A-Za-z0-9' < /dev/urandom | head -c "$RAND_LEN"; echo
-    }
+      ## Random Generator
+      function rand_str() {
+          if [ $# -eq 0 ]; then
+              RAND_LEN=16
+          else
+              RAND_LEN=$1
+          fi
+          LC_ALL=C tr -dc 'A-Za-z0-9' < /dev/urandom | head -c "$RAND_LEN"; echo
+      }
 
-    function rand_sym() {
-        if [ $# -eq 0 ]; then
-            RAND_LEN=16
-        else
-            RAND_LEN=$1
-        fi
-        LC_ALL=C tr -dc 'A-Za-z0-9!"#$%&'\'''()*+,-./:;<=>?@[\]^_`{|}~' < /dev/urandom | head -c "$RAND_LEN"; echo
-    }
+      function rand_sym() {
+          if [ $# -eq 0 ]; then
+              RAND_LEN=16
+          else
+              RAND_LEN=$1
+          fi
+          LC_ALL=C tr -dc 'A-Za-z0-9!"#$%&'\'''()*+,-./:;<=>?@[\]^_`{|}~' < /dev/urandom | head -c "$RAND_LEN"; echo
+      }
 
-    function rand_hex() {
-        if [ $# -eq 0 ]; then
-            RAND_LEN=16
-        else
-            RAND_LEN=$1
-        fi
-        LC_ALL=C tr -dc 'a-f0-9' < /dev/urandom | head -c "$RAND_LEN"; echo
-    }
-  '';
+      function rand_hex() {
+          if [ $# -eq 0 ]; then
+              RAND_LEN=16
+          else
+              RAND_LEN=$1
+          fi
+          LC_ALL=C tr -dc 'a-f0-9' < /dev/urandom | head -c "$RAND_LEN"; echo
+      }
+    '')
+  ];
 
   hostZshrcExt = {
     suisui = ''
@@ -188,7 +202,10 @@ in
       profileExtra =
         zprofileExt + (hostZprofileExt.${hostname} or "") + (if wslhost then wslZprofileExt else "");
 
-      initContent = zshrcExt + (hostZshrcExt.${hostname} or "");
+      initContent = lib.mkMerge [
+        zshrcExt
+        (hostZshrcExt.${hostname} or "")
+      ];
 
       plugins = [
         {

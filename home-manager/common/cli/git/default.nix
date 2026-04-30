@@ -8,6 +8,13 @@
 let
   openpgpSshPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGnGV/atyJQmQQfuWCh0ADW9xv2HXe1i7regLWNDhKdf";
 
+  opSshPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINXO6EyxJn5uQbfFT61H1Uq18UV3WfjqZWwD6K4U4nPQ";
+
+  opSshSock = {
+    darwin = "$HOME/Library/Group\\ Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+    linux = "$HOME/.1password/agent.sock";
+  };
+
   signingKey = {
     "openpgp" = "C72536FDEEBF9178";
     "ssh" = "key::${openpgpSshPubkey}";
@@ -54,25 +61,41 @@ in
     _1password-cli
   ];
 
-  programs.zsh.initContent = ''
-    if [[ -n "$SSH_CONNECTION" ]] || [[ -n "$SSH_CLIENT" ]]; then
-      export GIT_CONFIG_COUNT=4
+  programs.zsh = {
+    initContent = ''
+      if [[ -n "$SSH_CONNECTION" ]] || [[ -n "$SSH_CLIENT" ]]; then
+        export GIT_CONFIG_COUNT=4
 
-      GIT_CONFIG_KEY_0=gpg.format
-      GIT_CONFIG_VALUE_0=ssh
-      export GIT_CONFIG_KEY_0 GIT_CONFIG_VALUE_0
+        GIT_CONFIG_KEY_0=gpg.format
+        GIT_CONFIG_VALUE_0=ssh
+        export GIT_CONFIG_KEY_0 GIT_CONFIG_VALUE_0
 
-      GIT_CONFIG_KEY_1=gpg.ssh.allowedSignersFile
-      GIT_CONFIG_VALUE_1="${allowedSigners}"
-      export GIT_CONFIG_KEY_1 GIT_CONFIG_VALUE_1
+        GIT_CONFIG_KEY_1=gpg.ssh.allowedSignersFile
+        GIT_CONFIG_VALUE_1="${allowedSigners}"
+        export GIT_CONFIG_KEY_1 GIT_CONFIG_VALUE_1
 
-      GIT_CONFIG_KEY_2=gpg.ssh.program
-      GIT_CONFIG_VALUE_2="${gpgSigner.ssh}"
-      export GIT_CONFIG_KEY_2 GIT_CONFIG_VALUE_2
+        GIT_CONFIG_KEY_2=gpg.ssh.program
+        GIT_CONFIG_VALUE_2="${gpgSigner.ssh}"
+        export GIT_CONFIG_KEY_2 GIT_CONFIG_VALUE_2
 
-      GIT_CONFIG_KEY_3=user.signingKey
-      GIT_CONFIG_VALUE_3="${signingKey.ssh}"
-      export GIT_CONFIG_KEY_3 GIT_CONFIG_VALUE_3
-    fi
-  '';
+        GIT_CONFIG_KEY_3=user.signingKey
+        GIT_CONFIG_VALUE_3="${signingKey.ssh}"
+        export GIT_CONFIG_KEY_3 GIT_CONFIG_VALUE_3
+      fi
+
+      function git-op() {
+        SSH_AUTH_SOCK=${opSshSock.${baseSystem}} \
+        GIT_CONFIG_COUNT=4 \
+        GIT_CONFIG_KEY_0=gpg.format \
+        GIT_CONFIG_VALUE_0=ssh \
+        GIT_CONFIG_KEY_1=gpg.ssh.allowedSignersFile \
+        GIT_CONFIG_VALUE_1="${allowedSigners}" \
+        GIT_CONFIG_KEY_2=gpg.ssh.program \
+        GIT_CONFIG_VALUE_2="${lib.getExe' pkgs.openssh "ssh-keygen"}" \
+        GIT_CONFIG_KEY_3=user.signingKey \
+        GIT_CONFIG_VALUE_3="key::${opSshPubkey}" \
+        git "$@"
+      }
+    '';
+  };
 }

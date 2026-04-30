@@ -28,6 +28,7 @@
       "nextcloud-vfs"
       "onedrive"
       "firefox"
+      "tailscale-app"
     ];
 
     taps = [
