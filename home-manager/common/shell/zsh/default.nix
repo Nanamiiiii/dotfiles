@@ -165,6 +165,10 @@ let
           fi
           LC_ALL=C tr -dc 'a-f0-9' < /dev/urandom | head -c "$RAND_LEN"; echo
       }
+
+      function opssh() {
+        SSH_AUTH_SOCK=''${OP_SSH_AUTH_SOCK} "$@"
+      }
     '')
   ];
 
