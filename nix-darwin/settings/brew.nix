@@ -20,7 +20,6 @@
       "homerow"
       "karabiner-elements"
       "notchnook"
-      "raycast"
       "microsoft-edge"
       "fuse-t"
       "macos-fuse-t/homebrew-cask/fuse-t-sshfs"
