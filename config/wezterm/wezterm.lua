@@ -15,9 +15,9 @@ config.term = "xterm-256color"
 config.use_ime = false
 
 -- Detect OS
-local is_macos = wezterm.target_triple:find("darwin") -- macos
+local is_macos = wezterm.target_triple:find("darwin")    -- macos
 local is_windows = wezterm.target_triple:find("windows") -- windows
-local is_linux = wezterm.target_triple:find("linux") -- linux
+local is_linux = wezterm.target_triple:find("linux")     -- linux
 
 -- Default Shell
 if is_windows then
@@ -71,10 +71,6 @@ config.font = wezterm.font_with_fallback({
     "PlemolJP Console",
     "Symbols Nerd Font",
     "PlemolJP Console NF",
-    "HackGen Console NF",
-    "FirgeConsole Nerd Font",
-    "FirgeNerd Console",
-    "UDEV Gothic NFLG",
     "Noto Sans Symbols",
     "Noto Sans Symbols 2",
     "SF Pro",
