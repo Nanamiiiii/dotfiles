@@ -50,6 +50,7 @@ let
     devenv
     nix-direnv
     nil
+    nixd
     nixfmt
   ];
 

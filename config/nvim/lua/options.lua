@@ -26,6 +26,7 @@ local options = {
     conceallevel = 0,
     mouse = "nv",
     clipboard = "unnamedplus",
+    exrc = true,
 }
 
 for k, v in pairs(options) do
