@@ -49,7 +49,7 @@ let
     nix-search-cli
     devenv
     nix-direnv
-    nil
+    nixd
     nixfmt
   ];
 
