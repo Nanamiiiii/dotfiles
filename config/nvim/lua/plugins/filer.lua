@@ -122,7 +122,8 @@ local opts = {
 return {
     {
         "nvim-neo-tree/neo-tree.nvim",
-        version = "3.*",
+        --version = "3.*",
+        branch = "main",
         dependencies = deps,
         keys = {
             { "<leader>ft", "<CMD>Neotree toggle position=float<CR>", desc = "NeoTree Floating", silent = true },
