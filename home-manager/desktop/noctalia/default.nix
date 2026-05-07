@@ -116,7 +116,7 @@
             }
             {
               id = "Clock";
-              formatHorizontal = "HH:mm:ss";
+              formatHorizontal = "HH:mm, MMM dd";
             }
             {
               id = "ControlCenter";
