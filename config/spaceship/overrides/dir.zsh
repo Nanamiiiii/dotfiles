@@ -7,27 +7,27 @@
 # Configuration
 # ------------------------------------------------------------------------------
 
-SPACESHIP_CDIR_SHOW="${SPACESHIP_CDIR_SHOW=true}"
-SPACESHIP_CDIR_PREFIX="${SPACESHIP_CDIR_PREFIX="in "}"
-SPACESHIP_CDIR_SUFFIX="${SPACESHIP_CDIR_SUFFIX="$SPACESHIP_PROMPT_DEFAULT_SUFFIX"}"
-SPACESHIP_CDIR_TRUNC="${SPACESHIP_CDIR_TRUNC=3}"
-SPACESHIP_CDIR_TRUNC_PREFIX="${SPACESHIP_CDIR_TRUNC_PREFIX=}"
-SPACESHIP_CDIR_TRUNC_REPO="${SPACESHIP_CDIR_TRUNC_REPO=true}"
-SPACESHIP_CDIR_COLOR="${SPACESHIP_CDIR_COLOR="cyan"}"
-SPACESHIP_CDIR_LOCK_SYMBOL="${SPACESHIP_CDIR_LOCK_SYMBOL=" "}"
-SPACESHIP_CDIR_LOCK_COLOR="${SPACESHIP_CDIR_LOCK_COLOR="red"}"
+SPACESHIP_DIR_SHOW="${SPACESHIP_DIR_SHOW=true}"
+SPACESHIP_DIR_PREFIX="${SPACESHIP_DIR_PREFIX="in "}"
+SPACESHIP_DIR_SUFFIX="${SPACESHIP_DIR_SUFFIX="$SPACESHIP_PROMPT_DEFAULT_SUFFIX"}"
+SPACESHIP_DIR_TRUNC="${SPACESHIP_DIR_TRUNC=3}"
+SPACESHIP_DIR_TRUNC_PREFIX="${SPACESHIP_DIR_TRUNC_PREFIX=}"
+SPACESHIP_DIR_TRUNC_REPO="${SPACESHIP_DIR_TRUNC_REPO=true}"
+SPACESHIP_DIR_COLOR="${SPACESHIP_DIR_COLOR="cyan"}"
+SPACESHIP_DIR_LOCK_SYMBOL="${SPACESHIP_DIR_LOCK_SYMBOL=" "}"
+SPACESHIP_DIR_LOCK_COLOR="${SPACESHIP_DIR_LOCK_COLOR="red"}"
 
 # ------------------------------------------------------------------------------
 # Section
 # ------------------------------------------------------------------------------
 
-spaceship_custom_dir() {
+spaceship_dir() {
   [[ $SPACESHIP_DIR_SHOW == false ]] && return
 
   local dir trunc_prefix
 
   # Threat repo root as a top-level directory or not
-  if [[ $SPACESHIP_CDIR_TRUNC_REPO == true ]] && spaceship::is_git; then
+  if [[ $SPACESHIP_DIR_TRUNC_REPO == true ]] && spaceship::is_git; then
     local git_root=$(git rev-parse --show-toplevel)
 
     if (cygpath --version) >/dev/null 2>/dev/null; then
@@ -38,7 +38,7 @@ spaceship_custom_dir() {
     if [[ $git_root:h == / ]]; then
       trunc_prefix=/
     else
-      trunc_prefix=$SPACESHIP_CDIR_TRUNC_PREFIX
+      trunc_prefix=$SPACESHIP_DIR_TRUNC_PREFIX
     fi
 
     # `${NAME#PATTERN}` removes a leading prefix PATTERN from NAME.
@@ -49,26 +49,26 @@ spaceship_custom_dir() {
     # See "Parameter Expansion" under the Zsh manual.
     dir="$trunc_prefix$git_root:t${${PWD:A}#$~~git_root}"
   else
-    if [[ SPACESHIP_CDIR_TRUNC -gt 0 ]]; then
+    if [[ SPACESHIP_DIR_TRUNC -gt 0 ]]; then
       # `%(N~|TRUE-TEXT|FALSE-TEXT)` replaces `TRUE-TEXT` if the current path,
       # with prefix replacement, has at least N elements relative to the root
       # directory else `FALSE-TEXT`.
       # See "Prompt Expansion" under the Zsh manual.
-      trunc_prefix="%($((SPACESHIP_CDIR_TRUNC + 1))~|$SPACESHIP_CDIR_TRUNC_PREFIX|)"
+      trunc_prefix="%($((SPACESHIP_DIR_TRUNC + 1))~|$SPACESHIP_DIR_TRUNC_PREFIX|)"
     fi
 
-    dir="$trunc_prefix%${SPACESHIP_CDIR_TRUNC}~"
+    dir="$trunc_prefix%${SPACESHIP_DIR_TRUNC}~"
   fi
 
-  local suffix="$SPACESHIP_CDIR_SUFFIX"
+  local suffix="$SPACESHIP_DIR_SUFFIX"
 
   if [[ ! -w . ]]; then
-    suffix="%F{$SPACESHIP_CDIR_LOCK_COLOR}${SPACESHIP_CDIR_LOCK_SYMBOL}%f${SPACESHIP_CDIR_SUFFIX}"
+    suffix="%F{$SPACESHIP_DIR_LOCK_COLOR}${SPACESHIP_DIR_LOCK_SYMBOL}%f${SPACESHIP_DIR_SUFFIX}"
   fi
 
   spaceship::section \
-    --color "$SPACESHIP_CDIR_COLOR" \
-    --prefix "$SPACESHIP_CDIR_PREFIX" \
+    --color "$SPACESHIP_DIR_COLOR" \
+    --prefix "$SPACESHIP_DIR_PREFIX" \
     --suffix "$suffix" \
     "%b%{\e[3m%}${dir}%{\e[23m%}"
 }

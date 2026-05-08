@@ -18,6 +18,10 @@
       done
 
       source ${pkgs.spaceship-prompt}/share/zsh/themes/spaceship.zsh-theme
+
+      for section_file in ${config.xdg.configHome}/spaceship/overrides/*.zsh(N); do
+        source "$section_file"
+      done
     '';
   };
 }
