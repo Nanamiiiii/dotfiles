@@ -90,6 +90,9 @@
               displayMode = "onhover";
             }
             {
+              id = "plugin:tailscale";
+            }
+            {
               id = "Network";
               displayMode = "onhover";
             }
@@ -608,7 +611,7 @@
         colorGeneration = "";
       };
       plugins = {
-        autoUpdate = false;
+        autoUpdate = true;
         notifyUpdates = true;
       };
       idle = {
@@ -631,6 +634,40 @@
         gridSnap = false;
         gridSnapScale = false;
         monitorWidgets = [ ];
+      };
+    };
+    plugins = {
+      version = 2;
+      sources = [
+        {
+          enabled = true;
+          name = "Official Noctalia Plugins";
+          url = "https://github.com/noctalia-dev/noctalia-plugins";
+        }
+      ];
+      states = {
+        tailscale = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+      };
+    };
+    pluginSettings = {
+      tailscale = {
+        refreshInterval = 5000;
+        compactMode = true;
+        showIpAddress = true;
+        showPeerCount = true;
+        hideDisconnected = false;
+        hideMullvadExitNodes = true;
+        showSearchBar = false;
+        terminalCommand = "wezterm";
+        sshUsername = "${username}";
+        pingCount = 5;
+        defaultPeerAction = "copy-ip";
+        taildropEnabled = true;
+        taildropDownloadDir = "~/Downloads";
+        taildropReceiveMode = "operator";
       };
     };
   };

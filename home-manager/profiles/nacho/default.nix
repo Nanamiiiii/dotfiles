@@ -115,6 +115,97 @@ in
     };
   };
 
+  programs.noctalia-shell.settings.bar = {
+    barType = lib.mkForce "floating";
+    position = lib.mkForce "left";
+    density = lib.mkForce "comfortable";
+    widgets = lib.mkForce {
+      left = [
+        {
+          id = "Launcher";
+          useDistroLogo = true;
+          enableColorization = true;
+          iconColor = "primary";
+        }
+        {
+          id = "MediaMini";
+        }
+        {
+          id = "ActiveWindow";
+          colorizeIcons = true;
+          hideMode = "hidden";
+          maxWidth = 300;
+          scrollingMode = "hover";
+          showIcon = true;
+          useFixedWidth = false;
+        }
+      ];
+      center = [
+        {
+          id = "Workspace";
+          labelMode = "none";
+          pillSize = 0.4;
+        }
+      ];
+      right = [
+        {
+          id = "SystemMonitor";
+          compactMode = false;
+          useMonospaceFont = true;
+          showCpuUsage = true;
+          showCpuTemp = true;
+          showMemoryUsage = true;
+        }
+        {
+          id = "Volume";
+          displayMode = "onhover";
+        }
+        {
+          id = "Brightness";
+          displayMode = "onhover";
+        }
+        {
+          id = "Bluetooth";
+          displayMode = "onhover";
+        }
+        {
+          id = "plugin:tailscale";
+        }
+        {
+          id = "Network";
+          displayMode = "onhover";
+        }
+        {
+          id = "Tray";
+          blacklist = [ ];
+          colorizeIcons = false;
+          drawerEnabled = true;
+          hidePassive = false;
+          pinned = [ ];
+        }
+        {
+          id = "NotificationHistory";
+          showUnreadBadge = true;
+          hideWhenZero = true;
+        }
+        {
+          id = "Clock";
+          formatVertical = "HH mm -- dd MMM";
+          useCustomFont = true;
+          customFont = "PlemolJP HS SemiBold";
+        }
+        {
+          id = "ControlCenter";
+          icon = "settings";
+        }
+        {
+          id = "SessionMenu";
+          iconColor = "none";
+        }
+      ];
+    };
+  };
+
   xdg.configFile."onedrive/sync_list".text = ''
     Books
     Capture
