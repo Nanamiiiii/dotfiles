@@ -91,6 +91,8 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   nixConfig = {
@@ -99,6 +101,7 @@
       "https://hyprland.cachix.org"
       "https://nanamiiiii.cachix.org"
       "https://noctalia.cachix.org"
+      "https://cache.numtide.com"
     ];
 
     extra-trusted-public-keys = [
@@ -106,6 +109,7 @@
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nanamiiiii.cachix.org-1:5Mvn05uX2OOrtQpKxw12lB5QXQCnn3xgRL2QEGbR1LU="
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
     ];
   };
 

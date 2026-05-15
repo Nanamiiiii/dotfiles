@@ -26,6 +26,7 @@ let
     ../../common/shell/spaceship
     ../../common/shell/zellij
     ../../common/terminal
+    ../../common/agents
   ];
 
   desktopConfigs = [
