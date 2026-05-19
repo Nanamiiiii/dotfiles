@@ -18,6 +18,7 @@
           enableGnomeKeyring = true;
           gnupg.enable = true;
         };
+        gdm.enableGnomeKeyring = true;
       };
     };
   };

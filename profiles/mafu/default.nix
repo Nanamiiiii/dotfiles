@@ -64,8 +64,8 @@ let
     ../../nixos/settings/misc/cups.nix
     ../../nixos/settings/misc/gvfs.nix
     ../../nixos/settings/misc/kdeconnect.nix
-    (import ../../nixos/settings/misc/1password.nix { inherit username; })
-    ../../nixos/settings/misc/1password-ext.nix
+    #(import ../../nixos/settings/misc/1password.nix { inherit username; })
+    #../../nixos/settings/misc/1password-ext.nix
   ];
 in
 {

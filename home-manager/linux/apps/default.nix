@@ -17,16 +17,15 @@ let
     thunderbird
     betterdiscordctl
     zathura
-    #termius
     xpipe
     cryptomator
-    #insync
-    #insync-nautilus
-    fastmail-desktop
+    protonmail-desktop
+    protonmail-bridge
+    proton-pass
+    proton-pass-cli
   ];
 
   cliPkgs = with pkgs; [
-    wireguard-tools
     pinentry-curses
   ];
 
