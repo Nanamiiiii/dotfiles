@@ -52,7 +52,7 @@ layout {
 spawn-at-startup "noctalia-shell"
 spawn-sh-at-startup "playerctld daemon"
 spawn-sh-at-startup "slack -u -s"
-spawn-sh-at-startup "1password --silent"
+spawn-sh-at-startup "proton-pass"
 spawn-at-startup "emote"
 spawn-at-startup "clipsync"
 spawn-at-startup "discord"
