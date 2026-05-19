@@ -105,3 +105,5 @@ vim.g.clipboard = {
         ["*"] = paste["*"],
     },
 }
+
+vim.g.editorconfig = true
