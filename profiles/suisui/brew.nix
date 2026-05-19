@@ -23,7 +23,6 @@
       "box-drive"
       "box-tools"
       "steam"
-      "fastmail"
     ];
   };
 }

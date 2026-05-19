@@ -11,11 +11,12 @@
     brews = [
       "displayplacer"
       "pinentry-mac"
+      "protonpass/tap/pass-cli"
     ];
 
     casks = [
-      "1password"
-      "1password-cli"
+      #"1password"
+      #"1password-cli"
       "istat-menus"
       "homerow"
       "karabiner-elements"
@@ -28,6 +29,11 @@
       "onedrive"
       "firefox"
       "tailscale-app"
+      "proton-mail"
+      "proton-drive"
+      "proton-pass"
+      "protonvpn"
+      "thaw"
     ];
 
     taps = [
@@ -35,6 +41,7 @@
       "xpipe-io/tap"
       "FelixKratz/formulae"
       "macos-fuse-t/homebrew-cask"
+      "protonpass/tap"
     ];
   };
 }
