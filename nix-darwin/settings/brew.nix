@@ -34,6 +34,7 @@
       "proton-pass"
       "protonvpn"
       "thaw"
+      "macskk"
     ];
 
     taps = [

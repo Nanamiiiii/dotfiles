@@ -12,7 +12,8 @@ end
 config.term = "xterm-256color"
 
 -- IME
-config.use_ime = false
+config.use_ime = true
+config.macos_forward_to_ime_modifier_mask = "SHIFT|CTRL"
 
 -- Detect OS
 local is_macos = wezterm.target_triple:find("darwin") -- macos
