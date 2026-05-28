@@ -1,0 +1,36 @@
+[
+  {
+    "bindings": {
+      "ctrl-o": "terminal_panel::Toggle"
+    },
+    "context": "((Editor && vim_mode == normal) || Terminal)"
+  },
+  {
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight"
+    },
+    "context": "((VimControl && !menu) || (!Editor && !Terminal))"
+  },
+  {
+    "bindings": {
+      "ctrl-y": "editor::ConfirmCompletion"
+    },
+    "context": "(Editor && showing_completions)"
+  },
+  {
+    "bindings": {
+      "ctrl-f": "vim::Right",
+      "j j": "vim::NormalBefore"
+    },
+    "context": "Editor && vim_mode == insert"
+  },
+  {
+    "bindings": {
+      "shift shift": "file_finder::Toggle"
+    },
+    "context": "Workspace"
+  }
+]

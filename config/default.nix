@@ -81,6 +81,15 @@ in
         source = symlink "${configDir}/w3m/config";
       };
     };
+
+    zed = {
+      "zed/settings.json" = {
+        source = symlink "${configDir}/zed/settings.json";
+      };
+      "zed/keymap.json" = {
+        source = symlink "${configDir}/zed/keymap.json";
+      };
+    };
   };
 
   # Linux specific

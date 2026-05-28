@@ -37,7 +37,7 @@ in
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = tyoHosts // {
+    settings = tyoHosts // {
       "*" = {
         forwardAgent = true;
         serverAliveInterval = 60;

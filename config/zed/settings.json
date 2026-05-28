@@ -1,0 +1,86 @@
+{
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "ssh_connections": [
+    {
+      "host": "nacho",
+      "args": [],
+      "projects": []
+    }
+  ],
+  "auto_install_extensions": {
+    "colored-zed-icons-theme": true,
+    "latex": true,
+    "lua": true,
+    "make": true,
+    "neocmake": true,
+    "nix": true,
+    "tokyo-night": true,
+    "toml": true
+  },
+  "buffer_font_family": "PlemolJP Console NF",
+  "buffer_font_size": 16,
+  "icon_theme": "Colored Zed Icons Theme Dark",
+  "languages": {
+    "CMake": {
+      "tab_size": 2
+    },
+    "Make": {
+      "hard_tabs": true
+    },
+    "Markdown": {
+      "tab_size": 2
+    },
+    "Nix": {
+      "language_servers": [
+        "nil",
+        "!nixd"
+      ],
+      "tab_size": 2
+    }
+  },
+  "lsp": {
+    "nil": {
+      "initialization_options": {
+        "formatting": {
+          "command": [
+            "nixfmt"
+          ]
+        },
+        "nix": {
+          "flake": {
+            "autoArchive": true
+          }
+        }
+      }
+    }
+  },
+  "minimap": {
+    "show": "auto"
+  },
+  "relative_line_numbers": "enabled",
+  "show_edit_predictions": false,
+  "theme": {
+    "dark": "Tokyo Night",
+    "light": "Tokyo Night Moon",
+    "mode": "system"
+  },
+  "ui_font_size": 16,
+  "vertical_scroll_margin": 5.0,
+  "vim_mode": true
+}
