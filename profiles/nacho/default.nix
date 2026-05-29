@@ -50,7 +50,8 @@ let
   graphics = ../../nixos/settings/graphics/nvidia.nix;
 
   displaySettings = [
-    ../../nixos/settings/display/gdm.nix
+    #../../nixos/settings/display/gdm.nix
+    ../../nixos/settings/display/ly.nix
     ../../nixos/settings/display/xserver.nix
   ];
 

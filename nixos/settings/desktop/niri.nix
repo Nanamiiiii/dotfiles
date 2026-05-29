@@ -10,4 +10,6 @@
       pkgs.xdg-desktop-portal-gnome
     ];
   };
+
+  services.displayManager.defaultSession = "niri";
 }
