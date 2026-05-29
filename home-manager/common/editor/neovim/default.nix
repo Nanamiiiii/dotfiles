@@ -59,15 +59,16 @@ in
       neovim-nightly
     ];
 
-  home.file.".skkeleton/dict/SKK-JISYO.L" = {
+  home.file.".skkeleton/dict/0-SKK-JISYO.L" = {
     source = "${pkgs.skkDictionaries.l}/share/skk/SKK-JISYO.L";
   };
 
-  home.file.".skkeleton/dict/SKK-JISYO.emoji" = {
+  home.file.".skkeleton/dict/1-SKK-JISYO.jinmei" = {
+    source = "${pkgs.skkDictionaries.jinmei}/share/skk/SKK-JISYO.jinmei";
+  };
+
+  home.file.".skkeleton/dict/2-SKK-JISYO.emoji" = {
     source = "${pkgs.skkDictionaries.emoji}/share/skk/SKK-JISYO.emoji";
   };
 
-  home.file.".skkeleton/dict/SKK-JISYO.jinmei" = {
-    source = "${pkgs.skkDictionaries.jinmei}/share/skk/SKK-JISYO.jinmei";
-  };
 }
