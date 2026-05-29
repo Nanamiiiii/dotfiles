@@ -19,5 +19,5 @@ let
 in
 {
   xdg.configFile = lib.mkIf desktop configFiles.dotConfigs.zed;
-  home.packages = [ ] ++ lib.optional (baseSystem == "linux") pkgs.zed;
+  home.packages = [ ] ++ lib.optional (baseSystem == "linux") pkgs.zed-editor;
 }
