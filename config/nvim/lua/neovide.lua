@@ -1,7 +1,7 @@
 -- neovide.lua
 
 -- Font
-vim.o.guifont = "PlemolJP Console NF,Symbols Nerd Font:h18"
+vim.o.guifont = "PlemolJP Console NF,Symbols Nerd Font:h16"
 
 -- Linespace
 vim.opt.linespace = 0
