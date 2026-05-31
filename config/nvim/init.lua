@@ -5,4 +5,6 @@ require("lazy-init")
 require("autocmd")
 
 -- neovide
-require("neovide")
+if vim.g.neovide then
+    require("neovide")
+end

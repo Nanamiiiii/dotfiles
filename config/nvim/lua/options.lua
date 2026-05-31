@@ -62,48 +62,50 @@ local paste_unnamed = function()
     }
 end
 
-if not h.is_ssh() then
-    if vim.fn.executable("pbpaste") == 1 then
-        paste["+"] = { "pbpaste" }
-        paste["*"] = { "pbpaste" }
-        provider = "osc52-copy-pbpaste"
-    elseif vim.fn.executable("wl-paste") == 1 then
-        paste["+"] = { "wl-paste", "--no-newline" }
-        paste["*"] = { "wl-paste", "--no-newline", "--primary" }
-        provider = "osc52-copy-wl-paste"
-    elseif vim.fn.executable("waypaste") == 1 then
-        paste["+"] = { "waypaste" }
-        paste["*"] = { "waypaste", "-p" }
-        provider = "osc52-copy-waypaste"
-    elseif vim.fn.executable("xclip") == 1 then
-        paste["+"] = { "xclip", "-o", "-selection", "clipboard" }
-        paste["*"] = { "xclip", "-o", "-selection", "primary" }
-        provider = "osc52-copy-xclip"
-    elseif vim.fn.executable("xsel") == 1 then
-        paste["+"] = { "xsel", "-o", "-b" }
-        paste["*"] = { "xsel", "-o", "-p" }
-        provider = "osc52-copy-xsel"
+if not vim.g.neovide then
+    if not h.is_ssh() then
+        if vim.fn.executable("pbpaste") == 1 then
+            paste["+"] = { "pbpaste" }
+            paste["*"] = { "pbpaste" }
+            provider = "osc52-copy-pbpaste"
+        elseif vim.fn.executable("wl-paste") == 1 then
+            paste["+"] = { "wl-paste", "--no-newline" }
+            paste["*"] = { "wl-paste", "--no-newline", "--primary" }
+            provider = "osc52-copy-wl-paste"
+        elseif vim.fn.executable("waypaste") == 1 then
+            paste["+"] = { "waypaste" }
+            paste["*"] = { "waypaste", "-p" }
+            provider = "osc52-copy-waypaste"
+        elseif vim.fn.executable("xclip") == 1 then
+            paste["+"] = { "xclip", "-o", "-selection", "clipboard" }
+            paste["*"] = { "xclip", "-o", "-selection", "primary" }
+            provider = "osc52-copy-xclip"
+        elseif vim.fn.executable("xsel") == 1 then
+            paste["+"] = { "xsel", "-o", "-b" }
+            paste["*"] = { "xsel", "-o", "-p" }
+            provider = "osc52-copy-xsel"
+        else
+            paste["+"] = paste_unnamed
+            paste["*"] = paste_unnamed
+            provider = "osc52-copy-internal-paste"
+        end
     else
         paste["+"] = paste_unnamed
         paste["*"] = paste_unnamed
         provider = "osc52-copy-internal-paste"
     end
-else
-    paste["+"] = paste_unnamed
-    paste["*"] = paste_unnamed
-    provider = "osc52-copy-internal-paste"
-end
 
-vim.g.clipboard = {
-    name = provider,
-    copy = {
-        ["+"] = osc52.copy("+"),
-        ["*"] = osc52.copy("*"),
-    },
-    paste = {
-        ["+"] = paste["+"],
-        ["*"] = paste["*"],
-    },
-}
+    vim.g.clipboard = {
+        name = provider,
+        copy = {
+            ["+"] = osc52.copy("+"),
+            ["*"] = osc52.copy("*"),
+        },
+        paste = {
+            ["+"] = paste["+"],
+            ["*"] = paste["*"],
+        },
+    }
+end
 
 vim.g.editorconfig = true
