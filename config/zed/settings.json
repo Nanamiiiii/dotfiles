@@ -82,5 +82,6 @@
   },
   "ui_font_size": 16,
   "vertical_scroll_margin": 5.0,
-  "vim_mode": true
+  "vim_mode": true,
+  "load_direnv": "shell_hook"
 }
