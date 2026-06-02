@@ -29,6 +29,7 @@ let
     ../../nix-darwin/settings/brew/devtool.nix
     ../../nix-darwin/settings/brew/menubar.nix
     ../../nix-darwin/settings/brew/browsers.nix
+    ../../nix-darwin/settings/brew/launcher.nix
   ];
 
 in
