@@ -34,7 +34,7 @@ for k, v in pairs(options) do
 end
 
 -- wrapping
-vim.wo.wrap = false
+vim.wo.wrap = true
 
 -- invisible chars
 vim.wo.list = true

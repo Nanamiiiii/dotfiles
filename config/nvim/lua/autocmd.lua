@@ -25,8 +25,8 @@ local augroup_lazy = augroup("myuu.lazynvim_autoupd", { clear = true })
 autocmd("VimEnter", {
     group = augroup_lazy,
     callback = function()
-        if require("lazy.status").has_updates then
-            require("lazy").update({ show = false })
+        if require("lazy.status").has_updates() then
+            require("lazy").check({}) -- Only show diffs
         end
     end,
 })

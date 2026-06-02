@@ -1,9 +1,9 @@
 return {
-    {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        config = true,
-    },
+    -- {
+    --     "windwp/nvim-autopairs",
+    --     event = "InsertEnter",
+    --     config = true,
+    -- },
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
@@ -16,5 +16,9 @@ return {
                 desc = "Buffer Local Keymaps (which-key)",
             },
         },
+    },
+    {
+        "m4xshen/autoclose.nvim",
+        config = true,
     },
 }
