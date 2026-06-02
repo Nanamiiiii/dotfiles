@@ -54,7 +54,6 @@ spawn-sh-at-startup "playerctld daemon"
 spawn-sh-at-startup "slack -u -s"
 spawn-sh-at-startup "proton-pass"
 spawn-at-startup "emote"
-spawn-at-startup "clipsync"
 spawn-at-startup "discord"
 
 hotkey-overlay {

@@ -14,7 +14,6 @@ let
     polkit_gnome
     libsecret
     libnotify
-    wl-x11-clipsync
     xwayland-satellite
     xdg-desktop-portal-gnome
     xdg-desktop-portal-gtk
