@@ -14,17 +14,8 @@ return {
             cwd = "~/",
         },
         {
-            label = "ranger",
-            args = { "@ranger_bin@" },
-            cwd = "~/",
-        },
-        {
             label = "btop",
             args = { "@btop_bin@" },
-        },
-        {
-            label = "spotify",
-            args = { "@spotify_player_bin@" },
         },
     }
 }

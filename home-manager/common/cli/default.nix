@@ -192,7 +192,6 @@ in
     duf
     ghq
     tree-sitter
-    ranger
     curl
     wget
     sl
