@@ -1,0 +1,75 @@
+{ config, username, ... }:
+let
+  systemSettings = [
+    ../../nix-darwin/settings/system/darwin-system.nix
+    ../../nix-darwin/settings/system/ssh.nix
+    ../../nix-darwin/settings/system/brew.nix
+    ../../nix-darwin/settings/system/sops.nix
+    ../../nix-darwin/settings/system/user.nix
+    ../../nix-darwin/settings/system/shell.nix
+    ../../nix-darwin/settings/system/security.nix
+    ../../nix-darwin/settings/system/timezone.nix
+    (import ../../nix-darwin/settings/system/networking.nix { hostName = "nono"; })
+    ../../nix-darwin/settings/system/environment.nix
+    ../../nix-darwin/settings/system/fonts.nix
+  ];
+
+  nixSettings = [
+    ../../nix-darwin/settings/nix/nix.nix
+    ../../nix-darwin/settings/nix/nixpkgs.nix
+  ];
+
+  brewApps = [
+    ../../nix-darwin/settings/brew/keyboard.nix
+    ../../nix-darwin/settings/brew/skk.nix
+    ../../nix-darwin/settings/brew/vpn.nix
+    ../../nix-darwin/settings/brew/fuse.nix
+    ../../nix-darwin/settings/brew/proton.nix
+    ../../nix-darwin/settings/brew/devtool.nix
+    ../../nix-darwin/settings/brew/menubar.nix
+    ../../nix-darwin/settings/brew/browsers.nix
+    ../../nix-darwin/settings/brew/launcher.nix
+    ../../nix-darwin/settings/brew/atok.nix
+  ];
+
+in
+{
+  imports = systemSettings ++ nixSettings ++ brewApps;
+
+  sops.secrets.pam-u2f.sopsFile = ./secrets.yaml;
+
+  homebrew.casks = [
+    # cloud storage
+    "nextcloud-vfs"
+    "onedrive"
+    "box-drive"
+    "box-tools"
+
+    # communication
+    "slack"
+    "discord"
+    "microsoft-teams"
+    "zoom"
+
+    # ai
+    "claude"
+
+    # media
+    "vlc"
+    "skim"
+    "spotify"
+
+    # devices
+    "logi-options+"
+
+    # note
+    "obsidian"
+
+    # research
+    "zotero"
+    "grammarly-desktop"
+
+    # reader
+    "adobe-acrobat-reader"
+  ];
+}

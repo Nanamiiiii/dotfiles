@@ -255,6 +255,13 @@
             username = "myuu";
             system = "aarch64-darwin";
           });
+
+          # MacBook Neo
+          nono = darwinSystem (darwinSystemArgs {
+            profile = "nono";
+            username = "myuu";
+            system = "aarch64-darwin";
+          });
         };
 
       homeConfigurations =
