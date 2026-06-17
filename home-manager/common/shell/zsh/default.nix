@@ -79,6 +79,18 @@ let
           "$path[@]"
       )
     '';
+    nono = ''
+      eval $(/opt/homebrew/bin/brew shellenv)
+      export MANPATH=/opt/local/share/man:$MANPATH
+      path=(
+          "/opt/local/bin:/opt/local/sbin"
+          "$path[@]"
+      )
+      fpath=(
+          "$(brew --prefix)/share/zsh/site-functions"
+          "$fpath[@]"
+      )
+    '';
   };
 
   wslZprofileExt = ''

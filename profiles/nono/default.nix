@@ -41,7 +41,6 @@ in
   homebrew.casks = [
     # cloud storage
     "nextcloud-vfs"
-    "onedrive"
     "box-drive"
     "box-tools"
 
@@ -53,11 +52,6 @@ in
 
     # ai
     "claude"
-
-    # media
-    "vlc"
-    "skim"
-    "spotify"
 
     # devices
     "logi-options+"
@@ -71,5 +65,8 @@ in
 
     # reader
     "adobe-acrobat-reader"
+
+    # office
+    "microsoft-office"
   ];
 }
