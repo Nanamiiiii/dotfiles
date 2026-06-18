@@ -54,6 +54,7 @@ in
     [
       wget
       unzip
+      tree-sitter
     ]
     ++ [
       neovim-nightly
