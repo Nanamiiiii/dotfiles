@@ -12,7 +12,10 @@
     ];
 
     taps = [
-      "protonpass/tap"
+      {
+        name = "protonpass/tap";
+        trusted = true;
+      }
     ];
   };
 }

@@ -6,7 +6,10 @@
     ];
 
     taps = [
-      "macos-fuse-t/homebrew-cask"
+      {
+        name = "macos-fuse-t/homebrew-cask";
+        trusted = true;
+      }
     ];
   };
 }
