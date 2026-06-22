@@ -16,9 +16,9 @@ config.use_ime = true
 config.macos_forward_to_ime_modifier_mask = "SHIFT|CTRL"
 
 -- Detect OS
-local is_macos = wezterm.target_triple:find("darwin")    -- macos
+local is_macos = wezterm.target_triple:find("darwin") -- macos
 local is_windows = wezterm.target_triple:find("windows") -- windows
-local is_linux = wezterm.target_triple:find("linux")     -- linux
+local is_linux = wezterm.target_triple:find("linux") -- linux
 
 -- Default Shell
 if is_windows then
@@ -266,9 +266,11 @@ end)
 
 -- Window setting
 if is_macos then
-    local success, stdout = wezterm.run_child_process {
-        'pgrep', '-x', 'AeroSpace',
-    }
+    local success, stdout = wezterm.run_child_process({
+        "pgrep",
+        "-x",
+        "AeroSpace",
+    })
     if success then
         config.window_decorations = "RESIZE | MACOS_FORCE_DISABLE_SHADOW"
     else
