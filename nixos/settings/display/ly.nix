@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       bigclock = "en";
-      animation = "matrix";
+      animation = "none";
     };
   };
 }
