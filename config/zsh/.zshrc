@@ -64,6 +64,12 @@ done
 # Sheldon
 eval "$(sheldon source)"
 
+# spaceship 2nd stage
+for section_file in ${XDG_CONFIG_HOME}/spaceship/overrides/*.zsh(N); do
+  source "$section_file"
+done
+
+
 # Completions
 autoload -Uz compinit && compinit
 ## Can lazy
