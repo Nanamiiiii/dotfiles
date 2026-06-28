@@ -116,18 +116,18 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/dalance/procs/v0.14.11/procs-v0.14.11-x86_64-linux.zip",
-      "checksum": "9C4FAECF85A3AF4D3D39AAE47D04FA31D0A6EB0A239039F68D3F55043F04F974",
+      "id": "github_release/github.com/dalance/procs/v0.14.12/procs-v0.14.12-x86_64-linux.zip",
+      "checksum": "81964FAF9D5CD0E9F399D5D0954FB6FE4D4D9F7D3CBEC4507633DF5A45B11713",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/dalance/procs/v0.14.11/procs-v0.14.11-x86_64-mac.zip",
-      "checksum": "72E45A61660E1C586AFFF64B3A8A393FED06F3A133DF8E716ADE68B00190EA87",
+      "id": "github_release/github.com/dalance/procs/v0.14.12/procs-v0.14.12-x86_64-mac.zip",
+      "checksum": "2C276F40C99051984942A5B135B74CE4BC9184984A1543DDDFCF275BDE71D8D4",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/dalance/procs/v0.14.11/procs-v0.14.11-x86_64-windows.zip",
-      "checksum": "1B1FEF6DFC46CE2F2FE33A678CF865BEA35234FEBE42C3921B06AB41024CDA01",
+      "id": "github_release/github.com/dalance/procs/v0.14.12/procs-v0.14.12-x86_64-windows.zip",
+      "checksum": "4928C399AE78EE82F99139A5629077B8D90A58599D834584DD4E613CB60C83D0",
       "algorithm": "sha256"
     },
     {
@@ -146,33 +146,33 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.64.2/fastfetch-linux-aarch64.tar.gz",
-      "checksum": "F69DC4779DC65F48FA0C2D54D45AD7ABBE5FCDF9B979C7104018B965400BCCA7",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.65.2/fastfetch-linux-aarch64.tar.gz",
+      "checksum": "7485815BE2817DB722096353C3440967B9B39CDD5500EAF29D3724CA3DC9C1B5",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.64.2/fastfetch-linux-amd64.tar.gz",
-      "checksum": "5DC341EC4853DDEB0C0EFA62E033FED57B0A00F7D805EBB6D354241CA244ABA5",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.65.2/fastfetch-linux-amd64.tar.gz",
+      "checksum": "D8A477A016FBCF6CF184B1E2A54F38E702AAE0D27078F72F5DAC54D6D0010739",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.64.2/fastfetch-macos-aarch64.tar.gz",
-      "checksum": "BD5E0283C5F55B2887E7476E65A875283AFBF21C279E637CE0E8ED024C523760",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.65.2/fastfetch-macos-aarch64.tar.gz",
+      "checksum": "BE86C281B2FC57410399357153731AE723856FBB80EE66A074648F597B80530C",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.64.2/fastfetch-macos-amd64.tar.gz",
-      "checksum": "ABED3BD33CEFDB431966EB410F8BE3EEDC6EA3172F810848DB098CEC5662CF2B",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.65.2/fastfetch-macos-amd64.tar.gz",
+      "checksum": "2C2026826AB2F663BA6544961C2FDF45725B5BE5ED0DF57838ADE58C7B82328F",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.64.2/fastfetch-windows-aarch64.zip",
-      "checksum": "0B3CAB3739658CB39CFD35213DF5ED8C36E976937838AF5AF92645D11076CF92",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.65.2/fastfetch-windows-aarch64.zip",
+      "checksum": "2AF02BD72BD602D315B233BA71822E24BE31D7CFF468716BB83E6B1D4B016F94",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.64.2/fastfetch-windows-amd64.zip",
-      "checksum": "B95404D7B54AEFDC7214DACDCC6D83A27FAA48EA9AE45C624FC9B32CEBA80ABC",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.65.2/fastfetch-windows-amd64.zip",
+      "checksum": "77D43202B5CA499F065E2CF3E7A3CBC9678FE202C915457CE58344BF4898D49E",
       "algorithm": "sha256"
     },
     {
@@ -341,33 +341,33 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.9/tree-sitter-linux-arm64.gz",
-      "checksum": "C8FEEB32115958CB44442CA4D68F6D66CF7605DBD65681E62342181EBDD6DB3B",
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.10/tree-sitter-linux-arm64.gz",
+      "checksum": "ABC3C3FC18C8F9FFEEE385F5C34A91443774A371E2BFE5B53344D9D5606705ED",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.9/tree-sitter-linux-x64.gz",
-      "checksum": "9CE82137CAA65864E7CA8B869FD391CEF88C9BD2A01C4371B9C4DD26C2585EFB",
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.10/tree-sitter-linux-x64.gz",
+      "checksum": "477EF03E7422F3579187859DB7D5407AC345C854F9E2E6C4534D2305DAC39A35",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.9/tree-sitter-macos-arm64.gz",
-      "checksum": "E46725B2417C085B0761948ABC0CC240BFF6A3AB5D2128E3AD0DE467DED3388D",
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.10/tree-sitter-macos-arm64.gz",
+      "checksum": "821A387182DB59A1942A90A1FBD8F9756D9926E2C265F5C7B9A23C523114134A",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.9/tree-sitter-macos-x64.gz",
-      "checksum": "A57B6044AD739CA3164CC20637DB65352CCC9C69E1C34A7CDA3E5A62D529B164",
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.10/tree-sitter-macos-x64.gz",
+      "checksum": "E58C90DC9C14A64B5D824B2BD9DF99748FA149705361F51A8E37220BE20E9210",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.9/tree-sitter-windows-arm64.gz",
-      "checksum": "77422E257649158B91296D340D8430B7A0B469DF41734EFC9B261F1A16A33E95",
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.10/tree-sitter-windows-arm64.gz",
+      "checksum": "CD2639B99C2F2F2ABD253A6BFC0582C2DB870F238F639974E030904ABED76C93",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.9/tree-sitter-windows-x64.gz",
-      "checksum": "DBB5309FCC76EAEB4EC358FCB72AC2EAE5CD653E12967246CC63F84038D16CD8",
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.10/tree-sitter-windows-x64.gz",
+      "checksum": "6F59606DAFABD8AC49C84C36AE4F0178E6AADD9232E5602C6FB0406D1B79129A",
       "algorithm": "sha256"
     },
     {
@@ -451,8 +451,8 @@
       "algorithm": "sha256"
     },
     {
-      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.526.0/registry.yaml",
-      "checksum": "E2BB546D74F7E8D5276F00F2BC342E0CA3D7AC34B7AA442058CBFDBE318346E8",
+      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.529.1/registry.yaml",
+      "checksum": "37DAF14E094ADB1666A9A5135E4CADD2212CF631CC9AC92E0776A437FB9E5E6D",
       "algorithm": "sha256"
     }
   ]
