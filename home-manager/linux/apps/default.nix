@@ -23,22 +23,13 @@ let
     protonmail-bridge
     proton-pass
     proton-pass-cli
+    proton-drive-cli
   ];
 
   cliPkgs = with pkgs; [
     pinentry-curses
   ];
-
-  configFiles = import ../../../config {
-    inherit
-      pkgs
-      config
-      hostname
-      ;
-  };
 in
 {
   home.packages = if desktop then desktopPkgs ++ cliPkgs else cliPkgs;
-
-  xdg.configFile."microsoft-edge/Default/HubApps" = configFiles.linuxConfigs.microsoft-edge."HubApps";
 }
