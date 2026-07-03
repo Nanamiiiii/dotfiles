@@ -10,5 +10,5 @@ elif [[ $(uname) == 'Linux' ]]; then
     ratio=$(printf "%.2f%%" $(echo "scale=5; ${free}/${total}*100" | bc))
 fi
 
-echo "${RESET}#[fg=${bblue}]M #[fg=${foreground}]${ratio}"
+echo "${RESET}#[fg=${bblue}]MEM #[fg=${foreground}]${ratio}"
 
