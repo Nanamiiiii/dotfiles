@@ -26,33 +26,33 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/ajeetdsouza/zoxide/v0.9.9/zoxide-0.9.9-aarch64-apple-darwin.tar.gz",
-      "checksum": "57E733D0436309DAE2ED97E46BBA43937209395298E1D88812D4E893900CB40A",
+      "id": "github_release/github.com/ajeetdsouza/zoxide/v0.10.0/zoxide-0.10.0-aarch64-apple-darwin.tar.gz",
+      "checksum": "B55AE6F2F5F23D0A6CCB3BD4EEB2AF9C7E0A6556E5255C82100E40305129BBB0",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/ajeetdsouza/zoxide/v0.9.9/zoxide-0.9.9-aarch64-pc-windows-msvc.zip",
-      "checksum": "58C55EF6F0EAD099FBB31ED69566118D7C7C7A4E16C858BBDB4F7DEF40CD534B",
+      "id": "github_release/github.com/ajeetdsouza/zoxide/v0.10.0/zoxide-0.10.0-aarch64-pc-windows-msvc.zip",
+      "checksum": "B0E6EB62B11EBF168D5C65C5D23C635E81848CC4A88AE6B9CAEE64CF1E35D12B",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/ajeetdsouza/zoxide/v0.9.9/zoxide-0.9.9-aarch64-unknown-linux-musl.tar.gz",
-      "checksum": "96E6EA2E47A71DB42CB7AD5A36E9209C8CB3708F8AE00F6945573D0D93315CB0",
+      "id": "github_release/github.com/ajeetdsouza/zoxide/v0.10.0/zoxide-0.10.0-aarch64-unknown-linux-musl.tar.gz",
+      "checksum": "F1F16C5D6298D63DEE467EEDEA1CDCD8490E43E493BEA43ACD416DC9033EF641",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/ajeetdsouza/zoxide/v0.9.9/zoxide-0.9.9-x86_64-apple-darwin.tar.gz",
-      "checksum": "364249CFF18354397C72EBB6B8F7358404C051C486E0F2F7A46E36C86C16F8C7",
+      "id": "github_release/github.com/ajeetdsouza/zoxide/v0.10.0/zoxide-0.10.0-x86_64-apple-darwin.tar.gz",
+      "checksum": "18AB7AE2633AD6E2AB79A4E665CBBA1E95B7C872D44523326EFB793202451DAD",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/ajeetdsouza/zoxide/v0.9.9/zoxide-0.9.9-x86_64-pc-windows-msvc.zip",
-      "checksum": "5AF00D0916F05631E3030537289EAC56605E7C1733318C4D525C8E847F12496D",
+      "id": "github_release/github.com/ajeetdsouza/zoxide/v0.10.0/zoxide-0.10.0-x86_64-pc-windows-msvc.zip",
+      "checksum": "F465AE548F8754C8E7EDBC60B45FBF58C92BFE123DB83D790252D6810FA5DAF1",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/ajeetdsouza/zoxide/v0.9.9/zoxide-0.9.9-x86_64-unknown-linux-musl.tar.gz",
-      "checksum": "4FF057D3C4D957946937274C2B8BE7AF2A9BBAE7F90A1B5E9BAAA7CB65A20CAA",
+      "id": "github_release/github.com/ajeetdsouza/zoxide/v0.10.0/zoxide-0.10.0-x86_64-unknown-linux-musl.tar.gz",
+      "checksum": "2D93385B99F3E82CF2701609A1BFFCAD863FBEB75AA3FE7EB6BE4D29BE68B1AE",
       "algorithm": "sha256"
     },
     {
@@ -86,33 +86,33 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/cli/cli/v2.95.0/gh_2.95.0_linux_amd64.tar.gz",
-      "checksum": "25D1E4729E8808C9ED3D613E96EBD3F3E44446F2D368C89D878A71A36DDB3D8C",
+      "id": "github_release/github.com/cli/cli/v2.96.0/gh_2.96.0_linux_amd64.tar.gz",
+      "checksum": "83D5C2CCAD5498F58BF6368ACB1AB32588CF43AB3A4B1C301BF36328B1C8BD60",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/cli/cli/v2.95.0/gh_2.95.0_linux_arm64.tar.gz",
-      "checksum": "D41E0B3B6218E5741C8BB4DB39B16E53A59E0E06299A8489BD38F623EF7EBAAE",
+      "id": "github_release/github.com/cli/cli/v2.96.0/gh_2.96.0_linux_arm64.tar.gz",
+      "checksum": "06F86EC7103D41993B76CD78072F43595C34AAA56506D971D9860E67140BF909",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/cli/cli/v2.95.0/gh_2.95.0_macOS_amd64.zip",
-      "checksum": "985707E9AC60C95ED51CDDD808C338B481ABE69FFFA77E9D6547C3750045F77E",
+      "id": "github_release/github.com/cli/cli/v2.96.0/gh_2.96.0_macOS_amd64.zip",
+      "checksum": "4BD449DF9AD639391BC62B8032546F0FE9EDCD8526E06682A4F88ABD8C5D163C",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/cli/cli/v2.95.0/gh_2.95.0_macOS_arm64.zip",
-      "checksum": "3677F9C27965825F9C7D50395473C134EDAEA4B484373EF6B25DE653570A0489",
+      "id": "github_release/github.com/cli/cli/v2.96.0/gh_2.96.0_macOS_arm64.zip",
+      "checksum": "F23A0C37D963AACC3BED703CCBD59B41C5CA22101FAB7F00EB2B7CAD23ABA463",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/cli/cli/v2.95.0/gh_2.95.0_windows_amd64.zip",
-      "checksum": "19A7154161ADA9CFAA9E57EDB752ECC679B75C391A62E4F7B586EEA1DF30B5BB",
+      "id": "github_release/github.com/cli/cli/v2.96.0/gh_2.96.0_windows_amd64.zip",
+      "checksum": "C2D6ACC935CD2F00E2144D7E036D5CD82E6B6BD5594E8C75AA75EF2A4ED6AAC3",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/cli/cli/v2.95.0/gh_2.95.0_windows_arm64.zip",
-      "checksum": "F7DF0BF24275196B0FCBE853946E53AE80121C8A4CE4341BC9DE1A35E33B4588",
+      "id": "github_release/github.com/cli/cli/v2.96.0/gh_2.96.0_windows_arm64.zip",
+      "checksum": "C517E0B32C98A4BA90AC95AF8D12CC3AC55781AB4AB72F9A91CE3DE0541D2B09",
       "algorithm": "sha256"
     },
     {
@@ -176,33 +176,33 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.62.2/lazygit_0.62.2_darwin_arm64.tar.gz",
-      "checksum": "F311D96B666B4865760E39F3967EDFD7BF30B5D09E52A1BC7AE511F6BDFDD02C",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.63.0/lazygit_0.63.0_darwin_arm64.tar.gz",
+      "checksum": "60E6BF29A1501A57A9D078538AA576A1B4DB45779DB2E3DD6931A7207F560A9C",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.62.2/lazygit_0.62.2_darwin_x86_64.tar.gz",
-      "checksum": "21C276A94F8DDB55D8336DF60D69A5B7509E7434024445B4D51D2A11BD6C76B6",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.63.0/lazygit_0.63.0_darwin_x86_64.tar.gz",
+      "checksum": "304B1BF7F7BBB5A5D59E34145BCE63D42733CD828E4FE41428CED9EE4DBFE942",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.62.2/lazygit_0.62.2_linux_arm64.tar.gz",
-      "checksum": "9AB63DD75A7E9711C4C68A37D77F4334B8099A5D6A3F8FBE8F4E2768B159C9E9",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.63.0/lazygit_0.63.0_linux_arm64.tar.gz",
+      "checksum": "AAC147ABF5CE43AFE6AE8BCB14B0D479111975A189302D7A99386DECA70D57F7",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.62.2/lazygit_0.62.2_linux_x86_64.tar.gz",
-      "checksum": "8B9A4C2D0969CBEA92B45C956DD2A44E1BA76900C9DF49F1C60984045CE77984",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.63.0/lazygit_0.63.0_linux_x86_64.tar.gz",
+      "checksum": "CF5CFA3E116D7775F3600A51EC1D9CE7BA554A08B9566C7C2DA83CB0023EFABF",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.62.2/lazygit_0.62.2_windows_arm64.zip",
-      "checksum": "EA5CD80F35BBDC2B58FEDCE1CE9D92BC4EDFC65F8E39EEC247F40FBD17357C15",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.63.0/lazygit_0.63.0_windows_arm64.zip",
+      "checksum": "49539C2B284183E9DB18246FC5EFE7B4065A027B9FBE4AC529C3B917668E3487",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.62.2/lazygit_0.62.2_windows_x86_64.zip",
-      "checksum": "805BFCB2445273B77A32B7758DFB5D2D8DBD7B80B7336AB868935584A2FAD0BA",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.63.0/lazygit_0.63.0_windows_x86_64.zip",
+      "checksum": "6AC4282E2C99D2430E318143F38DD0EAB6B6EA3932F4F1C7E3FCBF207727FC7C",
       "algorithm": "sha256"
     },
     {
@@ -451,8 +451,8 @@
       "algorithm": "sha256"
     },
     {
-      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.529.1/registry.yaml",
-      "checksum": "37DAF14E094ADB1666A9A5135E4CADD2212CF631CC9AC92E0776A437FB9E5E6D",
+      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.531.0/registry.yaml",
+      "checksum": "6809CBCF3DB5C26072A32B2F2A9C5CABD2636874AA633BBBA6C463385BD1B35E",
       "algorithm": "sha256"
     }
   ]
