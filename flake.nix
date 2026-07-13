@@ -93,6 +93,7 @@
     };
 
     llm-agents.url = "github:numtide/llm-agents.nix";
+    claude-desktop.url = "github:patrickjaja/claude-desktop-bin";
   };
 
   nixConfig = {
