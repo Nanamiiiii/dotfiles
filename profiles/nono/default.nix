@@ -31,6 +31,7 @@ let
     ../../nix-darwin/settings/brew/launcher.nix
     ../../nix-darwin/settings/brew/atok.nix
     ../../nix-darwin/settings/brew/display.nix
+    ../../nix-darwin/settings/brew/drawio.nix
   ];
 
 in
