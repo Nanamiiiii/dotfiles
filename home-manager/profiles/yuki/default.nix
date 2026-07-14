@@ -37,7 +37,6 @@ let
     ../../linux/fcitx5
     ../../linux/kdeconnect
     ../../linux/avatar
-    ../../linux/claude
   ];
 
   serviceConfigs = [
