@@ -54,6 +54,7 @@ in
 
     # ai
     "claude"
+    "chatgpt"
 
     # devices
     "logi-options+"
