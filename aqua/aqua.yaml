@@ -6,23 +6,23 @@ checksum:
   enabled: true
 registries:
 - type: standard
-  ref: v4.531.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.538.1 # renovate: depName=aquaproj/aqua-registry
 packages:
-- name: eza-community/eza@v0.23.4
+- name: eza-community/eza@v0.23.5
 - name: sharkdp/bat@v0.26.1
-- name: junegunn/fzf@v0.73.1
+- name: junegunn/fzf@v0.74.0
 - name: dalance/procs@v0.14.12
 - name: x-motemen/ghq@v1.10.1
 - name: bootandy/dust@v1.2.4
 - name: sharkdp/fd@v10.4.2
 - name: muesli/duf@v0.9.1
-- name: jesseduffield/lazygit@v0.63.0
-- name: BurntSushi/ripgrep@15.1.0
+- name: jesseduffield/lazygit@v0.63.1
+- name: BurntSushi/ripgrep@15.2.0
 - name: jqlang/jq@jq-1.8.2
 - name: ajeetdsouza/zoxide@v0.10.0
 - name: aristocratos/btop@v1.4.7
 - name: cli/cli@v2.96.0
-- name: fastfetch-cli/fastfetch@2.65.2
+- name: fastfetch-cli/fastfetch@2.66.0
 - name: haskell/ghcup-hs@v0.1.30.0
-- name: tree-sitter/tree-sitter@v0.26.10
+- name: tree-sitter/tree-sitter@v0.26.11
 - name: zellij-org/zellij@v0.44.3
