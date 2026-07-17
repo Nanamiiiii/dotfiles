@@ -3,6 +3,7 @@
     enable = true;
     launchd.enable = true;
     settings = {
+      config-version = 2;
       # Execution environment
       exec = {
         env-vars = {
@@ -11,6 +12,20 @@
         inherit-env-vars = true;
       };
 
+      # Persistent Workspaces
+      persistent-workspaces = [
+        "1"
+        "2"
+        "3"
+        "4"
+        "5"
+        "6"
+        "7"
+        "8"
+        "9"
+        "10"
+      ];
+
       # Workspace assignment
       workspace-to-monitor-force-assignment = {
         "1" = "main";
@@ -18,9 +33,18 @@
         "3" = "main";
         "4" = "main";
         "5" = "main";
-        "6" = "main";
-        "7" = "main";
-        "8" = "main";
+        "6" = [
+          "secondary"
+          "main"
+        ];
+        "7" = [
+          "secondary"
+          "main"
+        ];
+        "8" = [
+          "secondary"
+          "main"
+        ];
         "9" = [
           "secondary"
           "main"
@@ -190,81 +214,70 @@
       on-focused-monitor-changed = [ "move-mouse monitor-lazy-center" ];
       on-window-detected = [
         {
-          "if" = {
-            app-id = "com.apple.systempreferences";
-          };
+          "if" = "test %{app-bundle-id} = com.apple.systempreferences";
           run = "layout floating";
         }
         {
-          "if" = {
-            app-id = "org.mozilla.com.zen.browser";
-            window-title-regex-substring = "^Picture-in-Picture$";
-          };
+          "if" =
+            "test %{app-bundle-id} = org.mozilla.com.zen.browser && test %{window-title} ~= \"^Picture-in-Picture$\"";
           run = "layout floating";
         }
         {
-          "if" = {
-            app-id = "com.hnc.Discord";
-            window-title-regex-substring = "^Discord Updater$";
-          };
+          "if" = "test %{app-bundle-id} = com.hnc.Discord && test %{window-title} ~= \"^Discord Updater$\"";
           run = [ "layout floating" ];
         }
         {
-          "if" = {
-            app-id = "us.zoom.xos";
-          };
+          "if" = "test %{app-bundle-id} = us.zoom.xos";
           run = [ "layout floating" ];
         }
         {
-          "if" = {
-            app-id = "com.spotify.client";
-          };
+          "if" = "test %{app-bundle-id} = com.spotify.client";
           run = "move-node-to-workspace 10";
         }
         {
-          "if" = {
-            app-id = "com.1password.1password";
-          };
+          "if" = "test %{app-bundle-id} = com.1password.1password";
           run = "layout floating";
         }
         {
-          "if" = {
-            app-id = "com.apple.finder";
-            window-title-regex-substring = "^Connect to Server$";
-          };
+          "if" =
+            "test %{app-bundle-id} = com.apple.finder && test %{window-title} ~= \"^Connect to Server$\"";
           run = "layout floating";
         }
         {
-          "if" = {
-            app-id = "com.apple.finder";
-            window-title-regex-substring = "^Connecting to Server$";
-          };
+          "if" =
+            "test %{app-bundle-id} = com.apple.finder && test %{window-title} ~= \"^Connecting to Server$\"";
           run = "layout floating";
         }
         {
-          "if" = {
-            app-id = "com.apple.finder";
-            window-title-regex-substring = "^.* Info$";
-          };
+          "if" = "test %{app-bundle-id} = com.apple.finder && test %{window-title} ~= \"^.* Info$\"";
           run = "layout floating";
         }
         {
-          "if" = {
-            app-id = "com.apple.finder";
-            window-title-regex-substring = "^Copy$";
-          };
+          "if" = "test %{app-bundle-id} = com.apple.finder && test %{window-title} ~= \"^Copy$\"";
           run = "layout floating";
         }
         {
-          "if" = {
-            app-id = "com.parallels.desktop.console";
-          };
+          "if" = "test %{app-bundle-id} = com.parallels.desktop.console";
           run = "layout floating";
         }
         {
-          "if" = {
-            app-id = "com.apple.archiveutility";
-          };
+          "if" = "test %{app-bundle-id} = com.apple.archiveutility";
+          run = "layout floating";
+        }
+        {
+          "if" = "test %{app-bundle-id} = com.justsystems.OnlineUpdate";
+          run = "layout floating";
+        }
+        {
+          "if" = "test %{app-bundle-id} = me.proton.pass.electron";
+          run = "layout floating";
+        }
+        {
+          "if" = "test %{app-bundle-id} = ch.protonvpn.mac";
+          run = "layout floating";
+        }
+        {
+          "if" = "test %{app-bundle-id} ~= \"^com\.adobe\..*$\"";
           run = "layout floating";
         }
       ];
