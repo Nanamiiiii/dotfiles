@@ -32,7 +32,7 @@ return {
             local dictionaries = {}
             local skk_dir = h.os() == "Windows_NT" and "C:\\skkeleton\\" or "~/.skkeleton/"
             local list_cmd = h.os() == "Windows_NT" and "dir /s /b /a-d " .. skk_dir .. "dict"
-                or "eza --icons=never --color=never --absolute "
+                or "eza --icons=never --color=never --absolute=on "
                     .. skk_dir
                     .. "dict/* | awk '{ print $1 }' | grep -vE /$"
             local handle = io.popen(list_cmd)
