@@ -19,7 +19,6 @@ let
     ../../common/apps/skk
     ../../common/editor/neovim
     ../../common/editor/zed
-    ../../common/editor/code
     ../../common/lang
     ../../common/shell/zsh
     ../../common/shell/tmux
