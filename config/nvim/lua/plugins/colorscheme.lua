@@ -17,11 +17,14 @@ return {
                 float = {
                     transparent = true,
                 },
-                neotree = true,
-                noice = true,
-                notify = true,
+                auto_integrations = true,
+                integrations = {
+                    neotree = true,
+                    noice = true,
+                    notify = true,
+                },
             })
-            vim.cmd.colorscheme("catppuccin")
+            vim.cmd.colorscheme("catppuccin-nvim")
         end,
     },
 }
