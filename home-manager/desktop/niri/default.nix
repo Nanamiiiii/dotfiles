@@ -66,11 +66,16 @@ in
     defaultApplications = {
       "inode/directory" = [ "nemo.desktop" ];
       "application/x-gnome-saved-search" = [ "nemo.desktop" ];
-      "text/html" = "firefox.desktop";
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
-      "x-scheme-handler/about" = "firefox.desktop";
-      "x-scheme-handler/unknown" = "firefox.desktop";
+      "application/pdf" = "org.pwmt.zathura.desktop";
+      "text/html" = "microsoft-edge.desktop";
+      "application/xhtml+xml" = "microsoft-edge.desktop";
+      "application/x-mimearchive" = "microsoft-edge.desktop";
+      "x-scheme-handler/http" = "microsoft-edge.desktop";
+      "x-scheme-handler/https" = "microsoft-edge.desktop";
+      "x-scheme-handler/mailto" = "microsoft-edge.desktop";
+      "x-scheme-handler/webcal" = "microsoft-edge.desktop";
+      "x-scheme-handler/about" = "microsoft-edge.desktop";
+      "x-scheme-handler/unknown" = "microsoft-edge.desktop";
     };
   };
 

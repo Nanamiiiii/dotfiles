@@ -93,6 +93,11 @@
 
     llm-agents.url = "github:numtide/llm-agents.nix";
     claude-desktop.url = "github:patrickjaja/claude-desktop-bin";
+
+    clipboard-sync = {
+      url = "github:dnut/clipboard-sync";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {

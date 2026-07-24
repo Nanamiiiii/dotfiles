@@ -1,14 +1,13 @@
 {
   pkgs,
-  pkgs-stable,
   desktop,
-  config,
-  hostname,
   ...
 }:
 let
   desktopPkgs = with pkgs; [
-    pkgs-stable.microsoft-edge
+    (microsoft-edge.override {
+      commandLineArgs = "--ozone-platform=x11";
+    })
     firefox
     discord
     obsidian

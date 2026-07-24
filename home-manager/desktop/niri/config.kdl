@@ -160,8 +160,8 @@ binds {
 
     Mod+Return repeat=false hotkey-overlay-title="Wezterm" { spawn "wezterm"; }
     Mod+G repeat=false hotkey-overlay-title="Nemo" { spawn "nemo"; }
-    Mod+B repeat=false hotkey-overlay-title="Firefox" { spawn "firefox"; }
-    Super+B repeat=false hotkey-overlay-title="Microsoft Edge" { spawn "microsoft-edge"; }
+    Mod+B repeat=false hotkey-overlay-title="Microsoft Edge" { spawn "microsoft-edge"; }
+    Super+B repeat=false hotkey-overlay-title="Firefox" { spawn "firefox"; }
 
     // ---- Noctalia IPC ----
     Mod+Space repeat=false hotkey-overlay-title="App Launcher" {

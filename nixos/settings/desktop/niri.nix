@@ -12,4 +12,5 @@
   };
 
   services.displayManager.defaultSession = "niri";
+  services.clipboard-sync.enable = true;
 }
