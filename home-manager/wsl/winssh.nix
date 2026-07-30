@@ -39,7 +39,7 @@
   };
   programs.zsh = lib.mkIf wslhost {
     envExtra = ''
-      export SSH_AUTH_SOCK=''${XDG_RUNTIME_DIR}wsl-ssh-agent.sock
+      export SSH_AUTH_SOCK=''${XDG_RUNTIME_DIR}/wsl-ssh-agent.sock
     '';
   };
 }
