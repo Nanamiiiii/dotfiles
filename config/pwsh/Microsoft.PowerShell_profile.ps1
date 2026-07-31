@@ -1,7 +1,7 @@
 # aqua
 Set-Item Env:Path "$Env:LOCALAPPDATA\aquaproj-aqua\bin;$Env:Path"
 $Env:AQUA_GLOBAL_CONFIG="$Env:USERPROFILE\dotfiles\aqua\aqua.yaml"
-$Env:AQUA_LOG_LEVEL="fatal"
+$Env:AQUA_LOG_LEVEL="error"
 $Env:AQUA_PROGRESS_BAR="true"
 
 # Override SSH Agent Socket
