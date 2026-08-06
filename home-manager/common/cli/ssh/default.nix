@@ -31,6 +31,11 @@ let
       user = "nanami";
       port = 22;
     };
+    "mafu" = {
+      hostname = "172.27.30.10";
+      user = "myuu";
+      port = 22;
+    };
   };
 in
 {
