@@ -66,6 +66,7 @@ let
     ../../nixos/settings/misc/kdeconnect.nix
     #(import ../../nixos/settings/misc/1password.nix { inherit username; })
     #../../nixos/settings/misc/1password-ext.nix
+    ../../nixos/settings/misc/ssh.nix
   ];
 in
 {
