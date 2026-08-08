@@ -34,7 +34,7 @@
     "toml": true
   },
   "buffer_font_family": "PlemolJP Console NF",
-  "buffer_font_size": 16,
+  "buffer_font_size": 14,
   "icon_theme": "Colored Zed Icons Theme Dark",
   "languages": {
     "CMake": {
@@ -52,6 +52,10 @@
         "!nixd"
       ],
       "tab_size": 2
+    },
+    "Typst": {
+      "soft_wrap": "none",
+      "tab_size": 2
     }
   },
   "lsp": {
@@ -68,6 +72,24 @@
           }
         }
       }
+    },
+    "tinymist": {
+      "initialization_options": {
+        "preview": {
+          "background": {
+            "args": [
+              "--data-plane-host=127.0.0.1:23635",
+              "--invert-colors=never"
+            ],
+            "enabled": true
+          }
+        }
+      },
+      "settings": {
+        "exportPdf": "onSave",
+        "formatterMode": "typstyle",
+        "outputPath": "$root/out/$dir/$name"
+      }
     }
   },
   "minimap": {
@@ -80,7 +102,7 @@
     "light": "Tokyo Night Moon",
     "mode": "system"
   },
-  "ui_font_size": 16,
+  "ui_font_size": 14,
   "vertical_scroll_margin": 5.0,
   "vim_mode": true,
   "load_direnv": "shell_hook"

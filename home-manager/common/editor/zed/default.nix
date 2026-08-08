@@ -12,6 +12,21 @@ in
     package = if (baseSystem == "darwin") then null else pkgs.zed-editor;
     userSettings = {
       vim_mode = true;
+      project_panel = {
+        dock = "left";
+      };
+      outline_panel = {
+        dock = "left";
+      };
+      collaboration_panel = {
+        dock = "left";
+      };
+      agent = {
+        dock = "right";
+      };
+      git_panel = {
+        dock = "left";
+      };
       languages = {
         Make = {
           hard_tabs = true;
@@ -29,6 +44,10 @@ in
         CMake = {
           tab_size = 2;
         };
+        Typst = {
+          tab_size = 2;
+          soft_wrap = "none";
+        };
       };
       lsp = {
         nil = {
@@ -43,6 +62,24 @@ in
             };
           };
         };
+        tinymist = {
+          initialization_options = {
+            preview = {
+              background = {
+                enabled = true;
+                args = [
+                  "--data-plane-host=127.0.0.1:23635"
+                  "--invert-colors=never"
+                ];
+              };
+            };
+          };
+          settings = {
+            exportPdf = "onSave";
+            outputPath = "$root/out/$dir/$name";
+            formatterMode = "typstyle";
+          };
+        };
       };
       relative_line_numbers = true;
       vertical_scroll_margin = 5.0;
@@ -51,8 +88,8 @@ in
         show = "auto";
       };
       show_edit_predictions = false;
-      ui_font_size = 16;
-      buffer_font_size = 16;
+      ui_font_size = 14;
+      buffer_font_size = 14;
       theme = {
         mode = "system";
         light = "Tokyo Night Moon";
@@ -103,6 +140,7 @@ in
       "lua"
       "toml"
       "latex"
+      "typst"
       "tokyo-night"
       "colored-zed-icons-theme"
     ];
