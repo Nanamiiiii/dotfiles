@@ -126,6 +126,7 @@
       darwin,
       nixos-wsl,
       home-manager,
+      git-hooks,
       treefmt-nix,
       cachix-deploy-flake,
       systems,
@@ -138,9 +139,44 @@
     {
       formatter = eachSystem (pkgs: treefmt-nix.lib.mkWrapper pkgs treefmtConfig);
 
-      checks = eachSystem (pkgs: {
-        formatting = (treefmt-nix.lib.evalModule pkgs treefmtConfig).config.build.check self;
-      });
+      checks = eachSystem (
+        pkgs:
+        let
+          treefmt = treefmt-nix.lib.mkWrapper pkgs treefmtConfig;
+        in
+        {
+          formatting = (treefmt-nix.lib.evalModule pkgs treefmtConfig).config.build.check self;
+          pre-commit = git-hooks.lib.${pkgs.system}.run {
+            src = self;
+            hooks.treefmt = {
+              enable = true;
+              entry = "${treefmt}/bin/treefmt --fail-on-change";
+              pass_filenames = false;
+            };
+          };
+        }
+      );
+
+      devShells = eachSystem (
+        pkgs:
+        let
+          treefmt = treefmt-nix.lib.mkWrapper pkgs treefmtConfig;
+          pre-commit-check = git-hooks.lib.${pkgs.system}.run {
+            src = self;
+            hooks.treefmt = {
+              enable = true;
+              entry = "${treefmt}/bin/treefmt --fail-on-change";
+              pass_filenames = false;
+            };
+          };
+        in
+        {
+          default = pkgs.mkShell {
+            inherit (pre-commit-check) shellHook;
+            buildInputs = pre-commit-check.enabledPackages;
+          };
+        }
+      );
 
       packages = eachSystem (
         pkgs:
