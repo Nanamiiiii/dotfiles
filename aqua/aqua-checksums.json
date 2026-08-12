@@ -146,63 +146,63 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.66.0/fastfetch-linux-aarch64.tar.gz",
-      "checksum": "262E0585CA0DBFAA9548A5E10FA159064F2E57583F4C0622047B2FAB8B89CC86",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.0/fastfetch-linux-aarch64.tar.gz",
+      "checksum": "6610A72CF1DD0DF1C711377D5D7562F26FA530A5E2930ADFA14FD7988A9BBA5D",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.66.0/fastfetch-linux-amd64.tar.gz",
-      "checksum": "89AED1A60547F4959300F571D478F2BABD430F3E2702DCFC7731C7A623FEA524",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.0/fastfetch-linux-amd64.tar.gz",
+      "checksum": "F14538F30286F83AFFE129C8FB874D2B13C669365FA2E71533986D188C6C5AF1",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.66.0/fastfetch-macos-aarch64.tar.gz",
-      "checksum": "ACA7DD5C97704573DC79399F963EA919B76443F642D924C020F0243DA496A54C",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.0/fastfetch-macos-aarch64.tar.gz",
+      "checksum": "938DBDD6091D963F91537302FE822703B86A0AF5AF66C7E0E63EB1B0936D9E5A",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.66.0/fastfetch-macos-amd64.tar.gz",
-      "checksum": "F9C7B956888F154458D80F592EA0C6F509109F1EBCE330F814067CC4A742EFB6",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.0/fastfetch-macos-amd64.tar.gz",
+      "checksum": "AC3479DB2C50C97E41E7BD675B5A85096479B537A360F9DD940B8B42BF6DF871",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.66.0/fastfetch-windows-aarch64.zip",
-      "checksum": "6DD67A4E8A8C138260CC1AF067E7C261656E62DC0303AB03DDFB0EEC6EF6F1F4",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.0/fastfetch-windows-aarch64.zip",
+      "checksum": "F4A6EC15B4503D6F94B6D1060659610DE3312F40A5FE9737EEE093133A2781EE",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.66.0/fastfetch-windows-amd64.zip",
-      "checksum": "3035B8ADD360BC3142CE81AC39BE352D3738273224E232195217F01C2398C87A",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.0/fastfetch-windows-amd64.zip",
+      "checksum": "259E2F57C5ED09C5E1903032E16378056E9DD908DFF2FC4015AE74EA968A1B9D",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.63.1/lazygit_0.63.1_darwin_arm64.tar.gz",
-      "checksum": "B963E9D0A1F4649708C594AC6C999CDCD435F8E679E220E78E87C4642BADEDD6",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.0/lazygit_0.64.0_darwin_arm64.tar.gz",
+      "checksum": "DF8D2DD27CDC1075785F1ABB85B74FE393FCDC1F3FDF6CB2B587FEB3CE72BA33",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.63.1/lazygit_0.63.1_darwin_x86_64.tar.gz",
-      "checksum": "5CC02389CC189B1146AA330615F0C547996395CA7661E56F946670947E803006",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.0/lazygit_0.64.0_darwin_x86_64.tar.gz",
+      "checksum": "164D003F2EAA73E898D218882EC1EB9AF517D3F3A351DFF736390FC649E1B838",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.63.1/lazygit_0.63.1_linux_arm64.tar.gz",
-      "checksum": "555DBC9A8EFCF2E33BC24E7FBD9463E9FA375E3C5E23CC270763733C38EEAE36",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.0/lazygit_0.64.0_linux_arm64.tar.gz",
+      "checksum": "D286487EB18B2B82FCCFD0F1C55D8445E6EB82C08CED3B9EB3E5BE0E7C627FD0",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.63.1/lazygit_0.63.1_linux_x86_64.tar.gz",
-      "checksum": "8E033BC78C8E192DEE9510E951F6C9E154289B7198D22C924ED1D0A951B0DAC1",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.0/lazygit_0.64.0_linux_x86_64.tar.gz",
+      "checksum": "7996236F2C1DD2643D96C3D67A1F7FCD2560BF08BCB7F6BE073E26FB29167AC6",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.63.1/lazygit_0.63.1_windows_arm64.zip",
-      "checksum": "8CED1A9E788CB9B5A8E27F61080CEECEDE0D76E86FB8ED74D882D2982D480458",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.0/lazygit_0.64.0_windows_arm64.zip",
+      "checksum": "C126DB1D2E02135307443B60F80C51A1CB30A1852F250E438FCB944866896BBD",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.63.1/lazygit_0.63.1_windows_x86_64.zip",
-      "checksum": "230721FB5F0D5C0E91555BD4BD76F5213477B116027F1C0FE222B70D49F58EA0",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.0/lazygit_0.64.0_windows_x86_64.zip",
+      "checksum": "D8B723DD25E098C4A229E7D9A87FF1C3A5779902EBEA242B8678F4AC195C1D90",
       "algorithm": "sha256"
     },
     {
@@ -341,33 +341,33 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.11/tree-sitter-linux-arm64.gz",
-      "checksum": "E47DD59BF2F21AD7C15771546A724464EE3C008A60FBB61C6860BD19A44B3060",
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.12/tree-sitter-linux-arm64.gz",
+      "checksum": "CFBF3D9AAD8E326878AB1846885A9C2B782A0333273591616F34BF556D525586",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.11/tree-sitter-linux-x64.gz",
-      "checksum": "8DAC3C89BB632EECE700EA7A261AD963B251F2228C4AEF3B58458EBEA8DBE4EB",
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.12/tree-sitter-linux-x64.gz",
+      "checksum": "D00AC0DAEFC4BF8C4B57842A5C0509927232FAAD1D83157B64FBAD4E2E8D9A8B",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.11/tree-sitter-macos-arm64.gz",
-      "checksum": "0BB646B2A29007233BD44855F00D0B8E238084D5B442F097D841B476318C2C90",
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.12/tree-sitter-macos-arm64.gz",
+      "checksum": "A7DDEFF2507391EBDFD0B8FA0DFE91BABED291EA00D86426CB0E6CFADE891697",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.11/tree-sitter-macos-x64.gz",
-      "checksum": "0DA547D2622BA1583E4C748BB44DB5B79AF56462DA41ACF377B9FDC2EB2CD49F",
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.12/tree-sitter-macos-x64.gz",
+      "checksum": "6827B218BCE4D5403CB76AE3C269BC836D3124B75BB3477197EE9A8C8F6E79DC",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.11/tree-sitter-windows-arm64.gz",
-      "checksum": "436C5FD1F1B999FEDB6BA007C43F73BDFEE01549A965420C0CEE6A7F6C7F1A44",
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.12/tree-sitter-windows-arm64.gz",
+      "checksum": "251E2FED7A0D2A66306C9484B8364162080DBBED0C31D370CE63FA3429C1137D",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.11/tree-sitter-windows-x64.gz",
-      "checksum": "9D836A8C405ED50CEA6B3410905576DE3BFF2B42CA12EDC1E825EC86FE918A5F",
+      "id": "github_release/github.com/tree-sitter/tree-sitter/v0.26.12/tree-sitter-windows-x64.gz",
+      "checksum": "3445CF022EFBC3FFCC391A55CCB29A3CE277EEA91C719247C2DAD4DD9DAC70F6",
       "algorithm": "sha256"
     },
     {
@@ -451,8 +451,8 @@
       "algorithm": "sha256"
     },
     {
-      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.547.0/registry.yaml",
-      "checksum": "BE4FB3294CC6A9E6B9D674C9A93093B902AE62244E5B1B80DC2C451C01E61E09",
+      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.550.0/registry.yaml",
+      "checksum": "CB90BB436C94AD3922E39BC88D281320CC7D9C2200EF2700197D989E74581FFA",
       "algorithm": "sha256"
     }
   ]
