@@ -55,6 +55,7 @@ let
     ../../nixos/settings/desktop/fonts.nix
     ../../nixos/settings/desktop/pipewire.nix
     ../../nixos/settings/desktop/xdg.nix
+    ../../nixos/settings/desktop/noctalia.nix
   ];
 
   # Misc
