@@ -146,63 +146,63 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.0/fastfetch-linux-aarch64.tar.gz",
-      "checksum": "6610A72CF1DD0DF1C711377D5D7562F26FA530A5E2930ADFA14FD7988A9BBA5D",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.1/fastfetch-linux-aarch64.tar.gz",
+      "checksum": "B974B76E3D8DF90311440A2250C83561AA0A863F129925285F2789D932B4CBAA",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.0/fastfetch-linux-amd64.tar.gz",
-      "checksum": "F14538F30286F83AFFE129C8FB874D2B13C669365FA2E71533986D188C6C5AF1",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.1/fastfetch-linux-amd64.tar.gz",
+      "checksum": "ADC8A9EB64ECCEF267E50BB1E6F9A767BB608DA5EE4A3B652EF36A10D9105D4D",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.0/fastfetch-macos-aarch64.tar.gz",
-      "checksum": "938DBDD6091D963F91537302FE822703B86A0AF5AF66C7E0E63EB1B0936D9E5A",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.1/fastfetch-macos-aarch64.tar.gz",
+      "checksum": "4A9B6847EC600EE1ADB222EC5E1DF60BF0E43768F9A21FBF20B14EAEF9FECB0B",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.0/fastfetch-macos-amd64.tar.gz",
-      "checksum": "AC3479DB2C50C97E41E7BD675B5A85096479B537A360F9DD940B8B42BF6DF871",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.1/fastfetch-macos-amd64.tar.gz",
+      "checksum": "C114D6C2FE8D0D2DE0A896E5BB397004785599B3DF4ED368EA16C125E3C6DB79",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.0/fastfetch-windows-aarch64.zip",
-      "checksum": "F4A6EC15B4503D6F94B6D1060659610DE3312F40A5FE9737EEE093133A2781EE",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.1/fastfetch-windows-aarch64.zip",
+      "checksum": "C0594F59C4A2239C22317A859598B66FC732A4AAB794BEC896CD73EC5DC540D1",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.0/fastfetch-windows-amd64.zip",
-      "checksum": "259E2F57C5ED09C5E1903032E16378056E9DD908DFF2FC4015AE74EA968A1B9D",
+      "id": "github_release/github.com/fastfetch-cli/fastfetch/2.67.1/fastfetch-windows-amd64.zip",
+      "checksum": "19AEB34E4BB5B19F09236AFBB6FB617241828CD94D967E7108C5EB3471CD26D8",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.0/lazygit_0.64.0_darwin_arm64.tar.gz",
-      "checksum": "DF8D2DD27CDC1075785F1ABB85B74FE393FCDC1F3FDF6CB2B587FEB3CE72BA33",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.1/lazygit_0.64.1_darwin_arm64.tar.gz",
+      "checksum": "A106B4C1BF8AB7539C4AFB40A01CBDE263A96513CDCB8BF7630278F07E88CD99",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.0/lazygit_0.64.0_darwin_x86_64.tar.gz",
-      "checksum": "164D003F2EAA73E898D218882EC1EB9AF517D3F3A351DFF736390FC649E1B838",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.1/lazygit_0.64.1_darwin_x86_64.tar.gz",
+      "checksum": "F727FDF2EFA46F78D102639EAFE085CEF437928DA1E9EC79EC8E203B8A12F2A2",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.0/lazygit_0.64.0_linux_arm64.tar.gz",
-      "checksum": "D286487EB18B2B82FCCFD0F1C55D8445E6EB82C08CED3B9EB3E5BE0E7C627FD0",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.1/lazygit_0.64.1_linux_arm64.tar.gz",
+      "checksum": "8B7CA3B344E60340AD1F89F29B9868EE39BCABA5BB92EE818BBE65476BB8B6E7",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.0/lazygit_0.64.0_linux_x86_64.tar.gz",
-      "checksum": "7996236F2C1DD2643D96C3D67A1F7FCD2560BF08BCB7F6BE073E26FB29167AC6",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.1/lazygit_0.64.1_linux_x86_64.tar.gz",
+      "checksum": "F8EA237C41F194CD799B48505518BFDAAE4EDF5A2AD6BD3D898E939785EE4532",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.0/lazygit_0.64.0_windows_arm64.zip",
-      "checksum": "C126DB1D2E02135307443B60F80C51A1CB30A1852F250E438FCB944866896BBD",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.1/lazygit_0.64.1_windows_arm64.zip",
+      "checksum": "D9AFBC645D1A7F7CB5144DA9A32D562E4EBE9D6BACADBD64BB820635A18E371B",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.0/lazygit_0.64.0_windows_x86_64.zip",
-      "checksum": "D8B723DD25E098C4A229E7D9A87FF1C3A5779902EBEA242B8678F4AC195C1D90",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.64.1/lazygit_0.64.1_windows_x86_64.zip",
+      "checksum": "DE8ECA2CF2E75857882D313BF9DFC706A7AAE893951AB29DF706C99B525661AE",
       "algorithm": "sha256"
     },
     {
@@ -451,8 +451,8 @@
       "algorithm": "sha256"
     },
     {
-      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.550.0/registry.yaml",
-      "checksum": "CB90BB436C94AD3922E39BC88D281320CC7D9C2200EF2700197D989E74581FFA",
+      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.552.0/registry.yaml",
+      "checksum": "24EE3C66CE9DD9C2A5F790268252399A3614A746F50DB24158096974B98C8618",
       "algorithm": "sha256"
     }
   ]
