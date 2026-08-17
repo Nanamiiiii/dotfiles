@@ -146,7 +146,7 @@
         in
         {
           formatting = (treefmt-nix.lib.evalModule pkgs treefmtConfig).config.build.check self;
-          pre-commit = git-hooks.lib.${pkgs.system}.run {
+          pre-commit = git-hooks.lib.${pkgs.stdenv.hostPlatform.system}.run {
             src = self;
             hooks.treefmt = {
               enable = true;
@@ -161,7 +161,7 @@
         pkgs:
         let
           treefmt = treefmt-nix.lib.mkWrapper pkgs treefmtConfig;
-          pre-commit-check = git-hooks.lib.${pkgs.system}.run {
+          pre-commit-check = git-hooks.lib.${pkgs.stdenv.hostPlatform.system}.run {
             src = self;
             hooks.treefmt = {
               enable = true;
