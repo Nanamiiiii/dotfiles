@@ -96,15 +96,14 @@
     },
     "claude-desktop": {
       "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
+        "upstream": "upstream"
       },
       "locked": {
-        "lastModified": 1784920452,
-        "narHash": "sha256-8ldwEU9oU1YjVDvMZPfD53Tr5iH3pPLNFrlkaKt8LKM=",
+        "lastModified": 1785412079,
+        "narHash": "sha256-BxTUNq99pLhXQnpHn12qns3wojka78x5o+o5qkcLLuE=",
         "owner": "patrickjaja",
         "repo": "claude-desktop-bin",
-        "rev": "f2b80ba4b0936de6f17ecfbfb640a08a0ca49718",
+        "rev": "0897cd7b6ed08a1e3774a92e5ad31beed52ceb21",
         "type": "github"
       },
       "original": {
@@ -976,11 +975,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1784796856,
-        "narHash": "sha256-wWFrV5/Qbm+lyt5x20E/bSbfJiGKMo4RCxZV8cl/WZI=",
+        "lastModified": 1787070829,
+        "narHash": "sha256-vXNVDVtvfiQuXthP0NHPFdNvvMTkGpx0UP8oddIWbNk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e2587caef70cea85dd97d7daab492899902dbf5d",
+        "rev": "0ae2bc1419c3f345984c2629e72e7a631820fa4d",
         "type": "github"
       },
       "original": {
@@ -1442,6 +1441,25 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "upstream": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1787128676,
+        "narHash": "sha256-m2vpYTjeX8BQrOhl7rOAsrjzhPUxrelDsx6NlKosUxk=",
+        "owner": "patrickjaja",
+        "repo": "claude-desktop-extra",
+        "rev": "3bc046a722ed728a16430bdc5013fcf8f64d233a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "patrickjaja",
+        "repo": "claude-desktop-extra",
         "type": "github"
       }
     },

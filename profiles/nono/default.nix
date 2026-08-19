@@ -22,7 +22,6 @@ let
   brewApps = [
     ../../nix-darwin/settings/brew/keyboard.nix
     ../../nix-darwin/settings/brew/skk.nix
-    ../../nix-darwin/settings/brew/vpn.nix
     ../../nix-darwin/settings/brew/fuse.nix
     ../../nix-darwin/settings/brew/proton.nix
     ../../nix-darwin/settings/brew/devtool.nix
