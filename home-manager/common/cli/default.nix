@@ -206,7 +206,6 @@ in
     felix-fm
     proxychains-ng
     clock-tui
-    gemini-cli
     devenv
     obsidian-headless
   ];

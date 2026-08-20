@@ -90,7 +90,7 @@
         SDL_mixer
         SDL2_ttf
         SDL2_mixer
-        libappindicator-gtk2
+        libappindicator
         libcaca
         libcanberra
         libgcrypt
