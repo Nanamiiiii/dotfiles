@@ -37,7 +37,6 @@ let
     ../../nixos/settings/system/yubikey.nix
     ../../nixos/settings/system/fwupd.nix
     (import ../../nixos/settings/system/accountsservice.nix {
-      inherit username;
       avatar = ../../assets/avatar.png;
     })
     ../../nixos/settings/system/tailscale.nix
@@ -70,8 +69,6 @@ let
     ../../nixos/settings/misc/gvfs.nix
     ../../nixos/settings/misc/kdeconnect.nix
     ../../nixos/settings/misc/sops.nix
-    #(import ../../nixos/settings/misc/1password.nix { inherit username; })
-    #../../nixos/settings/misc/1password-ext.nix
   ];
 in
 {

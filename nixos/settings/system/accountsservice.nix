@@ -1,8 +1,7 @@
 {
-  username,
   avatar ? ../../../assets/avatar.png,
-  ...
 }:
+{ username, ... }:
 {
   services.accounts-daemon.enable = true;
 
