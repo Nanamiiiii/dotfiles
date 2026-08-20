@@ -95,7 +95,7 @@
     claude-desktop.url = "github:patrickjaja/claude-desktop-bin";
 
     clipboard-sync = {
-      url = "github:dnut/clipboard-sync";
+      url = "github:Nanamiiiii/clipboard-sync";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

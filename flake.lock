@@ -119,15 +119,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1759253700,
-        "narHash": "sha256-pDsDzWEBaZlT9lHsBZMGm8aBJGncMxqerKwkzjEM/EI=",
-        "owner": "dnut",
+        "lastModified": 1787196156,
+        "narHash": "sha256-Rchh5PFk5AkG+DKDD/lNfFQVl4PRN3gLIPn+/VznWcc=",
+        "owner": "Nanamiiiii",
         "repo": "clipboard-sync",
-        "rev": "138a59b8f3044dd9e7dcccd9607bbbb48c14bae6",
+        "rev": "213b247b94b30044f2b298436ac885ddbb0318fb",
         "type": "github"
       },
       "original": {
-        "owner": "dnut",
+        "owner": "Nanamiiiii",
         "repo": "clipboard-sync",
         "type": "github"
       }
