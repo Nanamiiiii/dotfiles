@@ -39,11 +39,15 @@ let
     ../../nixos/settings/system/yubikey.nix
     ../../nixos/settings/system/fwupd.nix
     (import ../../nixos/settings/system/accountsservice.nix {
-      inherit username;
       avatar = ../../assets/avatar.png;
     })
     ../../nixos/settings/system/tailscale.nix
     ../../nixos/settings/system/upower.nix
+    (import ../../nixos/settings/system/wireguard.nix {
+      wgInterfaces = {
+        wgh = false;
+      };
+    })
   ];
 
   # Graphics
@@ -72,10 +76,7 @@ let
     ../../nixos/settings/misc/ssh.nix
     ../../nixos/settings/misc/sops.nix
     ../../nixos/settings/misc/nfs.nix
-    #(import ../../nixos/settings/misc/1password.nix { inherit username; })
-    #../../nixos/settings/misc/1password-ext.nix
     ../../nixos/settings/misc/steam.nix
-    #../../nixos/settings/misc/virtualbox.nix
   ];
 in
 {
@@ -89,6 +90,11 @@ in
   ++ displaySettings
   ++ desktopSettings
   ++ misc;
+
+  sops.secrets."wgh.conf" = {
+    format = "binary";
+    sopsFile = ./secrets/wgh.conf.sops;
+  };
 
   services.snapper = {
     configs = {
