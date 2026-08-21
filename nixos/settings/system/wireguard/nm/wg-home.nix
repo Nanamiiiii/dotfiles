@@ -35,7 +35,7 @@ in
             keepAlive = 25;
           })
         ];
-        ipv4Dns = [ "172.16.0.1" ];
+        ipv4Dns = [ "10.27.1.1" ];
         inherit
           ipv4Addrs
           ipv6Addrs
@@ -78,7 +78,7 @@ in
             keepAlive = 25;
           })
         ];
-        ipv4Dns = [ "172.16.0.1" ];
+        ipv4Dns = [ "10.27.1.1" ];
         inherit
           ipv4Addrs
           ipv6Addrs

@@ -1,4 +1,3 @@
-{ lib, wslhost, ... }:
 let
   tyoHosts = {
     "router" = {
@@ -37,16 +36,32 @@ let
       port = 22;
     };
   };
+
+  wgHosts = {
+    "nazupi" = {
+      hostname = "10.27.0.1";
+      user = "myuu";
+      port = 22;
+    };
+    "nacho-wg" = {
+      hostname = "10.27.1.12";
+      user = "myuu";
+      port = 22;
+    };
+  };
 in
 {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    settings = tyoHosts // {
-      "*" = {
-        forwardAgent = true;
-        serverAliveInterval = 60;
+    settings =
+      tyoHosts
+      // wgHosts
+      // {
+        "*" = {
+          forwardAgent = true;
+          serverAliveInterval = 60;
+        };
       };
-    };
   };
 }
