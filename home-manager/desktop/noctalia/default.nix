@@ -90,6 +90,9 @@
               displayMode = "onhover";
             }
             {
+              id = "plugin:network-manager-vpn";
+            }
+            {
               id = "Network";
               displayMode = "onhover";
             }
@@ -332,6 +335,9 @@
               id = "Network";
             }
             {
+              id = "plugin:network-manager-vpn";
+            }
+            {
               id = "Bluetooth";
             }
             {
@@ -370,7 +376,7 @@
             id = "audio-card";
           }
           {
-            enabled = false;
+            enabled = true;
             id = "brightness-card";
           }
           {
@@ -642,8 +648,20 @@
           url = "https://github.com/noctalia-dev/noctalia-plugins";
         }
       ];
-      states = { };
+      states = {
+        network-manager-vpn = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+      };
     };
-    pluginSettings = { };
+    pluginSettings = {
+      network-manager-vpn = {
+        displayMode = "onhover";
+        disconnectedColor = "none";
+        connectedColor = "primary";
+        disableToastNotifications = false;
+      };
+    };
   };
 }

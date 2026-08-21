@@ -170,6 +170,9 @@ in
           displayMode = "onhover";
         }
         {
+          id = "plugin:network-manager-vpn";
+        }
+        {
           id = "Network";
           displayMode = "onhover";
         }
@@ -201,6 +204,12 @@ in
           iconColor = "none";
         }
       ];
+    };
+  };
+
+  programs.noctalia-shell.pluginSettings = {
+    network-manager-vpn = {
+      displayMode = lib.mkForce "alwaysHide";
     };
   };
 
