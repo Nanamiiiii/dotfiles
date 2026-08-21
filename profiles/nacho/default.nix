@@ -26,6 +26,7 @@ let
   # System
   systemSettings = [
     (import ../../nixos/settings/system/networking.nix { hostName = "nacho"; })
+    ../../nixos/settings/system/networkmanager.nix
     ../../nixos/settings/system/security.nix
     ../../nixos/settings/system/user.nix
     ../../nixos/settings/system/lab-ldap-user.nix

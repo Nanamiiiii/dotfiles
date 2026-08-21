@@ -26,6 +26,7 @@ let
   # System
   systemSettings = [
     (import ../../nixos/settings/system/networking.nix { hostName = "yuki"; })
+    ../../nixos/settings/system/networkmanager.nix
     ../../nixos/settings/system/security.nix
     ../../nixos/settings/system/user.nix
     ../../nixos/settings/system/environment.nix
@@ -40,6 +41,14 @@ let
       avatar = ../../assets/avatar.png;
     })
     ../../nixos/settings/system/upower.nix
+    (import ../../nixos/settings/system/wireguard/nm/wg-home.nix {
+      ipv4Addrs = [ "10.27.1.11/24" ];
+      ipv6Addrs = [ "fd00:1::11/64" ];
+    })
+    (import ../../nixos/settings/system/wireguard/nm/wg-lab.nix {
+      ipv4Addrs = [ "10.27.3.11/24" ];
+      ipv6Addrs = [ "fd00:3::11/64" ];
+    })
   ];
 
   # Graphics
@@ -81,6 +90,11 @@ in
   ++ displaySettings
   ++ desktopSettings
   ++ misc;
+
+  sops.secrets.wgenv = {
+    format = "dotenv";
+    sopsFile = ./secrets/wireguard.env;
+  };
 
   boot.initrd.systemd.enable = true;
 
