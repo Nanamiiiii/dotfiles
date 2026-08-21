@@ -35,7 +35,6 @@ let
     (import ../../nixos/settings/system/accountsservice.nix {
       avatar = ../../assets/avatar.png;
     })
-    ../../nixos/settings/system/tailscale.nix
     ../../nixos/settings/system/upower.nix
   ];
 

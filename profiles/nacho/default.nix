@@ -41,12 +41,10 @@ let
     (import ../../nixos/settings/system/accountsservice.nix {
       avatar = ../../assets/avatar.png;
     })
-    ../../nixos/settings/system/tailscale.nix
     ../../nixos/settings/system/upower.nix
-    (import ../../nixos/settings/system/wireguard.nix {
-      wgInterfaces = {
-        wgh = false;
-      };
+    (import ../../nixos/settings/system/wireguard/nm/wg-home.nix {
+      ipv4Addrs = [ "10.27.1.12/24" ];
+      ipv6Addrs = [ "fd00:1::12/64" ];
     })
   ];
 
@@ -91,9 +89,9 @@ in
   ++ desktopSettings
   ++ misc;
 
-  sops.secrets."wgh.conf" = {
-    format = "binary";
-    sopsFile = ./secrets/wgh.conf.sops;
+  sops.secrets.wgenv = {
+    format = "dotenv";
+    sopsFile = ./secrets/wireguard.env;
   };
 
   services.snapper = {

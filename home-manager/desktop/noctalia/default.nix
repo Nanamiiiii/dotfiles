@@ -90,9 +90,6 @@
               displayMode = "onhover";
             }
             {
-              id = "plugin:tailscale";
-            }
-            {
               id = "Network";
               displayMode = "onhover";
             }
@@ -645,30 +642,8 @@
           url = "https://github.com/noctalia-dev/noctalia-plugins";
         }
       ];
-      states = {
-        tailscale = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-      };
+      states = { };
     };
-    pluginSettings = {
-      tailscale = {
-        refreshInterval = 5000;
-        compactMode = true;
-        showIpAddress = true;
-        showPeerCount = true;
-        hideDisconnected = false;
-        hideMullvadExitNodes = true;
-        showSearchBar = false;
-        terminalCommand = "wezterm";
-        sshUsername = "${username}";
-        pingCount = 5;
-        defaultPeerAction = "copy-ip";
-        taildropEnabled = true;
-        taildropDownloadDir = "~/Downloads";
-        taildropReceiveMode = "operator";
-      };
-    };
+    pluginSettings = { };
   };
 }

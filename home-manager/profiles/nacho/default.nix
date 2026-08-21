@@ -170,9 +170,6 @@ in
           displayMode = "onhover";
         }
         {
-          id = "plugin:tailscale";
-        }
-        {
           id = "Network";
           displayMode = "onhover";
         }

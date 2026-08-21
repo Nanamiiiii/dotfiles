@@ -6,7 +6,7 @@ keys:
   - &suisui age1ygjhau25s4q3raj3eempssxc0df9urvh3cy8zcmmsq9h67pvfetsjpvwhq
   - &nono age1tf42777r4tkylm8tpt59yp6yzm55fx7syurjg6x4vnzdsh0xyskq2pq7fj
 creation_rules:
-  - path_regex: ^secrets/[^/]+\.(yaml|json|ini|sops)$
+  - path_regex: ^secrets/[^/]+\.(yaml|json|ini|env|sops)$
     key_groups:
     - age:
       - *admin
@@ -14,27 +14,27 @@ creation_rules:
       - *suisui
       - *yuki
       - *nono
-  - path_regex: ^home-manager/secrets/[^/]+\.(yaml|json|ini|sops)$
+  - path_regex: ^home-manager/secrets/[^/]+\.(yaml|json|ini|env|sops)$
     key_groups:
     - age:
       - *admin
       - *myuu
-  - path_regex: ^profiles/nacho/(?:secrets|secrets/[^/]+)\.(?:yaml|json|ini|sops)$
+  - path_regex: ^profiles/nacho/(?:secrets|secrets/[^/]+)\.(?:yaml|json|ini|env|sops)$
     key_groups:
     - age:
       - *admin
       - *nacho
-  - path_regex: ^profiles/suisui/(?:secrets|secrets/[^/]+)\.(?:yaml|json|ini|sops)$
+  - path_regex: ^profiles/suisui/(?:secrets|secrets/[^/]+)\.(?:yaml|json|ini|env|sops)$
     key_groups:
     - age:
       - *admin
       - *suisui
-  - path_regex: ^profiles/yuki/(?:secrets|secrets/[^/]+)\.(?:yaml|json|ini|sops)$
+  - path_regex: ^profiles/yuki/(?:secrets|secrets/[^/]+)\.(?:yaml|json|ini|env|sops)$
     key_groups:
     - age:
       - *admin
       - *yuki
-  - path_regex: ^profiles/nono/(?:secrets|secrets/[^/]+)\.(?:yaml|json|ini|sops)$
+  - path_regex: ^profiles/nono/(?:secrets|secrets/[^/]+)\.(?:yaml|json|ini|env|sops)$
     key_groups:
     - age:
       - *admin
