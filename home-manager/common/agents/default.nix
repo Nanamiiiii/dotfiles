@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  desktop,
+  ...
+}:
 let
   baseSystem = builtins.elemAt (builtins.split "-" pkgs.stdenv.hostPlatform.system) 2;
 in
@@ -9,5 +14,8 @@ in
       claude-code
       codex
     ]
-    ++ lib.optional (baseSystem == "linux") pkgs.llm-agents.claude-desktop;
+    ++ lib.optionals (baseSystem == "linux" && desktop) [
+      pkgs.llm-agents.claude-desktop
+      pkgs.llm-agents.chatgpt
+    ];
 }
