@@ -116,102 +116,38 @@ in
     };
   };
 
-  programs.noctalia-shell.settings.bar = {
-    barType = lib.mkForce "floating";
-    position = lib.mkForce "left";
-    density = lib.mkForce "comfortable";
-    widgets = lib.mkForce {
-      left = [
-        {
-          id = "Launcher";
-          useDistroLogo = true;
-          enableColorization = true;
-          iconColor = "primary";
-        }
-        {
-          id = "MediaMini";
-        }
-        {
-          id = "ActiveWindow";
-          colorizeIcons = true;
-          hideMode = "hidden";
-          maxWidth = 300;
-          scrollingMode = "hover";
-          showIcon = true;
-          useFixedWidth = false;
-        }
-      ];
-      center = [
-        {
-          id = "Workspace";
-          labelMode = "none";
-          pillSize = 0.4;
-        }
-      ];
-      right = [
-        {
-          id = "SystemMonitor";
-          compactMode = false;
-          useMonospaceFont = true;
-          showCpuUsage = true;
-          showCpuTemp = true;
-          showMemoryUsage = true;
-        }
-        {
-          id = "Volume";
-          displayMode = "onhover";
-        }
-        {
-          id = "Brightness";
-          displayMode = "onhover";
-        }
-        {
-          id = "Bluetooth";
-          displayMode = "onhover";
-        }
-        {
-          id = "plugin:network-manager-vpn";
-        }
-        {
-          id = "Network";
-          displayMode = "onhover";
-        }
-        {
-          id = "Tray";
-          blacklist = [ ];
-          colorizeIcons = false;
-          drawerEnabled = true;
-          hidePassive = false;
-          pinned = [ ];
-        }
-        {
-          id = "NotificationHistory";
-          showUnreadBadge = true;
-          hideWhenZero = true;
-        }
-        {
-          id = "Clock";
-          formatVertical = "HH mm -- dd MMM";
-          useCustomFont = true;
-          customFont = "PlemolJP HS SemiBold";
-        }
-        {
-          id = "ControlCenter";
-          icon = "settings";
-        }
-        {
-          id = "SessionMenu";
-          iconColor = "none";
-        }
-      ];
-    };
+  programs.noctalia.settings.bar.main = {
+    position = lib.mkForce "right";
+    thickness = lib.mkForce 44;
+    start = lib.mkForce [
+      "launcher"
+      "media"
+      "active_window"
+    ];
+    center = lib.mkForce [ "workspaces" ];
+    end = lib.mkForce [
+      "group:system-monitor"
+      "volume"
+      "brightness"
+      "bluetooth"
+      "network"
+      "tray"
+      "notifications"
+      "clock"
+      "settings"
+      "session"
+    ];
   };
 
-  programs.noctalia-shell.pluginSettings = {
-    network-manager-vpn = {
-      displayMode = lib.mkForce "alwaysHide";
-    };
+  programs.noctalia.settings.widget.clock = {
+    format = lib.mkForce "{:%H %M -- %d %b}";
+    font_family = lib.mkForce "PlemolJP HS SemiBold";
+    font_weight = lib.mkForce 600;
   };
+
+  programs.noctalia.settings.widget.network.show_label = lib.mkForce false;
+
+  programs.noctalia.settings.notification.position = lib.mkForce "bottom_right";
 
   xdg.configFile."onedrive/sync_list".text = ''
     Books
