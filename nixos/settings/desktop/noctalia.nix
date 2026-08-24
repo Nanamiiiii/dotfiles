@@ -1,6 +1,7 @@
+{ lib, ... }:
 {
-  security.pam.services.noctalia = {
-    fprintAuth = true;
+  security.pam.services.login = {
+    fprintAuth = lib.mkForce true;
     unixAuth = true;
   };
 }
