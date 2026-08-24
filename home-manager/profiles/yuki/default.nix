@@ -99,6 +99,33 @@ in
     '';
   };
 
+  programs.noctalia.settings.widget = {
+    battery.show_label = false;
+    brightness.show_label = false;
+    media.hide_when_no_media = true;
+    network.show_label = false;
+    tray = {
+      drawer = true;
+      drawer_columns = 5;
+    };
+    volume.show_label = false;
+  };
+
+  programs.noctalia.settings.bar.main.capsule_group = lib.mkForce [
+    {
+      id = "system-monitor";
+      enabled = true;
+      members = [
+        "cpu_usage"
+        "cpu_temp"
+        "ram_usage"
+      ];
+      padding = 6.0;
+      widget_spacing = 2;
+      accordion = false;
+    }
+  ];
+
   sops.secrets = {
     ssh-hosts-kasalab = { };
     ssh-hosts-apal = { };
