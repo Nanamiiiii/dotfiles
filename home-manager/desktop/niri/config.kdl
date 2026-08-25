@@ -145,9 +145,21 @@ window-rule {
 
 // for microsoft-edge
 window-rule {
-    match app-id=r#"^$"#
-    match title=r#"^$"#
+    match app-id="^$" title="^$"
     open-floating true
+    open-focused false
+    default-floating-position x=4 y=4 relative-to="bottom-right"
+    geometry-corner-radius 0
+    clip-to-geometry false
+    focus-ring {
+        off
+    }
+    border {
+        off
+    }
+    shadow {
+        off
+    }
 }
 
 layer-rule {

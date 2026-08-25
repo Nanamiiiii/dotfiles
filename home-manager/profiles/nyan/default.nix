@@ -37,7 +37,7 @@ let
   ];
 
   securityConfigs = [
-    #../../security/yubikey
+    ../../security/yubikey
   ];
 
   serviceConfigs = [
@@ -108,17 +108,25 @@ in
       ];
       center = lib.mkForce [ "workspaces" ];
       end = lib.mkForce [
-        "group:system-monitor"
-        "group:sound"
-        "brightness"
-        "bluetooth"
-        "network"
-        "tray"
-        "notifications"
         "clock"
         "settings"
         "session"
       ];
+      monitor.PA279CRV = {
+        match = "PA279CRV";
+        end = [
+          "group:system-monitor"
+          "group:sound"
+          "brightness"
+          "bluetooth"
+          "network"
+          "tray"
+          "notifications"
+          "clock"
+          "settings"
+          "session"
+        ];
+      };
     };
     widget = {
       clock = {
@@ -132,7 +140,11 @@ in
         drawer_columns = 5;
       };
     };
-    notification.position = lib.mkForce "bottom_right";
+    notification = {
+      position = lib.mkForce "bottom_right";
+      monitors = [ "PA279CRV" ];
+    };
+    osd.monitors = [ "PA279CRV" ];
   };
 
   home.file = {
@@ -141,6 +153,12 @@ in
     };
     ".ssh/conf.d/apal.conf" = {
       source = symlink "${config.sops.secrets.ssh-hosts-apal.path}";
+    };
+  };
+
+  sops.secrets = {
+    pam-u2f = {
+      sopsFile = ../../secrets/nyan.yaml;
     };
   };
 

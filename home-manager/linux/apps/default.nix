@@ -5,9 +5,10 @@
 }:
 let
   desktopPkgs = with pkgs; [
-    (microsoft-edge.override {
-      commandLineArgs = "--ozone-platform=x11";
-    })
+    #(microsoft-edge.override {
+    #  commandLineArgs = "--ozone-platform=x11";
+    #})
+    microsoft-edge
     firefox
     discord
     obsidian

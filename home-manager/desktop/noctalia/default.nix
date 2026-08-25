@@ -196,7 +196,7 @@
         collapse_on_dismiss = true;
       };
       osd = {
-        position = "top_right";
+        position = "bottom_center";
         background_opacity = 1.0;
       };
       audio = {
