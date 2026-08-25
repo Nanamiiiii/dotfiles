@@ -1,0 +1,19 @@
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            options "ctrl:nocaps"
+        }
+        numlock
+    }
+
+    mouse {
+        accel-profile "flat"
+    }
+
+    warp-mouse-to-focus
+
+    mod-key "Alt"
+    mod-key-nested "Super"
+}
+

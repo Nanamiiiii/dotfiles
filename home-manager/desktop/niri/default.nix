@@ -1,8 +1,5 @@
-{
-  pkgs,
-  configByHost,
-  ...
-}:
+{ configByHost }:
+{ pkgs, ... }:
 let
   niriCommonConf = builtins.readFile ./config.kdl;
 

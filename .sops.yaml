@@ -39,3 +39,7 @@ creation_rules:
     - age:
       - *admin
       - *nono
+  - path_regex: ^profiles/nyan/(?:secrets|secrets/[^/]+)\.(?:yaml|json|ini|env|sops)$
+    key_groups:
+    - age:
+      - *admin
