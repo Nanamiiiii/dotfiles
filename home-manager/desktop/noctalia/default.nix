@@ -102,6 +102,16 @@
             widget_spacing = 2;
             accordion = false;
           }
+          {
+            id = "sound";
+            enabled = true;
+            members = [
+              "output_volume"
+              "input_volume"
+            ];
+            widget_spacing = 2;
+            accordion = false;
+          }
         ];
         reserve_space = true;
         start = [
@@ -112,7 +122,7 @@
         center = [ "workspaces" ];
         end = [
           "group:system-monitor"
-          "volume"
+          "group:sound"
           "brightness"
           "bluetooth"
           "network"

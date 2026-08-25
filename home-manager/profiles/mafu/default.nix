@@ -89,7 +89,7 @@ in
       pkgs-stable.plex-desktop
       krita
       pinta
-      libreoffice-qt6-fresh
+      libreoffice-qt-stable
     ]
     ++ (with kdePackages; [
       ark

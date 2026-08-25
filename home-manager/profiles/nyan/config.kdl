@@ -17,3 +17,22 @@ input {
     mod-key-nested "Super"
 }
 
+output "ASUSTek COMPUTER INC PA279CRV R7LMSB000093" {
+    mode "3840x2160@60.0"
+    scale 1.5
+    position x=0 y=1440
+    focus-at-startup
+}
+
+output "HP Inc. OMEN 27i IPS 6CM0381LDD" {
+    mode "2560x1440@164.834"
+    scale 1.0
+    position x=2560 y=1440
+}
+
+output "Dell Inc. DELL U2720QM CV5MY13" {
+    mode "3840x2160@59.997"
+    scale 1.5
+    position x=0 y=0
+}
+

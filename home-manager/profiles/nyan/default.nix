@@ -37,7 +37,7 @@ let
   ];
 
   securityConfigs = [
-    ../../security/yubikey
+    #../../security/yubikey
   ];
 
   serviceConfigs = [
@@ -80,7 +80,7 @@ in
       pkgs-stable.zoom-us
       krita
       pinta
-      libreoffice-qt6-fresh
+      libreoffice-qt-stable
       spotify
     ]
     ++ (with kdePackages; [
@@ -109,7 +109,7 @@ in
       center = lib.mkForce [ "workspaces" ];
       end = lib.mkForce [
         "group:system-monitor"
-        "volume"
+        "group:sound"
         "brightness"
         "bluetooth"
         "network"
@@ -120,12 +120,18 @@ in
         "session"
       ];
     };
-    widget.clock = {
-      format = lib.mkForce "{:%H %M -- %d %b}";
-      font_family = lib.mkForce "PlemolJP HS SemiBold";
-      font_weight = lib.mkForce 600;
+    widget = {
+      clock = {
+        format = lib.mkForce "{:%H %M -- %d %b}";
+        font_family = lib.mkForce "PlemolJP HS SemiBold";
+        font_weight = lib.mkForce 600;
+      };
+      network.show_label = lib.mkForce false;
+      tray = {
+        drawer = true;
+        drawer_columns = 5;
+      };
     };
-    widget.network.show_label = lib.mkForce false;
     notification.position = lib.mkForce "bottom_right";
   };
 

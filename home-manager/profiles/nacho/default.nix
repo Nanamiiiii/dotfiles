@@ -90,7 +90,7 @@ in
       pkgs-stable.zoom-us
       krita
       pinta
-      libreoffice-qt6-fresh
+      libreoffice-qt-stable
       spotify
     ]
     ++ (with kdePackages; [
