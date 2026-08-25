@@ -4,7 +4,7 @@
 {
   config,
   lib,
-  pkgs,
+  username,
   modulesPath,
   ...
 }:
@@ -77,6 +77,15 @@
     fsType = "btrfs";
     options = [
       "subvol=@snapshot-home"
+      "compress=zstd"
+    ];
+  };
+
+  fileSystems."/home/${username}/GameLibrary" = {
+    device = "/dev/disk/by-label/NIXOS_ROOT";
+    fsType = "btrfs";
+    options = [
+      "subvol=@games"
       "compress=zstd"
     ];
   };
