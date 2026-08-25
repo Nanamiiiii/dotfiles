@@ -77,6 +77,7 @@ let
     ../../nixos/settings/misc/sops.nix
     ../../nixos/settings/misc/nfs.nix
     ../../nixos/settings/misc/steam.nix
+    ../../nixos/settings/misc/kdeconnect.nix
   ];
 in
 {
