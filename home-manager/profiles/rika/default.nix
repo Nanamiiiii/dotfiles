@@ -40,6 +40,7 @@ let
 
   sopsConfigs = [
     ../../sops
+    ../../sops/ssh.nix
   ];
 
   symlink = config.lib.file.mkOutOfStoreSymlink;
@@ -52,11 +53,6 @@ in
       Include ${config.home.homeDirectory}/.ssh/conf.d/lab.conf
       Include ${config.home.homeDirectory}/.ssh/conf.d/apal.conf
     '';
-  };
-
-  sops.secrets = {
-    ssh-hosts-kasalab = { };
-    ssh-hosts-apal = { };
   };
 
   home.file = {

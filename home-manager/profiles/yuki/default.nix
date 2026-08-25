@@ -45,19 +45,13 @@ let
 
   sopsConfigs = [
     ../../sops
+    ../../sops/ssh.nix
   ];
 
   niriConfigHost = builtins.readFile ./config.kdl;
 
   niriConfig = import ../../desktop/niri {
-    inherit
-      pkgs
-      pkgs-stable
-      inputs
-      hostname
-      config
-      ;
-    laptop = true;
+    inherit pkgs;
     configByHost = niriConfigHost;
   };
 
@@ -125,11 +119,6 @@ in
       accordion = false;
     }
   ];
-
-  sops.secrets = {
-    ssh-hosts-kasalab = { };
-    ssh-hosts-apal = { };
-  };
 
   home.file = {
     ".ssh/conf.d/lab.conf" = {

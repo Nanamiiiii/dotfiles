@@ -39,7 +39,7 @@
     };
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote";
+      url = "github:nix-community/lanzaboote/v1.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -231,6 +231,14 @@
         in
         {
           # Workstation
+          nyan = nixosSystem (nixosSystemArgs {
+            profile = "nyan";
+            username = "myuu";
+            system = "x86_64-linux";
+            desktop = true;
+          });
+
+          # Corebox
           mafu = nixosSystem (nixosSystemArgs {
             profile = "mafu";
             username = "myuu";
@@ -238,7 +246,7 @@
             desktop = true;
           });
 
-          # WSL on mafu
+          # WSL on nyan
           rika = nixosSystem (nixWslArgs {
             profile = "rika";
             username = "myuu";

@@ -22,7 +22,6 @@ let
     ../../common/apps/skk
     ../../common/editor/neovim
     ../../common/editor/zed
-    ../../common/editor/code
     ../../common/lang
     ../../common/shell/zsh
     ../../common/shell/tmux
@@ -49,6 +48,7 @@ let
 
   sopsConfigs = [
     ../../sops
+    ../../sops/ssh.nix
   ];
 
   niriConfigHost = builtins.readFile ./config.kdl;
@@ -90,7 +90,7 @@ in
       pkgs-stable.zoom-us
       krita
       pinta
-      libreoffice-qt6-fresh
+      libreoffice-qt-stable
       spotify
     ]
     ++ (with kdePackages; [
@@ -172,7 +172,6 @@ in
   };
 
   sops.secrets = {
-    ssh-hosts-apal = { };
     pam-u2f = {
       sopsFile = ../../secrets/nacho.yaml;
     };
