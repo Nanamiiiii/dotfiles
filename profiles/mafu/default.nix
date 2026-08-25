@@ -37,6 +37,7 @@ let
       avatar = ../../assets/avatar.png;
     })
     ../../nixos/settings/system/upower.nix
+    ../../nixos/settings/system/resolved.nix
   ];
 
   # Graphics

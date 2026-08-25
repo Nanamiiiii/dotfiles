@@ -49,6 +49,7 @@ let
       ipv4Addrs = [ "10.27.3.11/24" ];
       ipv6Addrs = [ "fd00:3::11/64" ];
     })
+    ../../nixos/settings/system/resolved.nix
   ];
 
   # Graphics
