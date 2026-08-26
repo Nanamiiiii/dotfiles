@@ -50,11 +50,11 @@ layout {
 }
 
 spawn-at-startup "noctalia"
-spawn-sh-at-startup "playerctld daemon"
-spawn-sh-at-startup "slack -u -s"
-spawn-sh-at-startup "proton-pass"
+spawn-at-startup "playerctld" "daemon"
 spawn-at-startup "emote"
-spawn-at-startup "discord"
+spawn-at-startup "~/.scripts/wait_notifier_watcher.sh" "slack" "-u" "-s"
+spawn-at-startup "~/.scripts/wait_notifier_watcher.sh" "proton-pass"
+spawn-at-startup "~/.scripts/wait_notifier_watcher.sh" "discord"
 
 hotkey-overlay {
     skip-at-startup
