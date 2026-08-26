@@ -244,6 +244,16 @@
           };
         };
       };
+      calendar = {
+        enabled = true;
+        account = {
+          personal_google = {
+            type = "google";
+            name = "Personal";
+            color = "primary";
+          };
+        };
+      };
     };
   };
 }
