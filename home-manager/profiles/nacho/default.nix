@@ -105,38 +105,43 @@ in
     };
   };
 
-  programs.noctalia.settings.bar.main = {
-    position = lib.mkForce "right";
-    thickness = lib.mkForce 44;
-    start = lib.mkForce [
-      "launcher"
-      "media"
-      "active_window"
-    ];
-    center = lib.mkForce [ "workspaces" ];
-    end = lib.mkForce [
-      "group:system-monitor"
-      "volume"
-      "brightness"
-      "bluetooth"
-      "network"
-      "tray"
-      "notifications"
-      "clock"
-      "settings"
-      "session"
-    ];
+  programs.noctalia.settings = {
+    bar.main = {
+      position = lib.mkForce "right";
+      thickness = lib.mkForce 44;
+      start = lib.mkForce [
+        "launcher"
+        "media"
+        "active_window"
+      ];
+      center = lib.mkForce [ "workspaces" ];
+      end = lib.mkForce [
+        "group:system-monitor"
+        "volume"
+        "brightness"
+        "bluetooth"
+        "network"
+        "tray"
+        "notifications"
+        "clock"
+        "settings"
+        "session"
+      ];
+    };
+    widget = {
+      clock = {
+        format = lib.mkForce "{:%H %M -- %d %b}";
+        font_family = lib.mkForce "PlemolJP HS SemiBold";
+        font_weight = lib.mkForce 600;
+      };
+      network.show_label = lib.mkForce false;
+      tray = {
+        drawer = true;
+        drawer_columns = 5;
+      };
+    };
+    notification.position = lib.mkForce "bottom_right";
   };
-
-  programs.noctalia.settings.widget.clock = {
-    format = lib.mkForce "{:%H %M -- %d %b}";
-    font_family = lib.mkForce "PlemolJP HS SemiBold";
-    font_weight = lib.mkForce 600;
-  };
-
-  programs.noctalia.settings.widget.network.show_label = lib.mkForce false;
-
-  programs.noctalia.settings.notification.position = lib.mkForce "bottom_right";
 
   xdg.configFile."onedrive/sync_list".text = ''
     Books
