@@ -50,6 +50,7 @@ let
       ipv6Addrs = [ "fd00:3::11/64" ];
     })
     ../../nixos/settings/system/resolved.nix
+    ../../nixos/settings/system/rgb.nix
   ];
 
   # Graphics
