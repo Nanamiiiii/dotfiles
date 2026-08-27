@@ -1,8 +1,10 @@
 {
-  pkgs,
-  lib,
   enableAgent ? false,
   pinentryVariant ? null,
+}:
+{
+  pkgs,
+  lib,
   ...
 }:
 let

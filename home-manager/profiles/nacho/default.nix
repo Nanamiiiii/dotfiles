@@ -2,8 +2,6 @@
   pkgs,
   pkgs-stable,
   lib,
-  inputs,
-  hostname,
   config,
   ...
 }:
@@ -14,7 +12,6 @@ let
     ../../common/cli
     ../../common/cli/git
     (import ../../common/cli/gpg {
-      inherit pkgs lib;
       enableAgent = true;
       pinentryVariant = "gnome3";
     })
@@ -54,14 +51,6 @@ let
   niriConfigHost = builtins.readFile ./config.kdl;
 
   niriConfig = import ../../desktop/niri {
-    inherit
-      pkgs
-      pkgs-stable
-      inputs
-      hostname
-      config
-      ;
-    laptop = false;
     configByHost = niriConfigHost;
   };
 
@@ -183,5 +172,5 @@ in
     };
   };
 
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 }

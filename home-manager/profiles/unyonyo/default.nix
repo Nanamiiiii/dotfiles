@@ -1,6 +1,4 @@
 {
-  pkgs,
-  lib,
   config,
   username,
   ...
@@ -12,7 +10,6 @@ let
     ../../common/cli
     ../../common/cli/git
     (import ../../common/cli/gpg {
-      inherit pkgs lib;
       enableAgent = false;
       pinentryVariant = null;
     })
@@ -54,13 +51,13 @@ in
     inherit username;
     file = {
       ".ssh/conf.d/lab.conf" = {
-        source = symlink "${config.sops.secrets.ssh-hosts-kasalab.path}";
+        source = symlink "${config.sops.secrets.ssh-hosts-lab.path}";
       };
       ".ssh/conf.d/apal.conf" = {
         source = symlink "${config.sops.secrets.ssh-hosts-apal.path}";
       };
     };
     homeDirectory = "/home/${username}";
-    stateVersion = "25.11";
+    stateVersion = "26.05";
   };
 }

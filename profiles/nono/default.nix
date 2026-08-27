@@ -1,4 +1,3 @@
-{ config, username, ... }:
 let
   systemSettings = [
     ../../nix-darwin/settings/system/darwin-system.nix

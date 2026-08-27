@@ -2,8 +2,6 @@
   pkgs,
   pkgs-stable,
   lib,
-  inputs,
-  hostname,
   config,
   ...
 }:
@@ -14,7 +12,6 @@ let
     ../../common/cli
     ../../common/cli/git
     (import ../../common/cli/gpg {
-      inherit pkgs lib;
       enableAgent = true;
       pinentryVariant = "gnome3";
     })
@@ -51,7 +48,6 @@ let
   niriConfigHost = builtins.readFile ./config.kdl;
 
   niriConfig = import ../../desktop/niri {
-    inherit pkgs;
     configByHost = niriConfigHost;
   };
 
@@ -122,12 +118,12 @@ in
 
   home.file = {
     ".ssh/conf.d/lab.conf" = {
-      source = symlink "${config.sops.secrets.ssh-hosts-kasalab.path}";
+      source = symlink "${config.sops.secrets.ssh-hosts-lab.path}";
     };
     ".ssh/conf.d/apal.conf" = {
       source = symlink "${config.sops.secrets.ssh-hosts-apal.path}";
     };
   };
 
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 }

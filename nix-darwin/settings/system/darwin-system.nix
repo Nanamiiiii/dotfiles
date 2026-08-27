@@ -16,6 +16,6 @@
         orientation = "right";
       };
     };
-    stateVersion = 5;
+    stateVersion = 7;
   };
 }

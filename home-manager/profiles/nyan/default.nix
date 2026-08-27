@@ -12,7 +12,6 @@ let
     ../../common/cli
     ../../common/cli/git
     (import ../../common/cli/gpg {
-      inherit pkgs lib;
       enableAgent = true;
       pinentryVariant = "gnome3";
     })
