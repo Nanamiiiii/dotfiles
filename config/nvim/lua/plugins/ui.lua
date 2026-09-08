@@ -33,6 +33,7 @@ return {
             options = {
                 disabled_filetypes = {
                     "neo-tree",
+                    "snacks_terminal",
                 },
                 theme = "auto",
             },
