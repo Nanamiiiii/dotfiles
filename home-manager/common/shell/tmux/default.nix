@@ -1,5 +1,9 @@
 {
+  enableSocklink ? false,
+}:
+{
   pkgs,
+  lib,
   config,
   hostname,
   ...
@@ -14,6 +18,8 @@ let
   };
 in
 {
+  imports = lib.optional enableSocklink ./socklink;
+
   programs = {
     tmux = {
       enable = true;

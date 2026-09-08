@@ -20,7 +20,9 @@ let
     ../../common/editor/code
     ../../common/lang
     ../../common/shell/zsh
-    ../../common/shell/tmux
+    (import ../../common/shell/tmux {
+      enableSocklink = false;
+    })
     ../../common/shell/spaceship
     ../../common/shell/zellij
     ../../common/terminal
