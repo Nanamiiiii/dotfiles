@@ -3,14 +3,52 @@
 
 return {
     {
-        "akinsho/toggleterm.nvim",
-        version = "*",
-        opts = {
-            direction = "float",
-        },
+        "folke/snacks.nvim",
+        opts = { terminal = {} },
         keys = {
-            { "<C-o>", ":ToggleTerm<CR>", desc = "toggleterm", mode = "n", silent = true },
-            { "<C-o>", "<C-\\><C-n>:ToggleTerm<CR>", desc = "toggleterm", mode = "t", silent = true },
+            {
+                "<leader>tf",
+                function()
+                    require("utils.terminal").toggle()
+                end,
+                desc = "Open floating terminal",
+                mode = "n",
+                silent = true,
+            },
+            {
+                "<leader>tt",
+                function()
+                    require("utils.terminal").toggle("tab")
+                end,
+                desc = "Open tab terminal",
+                mode = "n",
+                silent = true,
+            },
+            {
+                "<leader>tv",
+                function()
+                    require("utils.terminal").toggle("vertical")
+                end,
+                desc = "Open vertical terminal",
+                mode = "n",
+                silent = true,
+            },
+            {
+                "<leader>th",
+                function()
+                    require("utils.terminal").toggle("horizontal")
+                end,
+                desc = "Open horizontal terminal",
+                mode = "n",
+                silent = true,
+            },
+            {
+                "<C-o>",
+                "<C-\\><C-n>",
+                desc = "Exit Terminal Mode",
+                mode = "t",
+                silent = true,
+            },
         },
     },
 }
