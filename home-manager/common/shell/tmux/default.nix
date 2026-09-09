@@ -48,6 +48,7 @@ in
         set-option -g bell-action none
         set-option -g focus-events on
         set-window-option -g aggressive-resize on
+        set -g allow-passthrough on
       ''
       + builtins.readFile ../../../../config/tmux/tmux-style.conf
       + ''
