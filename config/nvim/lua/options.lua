@@ -50,6 +50,11 @@ local osc52 = require("vim.ui.clipboard.osc52")
 
 local provider = nil
 
+local copy = {
+    ["+"] = nil,
+    ["*"] = nil,
+}
+
 local paste = {
     ["+"] = nil,
     ["*"] = nil,
@@ -63,7 +68,18 @@ local paste_unnamed = function()
 end
 
 if not vim.g.neovide then
-    if not h.is_ssh() then
+    if h.is_tmux() then
+        copy["+"] = { "tmux", "load-buffer", "-w", "-" }
+        copy["*"] = { "tmux", "load-buffer", "-w", "-" }
+
+        paste["+"] = { "tmux", "save-buffer", "-" }
+        paste["*"] = { "tmux", "save-buffer", "-" }
+
+        provider = "tmux"
+    elseif not h.is_ssh() then
+        copy["+"] = osc52.copy("+")
+        copy["*"] = osc52.copy("*")
+
         if vim.fn.executable("pbpaste") == 1 then
             paste["+"] = { "pbpaste" }
             paste["*"] = { "pbpaste" }
@@ -90,6 +106,9 @@ if not vim.g.neovide then
             provider = "osc52-copy-internal-paste"
         end
     else
+        copy["+"] = osc52.copy("+")
+        copy["*"] = osc52.copy("*")
+
         paste["+"] = paste_unnamed
         paste["*"] = paste_unnamed
         provider = "osc52-copy-internal-paste"
@@ -98,8 +117,8 @@ if not vim.g.neovide then
     vim.g.clipboard = {
         name = provider,
         copy = {
-            ["+"] = osc52.copy("+"),
-            ["*"] = osc52.copy("*"),
+            ["+"] = copy["+"],
+            ["*"] = copy["*"],
         },
         paste = {
             ["+"] = paste["+"],
