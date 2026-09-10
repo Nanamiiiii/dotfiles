@@ -1,17 +1,10 @@
+local h = require("utils.helper")
 return {
     "obsidian-nvim/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
     ft = "markdown",
-    cond = function()
-        local obsidian_dir = ".obsidian"
-        local stat = vim.loop.fs_stat(vim.fn.getcwd() .. "/" .. obsidian_dir)
-        if stat and stat.type == "directory" then
-            return true
-        else
-            return false
-        end
-    end,
+    cond = h.in_obsidian_vault(),
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
