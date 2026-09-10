@@ -1,7 +1,7 @@
 {
   homebrew.casks = [
     "istat-menus"
-    "notchnook"
+    "droppy"
     "thaw"
   ];
 }
