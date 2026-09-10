@@ -1,12 +1,12 @@
 -- markdown.lua
-
+local h = require("utils.helper")
 return {
-    "toppair/peek.nvim",
-    event = { "VeryLazy" },
-    build = "deno task --quiet build:fast",
-    config = function()
-        require("peek").setup()
-        vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
-        vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
-    end,
+    {
+        "MeanderingProgrammer/render-markdown.nvim",
+        cond = not h.in_obsidian_vault(),
+        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
+        opts = {},
+    },
 }

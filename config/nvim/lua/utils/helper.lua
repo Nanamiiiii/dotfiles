@@ -11,12 +11,12 @@ for _, mode in pairs({ "n", "v", "i", "o", "c", "t", "t", "x", "s" }) do
 end
 
 -- OS detection
-helper["os"] = function()
+helper.os = function()
     return vim.loop.os_uname().sysname
 end
 
 -- Get binary path
-helper["binary_path"] = function(cmd)
+helper.binary_path = function(cmd)
     local check = io.popen("command -v " .. cmd)
     if check ~= nil then
         local check_out = check:read("*a")
@@ -32,13 +32,24 @@ helper["binary_path"] = function(cmd)
 end
 
 -- Detect SSH Connection
-helper["is_ssh"] = function()
+helper.is_ssh = function()
     return os.getenv("SSH_CLIENT") ~= nil or os.getenv("SSH_TTY") ~= nil or os.getenv("SSH_CONNECTION") ~= nil
 end
 
 -- Detect tmux
-helper["is_tmux"] = function()
+helper.is_tmux = function()
     return vim.env.TMUX ~= nil and vim.env.TMUX ~= ""
+end
+
+-- Detect obsidian vault
+helper.in_obsidian_vault = function()
+    local obsidian_dir = ".obsidian"
+    local stat = vim.loop.fs_stat(vim.fn.getcwd() .. "/" .. obsidian_dir)
+    if stat and stat.type == "directory" then
+        return true
+    else
+        return false
+    end
 end
 
 return helper
