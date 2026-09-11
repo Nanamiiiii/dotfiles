@@ -37,10 +37,6 @@ let
     ../../linux/avatar
   ];
 
-  serviceConfigs = [
-    ../../services/nextcloud
-  ];
-
   sopsConfigs = [
     ../../sops
     ../../sops/ssh.nix
@@ -61,7 +57,6 @@ in
   ]
   ++ commonConfigs
   ++ linuxConfigs
-  ++ serviceConfigs
   ++ sopsConfigs;
 
   home.packages =

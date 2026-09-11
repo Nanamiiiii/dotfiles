@@ -41,10 +41,6 @@ let
     ../../security/yubikey
   ];
 
-  serviceConfigs = [
-    ../../services/nextcloud
-  ];
-
   sopsConfigs = [
     ../../sops
     ../../sops/ssh.nix
@@ -66,7 +62,6 @@ in
   ++ commonConfigs
   ++ linuxConfigs
   ++ securityConfigs
-  ++ serviceConfigs
   ++ sopsConfigs;
 
   home.packages =

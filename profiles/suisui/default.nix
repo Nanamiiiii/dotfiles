@@ -50,7 +50,6 @@ in
     "cryptomator"
 
     # cloud storage
-    "nextcloud-vfs"
     "onedrive"
     "box-drive"
     "box-tools"

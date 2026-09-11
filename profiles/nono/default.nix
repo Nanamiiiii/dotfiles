@@ -40,7 +40,6 @@ in
 
   homebrew.casks = [
     # cloud storage
-    "nextcloud-vfs"
     "box-drive"
     "box-tools"
 
