@@ -45,6 +45,7 @@ in
 {
   imports = [
     ./themes.nix
+    ./screenshot.nix
   ];
 
   services.gnome-keyring.enable = true;
