@@ -6,17 +6,17 @@ checksum:
   enabled: true
 registries:
 - type: standard
-  ref: v4.558.1 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.561.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: eza-community/eza@v0.23.5
 - name: sharkdp/bat@v0.26.1
-- name: junegunn/fzf@v0.74.3
+- name: junegunn/fzf@v0.74.4
 - name: dalance/procs@v0.14.12
 - name: x-motemen/ghq@v1.10.1
 - name: bootandy/dust@v1.2.5
 - name: sharkdp/fd@v10.5.0
 - name: muesli/duf@v0.9.1
-- name: jesseduffield/lazygit@v0.65.0
+- name: jesseduffield/lazygit@v0.65.1
 - name: BurntSushi/ripgrep@15.2.0
 - name: jqlang/jq@jq-1.8.2
 - name: ajeetdsouza/zoxide@v0.10.0

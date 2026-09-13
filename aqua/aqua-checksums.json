@@ -176,33 +176,33 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.65.0/lazygit_0.65.0_darwin_arm64.tar.gz",
-      "checksum": "D8EA1CADE9E4279E45CBB58652E84EDB07E98A9F8EC0604099C8B0A8F709E63A",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.65.1/lazygit_0.65.1_darwin_arm64.tar.gz",
+      "checksum": "65A367C6EA9A88EFEBAAF7998A6835EEDB987E04916CEF677264FF9B31B1B13E",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.65.0/lazygit_0.65.0_darwin_x86_64.tar.gz",
-      "checksum": "3848033450205F975AA6A587E76F01C9796BFF3A3CC0E32060AC77B9423264E3",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.65.1/lazygit_0.65.1_darwin_x86_64.tar.gz",
+      "checksum": "FDE13DAF583511AA24C42CA154911643231A5AF784C7CDD8117264B2FC035B33",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.65.0/lazygit_0.65.0_linux_arm64.tar.gz",
-      "checksum": "D954A09C128BD37B2BD0D254308474E87DE3729CFE0E37F5B46A49357A4FE257",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.65.1/lazygit_0.65.1_linux_arm64.tar.gz",
+      "checksum": "49ABECDF6ADF4F2DFDB11BF7B9BFADA267EA523612ED809D1C6D87F6C04000A7",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.65.0/lazygit_0.65.0_linux_x86_64.tar.gz",
-      "checksum": "44D8E7DD1484B4A66E191BD4AB25A71E8B4B3A65AB122F838E65677EF58C5506",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.65.1/lazygit_0.65.1_linux_x86_64.tar.gz",
+      "checksum": "02BEACBCDA0FA342E50AE3480BA8147307353AF3FB28E1D5F790E02329C201A6",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.65.0/lazygit_0.65.0_windows_arm64.zip",
-      "checksum": "C0200D1481586B56996269D874BE464C3C6E7C2CA47A283DD37316CFFE6ECE83",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.65.1/lazygit_0.65.1_windows_arm64.zip",
+      "checksum": "EB2EFF398864BC4888C1B8D2EB25A0D46727798C5EB599E8D9EC69BE56EDAE05",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/jesseduffield/lazygit/v0.65.0/lazygit_0.65.0_windows_x86_64.zip",
-      "checksum": "20A597E8F29D4ED295E28FB4B869B31A41D20DC69DC15829C4744263141BE2EE",
+      "id": "github_release/github.com/jesseduffield/lazygit/v0.65.1/lazygit_0.65.1_windows_x86_64.zip",
+      "checksum": "BED669BE29204932560836A58DC6519BA43C10EA7DC7DF63AF8A1D96424E191D",
       "algorithm": "sha256"
     },
     {
@@ -231,33 +231,33 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/junegunn/fzf/v0.74.3/fzf-0.74.3-darwin_amd64.tar.gz",
-      "checksum": "B8A231250EEDEC244539ADE3DC437BCD60E545A099C6CC0C8A11BDBD8574B9BC",
+      "id": "github_release/github.com/junegunn/fzf/v0.74.4/fzf-0.74.4-darwin_amd64.tar.gz",
+      "checksum": "2D392B50BE66E2AB104CCD52A6072DF692B1F9B9C5B449A9C098DE885F32C4C5",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/junegunn/fzf/v0.74.3/fzf-0.74.3-darwin_arm64.tar.gz",
-      "checksum": "1F8501CEA4F9C0C2D6110D0FF75D0EC9451CD9D7524D9A26244A154EA89F3BD5",
+      "id": "github_release/github.com/junegunn/fzf/v0.74.4/fzf-0.74.4-darwin_arm64.tar.gz",
+      "checksum": "4F6A113BFC0C7959E0005C78D566A51AFC4FCEFC956F43735C62A9DEB19E92AE",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/junegunn/fzf/v0.74.3/fzf-0.74.3-linux_amd64.tar.gz",
-      "checksum": "3501A595E4B5C40A6B047340A0E8F805C46FD4E61EF95EF8A136BA8C61CF6F22",
+      "id": "github_release/github.com/junegunn/fzf/v0.74.4/fzf-0.74.4-linux_amd64.tar.gz",
+      "checksum": "05E6813A337CC722C3ED07E54A764B75CC5D671E2E60459DB0BA696EE5FA7504",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/junegunn/fzf/v0.74.3/fzf-0.74.3-linux_arm64.tar.gz",
-      "checksum": "4A17A17B46BD0C4873E995533DE508995C11572C0BE0664A5DBCF13F60463046",
+      "id": "github_release/github.com/junegunn/fzf/v0.74.4/fzf-0.74.4-linux_arm64.tar.gz",
+      "checksum": "5D673B849F494F0D64EC471D8640B153CA8849E3846A31DA17ABDCFCE8DF6B46",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/junegunn/fzf/v0.74.3/fzf-0.74.3-windows_amd64.zip",
-      "checksum": "CF5C137D9B391C3988C54AF8F5FC490FFBEF6F70444651E7D57FDB45AD04C8BD",
+      "id": "github_release/github.com/junegunn/fzf/v0.74.4/fzf-0.74.4-windows_amd64.zip",
+      "checksum": "5E63C0E798406FCB9C51A9FED4988398E25FDABF8C670E32C16CAF7B4A7ED02D",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/junegunn/fzf/v0.74.3/fzf-0.74.3-windows_arm64.zip",
-      "checksum": "7D70C25A1229F3BBFCB56B4314F298C16AD61A258F9641B7ACF08C513A40BD29",
+      "id": "github_release/github.com/junegunn/fzf/v0.74.4/fzf-0.74.4-windows_arm64.zip",
+      "checksum": "558DF4DAC9C65A63C732909A06ABC1891A42ADCAE4D6BE92A9B0CCC0EF05B4FF",
       "algorithm": "sha256"
     },
     {
@@ -328,6 +328,11 @@
     {
       "id": "github_release/github.com/sharkdp/fd/v10.5.0/fd-v10.5.0-aarch64-unknown-linux-musl.tar.gz",
       "checksum": "D76C4317F7D5DBA69F8A2A15856C90C777E7F0DD4E85F0DE8C76DE6992C374D4",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/sharkdp/fd/v10.5.0/fd-v10.5.0-x86_64-apple-darwin.tar.gz",
+      "checksum": "7E31028C62C6955877735D0406807AA484C2A5E6F86235A59E26C29C301DA590",
       "algorithm": "sha256"
     },
     {
@@ -451,8 +456,8 @@
       "algorithm": "sha256"
     },
     {
-      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.558.1/registry.yaml",
-      "checksum": "2A024E9CBE9BB672963ED0C68241A41C9F13B4D253390D548EC0B6D3E59A2DDC",
+      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.561.0/registry.yaml",
+      "checksum": "4A8B9089B28B033B598EB4C546C7F76DA607204CB723CB32DB66F0ADAA894933",
       "algorithm": "sha256"
     }
   ]
