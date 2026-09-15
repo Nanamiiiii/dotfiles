@@ -77,12 +77,8 @@ config.font = wezterm.font_with_fallback({
 -- Font Size
 if is_macos then
     config.font_size = 16.0
-elseif hostname == "xanadu" then
-    config.font_size = 12.5
-elseif hostname == "yuki" then
-    config.font_size = 13
 else
-    config.font_size = 14.0
+    config.font_size = 12.0
 end
 
 -- Color Scheme
@@ -452,6 +448,11 @@ config.keys = {
         mods = "CMD|SHIFT",
         action = wezterm.action.ReloadConfiguration,
     },
+    {
+      key = "f",
+      mods = "LEADER",
+      action = wezterm.action.ToggleFullScreen,
+    },
 }
 
 -- WSL
@@ -557,7 +558,6 @@ else
 
     -- Windows Launch Menu
     if is_windows then
-        -- pwsh & cmd
         config.launch_menu = {
             {
                 label = "PowerShell",
@@ -570,29 +570,8 @@ else
                 args = { "C:\\Windows\\System32\\cmd.exe" },
             },
         }
-        -- wezterm ssh does not work correctly on windows
-        -- create launcher entry directly executing ssh.exe from ssh domain
-        local ssh_domains = wezterm.default_ssh_domains()
-        local ssh_executable = "C:\\Windows\\System32\\OpenSSH\\ssh.exe"
-        for idx, dom in ipairs(ssh_domains) do
-            if dom.multiplexing == "None" then -- ignore SSHMUX domain
-                table.insert(config.launch_menu, {
-                    label = dom.name,
-                    domain = { DomainName = "local" },
-                    args = {
-                        ssh_executable,
-                        dom.remote_address,
-                    },
-                })
-            end
-        end
     end
 end
-
--- Fix for BrokenPipe on Wayland w/ NVIDIA
---if hostname == "mafu" then
---    config.enable_wayland = false
---end
 
 -- SSH Agent
 if is_macos then
@@ -606,6 +585,12 @@ if is_macos then
             config.default_ssh_auth_sock = gpg_ssh_sock_alt
         end
     end
+end
+
+-- SSH Client on Windows
+if is_windows then
+    config.ssh_backend = "Ssh2"
+    config.mux_enable_ssh_agent = false
 end
 
 return config
