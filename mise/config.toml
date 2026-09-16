@@ -2,7 +2,7 @@
 "aqua:eza-community/eza" = { version = "0.23.5", os = ["linux", "windows"] }
 "cargo:eza" = { version = "0.23.5", os = ["macos"] }
 "aqua:sharkdp/bat" = "0.26.1"
-"aqua:junegunn/fzf" = "0.74.3"
+"aqua:junegunn/fzf" = "0.74.4"
 "aqua:dalance/procs" = "0.14.12"
 "aqua:x-motemen/ghq" = "1.10.1"
 "aqua:bootandy/dust" = "1.2.5"
