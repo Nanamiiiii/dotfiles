@@ -8,7 +8,7 @@ path=(
     "$DENO_INSTALL/bin"(N-/)
     "$GOPATH/bin"(N-/)
     "$HOME/.local/go/bin"(N-/)
-    "${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin/aqua"(N-/)
+    "${MISE_DATA_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/mise}/shims"(N-/)
     "$path[@]"
 )
 fpath=(

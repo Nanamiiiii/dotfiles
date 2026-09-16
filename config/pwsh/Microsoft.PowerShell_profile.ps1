@@ -1,8 +1,7 @@
-# aqua
-Set-Item Env:Path "$Env:LOCALAPPDATA\aquaproj-aqua\bin;$Env:Path"
-$Env:AQUA_GLOBAL_CONFIG="$Env:USERPROFILE\dotfiles\aqua\aqua.yaml"
-$Env:AQUA_LOG_LEVEL="error"
-$Env:AQUA_PROGRESS_BAR="true"
+# mise
+if (Get-Command mise -ErrorAction SilentlyContinue) {
+    mise activate pwsh | Out-String | Invoke-Expression
+}
 
 # Override SSH Agent Socket
 # To avoid overriding of wezterm
@@ -70,7 +69,7 @@ function New-SymLink {
         New-Item -ItemType SymbolicLink -Path $LinkPath -Value $TargetPath -Force:$Force -ErrorAction Stop | Out-Null
         Write-Host "[Created] Symlink: $LinkPath to $TargetPath" -ForegroundColor Green
     } catch {
-        Write-Error "Error: Failed to create symbolic link.`n$_" -ForegroundColor Red
+        Write-Error "Error: Failed to create symbolic link.`n$_"
     }
 }
 

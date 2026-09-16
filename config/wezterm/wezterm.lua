@@ -587,10 +587,59 @@ if is_macos then
     end
 end
 
--- SSH Client on Windows
+local function mise_which(bin)
+  local success, stdout, stderr = wezterm.run_child_process {
+    'mise',
+    'which',
+    bin,
+  }
+
+  if not success then
+    wezterm.log_error('mise which ' .. bin .. ' failed: ' .. stderr)
+    return nil
+  end
+
+  return stdout:gsub('%s+$', '')
+end
+
+-- Run afunix-agent
 if is_windows then
-    config.ssh_backend = "Ssh2"
-    config.mux_enable_ssh_agent = false
+    local agent = mise_which("afunix-agent")
+    if agent then
+        local success, stdout, stderr = wezterm.run_child_process {
+            agent,
+            'socket'
+        }
+        if not success then
+            local started, _, start_stderr = wezterm.run_child_process({
+                agent,
+                "start",
+            })
+            success, stdout, stderr = wezterm.run_child_process({
+                agent,
+                "socket",
+            })
+            if not started and not success then
+                wezterm.log_error("afunix-agent start failed: " .. start_stderr)
+            end
+        end
+
+        if success then
+            local socket = stdout:gsub("%s+$", "")
+            if socket ~= "" then
+                local domains = config.ssh_domains or wezterm.default_ssh_domains()
+                for _, domain in ipairs(domains) do
+                    domain.ssh_option = domain.ssh_option or {}
+                    domain.ssh_option.identityagent = socket
+                end
+                config.ssh_domains = domains
+            else
+                wezterm.log_error("afunix-agent socket returned an empty path")
+            end
+        else
+            wezterm.log_error("afunix-agent socket failed: " .. stderr)
+        end
+    end
 end
 
 return config

@@ -1,3 +1,5 @@
+$ErrorActionPreference = 'Stop'
+
 function New-SymLink {
     <#
     .SYNOPSIS
@@ -29,7 +31,7 @@ function New-SymLink {
         New-Item -ItemType SymbolicLink -Path $LinkPath -Value $TargetPath -Force:$Force -ErrorAction Stop | Out-Null
         Write-Host "[Created] Symlink: $LinkPath to $TargetPath" -ForegroundColor Green
     } catch {
-        Write-Error "Error: Failed to create symbolic link.`n$_" -ForegroundColor Red
+        throw "Error: Failed to create symbolic link.`n$_"
     }
 }
 
@@ -61,7 +63,7 @@ function distribute_config {
         # wezterm
         New-SymLink -TargetPath $wezterm -LinkPath "$Env:USERPROFILE\.wezterm.lua" -Force
     } catch {
-        Write-Error "[Error] Failed to distribute configurations.`n$_" -ForegroundColor Red
+        throw "[Error] Failed to distribute configurations.`n$_"
     }
 }
 
@@ -70,31 +72,111 @@ function check_dotdir {
     return [bool](Test-Path -Path $dotdir -PathType Container)
 }
 
+function check_winget {
+    if (-not (Get-Command winget -CommandType Application -ErrorAction SilentlyContinue)) {
+        throw "Install or update App Installer to get WinGet 1.11 or later, then rerun this script."
+    }
+    $version = winget --version
+    if ($LASTEXITCODE -ne 0 -or "$version" -notmatch '^v?(\d+\.\d+\.\d+)') {
+        throw "Failed to determine the WinGet version. Update App Installer and rerun this script."
+    }
+    if ([version]$Matches[1] -lt [version]'1.11.0') {
+        throw "WinGet 1.11 or later is required. Update App Installer and rerun this script."
+    }
+}
+
 function check_git {
-    if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
-        try {
-            winget install Git.Git
-            Write-Host "[Info] git was successfully installed."
-        } catch {
-            Write-Error "[Error] Failed to install via winget: git" -ForegroundColor Red
-            exit
+    if (-not (Get-Command git -CommandType Application -ErrorAction SilentlyContinue)) {
+        winget install --id Git.Git --exact --source winget --accept-source-agreements --accept-package-agreements --disable-interactivity
+        if ($LASTEXITCODE -ne 0) {
+            throw "Failed to install Git via winget (exit code: $LASTEXITCODE)."
         }
+        $Env:Path = [Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' +
+            [Environment]::GetEnvironmentVariable('Path', 'User') + ';' + $Env:Path
+        if (-not (Get-Command git -CommandType Application -ErrorAction SilentlyContinue)) {
+            throw "Git was installed but is not on PATH. Open a new PowerShell session and rerun this script."
+        }
+        Write-Host "[Info] git was successfully installed."
     } else {
         Write-Host "[Info] git has been already installed."
     }
 }
 
-function check_aqua {
-    if (-not (Get-Command aqua -ErrorAction SilentlyContinue)) {
-        try {
-            winget install aquaproj.aqua
-            Write-Host "[Info] aqua was successfully installed."
-        } catch {
-            Write-Error "[Error] Failed to install via winget: aqua" -ForegroundColor Red
-            exit
+function check_mise {
+    if (-not (Get-Command mise -CommandType Application -ErrorAction SilentlyContinue)) {
+        winget install --id jdx.mise --exact --source winget --accept-source-agreements --accept-package-agreements
+        if ($LASTEXITCODE -ne 0) {
+            throw "Failed to install mise via winget (exit code: $LASTEXITCODE)."
+        }
+
+        # winget updates the persisted PATH, not this PowerShell process.
+        $Env:Path = [Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' +
+            [Environment]::GetEnvironmentVariable('Path', 'User') + ';' + $Env:Path
+        if (-not (Get-Command mise -CommandType Application -ErrorAction SilentlyContinue)) {
+            throw "mise was installed but is not on PATH. Open a new PowerShell session and rerun this script."
+        }
+        Write-Host "[Info] mise was successfully installed."
+    } else {
+        Write-Host "[Info] mise has been already installed."
+    }
+}
+
+function install_winget_packages {
+    $source = "$Env:USERPROFILE\dotfiles\scripts\configuration.winget"
+    if (-not (Test-Path -LiteralPath $source -PathType Leaf)) {
+        throw "WinGet configuration not found: $source"
+    }
+    if (-not (Get-Command winget -CommandType Application -ErrorAction SilentlyContinue)) {
+        throw "WinGet is required. Install or update App Installer to get WinGet 1.11 or later, then rerun this script."
+    }
+
+    winget configure --file $source --accept-configuration-agreements --disable-interactivity
+    if ($LASTEXITCODE -ne 0) {
+        throw "Failed to apply WinGet configuration (exit code: $LASTEXITCODE)."
+    }
+
+    # Installers update the persisted PATH, not this PowerShell process.
+    $Env:Path = [Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' +
+        [Environment]::GetEnvironmentVariable('Path', 'User') + ';' + $Env:Path
+    Write-Host "[Info] WinGet configuration was successfully applied."
+}
+
+function install_mise_tools {
+    $source = "$Env:USERPROFILE\dotfiles\mise\config.toml"
+    if (-not (Test-Path -LiteralPath $source -PathType Leaf)) {
+        throw "mise configuration not found: $source"
+    }
+
+    if ($Env:MISE_GLOBAL_CONFIG_FILE -or $Env:MISE_CONFIG_FILE) {
+        throw "Unset MISE_GLOBAL_CONFIG_FILE and MISE_CONFIG_FILE before using the default mise configuration link."
+    }
+
+    $configDir = if ($Env:MISE_CONFIG_DIR) {
+        $Env:MISE_CONFIG_DIR
+    } elseif ($Env:XDG_CONFIG_HOME) {
+        Join-Path $Env:XDG_CONFIG_HOME 'mise'
+    } else {
+        "$Env:USERPROFILE\.config\mise"
+    }
+    $link = Join-Path $configDir 'config.toml'
+    New-Item -ItemType Directory -Path $configDir -Force -ErrorAction Stop | Out-Null
+    $existing = Get-Item -LiteralPath $link -Force -ErrorAction SilentlyContinue
+    if ($existing) {
+        if ($existing.LinkType -ne 'SymbolicLink' -or $existing.Target -ne $source) {
+            throw "Refusing to overwrite $link; back it up first."
         }
     } else {
-        Write-Host "[Info] aqua has been already installed."
+        New-Item -ItemType SymbolicLink -Path $link -Value $source -ErrorAction Stop | Out-Null
+        Write-Host "[Created] Symlink: $link to $source" -ForegroundColor Green
+    }
+
+    mise trust $source
+    if ($LASTEXITCODE -ne 0) {
+        throw "Failed to trust mise configuration (exit code: $LASTEXITCODE)."
+    }
+    mise install --yes
+    if ($LASTEXITCODE -ne 0) {
+        throw "Failed to install mise tools (exit code: $LASTEXITCODE)."
     }
 }
 
@@ -102,32 +184,29 @@ function check_aqua {
 # Run as Administrator
 # needed by symlink creation
 if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
-    exit
+    $process = Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs -Wait -PassThru
+    exit $process.ExitCode
 }
 
-# confirm aqua is installed
-check_aqua
-# confirm git is installed
+check_winget
+# Git is needed to prepare the repository before applying its WinGet configuration.
 check_git
 
 # prepare dotfiles directory
 if (check_dotdir) {
     Write-Host "[Info] dotdir seems to be prepared"
 } else {
-    try {
-        if (Get-Command gpg -ErrorAction SilentlyContinue) {
-            git clone git@github.com:Nanamiiiii/dotfiles.git "$Env:USERPROFILE\dotfiles"
-        } else {
-            git clone https://github.com/Nanamiiiii/dotfiles.git "$Env:USERPROFILE\dotfiles"
-        }
-    } catch {
-        Write-Error "[Error] Failed to clone dotfiles repository." -ForegroundColor Red
-        exit
+    # Bootstrap must not depend on preconfigured SSH keys.
+    git clone https://github.com/Nanamiiiii/dotfiles.git "$Env:USERPROFILE\dotfiles"
+    if ($LASTEXITCODE -ne 0) {
+        throw "Failed to clone dotfiles repository (exit code: $LASTEXITCODE)."
     }
     Write-Host "[Info] dotdir was successfully prepared"
 }
 
+install_winget_packages
+check_mise
+install_mise_tools
 distribute_config
 
 Pause

@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.3
+$schema: https://raw.githubusercontent.com/PowerShell/DSC/main/schemas/2023/08/config/document.json
+metadata:
+  winget:
+    processor:
+      identifier: dscv3
+resources:
+  - name: git
+    type: Microsoft.WinGet/Package
+    metadata:
+      description: Install Git for cloning dotfiles
+    properties:
+      id: Git.Git
+      source: winget
+  - name: powershell
+    type: Microsoft.WinGet/Package
+    metadata:
+      description: Install PowerShell 7 for the shell profile and WezTerm
+    properties:
+      id: Microsoft.PowerShell
+      source: winget
+  - name: mise
+    type: Microsoft.WinGet/Package
+    metadata:
+      description: Install mise for managing CLI tools
+    properties:
+      id: jdx.mise
+      source: winget
+  - name: gnupg
+    type: Microsoft.WinGet/Package
+    metadata:
+      description: Install GnuPG required by the Git setup
+    properties:
+      id: GnuPG.GnuPG
+      source: winget
+  - name: gpg4win
+    type: Microsoft.WinGet/Package
+    metadata:
+      description: Install GnuPG GUI application
+    properties:
+      id: GnuPG.Gpg4win
+      source: winget
+  - name: wezterm
+    type: Microsoft.WinGet/Package
+    metadata:
+      description: Install the WezTerm terminal
+    properties:
+      id: wez.wezterm
+      source: winget
+  - name: zed
+    type: Microsoft.WinGet/Package
+    metadata:
+      description: Install the Zed editor
+    properties:
+      id: ZedIndustries.Zed
+      source: winget
+  - name: starship
+    type: Microsoft.WinGet/Package
+    metadata:
+      description: Install Starship for the PowerShell prompt
+    properties:
+      id: Starship.Starship
+      source: winget

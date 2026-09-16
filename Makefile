@@ -113,27 +113,41 @@ clean-oldgen:
 
 # Setup Legacy
 .PHONY: legacy-install
-legacy-install: sheldon-install aqua-install sheldon-link aqua-link legacy-shell tmux-install zellij-install scripts-link git-setup
+legacy-install: sheldon-install mise-install sheldon-link legacy-shell tmux-install zellij-install scripts-link git-setup
 
 # Install Sheldon
 .PHONY: sheldon-install
 sheldon-install:
 	@curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh | bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin
 
-# Install aqua
-.PHONY: aqua-install
-aqua-install:
-	curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v4.0.5/aqua-installer | bash
+# Install mise and the configured CLI tools
+MISE_BIN := $(HOME)/.local/bin/mise
+MISE_CONFIG_DIR ?= $(if $(XDG_CONFIG_HOME),$(XDG_CONFIG_HOME),$(HOME)/.config)/mise
+MISE_GLOBAL_CONFIG_FILE ?= $(MISE_CONFIG_DIR)/config.toml
+
+.PHONY: mise-install
+mise-install: mise-link
+	@if [ ! -x "$(MISE_BIN)" ]; then \
+		bash -o pipefail -c 'curl --proto "=https" --tlsv1.2 -fsSL https://mise.run | MISE_INSTALL_PATH="$(MISE_BIN)" sh'; \
+	fi
+	MISE_CONFIG_FILE="$(MISE_GLOBAL_CONFIG_FILE)" "$(MISE_BIN)" trust "$(CURDIR)/mise/config.toml"
+	MISE_CONFIG_FILE="$(MISE_GLOBAL_CONFIG_FILE)" "$(MISE_BIN)" install --yes
 
 # Symlink to sheldon configurations
 .PHONY: sheldon-link
 sheldon-link:
 	ln -sf $(CURDIR)/sheldon $(HOME)/.config/
 
-# Symlink to aqua configurations
-.PHONY: aqua-link
-aqua-link:
-	ln -sf $(CURDIR)/aqua $(HOME)/.config/
+# Symlink to mise configuration without overwriting host-local settings
+.PHONY: mise-link
+mise-link:
+	mkdir -p "$(dir $(MISE_GLOBAL_CONFIG_FILE))"
+	@if [ -e "$(MISE_GLOBAL_CONFIG_FILE)" ] || [ -L "$(MISE_GLOBAL_CONFIG_FILE)" ]; then \
+		[ "$(MISE_GLOBAL_CONFIG_FILE)" -ef "$(CURDIR)/mise/config.toml" ] || \
+		{ echo "Refusing to overwrite $(MISE_GLOBAL_CONFIG_FILE); back it up first." >&2; exit 1; }; \
+	else \
+		ln -s "$(CURDIR)/mise/config.toml" "$(MISE_GLOBAL_CONFIG_FILE)"; \
+	fi
 
 # Symlink to zshrc
 .PHONY: lagacy-shell

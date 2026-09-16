@@ -1,0 +1,24 @@
+[tools]
+"aqua:eza-community/eza" = { version = "0.23.5", os = ["linux", "windows"] }
+"cargo:eza" = { version = "0.23.5", os = ["macos"] }
+"aqua:sharkdp/bat" = "0.26.1"
+"aqua:junegunn/fzf" = "0.74.3"
+"aqua:dalance/procs" = "0.14.12"
+"aqua:x-motemen/ghq" = "1.10.1"
+"aqua:bootandy/dust" = "1.2.5"
+"aqua:sharkdp/fd" = "10.5.0"
+"aqua:muesli/duf" = "0.9.1"
+"aqua:jesseduffield/lazygit" = "0.65.0"
+"aqua:BurntSushi/ripgrep" = "15.2.0"
+"aqua:jqlang/jq" = "1.8.2"
+"aqua:ajeetdsouza/zoxide" = "0.10.0"
+"aqua:aristocratos/btop" = { version = "1.4.7", os = ["linux"] }
+"aqua:cli/cli" = "2.100.0"
+"aqua:fastfetch-cli/fastfetch" = "2.68.1"
+"aqua:tree-sitter/tree-sitter" = "0.27.0"
+"aqua:zellij-org/zellij" = "0.45.1"
+"aqua:haskell/ghcup-hs" = "0.1.30.0"
+"github:Nanamiiiii/afunix-agent" = { version = "latest", os = ["windows"] }
+
+[settings]
+minimum_release_age_excludes = ["github:Nanamiiiii/afunix-agent"]

@@ -11,13 +11,18 @@ path=(
     "$DENO_INSTALL/bin"(N-/)
     "$GOPATH/bin"(N-/)
     "$HOME/.local/go/bin"(N-/)
-    "${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin"(N-/)
+    "${MISE_DATA_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/mise}/shims"(N-/)
     "$path[@]"
 )
 fpath=(
     "${ZDOTDIR:-~}/.zsh_functions"
     "$fpath[@]"
 )
+
+# mise
+if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate zsh)"
+fi
 
 # Title
 autoload -Uz add-zsh-hook
@@ -71,19 +76,29 @@ done
 
 
 # Completions
+_mise_completion_file() {
+    local executable
+    executable=$(mise which "$1") || return
+    /bin/cat "${executable:h}/$2"
+}
+
 autoload -Uz compinit && compinit
 ## Can lazy
-on_demand_completion 'aqua'
+on_demand_completion 'mise'
 on_demand_completion 'fzf' 'fzf --zsh'
 on_demand_completion 'procs' 'procs --gen-completion-out zsh'
-on_demand_completion 'ghq' '/bin/cat $(dirname $(aqua which ghq))/misc/zsh/_ghq' 
-on_demand_completion 'fd' '/bin/cat $(dirname $(aqua which fd))/autocomplete/_fd' 
+on_demand_completion 'ghq' '_mise_completion_file ghq misc/zsh/_ghq'
+on_demand_completion 'fd' '_mise_completion_file fd autocomplete/_fd'
 on_demand_completion 'rg' 'rg --generate complete-zsh'
-on_demand_completion 'zoxide' '/bin/cat $(dirname $(aqua which zoxide))/completions/_zoxide'
+on_demand_completion 'zoxide' '_mise_completion_file zoxide completions/_zoxide'
 on_demand_completion 'gh' 'gh completion -s zsh'
 
 # Unable to be lazy
-[[ ! -f "${ZDOTDIR}/.zsh_functions/_bat" ]] && cp "$(dirname $(aqua which bat))/autocomplete/bat.zsh" "${ZDOTDIR}/.zsh_functions/_bat" 
+if [[ ! -f "${ZDOTDIR}/.zsh_functions/_bat" ]] && command -v mise >/dev/null 2>&1; then
+    bat_completion=$(_mise_completion_file bat autocomplete/bat.zsh) &&
+        print -r -- "$bat_completion" > "${ZDOTDIR}/.zsh_functions/_bat"
+    unset bat_completion
+fi
 [[ ! -f "${ZDOTDIR}/.zsh_functions/_eza" ]] && curl "https://raw.githubusercontent.com/eza-community/eza/refs/heads/main/completions/zsh/_eza" > "${ZDOTDIR}/.zsh_functions/_eza"
 [[ ! -f "${ZDOTDIR}/.zsh_functions/_dust" ]] && curl "https://raw.githubusercontent.com/bootandy/dust/refs/heads/master/completions/_dust" > "${ZDOTDIR}/.zsh_functions/_dust"
 [[ ! -f "${ZDOTDIR}/.zsh_functions/_fastfetch" ]] && curl "https://raw.githubusercontent.com/fastfetch-cli/fastfetch/refs/heads/dev/completions/fastfetch.zsh" > "${ZDOTDIR}/.zsh_functions/_fastfetch"
