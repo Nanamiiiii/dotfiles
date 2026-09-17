@@ -449,9 +449,9 @@ config.keys = {
         action = wezterm.action.ReloadConfiguration,
     },
     {
-      key = "f",
-      mods = "LEADER",
-      action = wezterm.action.ToggleFullScreen,
+        key = "f",
+        mods = "LEADER",
+        action = wezterm.action.ToggleFullScreen,
     },
 }
 
@@ -588,28 +588,28 @@ if is_macos then
 end
 
 local function mise_which(bin)
-  local success, stdout, stderr = wezterm.run_child_process {
-    'mise',
-    'which',
-    bin,
-  }
+    local success, stdout, stderr = wezterm.run_child_process({
+        "mise",
+        "which",
+        bin,
+    })
 
-  if not success then
-    wezterm.log_error('mise which ' .. bin .. ' failed: ' .. stderr)
-    return nil
-  end
+    if not success then
+        wezterm.log_error("mise which " .. bin .. " failed: " .. stderr)
+        return nil
+    end
 
-  return stdout:gsub('%s+$', '')
+    return stdout:gsub("%s+$", "")
 end
 
 -- Run afunix-agent
 if is_windows then
     local agent = mise_which("afunix-agent")
     if agent then
-        local success, stdout, stderr = wezterm.run_child_process {
+        local success, stdout, stderr = wezterm.run_child_process({
             agent,
-            'socket'
-        }
+            "socket",
+        })
         if not success then
             local started, _, start_stderr = wezterm.run_child_process({
                 agent,
