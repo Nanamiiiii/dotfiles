@@ -1,9 +1,7 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
-        "config:recommended",
-        "github>aquaproj/aqua-renovate-config#2.13.0",
-        "github>aquaproj/aqua-renovate-config:installer-script#2.13.0(Makefile)"
+        "config:recommended"
     ],
     "nix": {
         "enabled": true
@@ -18,22 +16,6 @@
     },
     "packageRules": [
         {
-            "matchPackageNames": [
-                "aquaproj/aqua-registry"
-            ],
-            "extends": [
-                "schedule:earlyMondays"
-            ],
-            "automerge": true
-        },
-        {
-            "matchFileNames": [
-                "aqua/aqua.yaml"
-            ],
-            "groupName": "aqua cli varsion manager",
-            "automerge": true
-        },
-        {
             "matchFileNames": [
                 "renovate.json"
             ],
@@ -41,14 +23,14 @@
             "automerge": true
         },
         {
-            "matchManagers": [
-                "custom.regex"
-            ],
             "matchFileNames": [
-                "Makefile"
+                "mise/config.toml"
             ],
-            "groupName": "aqua installer",
-            "automerge": true
+            "matchManagers": [
+                "mise"
+            ],
+            "groupName": "mise tools",
+            "separateMajorMinor": false
         },
         {
             "matchManagers": [
