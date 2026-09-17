@@ -1,5 +1,4 @@
 -- Nanamiiiii's wezterm config
-
 local wezterm = require("wezterm")
 local mux = wezterm.mux
 local config = {}
@@ -16,9 +15,9 @@ config.use_ime = true
 config.macos_forward_to_ime_modifier_mask = "SHIFT|CTRL"
 
 -- Detect OS
-local is_macos = wezterm.target_triple:find("darwin") -- macos
+local is_macos = wezterm.target_triple:find("darwin")    -- macos
 local is_windows = wezterm.target_triple:find("windows") -- windows
-local is_linux = wezterm.target_triple:find("linux") -- linux
+local is_linux = wezterm.target_triple:find("linux")     -- linux
 
 -- Default Shell
 if is_windows then
@@ -604,41 +603,39 @@ end
 
 -- Run afunix-agent
 if is_windows then
-    local agent = mise_which("afunix-agent")
-    if agent then
-        local success, stdout, stderr = wezterm.run_child_process({
+    local agent = "afunix-agent.exe"
+    local success, stdout, stderr = wezterm.run_child_process({
+        agent,
+        "socket",
+    })
+    if not success then
+        local started, _, start_stderr = wezterm.run_child_process({
+            agent,
+            "start",
+        })
+        success, stdout, stderr = wezterm.run_child_process({
             agent,
             "socket",
         })
-        if not success then
-            local started, _, start_stderr = wezterm.run_child_process({
-                agent,
-                "start",
-            })
-            success, stdout, stderr = wezterm.run_child_process({
-                agent,
-                "socket",
-            })
-            if not started and not success then
-                wezterm.log_error("afunix-agent start failed: " .. start_stderr)
-            end
+        if not started and not success then
+            wezterm.log_error("afunix-agent start failed: " .. start_stderr)
         end
+    end
 
-        if success then
-            local socket = stdout:gsub("%s+$", "")
-            if socket ~= "" then
-                local domains = config.ssh_domains or wezterm.default_ssh_domains()
-                for _, domain in ipairs(domains) do
-                    domain.ssh_option = domain.ssh_option or {}
-                    domain.ssh_option.identityagent = socket
-                end
-                config.ssh_domains = domains
-            else
-                wezterm.log_error("afunix-agent socket returned an empty path")
+    if success then
+        local socket = stdout:gsub("%s+$", "")
+        if socket ~= "" then
+            local domains = config.ssh_domains or wezterm.default_ssh_domains()
+            for _, domain in ipairs(domains) do
+                domain.ssh_option = domain.ssh_option or {}
+                domain.ssh_option.identityagent = socket
             end
+            config.ssh_domains = domains
         else
-            wezterm.log_error("afunix-agent socket failed: " .. stderr)
+            wezterm.log_error("afunix-agent socket returned an empty path")
         end
+    else
+        wezterm.log_error("afunix-agent socket failed: " .. stderr)
     end
 end
 

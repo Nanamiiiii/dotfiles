@@ -18,7 +18,3 @@
 "aqua:tree-sitter/tree-sitter" = "0.27.0"
 "aqua:zellij-org/zellij" = "0.45.1"
 "aqua:haskell/ghcup-hs" = "0.1.30.0"
-"github:Nanamiiiii/afunix-agent" = { version = "latest", os = ["windows"] }
-
-[settings]
-minimum_release_age_excludes = ["github:Nanamiiiii/afunix-agent"]
