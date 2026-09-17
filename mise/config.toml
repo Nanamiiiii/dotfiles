@@ -17,4 +17,4 @@
 "aqua:fastfetch-cli/fastfetch" = "2.68.1"
 "aqua:tree-sitter/tree-sitter" = "0.27.0"
 "aqua:zellij-org/zellij" = "0.45.1"
-"aqua:haskell/ghcup-hs" = "0.1.30.0"
+"aqua:haskell/ghcup-hs" = "0.21"
