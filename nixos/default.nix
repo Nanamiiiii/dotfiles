@@ -29,6 +29,7 @@ rec {
       inherit (inputs.disko.nixosModules) disko;
       inherit (inputs.home-manager.nixosModules) home-manager;
       inherit (inputs.sops-nix.nixosModules) sops;
+      inherit (inputs.nix-dtv.nixosModules) nix-dtv;
       clipboard-sync = inputs.clipboard-sync.nixosModules.default;
       homeConfig = import ../home-manager {
         inherit
@@ -41,12 +42,13 @@ rec {
       };
     in
     [
-      ../profiles/${profile}
+      clipboard-sync
       disko
       home-manager
       homeConfig
+      nix-dtv
       sops
-      clipboard-sync
+      ../profiles/${profile}
       (import ../overlays { inherit inputs system; })
     ];
 }

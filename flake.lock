@@ -864,6 +864,26 @@
         "type": "github"
       }
     },
+    "nix-dtv": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789985331,
+        "narHash": "sha256-lt9gzFg/JZwA5ayY8bMVT/70WxsH8J0RXYfu1oQm8Es=",
+        "owner": "Nanamiiiii",
+        "repo": "nix-dtv",
+        "rev": "fe86bd708659565b60ad7839211e1bf57d523998",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Nanamiiiii",
+        "repo": "nix-dtv",
+        "type": "github"
+      }
+    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -1175,6 +1195,7 @@
         "lanzaboote": "lanzaboote",
         "llm-agents": "llm-agents",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
+        "nix-dtv": "nix-dtv",
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",

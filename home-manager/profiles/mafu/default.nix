@@ -18,7 +18,6 @@ let
     ../../common/apps/skk
     ../../common/editor/neovim
     ../../common/editor/zed
-    ../../common/editor/code
     ../../common/lang
     ../../common/shell/zsh
     (import ../../common/shell/tmux {
@@ -33,7 +32,6 @@ let
   linuxConfigs = [
     ../../linux/apps
     ../../linux/fcitx5
-    ../../linux/kdeconnect
     ../../linux/avatar
   ];
 
@@ -42,18 +40,10 @@ let
     ../../sops/ssh.nix
   ];
 
-  niriConfigHost = builtins.readFile ./config.kdl;
-
-  niriConfig = import ../../desktop/niri {
-    configByHost = niriConfigHost;
-  };
-
   symlink = config.lib.file.mkOutOfStoreSymlink;
 in
 {
   imports = [
-    niriConfig
-    ../../desktop/noctalia
   ]
   ++ commonConfigs
   ++ linuxConfigs
@@ -63,18 +53,11 @@ in
     with pkgs;
     [
       virt-manager
-      inkscape
-      drawio
       rclone
       hwloc
       vlc
       pkgs-stable.zoom-us
-      spotify
-      plexamp
-      pkgs-stable.plex-desktop
-      krita
       pinta
-      libreoffice-qt-stable
     ]
     ++ (with kdePackages; [
       ark
@@ -82,22 +65,6 @@ in
       gwenview
       okular
     ]);
-
-  programs.ssh = {
-    extraConfig = ''
-      Include ${config.home.homeDirectory}/.ssh/conf.d/lab.conf
-      Include ${config.home.homeDirectory}/.ssh/conf.d/apal.conf
-    '';
-  };
-
-  home.file = {
-    ".ssh/conf.d/lab.conf" = {
-      source = symlink "${config.sops.secrets.ssh-hosts-lab.path}";
-    };
-    ".ssh/conf.d/apal.conf" = {
-      source = symlink "${config.sops.secrets.ssh-hosts-apal.path}";
-    };
-  };
 
   home.stateVersion = "26.05";
 }

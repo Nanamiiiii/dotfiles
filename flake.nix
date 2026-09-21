@@ -5,6 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    llm-agents.url = "github:numtide/llm-agents.nix";
+    claude-desktop.url = "github:patrickjaja/claude-desktop-bin";
 
     nur = {
       url = "github:Nanamiiiii/nur";
@@ -91,11 +93,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    llm-agents.url = "github:numtide/llm-agents.nix";
-    claude-desktop.url = "github:patrickjaja/claude-desktop-bin";
-
     clipboard-sync = {
       url = "github:Nanamiiiii/clipboard-sync";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-dtv = {
+      url = "github:Nanamiiiii/nix-dtv";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -238,7 +242,7 @@
             desktop = true;
           });
 
-          # Corebox
+          # TV rec. server
           mafu = nixosSystem (nixosSystemArgs {
             profile = "mafu";
             username = "myuu";

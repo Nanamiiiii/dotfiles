@@ -51,27 +51,26 @@ let
 
   # Desktop
   desktopSettings = [
-    ../../nixos/settings/desktop/niri.nix
+    (import ../../nixos/settings/desktop/gnome.nix { enableRdp = true; })
     ../../nixos/settings/desktop/fonts.nix
     ../../nixos/settings/desktop/pipewire.nix
     ../../nixos/settings/desktop/xdg.nix
-    ../../nixos/settings/desktop/noctalia.nix
   ];
 
   # Misc
   misc = [
     ../../nixos/settings/misc/programs.nix
-    ../../nixos/settings/misc/virt.nix
     ../../nixos/settings/misc/cups.nix
     ../../nixos/settings/misc/gvfs.nix
-    ../../nixos/settings/misc/kdeconnect.nix
     ../../nixos/settings/misc/ssh.nix
-    ../../nixos/settings/misc/kdeconnect.nix
+    ../../nixos/settings/misc/docker.nix
+    ../../nixos/settings/misc/nfs.nix
   ];
 in
 {
   imports = [
     graphics
+    ./dtv.nix
   ]
   ++ boot
   ++ hardwareSettings
@@ -99,6 +98,11 @@ in
       };
     };
   };
+
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.hybrid-sleep.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
