@@ -111,9 +111,8 @@
     bondriver = [
       {
         # BonDriver for mirakurun
-        package = pkgs.nix-dtv.bondriver-linux-mirakc;
         name = "BonDriver_LinuxMirakc.so";
-        driverPath = "${pkgs.nix-dtv.bondriver-linux-mirakc}/lib/BonDriver_LinuxMirakc.so";
+        driverPath = "${pkgs.bondriver-linux-mirakc}/lib/BonDriver_LinuxMirakc.so";
         settings = {
           GLOBAL = {
             SERVER_HOST = "127.0.0.1";
