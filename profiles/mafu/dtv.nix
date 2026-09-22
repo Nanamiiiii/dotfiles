@@ -17,6 +17,8 @@
   # enable dtv stack
   services.dtv = {
     enable = true;
+
+    # recording dir
     recordingDir = [
       "/mnt/auto/dvr/recordings"
       "/mnt/auto/dvr/anime"
@@ -25,6 +27,11 @@
       "/mnt/auto/dvr/info"
       "/mnt/auto/dvr/misc"
     ];
+
+    # firewall settings
+    openFirewall = true;
+
+    # services
     px4_drv.enable = true;
     mirakurun.enable = true;
     edcb.enable = true;
@@ -33,10 +40,9 @@
 
   # mirakurun settings
   services.mirakurun = {
-    openFirewall = true;
     serverSettings = {
       logLevel = 1;
-      hostname = "mafu";
+      hostname = "mafu.myuu.internal";
     };
 
     # e-Better DTV02A-4TS-P with recisdb
@@ -133,9 +139,6 @@
     # for nfs mount
     manageRecordingDirs = false;
 
-    # open firewall ports for EDCB
-    openFirewallPorts = true;
-
     # enable EDCB Material Web UI 3
     materialWebUI = {
       enable = true;
@@ -148,21 +151,13 @@
 
   # konomitv settings
   services.konomitv = {
-    # tuner backend
-    backend = "EDCB";
-
-    # use mirakurun as streaming tuner
-    streamFromMirakurun = true;
-
     # enable intel qsv
     encoder = "QSVEncC";
 
+    # screen capture directory
     captureDir = [ "/mnt/auto/dvr/capture" ];
 
     # for nfs mount
     manageCaptureDirs = false;
-
-    # open firewall port for konomitv
-    openFirewallPort = true;
   };
 }
