@@ -7,7 +7,7 @@ updates:
     groups:
       other-flake-inputs:
         patterns:
-          - *
+          - "*"
         exclude-patterns:
           - nixpkgs
   - package-ecosystem: github-actions
