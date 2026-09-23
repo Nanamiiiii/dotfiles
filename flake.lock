@@ -871,11 +871,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790063278,
-        "narHash": "sha256-z7tm09d/uGva4WYbR6RdRs7rtuquAZY4DlLQUnuIIPs=",
+        "lastModified": 1790149810,
+        "narHash": "sha256-xYzbyPGrqkQtpPMxe8f77Hf5XP9A8KHqzd+Anl81Q/g=",
         "owner": "Nanamiiiii",
         "repo": "nix-dtv",
-        "rev": "101af362828b4f28626273c557290518903d0160",
+        "rev": "e2aeb70ee2846c4165450b9b5e98c905cbce1a30",
         "type": "github"
       },
       "original": {

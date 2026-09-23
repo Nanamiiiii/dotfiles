@@ -90,6 +90,7 @@
   services.edcb = {
     settings = {
       SET = {
+        CompatFlags = 4095;
         # recording name rule
         RecNamePlugIn = 1;
         RecNamePlugInFile = "RecName_Macro.so";
@@ -110,9 +111,27 @@
       };
     };
 
-    recNameMacroSettings = {
-      SET.Macro = "$ZtoH(Title)$.ts";
+    epgDataCapBonSettings = {
+      SET = {
+        SaveLogo = 1;
+        SaveLogoTypeFlags = 32;
+      };
     };
+
+    # Immutable settings
+    settingsImmutable = true;
+    commonSettingsImmutable = true;
+    epgDataCapBonSettingsImmutable = true;
+
+    plugins = [
+      # RecName plugin
+      {
+        name = "RecName_Macro.so";
+        settings = {
+          SET.Macro = "$ZtoH(Title)$.ts";
+        };
+      }
+    ];
 
     bondriver = [
       {
