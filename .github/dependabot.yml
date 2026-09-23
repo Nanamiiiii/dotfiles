@@ -3,4 +3,14 @@ updates:
   - package-ecosystem: nix
     directory: /
     schedule:
-      interval: "weekly"
+      interval: weekly
+    groups:
+      other-flake-inputs:
+        patterns:
+          - *
+        exclude-patterns:
+          - nixpkgs
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
