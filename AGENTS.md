@@ -22,6 +22,10 @@ Use deployment targets such as `make nixos-<profile>` only when an actual system
 
 Format all changes with `make fmt`. Nix files use `nixfmt`; Lua files under `config/nvim/` and `config/wezterm/` use StyLua with four-space indentation and a 120-column limit. Name modules and directories with lowercase descriptive terms, such as `settings/system/networking.nix`. Follow existing module patterns: explicit imports, small concern-focused files, and profile names matching flake output names.
 
+## Documentation Guidelines
+
+Do not modify README files unless explicitly requested by the user. Keep documentation simple and concise; avoid AI-generated filler, redundant explanations, and unnecessary sections. Simple is best.
+
 ## Testing Guidelines
 
 There is no separate unit-test framework. Validate the narrowest affected output first with an `*-eval-*` target, then run the corresponding `*-build-*` target for configuration changes. Run `nix flake check` before submitting. Changes to platform-specific modules should be checked against at least one relevant profile.

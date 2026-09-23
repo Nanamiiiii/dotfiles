@@ -86,11 +86,11 @@ nixos-eval-%:
 
 .PHONY: nix-darwin-eval-%
 nix-darwin-eval-%:
-	@$(NIX_CMD) eval ".#darwinConfigurations."${@:nix-darwin-eval-%=%}".system" --verbose --show-trace --extra-experimental-features nix-command --extra-experimental-features flake
+	@$(NIX_CMD) eval ".#darwinConfigurations."${@:nix-darwin-eval-%=%}".system" --verbose --show-trace --extra-experimental-features nix-command --extra-experimental-features flakes
 
 .PHONY: nix-home-eval-%
 nix-home-eval-%:
-	@$(NIX_CMD) eval ".#homeConfigurations."${@:nix-home-eval-%=%}".activationPackage.drvPath" --verbose --show-trace --extra-experimental-features nix-command --extra-experimental-features flake
+	@$(NIX_CMD) eval ".#homeConfigurations."${@:nix-home-eval-%=%}".activationPackage.drvPath" --verbose --show-trace --extra-experimental-features nix-command --extra-experimental-features flakes
 
 # Update
 .PHONY: update

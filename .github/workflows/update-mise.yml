@@ -1,0 +1,89 @@
+name: Update mise tools
+
+on:
+  schedule:
+    # Monday at 09:00 JST (00:00 UTC).
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: update-mise
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout default branch
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Set up mise
+        uses: jdx/mise-action@v4.3.0
+        with:
+          install: false
+          cache: false
+
+      - name: Update pinned tool versions
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        shell: python
+        run: |
+          import json
+          import re
+          import subprocess
+          import tomllib
+          from pathlib import Path
+
+          path = Path("mise/config.toml")
+          content = path.read_text()
+          tools = tomllib.loads(content)["tools"]
+
+          # Resolve every backend explicitly, including tools restricted to other OSes.
+          for tool, settings in tools.items():
+              current = settings if isinstance(settings, str) else settings["version"]
+              latest = subprocess.check_output(
+                  ["mise", "latest", tool], text=True, timeout=120
+              ).strip()
+              if not latest or "\n" in latest:
+                  raise ValueError(f"Invalid version for {tool}: {latest!r}")
+              if latest == current:
+                  continue
+              # Preserve inline options, comments, and the surrounding TOML formatting.
+              pattern = (
+                  rf'(^\s*{re.escape(json.dumps(tool))}\s*=\s*'
+                  rf'(?:\{{\s*version\s*=\s*)?){re.escape(json.dumps(current))}'
+              )
+              content, count = re.subn(
+                  pattern, lambda match: match[1] + json.dumps(latest),
+                  content, flags=re.MULTILINE,
+              )
+              if count != 1:
+                  raise ValueError(f"Expected one version entry for {tool}, found {count}")
+              print(f"{tool}: {current} -> {latest}")
+
+          tomllib.loads(content)
+          path.write_text(content)
+
+      # Enable "Allow GitHub Actions to create and approve pull requests" in repository settings.
+      # PRs created with GITHUB_TOKEN do not trigger other pull_request workflows.
+      - name: Create update pull request
+        uses: peter-evans/create-pull-request@v8.1.1
+        with:
+          base: ${{ github.event.repository.default_branch }}
+          branch: automation/update-mise
+          delete-branch: true
+          add-paths: mise/config.toml
+          commit-message: 'mise: update tool versions'
+          title: 'mise: update tool versions'
+          body: |
+            Update the pinned tool versions in `mise/config.toml` to their latest releases.
+
+            Generated automatically by the weekly or manually dispatched mise update workflow.

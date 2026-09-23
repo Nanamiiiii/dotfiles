@@ -1,0 +1,137 @@
+name: Evaluate system and home configurations
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: eval-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  changed-files:
+    name: Detect affected configuration types
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      nixos: ${{ steps.changes.outputs.common_any_changed == 'true' || steps.changes.outputs.nixos_any_changed == 'true' }}
+      darwin: ${{ steps.changes.outputs.common_any_changed == 'true' || steps.changes.outputs.darwin_any_changed == 'true' }}
+      home: ${{ steps.changes.outputs.common_any_changed == 'true' || steps.changes.outputs.home_any_changed == 'true' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Classify changed files
+        id: changes
+        uses: tj-actions/changed-files@v47
+        with:
+          files_yaml: |
+            common:
+              - flake.nix
+              - flake.lock
+              - Makefile
+              - .github/workflows/eval.yml
+              - config/**
+              - secrets/**
+              - home-manager/**
+              - '!home-manager/default.nix'
+              - '!home-manager/standalone.nix'
+              - '!home-manager/profiles/**'
+              - '!home-manager/linux/**'
+              - '!home-manager/darwin/**'
+              - '!home-manager/desktop/**'
+              - '!home-manager/wsl/**'
+            nixos:
+              - nixos/**
+              - nix-wsl/**
+              - overlays/**
+              - assets/**
+              - profiles/**
+              - '!profiles/suisui/**'
+              - '!profiles/nono/**'
+              - home-manager/default.nix
+              - home-manager/linux/**
+              - home-manager/wsl/**
+              - home-manager/desktop/**
+              - '!home-manager/desktop/aerospace/**'
+              - home-manager/profiles/**
+              - '!home-manager/profiles/suisui/**'
+              - '!home-manager/profiles/nono/**'
+              - '!home-manager/profiles/xanadu/**'
+              - '!home-manager/profiles/unyonyo/**'
+            darwin:
+              - nix-darwin/**
+              - overlays/**
+              - profiles/suisui/**
+              - profiles/nono/**
+              - home-manager/default.nix
+              - home-manager/darwin/**
+              - home-manager/desktop/aerospace/**
+              - home-manager/profiles/suisui/**
+              - home-manager/profiles/nono/**
+            home:
+              - overlays/**
+              - home-manager/standalone.nix
+              - home-manager/linux/**
+              - assets/**
+              - home-manager/profiles/xanadu/**
+              - home-manager/profiles/unyonyo/**
+
+  nixos-eval:
+    name: Evaluate NixOS (${{ matrix.profile }})
+    needs: changed-files
+    if: needs.changed-files.outputs.nixos == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [nyan, mafu, rika, yuki, saki, nacho]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+      - name: Evaluate profile
+        run: make RUNS_ENV=ci nixos-eval-${{ matrix.profile }}
+
+  darwin-eval:
+    name: Evaluate nix-darwin (${{ matrix.profile }})
+    needs: changed-files
+    if: needs.changed-files.outputs.darwin == 'true'
+    runs-on: macos-26
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [suisui, nono]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+      - name: Evaluate profile
+        run: make RUNS_ENV=ci nix-darwin-eval-${{ matrix.profile }}
+
+  home-eval:
+    name: Evaluate standalone Home Manager (${{ matrix.profile }})
+    needs: changed-files
+    if: needs.changed-files.outputs.home == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [xanadu, unyonyo]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+      - name: Evaluate profile
+        run: make RUNS_ENV=ci nix-home-eval-${{ matrix.profile }}

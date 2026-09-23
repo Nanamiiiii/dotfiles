@@ -20,7 +20,7 @@ in
   pkgs = import inputs.nixpkgs {
     inherit system;
     config.allowUnfree = true;
-    overlays = [ inputs.nur.overlays.default ];
+    overlays = [ ../overlays ];
   };
   extraSpecialArgs = {
     inherit

@@ -1,120 +1,53 @@
-name: build system configurations with nix
+name: Build NixOS configurations on nixbuild.net
+
 on:
-  pull_request:
-    branches:
-      - main
   push:
     branches:
       - main
-permissions: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  changed-files:
-    runs-on: ubuntu-latest
-    name: Check modified files
-    outputs:
-      nixos-changed: ${{ steps.changed-files.outputs.nixos_any_changed == 'true' }}
-      darwin-changed: ${{ steps.changed-files.outputs.darwin_any_changed == 'true' }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-      - name: Get all changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v47
-        with:
-          files_yaml: |
-            nixos:
-              - flake.lock
-              - flake.nix
-              - home-manager/**
-              - '!home-manager/darwin/**'
-              - '!home-manager/profiles/suisui/**'
-              - nixos/**
-              - profiles/**
-              - '!profiles/suisui/**'
-              - secrets/**
-              - '.github/workflows/build.yml'
-              - 'Makefile'
-              - build/**
-            darwin:
-              - flake.lock
-              - flake.nix
-              - home-manager/**
-              - '!home-manager/linux/**'
-              - '!home-manager/hyprland/**'
-              - '!home-manager/fcitx5/**'
-              - '!home-manager/profiles/mafu/**'
-              - '!home-manager/profiles/nacho/**'
-              - '!home-manager/profiles/rika/**'
-              - '!home-manager/profiles/saki/**'
-              - '!home-manager/profiles/unyonyo/**'
-              - '!home-manager/profiles/xanadu/**'
-              - '!home-manager/profiles/yuki/**'
-              - nix-darwin/**
-              - profiles/suisui/**
-              - secrets/**
-              - '.github/workflows/build.yml'
-              - 'Makefile'
-
   nixos-build:
-    runs-on: [self-hosted, X64, Linux, nix]
-    name: Build NixOS configuration for nacho
-    needs: changed-files
-    if: needs.changed-files.outputs.nixos-changed == 'true'
+    name: Build NixOS configuration for ${{ matrix.profile }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        profile:
+          - nyan
+          - yuki
+          - mafu
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-      - name: Build docker image
-        run: docker build -f build/nix.Dockerfile -t nix-builder:${{ github.sha }} .
+        with:
+          persist-credentials: false
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+      - name: Configure nixbuild.net
+        uses: nixbuild/nixbuild-action@v27
+        with:
+          nixbuild_token: ${{ secrets.NIXBUILD_TOKEN }}
+          settings: |
+            caches = s3://nix-cache?region=auto&endpoint=https://212cd12a44cb9c8f000d70ea06dcb593.r2.cloudflarestorage.com&secret-key=${{ secrets.NIX_CACHE_SIGNING_KEY_URLENCODED }}
+            access-tokens = s3://nix-cache=${{ secrets.R2_ACCESS_KEY_ID }}:${{ secrets.R2_SECRET_ACCESS_KEY }}
       - name: Build
         run: |
-          docker run --rm -e RUNS_ENV=ci nix-builder:${{ github.sha }} make ci-build
-      - name: Cleanup
-        run: |
-          docker rmi nix-builder:${{ github.sha }}
-
-  darwin-build:
-    runs-on: macos-26
-    name: Build darwin configuration
-    needs: changed-files
-    if: needs.changed-files.outputs.darwin-changed == 'true'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-      - name: Install nix
-        uses: cachix/install-nix-action@v31
-      - name: Setup cachix
-        uses: cachix/cachix-action@v17
-        with:
-          name: nanamiiiii
-          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-      - name: Create /run for darwin
-        run: |
-          printf "run\tprivate/var/run\n" | sudo tee -a /etc/synthetic.conf
-          /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t || true
-      - name: Build
-        run: |
-          make RUNS_ENV=ci ci-build
-          df -h
-
-  cachix-deploy:
-    runs-on: macos-26
-    name: Deploy darwin configuration
-    needs: darwin-build
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-      - name: Install nix
-        uses: cachix/install-nix-action@v31
-      - name: Setup cachix
-        uses: cachix/cachix-action@v17
-        with:
-          name: nanamiiiii
-          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-      - name: Deploy
-        env:
-          CACHIX_ACTIVATE_TOKEN: ${{ secrets.CACHIX_ACTIVATE_TOKEN }}
-        run: |
-          spec=$(nix build ".#cachix-deploy" --accept-flake-config --print-out-paths)
-          cachix push nanamiiiii "$spec"
-          cachix deploy activate "$spec" --async
+          nix build \
+            ".#nixosConfigurations.${{ matrix.profile }}.config.system.build.toplevel" \
+            --accept-flake-config \
+            --no-write-lock-file \
+            --no-link \
+            --print-build-logs \
+            --show-trace \
+            --builders "" \
+            --max-jobs 2 \
+            --eval-store auto \
+            --store ssh-ng://eu.nixbuild.net
