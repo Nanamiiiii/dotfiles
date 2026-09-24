@@ -22,7 +22,7 @@ jobs:
       fail-fast: false
       matrix:
         profile:
-          - yuki
+          - nacho
     steps:
       - name: Checkout
         uses: actions/checkout@v7
