@@ -40,8 +40,8 @@ jobs:
           generate_summary_for: 'workflow'
           settings: |
             build-summary-log-format = logfmt
-            caches = s3://nix-cache?region=auto&endpoint=https://212cd12a44cb9c8f000d70ea06dcb593.r2.cloudflarestorage.com&secret-key=${{ secrets.NIX_CACHE_SIGNING_KEY }}&addressing-style=path
-            access-tokens = s3://nix-cache=${{ secrets.R2_ACCESS_KEY_ID }}:${{ secrets.R2_SECRET_ACCESS_KEY }}
+            caches = s3://nix-cache/systems?region=auto&endpoint=https://212cd12a44cb9c8f000d70ea06dcb593.r2.cloudflarestorage.com&secret-key=${{ secrets.NIX_CACHE_SIGNING_KEY }}&addressing-style=path
+            access-tokens = s3://nix-cache/systems=${{ secrets.R2_ACCESS_KEY_ID }}:${{ secrets.R2_SECRET_ACCESS_KEY }}
       - name: Build
         run: |
           nix build \

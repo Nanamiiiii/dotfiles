@@ -106,7 +106,8 @@
 
   nixConfig = {
     extra-substituters = [
-      "https://nix-cache.myuu.dev"
+      "https://nix-cache.myuu.dev/systems"
+      "https://nix-cache.myuu.dev/packages"
       "https://nix-community.cachix.org"
       "https://hyprland.cachix.org"
       "https://noctalia.cachix.org"
