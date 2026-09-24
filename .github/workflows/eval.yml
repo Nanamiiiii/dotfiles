@@ -113,10 +113,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+      - name: Install gmake
+        run: brew install make
       - name: Install Nix
         uses: cachix/install-nix-action@v31
       - name: Evaluate profile
-        run: make RUNS_ENV=ci nix-darwin-eval-${{ matrix.profile }}
+        run: gmake RUNS_ENV=ci nix-darwin-eval-${{ matrix.profile }}
 
   home-eval:
     name: Evaluate standalone Home Manager (${{ matrix.profile }})
