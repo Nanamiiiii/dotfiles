@@ -40,6 +40,8 @@ jobs:
           generate_summary_for: 'workflow'
           settings: |
             build-summary-log-format = logfmt
+            caches = ${{ secrets.NIXBUILD_CACHES }}
+            access-tokens = ${{ secrets.NIXBUILD_CACHES_ACCESSKEY }}
       - name: Build
         run: |
           nix build \
