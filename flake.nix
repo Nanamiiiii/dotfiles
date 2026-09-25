@@ -1,107 +1,67 @@
 {
-  description = "Nanamiiiii's Nix Configuration";
+  description = "Myuu's Nix Configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     llm-agents.url = "github:numtide/llm-agents.nix";
-    claude-desktop.url = "github:patrickjaja/claude-desktop-bin";
 
-    nur = {
-      url = "github:Nanamiiiii/nur";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-darwin.url = "github:lnl7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    git-hooks = {
-      url = "github:cachix/git-hooks.nix";
-      inputs.flake-compat.follows = "";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-wsl.inputs.flake-compat.follows = "";
 
-    darwin = {
-      url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nur.url = "github:Nanamiiiii/nur";
+    nur.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    git-hooks.url = "github:cachix/git-hooks.nix";
+    git-hooks.inputs.flake-compat.follows = "";
+    git-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v1.1.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly-overlay.inputs.flake-parts.follows = "flake-parts";
+    neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
-    wez-flake = {
-      url = "github:wez/wezterm/main?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
+    lanzaboote.url = "github:nix-community/lanzaboote/v1.1.0";
+    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    cachix-deploy-flake = {
-      url = "github:cachix/cachix-deploy-flake";
-      inputs.darwin.follows = "darwin";
-      inputs.home-manager.follows = "home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    cachix-deploy-flake.url = "github:cachix/cachix-deploy-flake";
+    cachix-deploy-flake.inputs.darwin.follows = "nix-darwin";
+    cachix-deploy-flake.inputs.home-manager.follows = "home-manager";
+    cachix-deploy-flake.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "";
-    };
+    disko.url = "github:nix-community/disko/latest";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
 
-    disko = {
-      url = "github:nix-community/disko/latest";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    noctalia.url = "github:noctalia-dev/noctalia/v5.1.0";
+    noctalia.inputs.nixpkgs.follows = "nixpkgs";
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia/v5.1.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    clipboard-sync.url = "github:Nanamiiiii/clipboard-sync";
+    clipboard-sync.inputs.nixpkgs.follows = "nixpkgs";
 
-    clipboard-sync = {
-      url = "github:Nanamiiiii/clipboard-sync";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-dtv = {
-      url = "github:Nanamiiiii/nix-dtv";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-dtv.url = "github:Nanamiiiii/nix-dtv";
+    nix-dtv.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   nixConfig = {
@@ -128,7 +88,7 @@
       self,
       nixpkgs,
       nixpkgs-stable,
-      darwin,
+      nix-darwin,
       nixos-wsl,
       home-manager,
       git-hooks,
@@ -300,7 +260,7 @@
                 system
                 ;
             };
-          inherit (darwin.lib) darwinSystem;
+          inherit (nix-darwin.lib) darwinSystem;
         in
         {
           # MacBook Pro 2021
