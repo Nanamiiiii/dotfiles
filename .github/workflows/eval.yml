@@ -36,7 +36,6 @@ jobs:
               - flake.lock
               - Makefile
               - .github/workflows/eval.yml
-              - config/**
               - secrets/**
               - home-manager/**
               - '!home-manager/default.nix'

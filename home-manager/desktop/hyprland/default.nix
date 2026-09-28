@@ -69,7 +69,7 @@ let
       ;
   };
 
-  configFiles = import ../../../config {
+  configFiles = import ../../config-files.nix {
     inherit
       pkgs
       config

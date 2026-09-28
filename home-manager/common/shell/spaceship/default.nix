@@ -5,8 +5,7 @@
   ];
 
   xdg.configFile."spaceship" = {
-    source = ../../../../config/spaceship;
-    recursive = true;
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/spaceship";
   };
 
   programs.zsh = {

@@ -9,7 +9,7 @@
   ...
 }:
 let
-  configFiles = import ../../../../config {
+  configFiles = import ../../../config-files.nix {
     inherit
       pkgs
       config
@@ -49,9 +49,7 @@ in
         set-option -g focus-events on
         set-window-option -g aggressive-resize on
         set -g allow-passthrough on
-      ''
-      + builtins.readFile ../../../../config/tmux/tmux-style.conf
-      + ''
+        source-file "${config.xdg.configHome}/tmux/tmux-style.conf"
         run-shell ${pkgs.tmuxPlugins.cpu.rtp}
         run-shell ${pkgs.tmuxPlugins.pain-control.rtp}
         run-shell ${pkgs.tmuxPlugins.prefix-highlight.rtp}

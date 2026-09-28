@@ -5,13 +5,12 @@
   ...
 }:
 let
-  socklink = pkgs.callPackage ./package.nix { };
-  socklinkBin = "${socklink}/bin/socklink.sh";
+  socklinkBin = "${pkgs.socklink}/bin/socklink.sh";
 
   hasClientActiveHook = lib.versionAtLeast config.programs.tmux.package.version "3.3";
 in
 {
-  home.packages = [ socklink ];
+  home.packages = [ pkgs.socklink ];
 
   programs.zsh.initContent = lib.mkOrder 1600 ''
     if [[ -o interactive ]]; then

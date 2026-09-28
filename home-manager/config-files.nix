@@ -37,6 +37,9 @@ in
     };
 
     tmux = {
+      "tmux/tmux-style.conf" = {
+        source = symlink "${configDir}/tmux/tmux-style.conf";
+      };
       "tmux/digit.sh" = {
         source = symlink "${configDir}/tmux/digit.sh";
       };

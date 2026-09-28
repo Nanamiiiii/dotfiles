@@ -9,7 +9,7 @@
 let
   neovim-nightly = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
-  configFiles = import ../../../../config {
+  configFiles = import ../../../config-files.nix {
     inherit
       pkgs
       config

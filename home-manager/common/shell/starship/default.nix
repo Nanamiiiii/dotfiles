@@ -1,8 +1,13 @@
+{ config, ... }:
+let
+  configFiles = import ../../../config-files.nix { inherit config; };
+in
 {
   programs = {
     starship = {
       enable = true;
-      settings = builtins.fromTOML (builtins.readFile ../../../../config/starship/starship.toml);
     };
   };
+
+  xdg.configFile = configFiles.dotConfigs.starship;
 }
