@@ -10,6 +10,7 @@ updates:
           - "*"
         exclude-patterns:
           - nixpkgs
+          - llm-agents
   - package-ecosystem: github-actions
     directory: /
     schedule:
