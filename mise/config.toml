@@ -14,7 +14,7 @@
 "aqua:ajeetdsouza/zoxide" = "0.10.0"
 "aqua:aristocratos/btop" = { version = "1.4.7", os = ["linux"] }
 "aqua:cli/cli" = "2.101.0"
-"aqua:fastfetch-cli/fastfetch" = "2.68.1"
+"aqua:fastfetch-cli/fastfetch" = "2.69.0"
 "aqua:tree-sitter/tree-sitter" = "0.27.0"
 "aqua:zellij-org/zellij" = "0.45.1"
-"aqua:haskell/ghcup-hs" = "0.21"
+"aqua:haskell/ghcup-hs" = "0.2.6.2"
