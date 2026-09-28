@@ -20,6 +20,7 @@ jobs:
     timeout-minutes: 180
     strategy:
       fail-fast: false
+      max-parallel: 1
       matrix:
         profile:
           - nyan
@@ -40,8 +41,6 @@ jobs:
           generate_summary_for: 'workflow'
           settings: |
             build-summary-log-format = logfmt
-            caches = ${{ secrets.NIXBUILD_CACHES }}
-            access-tokens = ${{ secrets.NIXBUILD_CACHES_ACCESSKEY }}
       - name: Build
         run: |
           nix build \
@@ -49,9 +48,28 @@ jobs:
             --accept-flake-config \
             --no-write-lock-file \
             --no-link \
+            --print-out-paths \
             --print-build-logs \
             --show-trace \
             --builders "" \
             --max-jobs 2 \
             --eval-store auto \
-            --store ssh-ng://eu.nixbuild.net
+            --store ssh-ng://eu.nixbuild.net > "$RUNNER_TEMP/build-outputs"
+      - name: Upload closure to S3
+        env:
+          S3_STORE_URL: ${{ secrets.S3_STORE_URL }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          NIX_CACHE_SECRET_KEY: ${{ secrets.NIX_CACHE_SECRET_KEY }}
+        run: |
+          : "${S3_STORE_URL:?Set the S3_STORE_URL secret to an s3:// store URL}"
+          : "${NIX_CACHE_SECRET_KEY:?Set the NIX_CACHE_SECRET_KEY secret}"
+          umask 077
+          trap 'rm -f -- /tmp/nix-cache-signing-key' EXIT
+          printf '%s' "$NIX_CACHE_SECRET_KEY" > /tmp/nix-cache-signing-key
+          unset NIX_CACHE_SECRET_KEY
+          mapfile -t outputs < "$RUNNER_TEMP/build-outputs"
+          nix copy \
+            --from ssh-ng://eu.nixbuild.net \
+            --to "$S3_STORE_URL" \
+            "${outputs[@]}"
