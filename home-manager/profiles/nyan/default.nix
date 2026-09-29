@@ -138,9 +138,15 @@ in
     };
     notification = {
       position = lib.mkForce "bottom_right";
+      offset_y = lib.mkForce 20;
       monitors = [ "PA279CRV" ];
     };
-    osd.monitors = [ "PA279CRV" ];
+    osd = {
+      position = lib.mkForce "bottom_left";
+      background_opacity = lib.mkForce 1.0;
+      offset_y = lib.mkForce 20;
+      monitors = [ "PA279CRV" ];
+    };
   };
 
   home.file = {

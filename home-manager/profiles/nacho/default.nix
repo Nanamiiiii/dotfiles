@@ -137,7 +137,15 @@ in
         drawer_columns = 5;
       };
     };
-    notification.position = lib.mkForce "bottom_right";
+    notification = {
+      position = lib.mkForce "bottom_right";
+      offset_y = lib.mkForce 20;
+    };
+    osd = {
+      position = lib.mkForce "bottom_left";
+      background_opacity = lib.mkForce 1.0;
+      offset_y = lib.mkForce 20;
+    };
   };
 
   xdg.configFile."onedrive/sync_list".text = ''
