@@ -31,7 +31,7 @@
     neovim-nightly-overlay.inputs.flake-parts.follows = "flake-parts";
     neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
-    lanzaboote.url = "github:nix-community/lanzaboote/v1.1.0";
+    lanzaboote.url = "github:nix-community/lanzaboote/v1.2.0";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
