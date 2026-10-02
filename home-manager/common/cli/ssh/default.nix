@@ -1,37 +1,22 @@
 let
   tyoHosts = {
-    "router" = {
-      hostname = "172.16.0.1";
-      user = "nanami";
+    "yuina" = {
+      hostname = "172.27.0.1";
+      user = "root";
       port = 22;
     };
-    "mashiro" = {
-      hostname = "172.16.10.10";
+    "misaki" = {
+      hostname = "172.27.10.2";
       user = "myuu";
       port = 22;
     };
-    "mashiro-sv" = {
+    "mashiro" = {
       hostname = "172.27.10.1";
       user = "myuu";
       port = 22;
     };
-    "misaki" = {
-      hostname = "172.16.1.1";
-      user = "myuu";
-      port = 22;
-    };
-    "misaki-sv" = {
-      hostname = "172.27.1.1";
-      user = "myuu";
-      port = 22;
-    };
-    "rio" = {
-      hostname = "172.27.10.3";
-      user = "nanami";
-      port = 22;
-    };
     "mafu" = {
-      hostname = "172.27.30.10";
+      hostname = "172.27.10.3";
       user = "myuu";
       port = 22;
     };
@@ -43,7 +28,7 @@ let
       user = "myuu";
       port = 22;
     };
-    "nacho-wg" = {
+    "nachowg" = {
       hostname = "10.27.1.12";
       user = "myuu";
       port = 22;
