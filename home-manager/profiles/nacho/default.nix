@@ -88,6 +88,7 @@ in
 
   programs.ssh = {
     extraConfig = ''
+      Include ${config.home.homeDirectory}/.ssh/conf.d/lab.conf
       Include ${config.home.homeDirectory}/.ssh/conf.d/apal.conf
     '';
   };
