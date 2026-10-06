@@ -9,7 +9,7 @@ on:
       - '.envrc'
       - '.gitignore'
       - '.nvim_template.lua'
-      - 'Makefile'
+      - 'justfile'
       - 'treefmt.nix'
       - 'config/**'
       - 'mise/**'

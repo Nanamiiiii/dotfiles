@@ -177,6 +177,9 @@ in
   };
 
   home.file = {
+    ".ssh/conf.d/lab.conf" = {
+      source = symlink "${config.sops.secrets.ssh-hosts-lab.path}";
+    };
     ".ssh/conf.d/apal.conf" = {
       source = symlink "${config.sops.secrets.ssh-hosts-apal.path}";
     };

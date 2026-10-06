@@ -34,7 +34,7 @@ jobs:
             common:
               - flake.nix
               - flake.lock
-              - Makefile
+              - justfile
               - .github/workflows/eval.yml
               - secrets/**
               - home-manager/**
@@ -96,8 +96,10 @@ jobs:
         uses: actions/checkout@v7
       - name: Install Nix
         uses: cachix/install-nix-action@v31
+      - name: Install just
+        run: nix profile add nixpkgs#just
       - name: Evaluate profile
-        run: make RUNS_ENV=ci nixos-eval-${{ matrix.profile }}
+        run: just RUNS_ENV=ci nixos-eval ${{ matrix.profile }}
 
   darwin-eval:
     name: Evaluate nix-darwin (${{ matrix.profile }})
@@ -112,12 +114,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-      - name: Install gmake
-        run: brew install make
       - name: Install Nix
         uses: cachix/install-nix-action@v31
+      - name: Install just
+        run: nix profile add nixpkgs#just
       - name: Evaluate profile
-        run: gmake RUNS_ENV=ci nix-darwin-eval-${{ matrix.profile }}
+        run: just RUNS_ENV=ci nix-darwin-eval ${{ matrix.profile }}
 
   home-eval:
     name: Evaluate standalone Home Manager (${{ matrix.profile }})
@@ -134,5 +136,7 @@ jobs:
         uses: actions/checkout@v7
       - name: Install Nix
         uses: cachix/install-nix-action@v31
+      - name: Install just
+        run: nix profile add nixpkgs#just
       - name: Evaluate profile
-        run: make RUNS_ENV=ci nix-home-eval-${{ matrix.profile }}
+        run: just RUNS_ENV=ci nix-home-eval ${{ matrix.profile }}
