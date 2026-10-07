@@ -26,7 +26,7 @@ jobs:
           ref: ${{ github.event.repository.default_branch }}
 
       - name: Set up mise
-        uses: jdx/mise-action@v4.3.0
+        uses: jdx/mise-action@v5.1.1
         with:
           install: false
           cache: false
