@@ -1,5 +1,7 @@
 {
+  inputs,
   pkgs,
+  pkgs-stable,
   desktop,
   ...
 }:
@@ -12,7 +14,9 @@ let
     firefox
     discord
     obsidian
-    zotero
+    (pkgs-stable.callPackage "${inputs.nixpkgs}/pkgs/by-name/zo/zotero/package.nix" {
+      firefox-esr-153-unwrapped = pkgs-stable.firefox-esr-140-unwrapped;
+    })
     slack
     thunderbird
     betterdiscordctl
