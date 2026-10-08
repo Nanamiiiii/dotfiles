@@ -14,7 +14,7 @@ on:
       - 'config/**'
       - 'mise/**'
       - 'sheldon/**'
-  workflow_dispatch: 
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -27,7 +27,7 @@ jobs:
   nixos-build:
     name: Build NixOS configuration for ${{ matrix.profile }}
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 360
     strategy:
       fail-fast: false
       max-parallel: 2
@@ -65,6 +65,40 @@ jobs:
             --max-jobs 2 \
             --eval-store auto \
             --store ssh-ng://eu.nixbuild.net > "$RUNNER_TEMP/build-outputs"
+      - name: Save build output paths
+        uses: actions/upload-artifact@v7
+        with:
+          name: build-outputs-${{ matrix.profile }}
+          path: ${{ runner.temp }}/build-outputs
+          if-no-files-found: error
+          overwrite: true
+
+  nixos-upload:
+    name: Upload NixOS configuration for ${{ matrix.profile }}
+    needs: nixos-build
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        profile:
+          - nyan
+          - nacho
+          - yuki
+          - mafu
+    steps:
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+      - name: Configure nixbuild.net
+        uses: nixbuild/nixbuild-action@v27
+        with:
+          nixbuild_token: ${{ secrets.NIXBUILD_TOKEN }}
+      - name: Download build output paths
+        uses: actions/download-artifact@v8
+        with:
+          name: build-outputs-${{ matrix.profile }}
+          path: ${{ runner.temp }}
       - name: Upload closure to S3
         env:
           S3_STORE_URL: ${{ secrets.S3_STORE_URL }}
