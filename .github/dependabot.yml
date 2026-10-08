@@ -5,12 +5,15 @@ updates:
     schedule:
       interval: weekly
     groups:
-      other-flake-inputs:
+      flake-inputs:
         patterns:
           - "*"
         exclude-patterns:
           - nixpkgs
           - llm-agents
+    cooldown:
+      exclude:
+        - "*"
   - package-ecosystem: github-actions
     directory: /
     schedule:
