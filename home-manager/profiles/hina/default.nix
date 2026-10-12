@@ -1,5 +1,6 @@
 {
   config,
+  username,
   ...
 }:
 let
@@ -9,11 +10,10 @@ let
     ../../common/cli
     ../../common/cli/git
     (import ../../common/cli/gpg {
-      enableAgent = true;
-      pinentryVariant = "darwin";
+      enableAgent = false;
+      pinentryVariant = null;
     })
     ../../common/cli/ssh
-    ../../common/apps/skk
     ../../common/editor/neovim
     ../../common/editor/zed
     ../../common/lang
@@ -35,7 +35,7 @@ let
   symlink = config.lib.file.mkOutOfStoreSymlink;
 in
 {
-  imports = commonConfigs ++ sopsConfigs;
+  imports = commonConfigs ++ sopsConfigs ++ [ ../../darwin/apps ];
 
   programs.ssh = {
     extraConfig = ''
@@ -44,14 +44,17 @@ in
     '';
   };
 
-  home.file = {
-    ".ssh/conf.d/lab.conf" = {
-      source = symlink "${config.sops.secrets.ssh-hosts-lab.path}";
+  home = {
+    inherit username;
+    file = {
+      ".ssh/conf.d/lab.conf" = {
+        source = symlink "${config.sops.secrets.ssh-hosts-lab.path}";
+      };
+      ".ssh/conf.d/apal.conf" = {
+        source = symlink "${config.sops.secrets.ssh-hosts-apal.path}";
+      };
     };
-    ".ssh/conf.d/apal.conf" = {
-      source = symlink "${config.sops.secrets.ssh-hosts-apal.path}";
-    };
+    homeDirectory = "/Users/${username}";
+    stateVersion = "26.05";
   };
-
-  home.stateVersion = "26.05";
 }
