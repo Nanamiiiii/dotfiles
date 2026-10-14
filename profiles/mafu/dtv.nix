@@ -6,7 +6,7 @@
     autoMaster =
       let
         mapConf = pkgs.writeText "auto" ''
-          dvr -fstype=nfs4,rw 172.27.10.1:/mnt/main/dvr
+          dvr -fstype=nfs4,rw 172.27.10.10:/mnt/main/dvr
         '';
       in
       ''
@@ -163,7 +163,7 @@
       enable = true;
       extraCertificateSubjectAltNames = [
         "DNS:mafu.myuu.internal"
-        "IP:172.27.10.3"
+        "IP:172.27.10.20"
       ];
     };
   };
