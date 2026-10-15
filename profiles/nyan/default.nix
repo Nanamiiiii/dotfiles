@@ -73,6 +73,7 @@ let
     ../../nixos/settings/misc/nfs.nix
     ../../nixos/settings/misc/steam.nix
     ../../nixos/settings/misc/kdeconnect.nix
+    ../../nixos/settings/misc/nixbuild.nix
   ];
 in
 {
