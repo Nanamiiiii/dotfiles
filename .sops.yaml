@@ -6,6 +6,7 @@ keys:
   - &suisui age1ygjhau25s4q3raj3eempssxc0df9urvh3cy8zcmmsq9h67pvfetsjpvwhq
   - &nono age1tf42777r4tkylm8tpt59yp6yzm55fx7syurjg6x4vnzdsh0xyskq2pq7fj
   - &nyan age1cuf7zxdpg3f4luh4pdcg2aaz4jamg2jmjnfsjhdt45dwultjy4as67y7r5
+  - &misaki age13d4lnsw80ma5gsqj2nzvnqngqml5034ugs204edewjv5hqr295hqp0lsx7
 creation_rules:
   - path_regex: ^secrets/[^/]+\.(yaml|json|ini|env|sops)$
     key_groups:
@@ -16,6 +17,7 @@ creation_rules:
       - *yuki
       - *nono
       - *nyan
+      - *misaki
   - path_regex: ^home-manager/secrets/[^/]+\.(yaml|json|ini|env|sops)$
     key_groups:
     - age:
