@@ -8,6 +8,8 @@
     ../../nixos/settings/system/time.nix
     ../../nixos/settings/system/i18n.nix
     ../../nixos/settings/misc/ssh.nix
+    ../../nixos/settings/misc/sops.nix
+    ../../nixos/settings/misc/nixbuild.nix
   ];
 
   users.users.${username} = {
