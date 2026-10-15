@@ -211,6 +211,14 @@
             desktop = true;
           });
 
+          # Raspberry Pi 4B
+          misaki = nixosSystem (nixosSystemArgs {
+            profile = "misaki";
+            username = "myuu";
+            system = "aarch64-linux";
+            desktop = false;
+          });
+
           # WSL on nyan
           rika = nixosSystem (nixWslArgs {
             profile = "rika";

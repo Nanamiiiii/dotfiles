@@ -36,6 +36,7 @@ jobs:
           - nacho
           - yuki
           - mafu
+          - misaki
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -77,6 +78,9 @@ jobs:
     needs: nixos-build
     runs-on: ubuntu-latest
     timeout-minutes: 360
+    concurrency:
+      group: nixos-cache-upload
+      queue: max
     strategy:
       fail-fast: false
       max-parallel: 1
@@ -86,6 +90,7 @@ jobs:
           - nacho
           - yuki
           - mafu
+          - misaki
     steps:
       - name: Install Nix
         uses: cachix/install-nix-action@v31
