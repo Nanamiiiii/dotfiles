@@ -19,7 +19,7 @@ in
 
       ingress = {
         "gitea.myuu.dev" = "http://mashiro.myuu.internal:30008";
-        "ssh.gitea.myuu.dev" = "ssh://mashiro.myuu.internal:30009";
+        "gitea-ssh.myuu.dev" = "ssh://mashiro.myuu.internal:30009";
         "media.myuu.dev" = "http://mashiro.myuu.internal:30013";
         "idp.myuu.dev" = {
           service = "https://mashiro.myuu.internal:30238";
