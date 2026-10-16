@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 let
   tyoHosts = {
     "yuina" = {
@@ -11,12 +12,12 @@ let
       port = 22;
     };
     "mashiro" = {
-      hostname = "172.27.10.1";
+      hostname = "172.27.10.10";
       user = "myuu";
       port = 22;
     };
     "mafu" = {
-      hostname = "172.27.10.3";
+      hostname = "172.27.10.20";
       user = "myuu";
       port = 22;
     };
@@ -43,6 +44,11 @@ in
       tyoHosts
       // wgHosts
       // {
+        "gitea.myuu.dev" = {
+          hostname = "gitea-ssh.myuu.dev";
+          user = "git";
+          proxycommand = "${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h";
+        };
         "*" = {
           forwardAgent = true;
           serverAliveInterval = 60;
