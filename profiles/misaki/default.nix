@@ -10,7 +10,10 @@
     ../../nixos/settings/misc/ssh.nix
     ../../nixos/settings/misc/sops.nix
     ../../nixos/settings/misc/nixbuild.nix
+    ./cloudflared.nix
   ];
+
+  boot.tmp.useTmpfs = true;
 
   users.users.${username} = {
     description = "Akihiro Saiki";

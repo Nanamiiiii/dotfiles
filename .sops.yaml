@@ -48,3 +48,8 @@ creation_rules:
     - age:
       - *admin
       - *nyan
+  - path_regex: ^profiles/misaki/(?:secrets|secrets/[^/]+)\.(?:yaml|json|ini|env|sops)$
+    key_groups:
+    - age:
+      - *admin
+      - *misaki
