@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   lib,
   desktop,
@@ -9,13 +10,16 @@ let
 in
 {
   home.packages =
-    with pkgs.llm-agents;
+    with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
     [
       claude-code
       codex
     ]
-    ++ lib.optionals (baseSystem == "linux" && desktop) [
-      pkgs.llm-agents.claude-desktop
-      pkgs.llm-agents.chatgpt
-    ];
+    ++ lib.optionals (baseSystem == "linux" && desktop) (
+      with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
+      [
+        claude-desktop
+        chatgpt
+      ]
+    );
 }
