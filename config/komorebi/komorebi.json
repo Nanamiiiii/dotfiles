@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.41/schema.json",
+  "app_specific_configuration_path": "$Env:USERPROFILE/applications.json",
+  "window_hiding_behaviour": "Cloak",
+  "cross_monitor_move_behaviour": "Insert",
+  "default_workspace_padding": 5,
+  "default_container_padding": 5,
+  "bar_configurations": [
+    "$Env:USERPROFILE/komorebi.bar.json"
+  ],
+  "border": true,
+  "border_width": 5,
+  "border_offset": -1,
+  "theme": {
+    "palette": "Catppuccin",
+    "name": "Mocha",
+    "single_border": "Blue",
+    "stack_border": "Sapphire",
+    "monocle_border": "Sky",
+    "floating_border": "Teal",
+    "unfocused_border": "Surface1",
+    "unfocused_locked_border": "Surface2",
+    "stackbar_focused_text": "Blue",
+    "stackbar_unfocused_text": "Subtext0",
+    "stackbar_background": "Base",
+    "bar_accent": "Sapphire"
+  },
+  "monitors": [
+    {
+      "workspaces": [
+        {
+          "name": "1",
+          "layout": "BSP"
+        },
+        {
+          "name": "2",
+          "layout": "BSP"
+        },
+        {
+          "name": "3",
+          "layout": "BSP"
+        },
+        {
+          "name": "4",
+          "layout": "BSP"
+        },
+        {
+          "name": "5",
+          "layout": "BSP"
+        }
+      ]
+    }
+  ],
+  "layered_applications": [
+    {
+      "kind": "Exe",
+      "id": "claude.exe",
+      "matching_strategy": "Equals"
+    }
+  ]
+}
