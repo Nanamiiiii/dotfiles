@@ -105,8 +105,10 @@ in
 
   programs.noctalia.settings = {
     bar.main = {
-      position = lib.mkForce "right";
-      thickness = lib.mkForce 44;
+      position = lib.mkForce "bottom";
+      thickness = lib.mkForce 38;
+      font_scale = lib.mkForce 0.95;
+      capsle_padding = lib.mkForce 8.0;
       start = lib.mkForce [
         "launcher"
         "media"
@@ -125,10 +127,33 @@ in
         "settings"
         "session"
       ];
+      capsule_group = lib.mkForce [
+        {
+          id = "system-monitor";
+          enabled = true;
+          members = [
+            "cpu_usage"
+            "cpu_temp"
+            "ram_usage"
+          ];
+          widget_spacing = 8;
+          accordion = false;
+        }
+        {
+          id = "sound";
+          enabled = true;
+          members = [
+            "output_volume"
+            "input_volume"
+          ];
+          widget_spacing = 8;
+          accordion = false;
+        }
+      ];
     };
     widget = {
       clock = {
-        format = lib.mkForce "{:%H %M -- %d %b}";
+        format = lib.mkForce "{:%H:%M - %d %b}";
         font_family = lib.mkForce "PlemolJP HS SemiBold";
         font_weight = lib.mkForce 600;
       };
@@ -143,7 +168,7 @@ in
       offset_y = lib.mkForce 20;
     };
     osd = {
-      position = lib.mkForce "bottom_left";
+      position = lib.mkForce "top_right";
       background_opacity = lib.mkForce 1.0;
       offset_y = lib.mkForce 20;
     };
