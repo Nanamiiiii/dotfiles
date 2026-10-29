@@ -76,7 +76,7 @@
         flac
         freeglut
         libjpeg
-        libpng12
+        libpng
         libpulseaudio
         libsamplerate
         libmikmod
