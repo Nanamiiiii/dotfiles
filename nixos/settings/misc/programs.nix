@@ -20,7 +20,6 @@
         xkeyboard-config
         libpciaccess
         glib
-        gtk2
         bzip2
         zlib
         gdk-pixbuf
