@@ -208,6 +208,7 @@ in
     clock-tui
     devenv
     obsidian-headless
+    tea
   ];
 
   home.file = configFiles.homeScripts;

@@ -7,16 +7,11 @@
 }:
 let
   desktopPkgs = with pkgs; [
-    #(microsoft-edge.override {
-    #  commandLineArgs = "--ozone-platform=x11";
-    #})
     microsoft-edge
     firefox
     discord
     obsidian
-    (pkgs-stable.callPackage "${inputs.nixpkgs}/pkgs/by-name/zo/zotero/package.nix" {
-      firefox-esr-153-unwrapped = pkgs-stable.firefox-esr-140-unwrapped;
-    })
+    zotero
     slack
     thunderbird
     betterdiscordctl

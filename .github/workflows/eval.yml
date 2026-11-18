@@ -90,7 +90,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        profile: [nyan, mafu, rika, yuki, saki, nacho]
+        profile: [nyan, mafu, misaki, rika, yuki, saki, nacho]
     steps:
       - name: Checkout
         uses: actions/checkout@v7

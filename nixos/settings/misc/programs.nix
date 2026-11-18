@@ -20,7 +20,6 @@
         xkeyboard-config
         libpciaccess
         glib
-        gtk2
         bzip2
         zlib
         gdk-pixbuf
@@ -76,7 +75,7 @@
         flac
         freeglut
         libjpeg
-        libpng12
+        libpng
         libpulseaudio
         libsamplerate
         libmikmod

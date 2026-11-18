@@ -26,7 +26,7 @@ jobs:
           ref: ${{ github.event.repository.default_branch }}
 
       - name: Set up mise
-        uses: jdx/mise-action@v5.1.1
+        uses: jdx/mise-action@v5.2.7
         with:
           install: false
           cache: false
@@ -75,7 +75,7 @@ jobs:
       # Enable "Allow GitHub Actions to create and approve pull requests" in repository settings.
       # PRs created with GITHUB_TOKEN do not trigger other pull_request workflows.
       - name: Create update pull request
-        uses: peter-evans/create-pull-request@v8.1.1
+        uses: peter-evans/create-pull-request@v8.1.2
         with:
           base: ${{ github.event.repository.default_branch }}
           branch: automation/update-mise

@@ -26,7 +26,7 @@ _check:
 
 [private]
 _linux: _check
-    @test "{{ SYSTEM }}" = x86_64-linux || { echo "Incompatible system: {{ SYSTEM }}" >&2; exit 1; }
+    @case "{{ SYSTEM }}" in x86_64-linux|aarch64-linux) ;; *) echo "Incompatible system: {{ SYSTEM }}" >&2; exit 1 ;; esac
 
 [private]
 _darwin: _check

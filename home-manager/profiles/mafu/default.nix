@@ -1,9 +1,4 @@
-{
-  pkgs,
-  pkgs-stable,
-  config,
-  ...
-}:
+{ pkgs, ... }:
 let
   commonConfigs = [
     ../../common
@@ -14,7 +9,6 @@ let
       enableAgent = true;
       pinentryVariant = "gnome3";
     })
-    ../../common/cli/ssh
     ../../common/apps/skk
     ../../common/editor/neovim
     ../../common/editor/zed
@@ -24,47 +18,27 @@ let
       enableSocklink = true;
     })
     ../../common/shell/spaceship
-    ../../common/shell/zellij
     ../../common/terminal
-    ../../common/agents
   ];
 
   linuxConfigs = [
-    ../../linux/apps
     ../../linux/fcitx5
     ../../linux/avatar
   ];
-
-  sopsConfigs = [
-    ../../sops
-    ../../sops/ssh.nix
-  ];
-
-  symlink = config.lib.file.mkOutOfStoreSymlink;
 in
 {
   imports = [
   ]
   ++ commonConfigs
-  ++ linuxConfigs
-  ++ sopsConfigs;
+  ++ linuxConfigs;
 
-  home.packages =
-    with pkgs;
-    [
-      virt-manager
-      rclone
-      hwloc
-      vlc
-      pkgs-stable.zoom-us
-      pinta
-    ]
-    ++ (with kdePackages; [
-      ark
-      kcalc
-      gwenview
-      okular
-    ]);
+  home.packages = with pkgs; [
+    hwloc
+    vlc
+    pinta
+    microsoft-edge
+    pinentry-curses
+  ];
 
   home.stateVersion = "26.05";
 }

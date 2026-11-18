@@ -98,8 +98,6 @@ in
     sopsFile = ./secrets/wireguard.env;
   };
 
-  boot.initrd.systemd.enable = true;
-
   services.snapper = {
     configs = {
       root = {
