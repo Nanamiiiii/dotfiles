@@ -277,13 +277,6 @@
             username = "myuu";
             system = "aarch64-darwin";
           });
-
-          # MacBook Neo
-          nono = darwinSystem (darwinSystemArgs {
-            profile = "nono";
-            username = "myuu";
-            system = "aarch64-darwin";
-          });
         };
 
       homeConfigurations =
@@ -328,6 +321,16 @@
             username = "myuu";
             system = "x86_64-linux";
             desktop = false;
+            wslhost = false;
+          });
+
+          # MacBook Neo
+          hina = homeManagerConfiguration (homeManagerArgs {
+            profile = "hina";
+            hostname = "hina";
+            username = "myuu";
+            system = "aarch64-darwin";
+            desktop = true;
             wslhost = false;
           });
         };

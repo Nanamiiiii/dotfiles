@@ -1,0 +1,40 @@
+tap "macos-fuse-t/cask", trusted: true
+# Japanese input method editor (IME) produced by JustSystems
+cask "atok"
+# Display management tool
+cask "betterdisplay"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
+# Anthropic's official Claude AI desktop app
+cask "claude"
+cask "font-plemol-jp"
+cask "font-plemol-jp-hs"
+cask "font-plemol-jp-nf"
+# Kext-less implementation of FUSE
+cask "fuse-t"
+# SSHFS implementation based on FUSE-T
+cask "macos-fuse-t/cask/fuse-t-sshfs"
+# Keyboard customiser
+cask "karabiner-elements"
+# SKK Input Method
+cask "macskk"
+# Multi-platform web browser
+cask "microsoft-edge"
+# Office suite
+cask "microsoft-office"
+# Client for Proton Drive
+cask "proton-drive"
+# Client for Proton Mail and Proton Calendar
+cask "proton-mail"
+# Desktop client for Proton Pass
+cask "proton-pass"
+# Control your tools with a few keystrokes
+cask "raycast"
+# Team communication and collaboration software
+cask "slack"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
+cask "wezterm@nightly"
+# Multiplayer code editor
+cask "zed"
+# Video communication and virtual meeting platform
+cask "zoom"
