@@ -12,7 +12,7 @@ debug {
 
 layout {
     gaps 7
-    center-focused-column "on-overflow"
+    center-focused-column "never"
     preset-column-widths {
         proportion 0.33333
         proportion 0.5
