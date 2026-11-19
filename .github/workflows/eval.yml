@@ -51,7 +51,7 @@ jobs:
               - overlays/**
               - assets/**
               - profiles/**
-              - '!profiles/suisui/**'
+              - '!profiles/miku/**'
               - '!profiles/nono/**'
               - home-manager/default.nix
               - home-manager/linux/**
@@ -59,19 +59,19 @@ jobs:
               - home-manager/desktop/**
               - '!home-manager/desktop/aerospace/**'
               - home-manager/profiles/**
-              - '!home-manager/profiles/suisui/**'
+              - '!home-manager/profiles/miku/**'
               - '!home-manager/profiles/nono/**'
               - '!home-manager/profiles/xanadu/**'
               - '!home-manager/profiles/unyonyo/**'
             darwin:
               - nix-darwin/**
               - overlays/**
-              - profiles/suisui/**
+              - profiles/miku/**
               - profiles/nono/**
               - home-manager/default.nix
               - home-manager/darwin/**
               - home-manager/desktop/aerospace/**
-              - home-manager/profiles/suisui/**
+              - home-manager/profiles/miku/**
               - home-manager/profiles/nono/**
             home:
               - overlays/**
@@ -110,7 +110,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        profile: [suisui, nono]
+        profile: [miku, nono]
     steps:
       - name: Checkout
         uses: actions/checkout@v7

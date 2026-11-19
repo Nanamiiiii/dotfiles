@@ -137,7 +137,7 @@ git-setup: _check
     cp {{ justfile_directory() }}/config/git/allowed_signers {{ home_directory() }}/.config/git/allowed_signers
 
 # Build the default CI profile, or a supplied profile.
-ci-build profile=(if os() == "macos" { "suisui" } else { "nacho" }): _ci
+ci-build profile=(if os() == "macos" { "miku" } else { "nacho" }): _ci
     #!/usr/bin/env bash
     set -euo pipefail
     case "{{ SYSTEM }}" in

@@ -8,7 +8,7 @@ let
     ../../nix-darwin/settings/system/shell.nix
     ../../nix-darwin/settings/system/security.nix
     ../../nix-darwin/settings/system/timezone.nix
-    (import ../../nix-darwin/settings/system/networking.nix { hostName = "suisui"; })
+    (import ../../nix-darwin/settings/system/networking.nix { hostName = "miku"; })
     ../../nix-darwin/settings/system/environment.nix
     ../../nix-darwin/settings/system/fonts.nix
   ];
